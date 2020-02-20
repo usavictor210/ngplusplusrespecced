@@ -1,0 +1,2 @@
+idea: tachyons = usual formula, but slightly changed somehow
+they boost dimensions by their number and produce 1e-3 dilated time per second.
