@@ -76,12 +76,6 @@ function getDimensionFinalMultiplier(tier) {
   return multiplier;
 }
 
-// unused???
-/*
-function getMoneyPerSecond() {
-  return getDimensionFinalMultiplier(1)*Math.floor(player.firstAmount)/player.tickspeed;
-}
-*/
 
 function getDimensionDescription(tier) {
   var name = TIER_NAMES[tier];
@@ -139,7 +133,7 @@ function hasInfinityMult(tier) {
 
 
     function multiplyPC5Costs(cost, tier) {
-        var tiers = [ null, "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eight" ];
+        var tiers = [null, "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eight"];
 
         if (tier < 5) {
             for (var i = 1; i<9; i++) {
@@ -541,12 +535,17 @@ document.getElementById("eightMax").onclick = function () {
 
 function timeMult() {
     var mult = new Decimal(1)
-    var timeLeaper = new Decimal(player.totalTickGained)
-    if (player.infinityUpgrades.includes("timeMult")) mult = mult.times(Math.pow(player.totalTimePlayed / 1200, 0.15));
-    if (player.infinityUpgrades.includes("timeMult2")) mult = mult.times(Decimal.max(Math.pow(player.thisInfinityTime / 2400, 0.25), 1));
-    if (player.achievements.includes("r76")) mult = mult.times(Math.pow(player.totalTimePlayed / (600*60*48), 0.05));
-    if (player.achievements.includes("r151")) mult = mult.times(Math.pow(timeLeaperMult(), 1))
-    return mult;
+    if (!player.achievements.includes('r151')) {
+      if (player.infinityUpgrades.includes("timeMult")) mult = mult.times(Math.pow(player.totalTimePlayed / 1200, 0.15));
+      if (player.infinityUpgrades.includes("timeMult2")) mult = mult.times(Decimal.max(Math.pow(player.thisInfinityTime / 2400, 0.25), 1));
+      if (player.achievements.includes("r76")) mult = mult.times(Math.pow(player.totalTimePlayed / (600*60*48), 0.05));
+    } else if (player.achievements.includes('r151')) {
+      if (player.infinityUpgrades.includes("timeMult")) mult = mult.times(timeMultUpg(1,1))
+      if (player.infinityUpgrades.includes("timeMult2")) mult = mult.times(timeMultUpg(2,1))
+      if (player.achievements.includes("r76")) mult = mult.times(timeMultUpg(3,1))
+      mult = mult.times(Decimal.pow(timeLeaperMult(), 1))
+  }
+  return mult;
 }
 
 function dimMults() {

@@ -66,19 +66,15 @@
             <button id="challengesbtn" style="font-family: Typewriter; font-size: 20px" class="tabbtn">Challenges</button>
             <button id="infinitybtn" style="font-family: Typewriter; font-size: 20px; display: none" class="infinitybtn">Infinity</button>
             <button id="eternitystorebtn" style="font-family: Typewriter; font-size: 20px; display: none" class="eternitytabbtn">Eternity</button>
-            <button id="shopbtn" style="font-family: Typewriter; font-size: 20px" class="tabbtn">Shop</button>
+            <button id="quantumbtn" style="font-family: Typewriter; font-size: 20px; display: none" class="quantumtabbtn">Quantum</button>
         </div>
         <div id="emptiness" class="tab" style="font-size: 150%">
             <br> The world has collapsed on itself due to the overflow of antimatter.
             <br>
             <br>
         </div>
-        <div id="shop" class="tab" style="font-size: 15px" >
-            <div align="center">
-                <br>
-                <span id="kongip"> Why are you here? </span><br>
-                <span style="font-size: 12px"><b>Disclaimer: You can't buy anything here. How did you get here?</b></span>
-            </div>
+        <div id="quantum" class="tab" style="font-size: 15px">
+          Nothing's here yet.
         </div>
         <div id="eternitystore" class="tab" style="font-size: 15px; margin: 0 auto; display: none" align="center">
             <table class="table" align="center" style="margin: auto">
@@ -184,8 +180,8 @@
                     <tr>
                         <td><button class="eternitychallengestudy" id="ec6unl">Eternity Challenge 6<span>Requirement: 40 replicanti galaxies<span>Cost: 100 Time Theorems</button></td>
                           <td><button class="timestudy activestudy" id="131" onclick="buyTimeStudy(131, 5)"><span id="131penalty">Automatic replicanti galaxies are disabled, but you can get 50% more</span><span>Cost: 5 Time Theorems</button></td>
-                          <td><button class="timestudy passivestudy" id="132" onclick="buyTimeStudy(132, 5)">Replicanti galaxies are <span id="132penalty">40%</span> more effective<span>Cost: 5 Time Theorems</button></td>
-                        <td><button class="timestudy idlestudy" id="133" onclick="buyTimeStudy(133, 5)">Replicanti<span id="133penalty"> are 10x slower until infinity, but their</span> galaxies are 50% stronger<span>Cost: 5 Time Theorems</button></td>
+                          <td><button class="timestudy passivestudy" id="132" onclick="buyTimeStudy(132, 5)"><span id="132penalty">Replicanti galaxies are 40% more effective</span><span>Cost: 5 Time Theorems</button></td>
+                        <td><button class="timestudy idlestudy" id="133" onclick="buyTimeStudy(133, 5)"><span id="133penalty">Replicanti are 10x slower until infinity, but their galaxies are 50% stronger</span><span>Cost: 5 Time Theorems</button></td>
                         <td><button class="eternitychallengestudy" id="ec8unl">Eternity Challenge 8<span>Cost: 100 Time Theorems</button></td>
                     </tr>
                 </table>
@@ -214,7 +210,7 @@
                 </table>
                 <table class="table" id="studytable">
                     <tr>
-                        <td><button class="timestudy" id="171" onclick="buyTimeStudy(171, 15)">Time shard requirement for the next tickspeed upgrade goes up slower<span>Cost: 15 Time Theorems</button></td>
+                        <td><button class="timestudy" id="171" onclick="buyTimeStudy(171, 15)">The timeshard requirement for the next tickspeed upgrade increases slower<span>Cost: 15 Time Theorems</button></td>
                     </tr>
                 </table>
                 <table class="table" id="studytable">
@@ -234,7 +230,7 @@
                 </table>
                 <table class="table" id="studytable">
                     <tr>
-                        <td><button class="timestudy" id="191" onclick="buyTimeStudy(191, 400)">After eternity you permanently keep 5% of your infinities<span>Cost: 400 Time Theorems</button></td>
+                        <td><button class="timestudy" id="191" onclick="buyTimeStudy(191, 400)">You bank 5% of your infinities on Eternity (permanently kept).<span>Cost: 400 Time Theorems</button></td>
                         <td><button class="timestudy" id="192" onclick="buyTimeStudy(192, 730)" style="font-size: 10px;"><span id="192desc">You can get beyond 1.8e308 replicantis, but the interval is increased the more you have</span>Cost: 730 Time Theorems</button></td>
                         <td><button class="timestudy" id="193" onclick="buyTimeStudy(193, 300)">Normal dimension boost based on eternities<span id="193desc">Currently: 1x</span>Cost: 300 Time Theorems</button></td>
                     </tr>
@@ -249,7 +245,7 @@
                         <td><button class="timestudy" id="211" onclick="buyTimeStudy(211, 120)">Dimensional boost requirement scaling is reduced by 5<span>Cost: 120 Time Theorems</button></td>
                         <td><button class="timestudy" id="212" onclick="buyTimeStudy(212, 150)">Galaxies are more effective based on your timeshards<span id="212desc">Currently: 1x</span>Cost: 150 Time Theorems</button></td>
                         <td><button class="timestudy" id="213" onclick="buyTimeStudy(213, 200)">You gain replicanti 20 times faster<span>Cost: 200 Time Theorems</button></td>
-                        <td><button class="timestudy" id="214" onclick="buyTimeStudy(214, 120)">Sacrifice boosts the 8th dimension even more<span id="214desc">Currently: 1x</span>Cost: 120 Time Theorems</button></td>
+                        <td><button class="timestudy" id="214" onclick="buyTimeStudy(214, 120)">Sacrifice's multiplier on the 8th dimension increases<span id="214desc">Currently: 1x</span>Cost: 120 Time Theorems</button></td>
                     </tr>
                 </table>
                 <table class="table" id="studytable">
@@ -258,8 +254,8 @@
                         <td><button class="timestudy lightstudy" style="margin: 1px; width: 120px; font-size: 0.55rem; padding: 3px;" id="222" onclick="buyTimeStudy(222, 900)">Dimensional boost costs scale by another 2 less.<span>Cost: 900 Time Theorems</button></td>
                         <td><button class="timestudy darkstudy" style="margin: 1px; width: 120px; font-size: 0.55rem; padding: 3px;" id="223" onclick="buyTimeStudy(223, 900)">Galaxy cost scaling starts 7 galaxies later.<span>Cost: 900 Time Theorems</button></td>
                         <td><button class="timestudy lightstudy" style="margin: 1px; width: 120px; font-size: 0.55rem; padding: 3px;" id="224" onclick="buyTimeStudy(224, 900)">Galaxy cost scaling starts 1 galaxy later for every 2000 dimensional boosts.<span>Cost: 900 Time Theorems</button></td>
-                        <td><button class="timestudy darkstudy" style="margin: 1px; width: 120px; font-size: 0.55rem; padding: 3px;" id="225" onclick="buyTimeStudy(225, 900)">You gain extra RGs based on how high above infinity your replicanti are.<span>Cost: 900 Time Theorems</button></td>
-                        <td><button class="timestudy lightstudy" style="margin: 1px; width: 120px; font-size: 0.55rem; padding: 3px;" id="226" onclick="buyTimeStudy(226, 900)">You gain extra RGs based on your max RGs.<span>Cost: 900 Time Theorems</button></td>
+                        <td><button class="timestudy darkstudy" style="margin: 1px; width: 120px; font-size: 0.55rem; padding: 3px;" id="225" onclick="buyTimeStudy(225, 900)">You gain extra RGs based on replicanti amount above infinity (every 1000 OoMs).<span>Cost: 900 Time Theorems</button></td>
+                        <td><button class="timestudy lightstudy" style="margin: 1px; width: 120px; font-size: 0.55rem; padding: 3px;" id="226" onclick="buyTimeStudy(226, 900)">You gain extra RGs based on your max RGs (1 per 15 RGs).<span>Cost: 900 Time Theorems</button></td>
                         <td><button class="timestudy darkstudy" style="margin: 1px; width: 120px; font-size: 0.55rem; padding: 3px;" id="227" onclick="buyTimeStudy(227, 900)">Sacrifice affects the 4th Time Dimension with reduced effect.<span>Cost: 900 Time Theorems</button></td>
                         <td><button class="timestudy lightstudy" style="margin: 1px; width: 120px; font-size: 0.55rem; padding: 3px;" id="228" onclick="buyTimeStudy(228, 900)">Sacrifice scales better.<span>Cost: 900 Time Theorems</button></td>
                     </tr>
@@ -298,6 +294,11 @@
                 <table class="table" id="studytable">
                     <tr>
                         <td><button class="timestudylocked" id="dilstudy6" onclick="buyDilationStudy(6, 1e24)">Unlock Meta Dimensions<span>Cost: <span id="metaCost" style="display: inline;">1e24</span> Time Theorems</button></td>
+                    </tr>
+                </table>
+                <table class="table" id="studytable">
+                    <tr>
+                        <td><button class="timestudylocked" id="dilstudy7" onclick="buyDilationStudy(7, 1e100)">Unlock ???<span>Cost: <span id="unknownCost" style="display: inline;">1e100</span> Time Theorems</button></td>
                     </tr>
                 </table>
                 <div style="height: 120px;"></div>
@@ -462,6 +463,7 @@
                 <button id="enabledilation2" class="dilationUnstablebtn" onclick="unstableDilation()" style="display: none">Unstabilize dilation.</button>
                 <p>You have <span id="dilatedTimeAmount" style="font-size:35px; color: black">0</span> dilated time. <span id="dilatedTimePerSecond" style="font-size:25px; color: black">0</span></p>
                 <p>The next free galaxy is at <span id="galaxyThreshold" style="font-size:25px; color: black">1000</span> dilated time. You've gained a total of <span id="dilatedGalaxies" style="font-size:25px; color: black">0</span> free galaxies.</p>
+                <button id="rebuyupgauto" style="width:210px; height: 30px; font-size: 12px; display: none" onclick="player.dilation.autobuy = !player.dilation.autobuy" class="storebtn">Autobuy Rebuyables: OFF</button>
                 <table>
                     <tr>
                         <td>
@@ -488,7 +490,7 @@
                             <button class="dilationupg" id="dil7" onclick="buyDilationUpgrade(7)">Normal Dimensions gain a multiplier based on dilated time, unaffected by time dilation.<br><span id="dil7cost">Cost: 5e7 dilated time</span></button>
                         </td>
                         <td>
-                            <button class="dilationupg" id="dil8" onclick="buyDilationUpgrade(8)">Replicanti increase quicker based on dilated time.<br><span id="dil8cost">Cost: 1e20 dilated time</span></button>
+                            <button class="dilationupg" id="dil8" onclick="buyDilationUpgrade(8)">Replicanti increases faster based on dilated time.<br><span id="dil8cost">Cost: 1e20 dilated time</span></button>
                         </td>
                     </tr>
                     <tr>
@@ -496,7 +498,7 @@
                             <button class="dilationupg" id="dil9" onclick="buyDilationUpgrade(9)">Gain a multiplier to IP based on dilated time.<br><span id="dil9desc"></span><br><span id="dil9cost"></span></button>
                         </td>
                         <td>
-                            <button class="dilationupg" id="dil10" onclick="buyDilationUpgrade(10)">Pick all the study paths from the first split.<br><span id="dil10cost"></span></button>
+                            <button class="dilationupg" id="dil10" onclick="buyDilationUpgrade(10)">Pick all the study paths from the first split. <br>(TS201 is disabled)<br><span id="dil10cost"></span></button>
                         </td>
                         <td>
                             <button class="dilationupg" id="dil11" onclick="buyDilationUpgrade(11)">Reduce the dilation penalty. (^ 1.05 after reduction)<br><span id="dil11cost"></span></button>
@@ -513,7 +515,7 @@
                             <button class="dilationupg" id="dil14" onclick="buyDilationUpgrade(14)">Meta-dimension shifts, boosts, and per-ten upgrades are boosted by dilated time.<br><span id="dil14desc"></span><br><span id="dil14cost"></span></button>
                         </td>
                         <td>
-                            <button class="dilationupg" id="dil15" onclick="buyDilationUpgrade(15)">Meta-antimatter effect on dimension boosts is stronger (x^8 to x^9).<br><span id="dil15cost"></span></button>
+                            <button class="dilationupg" id="dil15" onclick="buyDilationUpgrade(15)">Meta-antimatter effect on dimension boosts is stronger (x^8 -> x^9).<br><span id="dil15cost"></span></button>
                         </td>
                         <td>
                             <button class="dilationupg" id="dil16" onclick="buyDilationUpgrade(16)">Dilated time production is boosted based on best meta-antimatter ((log(x)/2)^0.5).<br><span id="dil16desc"></span><br><span id="dil16cost"></span></button>
@@ -677,7 +679,7 @@
                             Dimension Shift: requires 20 Fourth Dimension
                         </td>
                         <td>
-                            <button id="softReset" style="color:black; width: 200px; height: 25px; font-size: 9px" class="storebtn">Reset the game for a new Dimension</button>
+                            <button id="softReset" style="color:black; width: 200px; height: 25px; font-size: 9px" class="storebtn">Reset Dimensions for a new Dimension</button>
                         </td>
                     </tr>
                     <tr style="font-size: 15px">
@@ -685,11 +687,11 @@
                             Antimatter Galaxies: requires 80 Eight Dimension
                         </td>
                         <td>
-                            <button id="secondSoftReset" style="color:black; width: 200px; height: 35px; font-size: 9px" class="storebtn">Lose all your previous progress, but get a tickspeed boost</button>
+                            <button id="secondSoftReset" style="color:black; width: 200px; height: 35px; font-size: 9px" class="storebtn">Reset Dimensions and Dimension Shifts/Boosts, but get a tickspeed boost</button>
                         </td>
                     </tr>
                 </table>
-                <button id="quickReset" style="color:black; width: 200px; height: 50px; font-size: 12px; display: none" class="storebtn">Lose a reset, returning to the start of the reset</button>
+                <button id="quickReset" style="color:black; width: 200px; height: 50px; font-size: 12px; display: none" class="storebtn">Lose a reset, returning to the start of the previous reset</button>
             </div>
             <div id="infinitydimensions" class="dimtab">
                 <span id="EC12Pow"></span>
@@ -816,12 +818,13 @@
             </div>
             <div id="timedimensions" class="dimtab">
                     <div>
+                        <p id="itmult">Your "Infinite Time" multiplier is currently Xx.</p>
                         <p id="totaltickgained">You've gained 0 tickspeed upgrades.</p>
-                            <p>You have <span id="timeShardAmount" style="font-size:35px; color: black">0</span> time shards. Next tickspeed upgrade at <span id="tickThreshold" style="font-size:35px; color: black">0</span></p>
+                        <p>You have <span id="timeShardAmount" style="font-size:35px; color: black">0</span> time shards. Next tickspeed upgrade at <span id="tickThreshold" style="font-size:35px; color: black">0</span></p>
                         </div>
 
                         <div id="timeShardsPerSec">You are getting 0 Timeshards per second.</div>
-                        <button id="maxTimeDimensions" class="storebtn" style="font-size: 12px" onclick="buyMaxTimeDimensions()">Max all</button>
+                        <button id="maxTimeDimensions" class="storebtn" style="font-size: 12px" onclick="buyMaxTimeDimensions()">Max all</button><button class="storebtn" id="tdautotoggle" onclick="timeDimensionAutoToggle()" style="font-size: 12px; width: 200px;">Auto max TD: OFF</button>
                         <table class="table" >
                             <tr style="font-size: 17px" id="timeRow1">
                                 <td id="timeD1" width="43%">
@@ -911,7 +914,6 @@
                                 </td>
                             </tr>
                         </table>
-                        <div><button class="storebtn" id="tdautotoggle" onclick="timeDimensionAutoToggle()" style="font-size: 12px; width: 200px;">Auto max TD OFF</button></div>
             </div>
             <div id="metadimensions" class="dimtab">
                   <div>
@@ -921,6 +923,7 @@
                   <div id="metaAntimatterPerSec">You are getting 0 meta-antimatter per second.</div>
                   <br/>
                   <button id="metaMaxAll" class="storebtn" style="font-size: 12px">Max all</button>
+                  <button id="metaMaxAllAuto" class="storebtn" style="font-size: 12px; width: 200px; display: none;" onclick="player.meta.autoMaxAll = !player.meta.autoMaxAll">Auto Max All: OFF</button>
                   <br/>
                   <table>
                     <tbody>
@@ -1118,7 +1121,7 @@
 
             </table>
             <div style="display: none;"><textarea id="exportOutput" style="color:black; width: 200px; height: 55px;"></textarea></div>
-            <p>Hotkeys: 1-8 for buy 10 dimension, shift+1-8 for buy 1 dimension, T to buy max tickspeed, shift+T to buy one tickspeed, M for max all<br>S for sacrifice, D for dimension boost, G for galaxy, C for crunch, A for toggle autobuyers, R for replicanti galaxies, E for eternity.<br>You can hold shift while buying time studies to buy all up until that point, see each study's number, and save study trees.<br>Hotkeys do not work while holding control.</p>
+            <p>Hotkeys: 1-8 for buy 10 dimension, shift+1-8 for buy 1 dimension, T to buy max tickspeed, shift+T to buy one tickspeed, M for max all<br>S for sacrifice, D for dimension boost, G for galaxy, C for crunch, A for toggle autobuyers, R for replicanti galaxies, E for eternity.<br>You can hold shift while buying time studies to buy all up until that point, see each study's number, and save study trees.<br>Hotkeys do not work while holding control.<br>Import "I'm so meta" without quotation marks to get a save at meta-dimensions.</p>
             <div id="footercontainer">
                 <table id="footer">
                     <tr>
@@ -1317,7 +1320,7 @@
                             <div id="Spreading Cancer" class="achievement achievementlocked" style="background-image: url(images/46.png)" ach-tooltip="Buy ten Galaxies in total while using cancer notation."><br></div>
                         </td>
                         <td>
-                            <div id="Supersanic" class="achievement achievementlocked" style="background-image: url(images/26.png)" ach-tooltip="Have antimatter/sec exceed your current antimatter above 1 Tg (1e63)."><br></div>
+                            <div id="Super Sanic" class="achievement achievementlocked" style="background-image: url(images/26.png)" ach-tooltip="Have antimatter/sec exceed your current antimatter above 1 Tg (1e63)."><br></div>
                         </td>
                         <td>
                             <div id="Zero Deaths" class="achievement achievementlocked" style="background-image: url(images/27.png)" ach-tooltip="Big Crunch without Dimension shifts, boosts or galaxies in a challenge. Reward: Dimensions 1-4 are 25% stronger."><br></div>
@@ -1349,10 +1352,10 @@
                             <div id="Definitely not worth it" class="achievement achievementlocked" style="background-image: url(images/35.png)" ach-tooltip="Max all the autobuyers."><br></div>
                         </td>
                         <td>
-                            <div id="That's faster!" class="achievement achievementlocked" style="background-image: url(images/36.png)" ach-tooltip="Infinity in 10 minutes or less. Reward: Start with 200,000 antimatter."><br></div>
+                            <div id="That's faster!" class="achievement achievementlocked" style="background-image: url(images/36.png)" ach-tooltip="Big Crunch in 10 minutes or less. Reward: Start with 200,000 antimatter."><br></div>
                         </td>
                         <td>
-                            <div id="Forever isn't that long" class="achievement achievementlocked" style="background-image: url(images/37.png)" ach-tooltip="Infinity in 1 minute or less. Reward: Start with 1e10 antimatter."><br></div>
+                            <div id="Forever isn't that long" class="achievement achievementlocked" style="background-image: url(images/37.png)" ach-tooltip="Big Crunch in 1 minute or less. Reward: Start with 1e10 antimatter."><br></div>
                         </td>
                         <td>
                             <div id="Many Deaths" class="achievement achievementlocked" style="background-image: url(images/38.png)" ach-tooltip="Complete the Second Dimension Autobuyer challenge in 3 minutes or less. Reward: All dimensions are stronger in first 3 minutes of infinity."><br></div>
@@ -1366,7 +1369,7 @@
                     </tr>
                     <tr id="achRow6">
                         <td>
-                            <div id="Bulked up" class="achievement achievementlocked" style="background-image: url(images/401.png)" ach-tooltip="Get all of your dimension bulk buyers to 512 or higher."><br></div>
+                            <div id="Bulked up" class="achievement achievementlocked" style="background-image: url(images/401.png)" ach-tooltip="Get all of your dimension bulk buyers to 1,024x or higher."><br></div>
                         </td>
                         <td>
                             <div id="Oh hey, you're still here" class="achievement achievementlocked" style="background-image: url(images/402.png)" ach-tooltip="Reach 1e8 IP per minute."><br></div>
@@ -1574,7 +1577,7 @@
                         </tr>
                         <tr id="achRow14">
                             <td>
-                                <div id="I'm so meta" class="achievement achievementlocked" style="background-image: url(https://cdn.glitch.com/11bd9cf7-3538-445c-9ab6-26b2cf1775e7%2F97.png?v=1581862464269)" ach-tooltip="Unlock meta dimensions."><br></div>
+                                <div id="I'm so meta" class="achievement achievementlocked" style="background-image: url(https://cdn.glitch.com/11bd9cf7-3538-445c-9ab6-26b2cf1775e7%2F97.png?v=1581862464269)" ach-tooltip="Unlock meta dimensions. Reward: Get the rebuyable dilation upgrade autobuyer."><br></div>
                             </td>
                             <td>
                                 <div id="And still no ninth dimension..." class="achievement achievementlocked" style="background-image: url(https://cdn.glitch.com/11bd9cf7-3538-445c-9ab6-26b2cf1775e7%2F98.png?v=1581862467382)" ach-tooltip="Get the eighth meta-dimension. Reward: All meta-dimensions are 10% stronger and you start with 100 meta-antimatter on reset."><br></div>
@@ -1600,7 +1603,7 @@
                         </tr>
                         <tr id="achRow15">
                             <td>
-                                <div id="Time Leaper" class="achievement achievementlocked" style="background-image: url(https://cdn.glitch.com/11bd9cf7-3538-445c-9ab6-26b2cf1775e7%2F105.png?v=1581887758493)" ach-tooltip="Unstabilize Dilation. Reward: You can autobuy dilation rebuyable upgrades, and all time upgrades/bonuses and Normal Dimensions are more effective based on the amount of free tickspeed upgrades."><br></div>
+                                <div id="Time Leaper" class="achievement achievementlocked" style="background-image: url(https://cdn.glitch.com/11bd9cf7-3538-445c-9ab6-26b2cf1775e7%2F105.png?v=1581887758493)" ach-tooltip="Unstabilize Dilation. Reward: You gain TP without having to disable dilation, and ND time upgrades, 'One for each dimension', EC1's reward and Normal Dimensions are more effective based on the amount of free tickspeed upgrades."><br></div>
                             </td>
                             <td>
                                 <div id="That's too meta" class="achievement achievementlocked" style="background-image: url(https://cdn.glitch.com/11bd9cf7-3538-445c-9ab6-26b2cf1775e7%2F106.png?v=1581880971586)" ach-tooltip="Get a meta-antimatter galaxy. Reward: You start with 1,000 meta antimatter on reset."><br></div>
@@ -1612,16 +1615,16 @@
                                 <div id="Unusual space and time" class="achievement achievementlocked" style="background-image: url(https://cdn.glitch.com/11bd9cf7-3538-445c-9ab6-26b2cf1775e7%2F108.png?v=1581881199553)" ach-tooltip="Increase the severity of dilation to ^0.25."><br></div>
                             </td>
                             <td>
-                                <div id="Sub-atomic" class="achievement achievementlocked" style="background-image: url(https://cdn.glitch.com/11bd9cf7-3538-445c-9ab6-26b2cf1775e7%2F109.png?v=1581881001342)" ach-tooltip="Go quantum. Reward: You start with 10,000 eternities on Quantum."><br></div>
+                                <div id="Sub-atomic" class="achievement achievementlocked" style="background-image: url(https://cdn.glitch.com/11bd9cf7-3538-445c-9ab6-26b2cf1775e7%2F109.png?v=1581881001342)" ach-tooltip="Go quantum. Reward: You start with 10,000 eternities on Quantum, eternities stat gain is multiplied by 100, and your eternities stat boost infinitied stat gained."><br></div>
                             </td>
                             <td>
-                                <div id="I never meta-dimension I didn't like" class="achievement achievementlocked" style="background-image: url(https://cdn.glitch.com/11bd9cf7-3538-445c-9ab6-26b2cf1775e7%2F110.png?v=1581887028066)" ach-tooltip="Get at least 1e45x multiplier on all meta dimensions. Reward: You can autobuy meta dimensions."><br></div>
+                                <div id="I never meta-dimension I didn't like" class="achievement achievementlocked" style="background-image: url(https://cdn.glitch.com/11bd9cf7-3538-445c-9ab6-26b2cf1775e7%2F110.png?v=1581887028066)" ach-tooltip="Get at least 1e25x multiplier on all meta dimensions. Reward: You can autobuy meta dimensions."><br></div>
                             </td>
                             <td>
                                 <div id="The future is now, old man" class="achievement achievementlocked" style="background-image: url(https://cdn.glitch.com/11bd9cf7-3538-445c-9ab6-26b2cf1775e7%2F111.png?v=1581883664018)" ach-tooltip="Generate 120 seconds worth of production at once from Time Rift. Reward: Temporal power gain increases based on infinities."><br></div>
                             </td>
                             <td>
-                                <div id="Deeper Sanctum" class="achievement achievementlocked" style="background-image: url(https://cdn.glitch.com/11bd9cf7-3538-445c-9ab6-26b2cf1775e7%2F112.png?v=1581886688740)" ach-tooltip="Produce 1e500,000 antimatter with only 1 normal galaxy and your free galaxies in dilation. Reward: Galaxies (including meta-antimatter galaxies) are 0.05% stronger."><br></div>
+                                <div id="Deeper Sanctum" class="achievement achievementlocked" style="background-image: url(https://cdn.glitch.com/11bd9cf7-3538-445c-9ab6-26b2cf1775e7%2F112.png?v=1581886688740)" ach-tooltip="Produce 1e1,000,000 antimatter with only 1 normal galaxy and your free galaxies in dilation. Reward: Galaxies (including meta-antimatter galaxies) are 0.05% stronger."><br></div>
                             </td>
                         </tr>
                 </table>
@@ -2671,7 +2674,8 @@
                 <p id="replicantiapprox"></p>
                 <br>
                 <button class="storebtn" id="replicantireset" onclick="replicantiGalaxy()" style="width: 200px; height: 70px; font-size: 12px">Reset replicanti amount for a free galaxy.</button>
-                <div><button class="storebtn" id="replicantiresettoggle" onclick="replicantiGalaxyAutoToggle()" style="width: 200px; height: 25px; font-size: 12px; display: none">Auto galaxy OFF</button></div>
+                <br>
+                <button class="storebtn" id="replicantiresettoggle" onclick="replicantiGalaxyAutoToggle()" style="width: 200px; height: 25px; font-size: 12px; display: none">Auto galaxy OFF</button>
                 <div><button class="storebtn" id="replicantibulkmodetoggle" onclick="replicantiGalaxyBulkModeToggle()" style="width: 200px; height: 25px; font-size: 12px; display: none">Galaxy bulk mode: single</button></div>
             </div>
         </div>
@@ -2748,9 +2752,11 @@
         <button class="timetheorembtn" onclick="studyTreeSaveButton(1)" style="margin-left:176px; width:30px; height: 30px; font-size: 0.75rem; bottom: 77px;">1</button>
         <button class="timetheorembtn" onclick="studyTreeSaveButton(2)" style="margin-left:211px; width:30px; height: 30px; font-size: 0.75rem; bottom: 77px;">2</button>
         <button class="timetheorembtn" onclick="studyTreeSaveButton(3)" style="margin-left:246px; width:30px; height: 30px; font-size: 0.75rem; bottom: 77px;">3</button>
+        <div id="theorembuyers">
         <button class="timetheorembtn" onclick="buyWithAntimatter()" id="theoremam" style="margin-left: -276px">Buy Time Theorems <br>Cost: 1e20000 antimatter</button>
         <button class="timetheorembtn" onclick="buyWithIP()" id="theoremip" style="margin-left: -86px">Buy Time Theorems <br>Cost: 1 IP</button>
         <button class="timetheorembtnlocked" onclick="buyWithEP()" id="theoremep" style="margin-left: 106px">Buy Time Theorems <br>Cost: 1 EP</button>
+      </div>
         <div id="theorembuybackground"></div>
         <p id="timetheorems" style="position: fixed;">You have 0 Time Theorems.</p>
         <p id="studytreeloadsavetext" style="position: fixed;">load:</p>
@@ -2762,7 +2768,7 @@
 <script type="text/javascript" src="javascripts/chart.js"></script>
 <script type="text/javascript" src="javascripts/lz-string.js"></script>
 
-
+<script type="text/javascript" src="javascripts/unstableDilation.js"></script>
 <script type="text/javascript" src="javascripts/core/polyfill.js"></script>
 <script type="text/javascript" src="javascripts/core/format.js"></script>
 <script type="text/javascript" src="javascripts/core/achievements.js"></script>
@@ -2780,7 +2786,6 @@
 <script type="text/javascript" src="javascripts/core/load_functions.js"></script>
 <script type="text/javascript" src="javascripts/core/newsticker.js"></script>
 <script type="text/javascript" src="javascripts/game.js?85"></script>
-<script type="text/javascript" src="javascripts/unstableDilation.js"></script>
 <script type="text/javascript" src="javascripts/sha512.js"></script>
 <script type="text/javascript" src="javascripts/meta_player.js"></script>
 

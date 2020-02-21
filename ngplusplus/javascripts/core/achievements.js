@@ -24,7 +24,7 @@ const allAchievements = {
   r37 : "That's fast!",
   r38 : "I don't believe in Gods",
   r41 : "Spreading Cancer",
-  r42 : "Supersanic",
+  r42 : "Super Sanic",
   r43 : "Zero Deaths",
   r44 : "Over in 30 seconds",
   r45 : "Faster than a potato",
@@ -205,9 +205,6 @@ function giveAchievement(name) {
     $.notify(name, "success");
     player.achievements.push(allAchievementNums[name]);
     document.getElementById(name).className = "achievementunlocked"
-    try {
-        kongregate.stats.submit('Achievements', player.achievements.length);
-    } catch (err) {console.log("Couldn't load Kongregate API")}
     if (name == "All your IP are belong to us" || name == "MAXIMUM OVERDRIVE") {
         player.infMult = player.infMult.times(4);
         player.autoIP = player.autoIP.times(4);
