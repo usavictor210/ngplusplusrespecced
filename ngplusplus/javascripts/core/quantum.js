@@ -1,5 +1,5 @@
 function quantum(force, auto) {
-    if (player.meta.antimatter.gte(Number.MAX_VALUE) && (!player.options.quantumconfirm || auto || confirm("Quantum will reset everything eternity resets, including dilation, unstable dilation, meta-dimensions and the time rift, in exchange for a quark and unlock various upgrades. Are you sure you want to do this?")) || force === true) {
+    if (player.meta.antimatter.gte(quantRequirement()) && (!player.options.quantumconfirm || auto || confirm("Quantum will reset everything eternity resets, including dilation, and meta-dimensions, in exchange for a quark and unlock various upgrades. Are you sure you want to do this?")) || force === true) {
         player.quantum.quarks = player.quantum.quarks.plus(quarkGain());
         player.quantum.gluons = 0;
         player = {
@@ -195,9 +195,9 @@ function quantum(force, auto) {
                 bought: 0
             },
             eternityPoints: new Decimal(0),
-            eternities: player.eternities,
+            eternities: 10000,
             thisEternity: 0,
-            bestEternity: player.bestEternity,
+            bestEternity: 9999999999,
             eternityUpgrades: [],
             epmult: new Decimal(1),
             epmultCost: new Decimal(500),
@@ -254,17 +254,32 @@ function quantum(force, auto) {
                 nextThreshold: new Decimal(1000),
                 freeGalaxies: 0,
                 upgrades: [],
+                unstableShards: new Decimal(0),
                 rebuyables: {
-                    1: 0,
-                    2: 0,
-                    3: 0,
-                    4: 0
-                }
-            },
+                1: 0,
+                2: 0,
+                3: 0,
+                4: 0
+               },
+              unstable: {
+                times: 0,
+                shards: new Decimal(0),
+                severity: 1,
+                upgrades: []
+              },
+              timeRift: {
+                temporalPower: new Decimal (0),
+                seconds: 0,
+                upgrades: []
+              },
+              autobuy: player.dilation.autobuy
+           },
             meta: {
               antimatter: new Decimal(10),
-              bestAntimatter: player.meta.bestAntimatter,
+              bestAntimatter: new Decimal(10),
               resets: 0,
+              galaxy: 0,
+              autoMaxAll: player.autoMaxAll,
               '1': {
                 amount: new Decimal(0),
                 bought: 0,
@@ -361,7 +376,7 @@ function quantum(force, auto) {
         document.getElementById("eternitybtn").style.display = player.infinityPoints.gte(player.eternityChallGoal) ? "inline-block" : "none"
         document.getElementById("eternityPoints2").style.display = "inline-block"
         document.getElementById("eternitystorebtn").style.display = "inline-block"
-        document.getElementById("infiMult").innerHTML = "Multiply infinity points from all sources by 2 <br>currently: "+shorten(player.infMult.times(kongIPMult)) +"x<br>Cost: "+shortenCosts(player.infMultCost)+" IP"
+        document.getElementById("infiMult").innerHTML = "Multiply infinity points from all sources by 2 <br>currently: "+shorten(player.infMult) +"x<br>Cost: "+shortenCosts(player.infMultCost)+" IP"
         updateEternityUpgrades()
         document.getElementById("totaltickgained").textContent = "You've gained "+player.totalTickGained.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")+" tickspeed upgrades."
         updateTickSpeed();
@@ -372,6 +387,8 @@ function quantum(force, auto) {
         updateTimeStudyButtons()
         drawStudyTree()
         Marathon2 = 0;
+        player.quantum.times++
+        giveAchievement("Sub-atomic")
     }
 }
 
@@ -388,25 +405,30 @@ let quarkMult = function () {
 }
 
 let quantRequirement = function () {
-  return new Decimal(Number.MAX_VALUE).pow(4)
+  return new Decimal(Number.MAX_VALUE)
 }
 
 function toggleDilationConf() {
     if (player.options.dilationconfirm) {
         player.options.dilationconfirm = false
-        document.getElementById("dilationconf").textContent = "Dilation confirmation OFF"
+        document.getElementById("dilationconf").textContent = "Dilation confirmation: OFF"
     } else {
         player.options.dilationconfirm = true
-        document.getElementById("dilationconf").textContent = "Dilation confirmation ON"
+        document.getElementById("dilationconf").textContent = "Dilation confirmation: ON"
     }
 }
 
 function toggleQuantumConf() {
     if (player.options.quantumconfirm) {
         player.options.quantumconfirm = false
-        document.getElementById("quantumconf").textContent = "Quantum confirmation OFF"
+        document.getElementById("quantumconf").textContent = "Quantum confirmation: OFF"
     } else {
         player.options.quantumconfirm = true
-        document.getElementById("quantumconf").textContent = "Quantum confirmation ON"
+        document.getElementById("quantumconf").textContent = "Quantum confirmation: ON"
     }
+}
+
+function checkQuantumButton() {
+  if (!player.quantum.times === 0) document.getElementById("quantumbtn").style.display = "inline-block"
+  else document.getElementById("quantumbtn").style.display = "none"
 }

@@ -8,7 +8,7 @@ var saves = {
 function ngplus() {
   if (player.ngPlus === 0) {
     player.money = new Decimal(1e25);
-    if (player.infinitiedBank < 1e6) player.infinitiedBank = 1e6;
+    if (player.infinitiedBank < 1e12) player.infinitiedBank = 1e12;
     if (!player.infinityUpgrades.includes("skipReset1"))
       player.infinityUpgrades = [
         "timeMult",
@@ -275,6 +275,9 @@ function onLoad() {
       temporalPower: new Decimal(0),
       upgrades: []
     };
+  if (player.dilation.autobuy === undefined) {
+    player.dilation.autobuy = false
+  }
   if (player.timeDimension5 === undefined)
     player.timeDimension5 = {
       cost: new Decimal("1e2350"),
@@ -1025,7 +1028,9 @@ function onLoad() {
       upgrades: []
     };
   }
-
+  
+  if (player.meta.autoMaxAll === undefined) player.meta.autoMaxAll = false
+  
   // player.version is currently 12.3
   if (player.options.notation == "Default") {
     player.options.notation = "Brackets";

@@ -6,7 +6,7 @@ function getTimeDimensionPower(tier) {
   var ret = dim.power.pow(2)
 
   if (player.timestudy.studies.includes(11) && tier == 1) ret = ret.dividedBy(player.tickspeed.dividedBy(1000).pow(0.005).times(0.95).plus(player.tickspeed.dividedBy(1000).pow(0.0003).times(0.05)).max(Decimal.fromMantissaExponent(1, -2500)))
-  if (player.achievements.includes("r105")) ret = ret.div(player.tickspeed.div(1000).pow(0.000005))
+  if (player.achievements.includes("r105")) ret = ret.div(getInfiniteTimeReward())
   if (player.eternityUpgrades.includes(4)) ret = ret.times(player.achPow)
   if (player.eternityUpgrades.includes(5)) ret = ret.times(Math.max(player.timestudy.theorem, 1))
   if (player.eternityUpgrades.includes(6)) ret = ret.times(player.totalTimePlayed / 10 / 60 / 60 / 24)
@@ -17,7 +17,9 @@ function getTimeDimensionPower(tier) {
   if (player.timestudy.studies.includes(221)) ret = ret.times(Decimal.pow(1.0025, player.resets))
   if (player.timestudy.studies.includes(227) && tier == 4) ret = ret.times(Math.max(Math.pow(calcTotalSacrificeBoost().log10(), 10), 1))
   if (player.currentEternityChall == "eterc9") ret = ret.times((Decimal.pow(Math.max(player.infinityPower.log2(), 1), 4)).max(1))
-  if (ECTimesCompleted("eterc1") !== 0) ret = ret.times(Math.pow(Math.max(player.thisEternity*10, 0.9), 0.3+(ECTimesCompleted("eterc1")*0.05)))
+  if (ECTimesCompleted("eterc1") !== 0) if (!player.achievements.includes("r151")) {
+  ret = ret.times(Math.pow(Math.max(player.thisEternity*10, 0.9), 0.3+(ECTimesCompleted("eterc1")*0.05)))
+  } else if (player.achievements.includes("r151")) ret.times(timeMultUpg(4,1))
   let ec10bonus = new Decimal(1)
   if (ECTimesCompleted("eterc10") !== 0) ec10bonus = new Decimal(Math.max(Math.pow(getInfinitied(), 0.9) * ECTimesCompleted("eterc10") * 0.000002+1, 1))
   if (player.timestudy.studies.includes(31)) ec10bonus = ec10bonus.pow(4)
@@ -44,12 +46,13 @@ function getTimeDimensionPower(tier) {
     }
   }
 
-
+  document.getElementById("itmult").innerHTML = "Your 'Infinite Time' multiplier is currently " + shortenMoney(getInfiniteTimeReward().recip()) + "x."
   return ret
-
 }
 
-
+function getInfiniteTimeReward() {
+return (player.tickspeed.div(1000).pow(0.000005))
+}
 function getTimeDimensionProduction(tier) {
   if (player.currentEternityChall == "eterc10") return new Decimal(0)
   var dim = player["timeDimension"+tier]

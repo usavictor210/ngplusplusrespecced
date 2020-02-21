@@ -76,6 +76,7 @@ function getMetaDimensionMultiplier (tier) {
   }
 
   if (multiplier.gt(1e36)) multiplier = multiplier.pow(0.96).max(1e36)
+
   return multiplier;
 }
 
@@ -152,9 +153,13 @@ function metaBoost () {
 }
 
 function metaGalaxyCost() {
+var x = -20 + (40 * (player.meta.galaxy+1))
+var y = ((player.meta.galaxy-6)*10)
+if (player.meta.galaxy > 6) x = x + y
+if (player.meta.galaxy > 10) x = x + Math.floor(y * 1.5)
   return {
     tier: 8,
-    amount: Math.max(40, -20 + (40 * (player.meta.galaxy+1)) + ((player.meta.galaxy-6)*10))
+    amount: Math.max(40, x)
   }
 }
 
@@ -264,4 +269,15 @@ var x = new Decimal((Math.log10(player.dilation.tachyonParticles)/4))
 if (isNaN(x) || x.lt(1)) x = new Decimal(1)
 if (x.gt(12.5)) x = x.pow(.75).max(12.5)
 return x
+}
+
+function metaDimensionAchievement() {
+if (getMetaDimensionMultiplier(1).gte(1e25) && 
+getMetaDimensionMultiplier(2).gte(1e25) &&
+getMetaDimensionMultiplier(3).gte(1e25) &&
+getMetaDimensionMultiplier(4).gte(1e25) &&
+getMetaDimensionMultiplier(5).gte(1e25) &&
+getMetaDimensionMultiplier(6).gte(1e25) &&
+getMetaDimensionMultiplier(7).gte(1e25) &&
+getMetaDimensionMultiplier(8).gte(1e25)) giveAchievement("I never meta-dimension I didn't like");
 }

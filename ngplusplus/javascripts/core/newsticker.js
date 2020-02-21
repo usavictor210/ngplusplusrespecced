@@ -73,7 +73,7 @@ newsArray = [//always true
 ["Ahhh i love the smell of particle annihilation in the morning", true, "a134"],
 ["The person who said ghosts don't exist obviously doesn't have a discord", true, "a135"],
 ["AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAntimatter Dimensions was made by some dude from Finland", true, "a136"],
-['The Holy trinity of Hevipelle, Antimatter, Infinity Points, and Eternity Points. These 3 resources let us access Hevi’s gift, Time Theorems. And with these Time Theorems, we reach out to Hevi, and call, “Hevi, bless us on this fine day!” And Hevi does. He give us the blessing of Time Studies. These Time Studies were blessings so powerful, Hevi restricted their power. He said, “I will give you a choice of three paths.” and then humanity chose. The short, cheap route of Normal Dimensions, giving instant gratification, the powerful choice of Infinity Dimensions, which were a fast, middle ground path, or Time Dimension, the long wait, and struggle, of humanity. Then, as humanity chose, a crack broke the earth. A serpent snaked out and sneered to humanity, “I will offer the powerful choice of a ninth dimension! I am Slabdrill, lord of all Unhevi.” Humanity rose and said, “Begone Slabdrill! We want none of your foul Heresy!” And Hevi rose as well, and smote Slabdrill with his godlike power. As Slabdrill’s corpse fell into the earth, he cried, “This will not be the last of me! Hevi will betr-“ and he fell in the Abyss of matter. Hevi gifted humanity with Eternity upgrades, which boosted Infinity Dimensions and Time Dimensions, and Hevi gave humanity his greatest gift. EP multipliers. He said, “These will multiply all EP gained by 5, but their cost will increase 25 times. Use them wisely.” And Humanity journeyed off with their new power, as Slabdrill’s words echoed in their heads.', true, "a137"],
+['The Holy trinity of Hevipelle, Antimatter, Infinity Points, and Eternity Points. These 3 resources let us access Hevi’s gift, Time Theorems. And with these Time Theorems, we reach out to Hevi, and call, “Hevi, bless us on this fine day!” And Hevi does. He give us the blessing of Time Studies. These Time Studies were blessings so powerful, Hevi restricted their power. He said, “I will give you a choice of three paths.” and then humanity chose. The short, cheap route of Normal Dimensions, giving instant gratification, the powerful choice of Infinity Dimensions, which were a fast, middle ground path, or Time Dimensions, the long wait, and struggle, of humanity. Then, as humanity chose, a crack broke the earth. A serpent snaked out and sneered to humanity, “I will offer the powerful choice of a ninth dimension! I am Slabdrill, lord of all Unhevi.” Humanity rose and said, “Begone Slabdrill! We want none of your foul Heresy!” And Hevi rose as well, and smote Slabdrill with his godlike power. As Slabdrill’s corpse fell into the earth, he cried, “This will not be the last of me! Hevi will betr-“ and he fell in the Abyss of matter. Hevi gifted humanity with Eternity upgrades, which boosted Infinity Dimensions and Time Dimensions, and Hevi gave humanity his greatest gift. EP multipliers. He said, “These will multiply all EP gained by 5, but their cost will increase 25 times. Use them wisely.” And Humanity journeyed off with their new power, as Slabdrill’s words echoed in their heads.', true, "a137"],
 ["We have updated our Antimatter Privacy Policy.", true, "a138"],
 ["Is this a jojo reference?", true, "pat1"], // patreon
 
@@ -167,7 +167,7 @@ newsArray = [//always true
 ["Time Flux for NG+5 when", true, "respecced11"],
 ["You know the game is old when it has tons of spaghetti code.", true, "respecced12"],
 ["Infinite bugs? In my NG+3? It's more likely than you think.", true, "respecced13"],
-["Quantum doesn't exist yet.", true, "respecced14"],
+["Quantum doesn't exist yet... wait, people are already going quantum? What?", true, "respecced14"],
 ["It appears when we looked closer at the explosion, the antimatter and matter were hugging each other. Oh well. I guess they would've made it to the semi-finals if they were careful. NEXT!", 'player.newsArray.includes("respecced5")', "respecced15"],
 ["You just made your first 1e1,000,000,000 antimatter. This one tastes like turkey.", "player.totalmoney.e > 1e9", "respecced16"],
 ["You cannot halate snow.", true, "respecced17"],
@@ -188,7 +188,7 @@ newsArray = [//always true
 ["\"Onion was a mistake.\" ~ TheTastyPi, 2020", 'player.newsArray.includes("respecced4")', "respeccced32"],
 ["Florida man goes to idol hell, is never heard of again", true, "respecced33"],
 ["In another timeline, there isn't a thing such as the 9th dimension or the existence of 5 hours. There is instead something much worse. The unmentionable thing.", true, "respecced34"], //not sure if this is supposed to be an NGU reference 
-["If you could convert your " + player.money + " units of antimatter to dollars, the economy would inflate and go upside down and inside out.", true, "respecced35"],
+["If you could convert your " + shortenMoney(player.money) + " units of antimatter to dollars, the economy would inflate and go upside down and inside out.", true, "respecced35"],
 ["This is a test of our new creative works software. Your random number is: " + Math.random(1,1000) + ".     ...did it work? We hope it did.", true, "respecced36"],
 ["We've heard that dilation seems very boring. Our scientists are changing that. It might turn too unstable soon, so watch out for that.", 'player.eternityPoints.gte(new Decimal("1e1300"))', "respecced37"],
 ["An infinite clock has been detected. It seems it just repeats the time over and over again.", true, "respecced38"],
@@ -230,7 +230,10 @@ newsArray = [//always true
 ["'We need to ban standard.' - Douche who can't balance his mods correctly", true, "respecced72"],
 ["NG+3.1, now featuring 33% less timewalls and the all new Higgs timewall!", true, "respecced73"],
 ["Warning! We have reported an anomaly within the space and time continuum! It is likely that it will strike and make more time inconsistencies! Protect the time you have at all costs!", 'player.dilation.unstable.times > 0', "respecced74"],
-["I like Gunvolt Chronicles.", true, "respecced75"]
+["I like Gunvolt Chronicles.", true, "respecced75"],
+["We apologize in advance for all the AD related news tickers.", true, "respecced76"],
+["The news ticker industry is inflating. There have not been any major advancements in the news ticker department. We need to think of better news tickers, but most of them are just horribly written stuff...", true, "respecced77"],
+["5 hours was a mistake. There stands only an infinite time between Reality. 5 hours was never an accurate measurement, it just kept moving away from us. Everything we knew of it was wrong. What are we waiting for then?", 'player.newsArray.includes("a91") && player.totalTimePlayed >= 600*300', "respecced78"]
 ];}
 
 var s = document.getElementById('news');

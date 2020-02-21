@@ -771,7 +771,7 @@ button {
 
 #replicantiresettoggle {
     margin-top: 3px;
-    margin-right: 6px;
+    margin-right: 0px;
 }
 
 .eternitychallengestudy {
@@ -1277,7 +1277,7 @@ button {
 }
 
 .dilationUnstablebtn {
-    color: #0b0b6b;
+    color: #4682B4;
     background: black;
     font-weight: bold;
     font-size: 0.7rem;
@@ -1292,7 +1292,7 @@ button {
 }
 
 .dilationUnstablebtn:hover {
-    color: #0b0b6b;
+    color: #4682B4;
     background: white;
 }
 
@@ -1830,4 +1830,36 @@ screen and (max-width: 480px) {
     0% {transform:scale(1); filter:blur(0px)}
     50% {transform:scale(0); filter:blur(5px)}
     100% {transform:scale(1); filter:blur(0px)}
+}
+
+.quantumbtn {
+    color: #32c832;
+    background: #0a640a;
+    border: 2px solid #32c832;
+    font-family: Typewriter;
+    font-weight: bold;
+    border-radius: 4px;
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+.quantumbtn:hover {
+    background: #32c832;
+    color: #0a640a;
+}
+
+.quantumtabbtn {
+    color: #32c832;
+    background: #0a640a;
+    border: 2px solid #32c832;
+    font-family: Typewriter;
+    font-weight: bold;
+    border-radius: 4px;
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+.quantumtabbtn:hover {
+    background: #32c832;
+    color: #0a640a;
 }

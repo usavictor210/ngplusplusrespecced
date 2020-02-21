@@ -94,6 +94,11 @@ function maxTheorems() {
   updateEternityUpgrades();
 }
 
+function updatePenalty() {
+  document.getElementById("131penalty").innerHTML = player.achievements.includes("r143") ? "You can get 50% more replicanti galaxies" : "Automatic replicanti galaxies are disabled, but you can get 50% more"
+  document.getElementById("132penalty").innerHTML = player.achievements.includes("r143") ? "Replicanti galaxies are 50% stronger" : "Replicanti galaxies are 40% stronger"
+  document.getElementById("133penalty").innerHTML = player.achievements.includes("r143") ? "Replicanti galaxies are 50% stronger" : "Replicanti interval is 10x slower until infinity, but RGs are 50% stronger"
+}
 function updateTheoremButtons() {
   document.getElementById("theoremam").className = player.money.gte(
     player.timestudy.amcost
