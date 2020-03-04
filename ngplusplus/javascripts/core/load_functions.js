@@ -47,25 +47,28 @@ function ngplus() {
     player.achievements.push("r22");
     player.achievements.push("r35");
     player.achievements.push("r76");
-    player.challenges = [
-      "challenge1",
-      "challenge2",
-      "challenge3",
-      "challenge4",
-      "challenge5",
-      "challenge6",
-      "challenge7",
-      "challenge8",
-      "challenge9",
-      "challenge10",
-      "challenge11",
-      "challenge12"
-    ];
+    if (!player.achievements.includes("r133")) {
+      player.challenges = [
+        "challenge1",
+        "challenge2",
+        "challenge3",
+        "challenge4",
+        "challenge5",
+        "challenge6",
+        "challenge7",
+        "challenge8",
+        "challenge9",
+        "challenge10",
+        "challenge11",
+        "challenge12",     
+      ];
+    }
     player.ngPlus = 1;
   }
 }
 
 function onLoad() {
+  if (player.ngPlus === undefined) player.ngPlus = 0
   if (player.totalmoney === undefined || isNaN(player.totalmoney))
     player.totalmoney = player.money;
   if (player.options === undefined) {
@@ -262,12 +265,14 @@ function onLoad() {
   if (!(4 in player.dilation.rebuyables)) {
     player.dilation.rebuyables[4] = 0;
   }
+  if (player.dilation.unstable.sacrificedTP === undefined) player.dilation.unstable.sacrificedTP === new Decimal(0)
   if (player.dilation.unstable === undefined)
     player.dilation.unstable = {
       times: 0,
       shards: new Decimal(0),
       severity: 1,
-      upgrades: []//layers of dilation stacked
+      upgrades: [], //layers of dilation stacked
+      sacrificedTP: new Decimal(0)
     };
   if (player.dilation.timeRift === undefined)
     player.dilation.timeRift = {
@@ -369,28 +374,44 @@ function onLoad() {
   if (player.meta.bestAntimatter === undefined)
     player.meta.bestAntimatter = player.meta.antimatter;
   if (player.meta.galaxy === undefined) player.meta.galaxy = 0;
+  if (player.quantum.investmentAmount === undefined || player.quantum.investmentAmount.length != 6) player.quantum.investmentAmount = [null, new Decimal(0), new Decimal(0), new Decimal(0), new Decimal(0), new Decimal(0)]
   if (player.quantum === undefined) {
     player.quantum = {
-      times: 0,
+    times: 0,
+    quarks: new Decimal(0),
+    thisQuantum: 0,
+    bestQuantum: 9999999999,
+    producedGluons: 0,
+    realGluons: 0,
+    bosons: {
+      "w+": 0,
+      "w-": 0,
+      z0: 0
+    },
+    neutronstar: {
       quarks: new Decimal(0),
-      producedGluons: 0,
-      realGluons: 0,
-      bosons: {
-        "w+": 0,
-        "w-": 0,
-        z0: 0
-      },
-      neutronstar: {
-        quarks: new Decimal(0),
-        metaAntimatter: new Decimal(0),
-        dilatedTime: new Decimal(0)
-      },
-      rebuyables: {
-        1: 0,
-        2: 0
-      },
-      upgrades: []
-    };
+      metaAntimatter: new Decimal(0),
+      dilatedTime: new Decimal(0)
+    },
+    rebuyables: {
+      1: 0,
+      2: 0
+    },
+    investmentAmount: [new Decimal(0), new Decimal(0), new Decimal(0), new Decimal(0), new Decimal(0)],
+    upgrades: [],
+    lastTenQuantums: [
+    [600 * 60 * 24 * 31, 1],
+    [600 * 60 * 24 * 31, 1],
+    [600 * 60 * 24 * 31, 1],
+    [600 * 60 * 24 * 31, 1],
+    [600 * 60 * 24 * 31, 1],
+    [600 * 60 * 24 * 31, 1],
+    [600 * 60 * 24 * 31, 1],
+    [600 * 60 * 24 * 31, 1],
+    [600 * 60 * 24 * 31, 1],
+    [600 * 60 * 24 * 31, 1]
+    ],
+    }
   }
   if (player.why === undefined) player.why = 0;
   if (player.options.animations === undefined)
@@ -709,6 +730,31 @@ function onLoad() {
     };
   }
 
+  if (player.quantum.bestQuantum === undefined) {
+    player.quantum.bestQuantum = 9999999999;
+    player.quantum.thisQuantum = player.totalTimePlayed;
+    if (player.bestQuantum != undefined) {
+    player.quantum.bestQuantum = player.bestQuantum
+    player.quantum.thisQuantum = player.quantum.bestQuantum
+    delete player.thisQuantum
+    delete player.bestQuantum
+    }
+  }
+
+  if (player.lastTenQuantums === undefined) {
+    player.lastTenQuantums = [
+      [600 * 60 * 24 * 31, 1],
+      [600 * 60 * 24 * 31, 1],
+      [600 * 60 * 24 * 31, 1],
+      [600 * 60 * 24 * 31, 1],
+      [600 * 60 * 24 * 31, 1],
+      [600 * 60 * 24 * 31, 1],
+      [600 * 60 * 24 * 31, 1],
+      [600 * 60 * 24 * 31, 1],
+      [600 * 60 * 24 * 31, 1],
+      [600 * 60 * 24 * 31, 1]
+    ];
+  }
   transformSaveToDecimal();
   updateCosts();
   updateTickSpeed();

@@ -93,9 +93,10 @@ function drawTreeBranch(num1, num2) {
     } else if (num2.includes("dilstudy")) {
         var isDilStudyName = true;
         var name2 = parseInt(num2.split("y")[1]);
-    } else {
-        var name2 = parseInt(num2)
-    }
+    } else if (num2.includes("diltime")) {
+        var isDilTimeName = true;
+        var name2 = parseInt(num2.split("e")[2]) // i want to make this blue
+    } else var name2 = parseInt(num2)
     var start = document.getElementById(num1).getBoundingClientRect();
     var end = document.getElementById(num2).getBoundingClientRect();
     var x1 = start.left + (start.width / 2) + (document.documentElement.scrollLeft || document.body.scrollLeft);
@@ -104,7 +105,7 @@ function drawTreeBranch(num1, num2) {
     var y2 = end.top + (end.height / 2) + (document.documentElement.scrollTop || document.body.scrollTop);
     ctx.lineWidth=15;
     ctx.beginPath();
-    if ((player.timestudy.studies.includes(name1) && player.timestudy.studies.includes(name2) && !isECName) || (player.timestudy.studies.includes(name1) && (player.eternityChallUnlocked === name2 && isECName)) || (player.dilation.studies.includes(name2-1) && (player.dilation.studies.includes(name2) && isDilStudyName))) {
+    if ((player.timestudy.studies.includes(name1) && player.timestudy.studies.includes(name2) && !isECName) || (player.timestudy.studies.includes(name1) && (player.eternityChallUnlocked === name2 && isECName)) || (player.dilation.studies.includes(name2-1) && (player.dilation.studies.includes(name2) && isDilStudyName) || (isDilTimeName))) {
         if (name2 < 20 && isECName) {
             ctx.strokeStyle="#490066";
         } else if (name2 < 20) {
@@ -144,6 +145,7 @@ function drawTreeBranch(num1, num2) {
         }
     }
     if (num2 == "secretstudy") ctx.strokeStyle="#000000";
+    if (num2 == "diltime") ctx.strokeStyle="#00fff9"
     ctx.moveTo(x1, y1);
     ctx.lineTo(x2, y2);
     ctx.stroke();
@@ -238,10 +240,24 @@ function drawStudyTree() {
     drawTreeBranch("ec11unl", "dilstudy1")
     drawTreeBranch("ec12unl", "dilstudy1")
     drawTreeBranch("dilstudy1", "dilstudy2")
+    drawTreeBranch("dilstudy1", "diltime241")
+    drawTreeBranch("dilstudy1", "diltime242")
+    drawTreeBranch("diltime241", "diltime251")
+    drawTreeBranch("diltime242", "diltime252")
     drawTreeBranch("dilstudy2", "dilstudy3")
     drawTreeBranch("dilstudy3", "dilstudy4")
+    drawTreeBranch("diltime251", "diltime261")
+    drawTreeBranch("diltime252", "diltime262")
     drawTreeBranch("dilstudy4", "dilstudy5")
     drawTreeBranch("dilstudy5", "dilstudy6")
+    drawTreeBranch("diltime261", "diltime271")
+    drawTreeBranch("diltime262", "diltime272")
+    drawTreeBranch("diltime271", "diltime281")
+    drawTreeBranch("diltime272", "diltime283")
+    drawTreeBranch("diltime281", "diltime282")
+    drawTreeBranch("diltime283", "diltime282")
+    drawTreeBranch("diltime282", "diltime291")
+    
     if (shiftDown && document.getElementById("eternitystore").style.display !== "none" && document.getElementById("timestudies").style.display !== "none") {
         for (i=0; i<all.length; i++) {
             var start = document.getElementById(all[i]).getBoundingClientRect();
@@ -254,7 +270,7 @@ function drawStudyTree() {
             if (document.getElementById(all[i]).className.split(" ")[1] !== undefined || all[i] > 220) {
                 var tempName = document.getElementById(all[i]).className.split(" ")[1];
                 var name;
-                //console.log(all[i])
+                //console.log(all[i]) we really don't need the console to say anything, do we?
                 if (all[i] == 222 || all[i] == 223 || all[i] == 226 || all[i] == 227 || all[i] == 232 || all[i] == 233) name = "dark"
                 else if (all[i] == 221 || all[i] == 224 || all[i] == 225 || all[i] == 228 || all[i] == 231 || all[i] == 234) name = "light"
                 else if (tempName.includes("normaldimstudy")) name = "normal dims"
@@ -263,6 +279,7 @@ function drawStudyTree() {
                 else if (tempName.includes("activestudy")) name = "active"
                 else if (tempName.includes("passivestudy")) name = "passive"
                 else if (tempName.includes("idlestudy")) name = "idle"
+                else if (tempName.includes("diltime")) name = "bent study"
                 ctx.strokeText(all[i]+" "+name, x1 - start.width / 2, y1 - start.height / 2 - 1);
                 ctx.fillText(all[i]+" "+name, x1 - start.width / 2, y1 - start.height / 2 - 1);
             } else {

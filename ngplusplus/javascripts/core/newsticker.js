@@ -1,5 +1,5 @@
 var newsArray;
-
+// how to make a proper news ticker: ["x", 'y', "z"] (x is the news ticker itself, y is the condition to show it, and z is the "code")
 function updateNewsArray() {
 newsArray = [//always true
 ["The cookie is a lie.", true, "a1"], ["Antimatter cookies have been confirmed to not exist, whoever claims that, stop.", true, "a4"], ["Antimatter ghosts do not exist. Just like matter ghosts. They don't have any matter, for that matter.", true, "a2"],
@@ -121,6 +121,7 @@ newsArray = [//always true
 ["I broke the 8th wall, there is only chaos, Slabdrill is ritually sacrificing antimatter to the 9th dimension. This will be my last entry, may Hevipelle have mercy on our souls, we didn't listen, We should have listened.", 'player.newsArray.includes("b17")', "n6"],
 ["I thought the update was 5 hours away... -new players after more than 5 hours of gameplay", 'player.newsArray.includes("a91") && player.totalTimePlayed >= 600*300', "n7"],
 ["Somebody told me to wait five hours for the update yesterday but it's today and it still hasn't come! What do I do?", 'player.newsArray.includes("a91") && player.totalTimePlayed >= 600*300', "n8"],
+["hackers are coming", "player.newsArray.length >= 300", "n13"],
 //hard
 ["You do know that you won't reach Infinity in -1 seconds, right?", "player.bestInfinityTime == 0.1", "c1"],
 ["Where does Antimatter Nemo live? In a NNnNeMI-NNnNe.", "player.totalmoney.e >= 3e6", "c2"],  //might not be poss?
@@ -233,7 +234,30 @@ newsArray = [//always true
 ["I like Gunvolt Chronicles.", true, "respecced75"],
 ["We apologize in advance for all the AD related news tickers.", true, "respecced76"],
 ["The news ticker industry is inflating. There have not been any major advancements in the news ticker department. We need to think of better news tickers, but most of them are just horribly written stuff...", true, "respecced77"],
-["5 hours was a mistake. There stands only an infinite time between Reality. 5 hours was never an accurate measurement, it just kept moving away from us. Everything we knew of it was wrong. What are we waiting for then?", 'player.newsArray.includes("a91") && player.totalTimePlayed >= 600*300', "respecced78"]
+["5 hours was a mistake. There stands only an infinite time between Reality. 5 hours was never an accurate measurement, it just kept moving away from us. Everything we knew of it was wrong. What are we waiting for then?", 'player.newsArray.includes("a91") && player.totalTimePlayed >= 600*300', "respecced78"],
+//news tickers from randomtuba
+["Just wait six hours and your package will arrive", true, "respecced79"],
+["Anti-Jake from StateFarm says that he is not on your side.", true, "respecced80"],
+["Recipe for anti-cereal: it's just the same as the recipe for cereal, but pour the milk before the anti-bowl is even on the table", true, "respecced81"],
+["If there's no triple exponentiational growth in this game I will stop playing", true, "respecced82"],
+["'It's not respecced, it's NG+2 modded' -some random loser", true, "respecced83"],
+["Did antimatter cause the Local58 incidents? If it did, boy were they wrong", true, "respecced84"],
+["PLEASE INSERT THE ANTIMATTER INTO THE PROPER SLOT. IF THERE IS NO MORE SLOT, THEN PLEASE TRY AGAIN.", true, "respecced85"],
+["https://safeyoutube.net/w/4nj1", true, "respecced86"],
+["John, I want a divorce.", true, "respecced87"],
+["If the 9th dimension doesn't exist, then why can you obtain 9 antimatter galaxies?", 'player.galaxies >= 9', "respecced88"],
+["Aarex is gonna be mad because we're making another mod of NG+2, but who fucking cares", true, "respecced89"],
+["var 9thDimensions = NaN;", true, "respecced90"],
+["NG+3 Respecced is the bane of my existence", true, "respecced91"],
+["SCP-AD --- Object Class: Keter --- Special Containment Procedures: SCP-AD must be contained in a 5x5 meter cell with no matter by it, or else it will be destroyed due to annhilation. Security cameras have a chance to shut down at a 5-hour interval. --- Description: SCP-AD is a computer screen that has an odd game on it. It is a game where you collect 'antimatter' with 'dimensions'. The computer has a mouse a keyboard, and a [REDACTED] by it. The keyboard does not have QWERTY format. The arrangement of keys are [REDACTED]. --- Experiment AD-1: D-6969 was asked to play the game on SCP-AD. 5 hours later, security footage malfunctioned. When observing the containment area, D-6969 had disappeared without a trace. On the screen, it showed a '[REDACTED]' had unlocked. --- Experiment AD-3: D-8826 was asked to play the game on SCP-AD in 'Cancer' Notation. 5 hours later, D-8826 exploded from the inside. Later, all remains of the corpse had been absorbed inside the containment chamber.", true, "respecced92"],
+["Don't worry, we'll unlock Ultra Dilation in -6 minutes", 'player.dilation.unstable.times === 1', "respecced93"],
+["Don't add way too many prestige layers", true, "respecced94"],
+//pass the mic back
+["It cries above mount Everest, and antimatter from the raindrops of the antimatter galaxies made by Hevi Pelle who smote slabdrill and mighty aarex and produced too much antimatter and the forbidden matter from Slabdrill.", true, "respecced95"],
+["There are now more comments in the code. We hope you understand it better.", true, "respecced96"],
+["These news tickers are getting too meta. I need to take a break. See you later.                                 ...wait, why is it still going? The spaces I put in didn't even work! That's just dumb. I'm leaving.", true, "respecced97"],
+["Even if you could halate snow, you don't have enough light to do that. We'd need more tickspeed. Speaking of more tickspeed... a potato's on the loose.", 'player.newsArray.includes("respecced17")', "respecced98"],
+["When the news ticker keeps coming back... and coming back...", true, "respecced99"]
 ];}
 
 var s = document.getElementById('news');
