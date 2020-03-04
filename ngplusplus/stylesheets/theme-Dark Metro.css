@@ -542,3 +542,35 @@ input {
     50% {box-shadow: inset 0px 0px 20px 0px #673AB7;}
     100%  {box-shadow: inset 0px 0px 3px 0px #673AB7;}
 }
+
+.quantumbtn {
+    color: #32c832;
+    background: #0a640a;
+    border: 2px solid #32c832;
+    font-family: Typewriter;
+    font-weight: bold;
+    border-radius: 4px;
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+.quantumbtn:hover {
+    background: #32c832;
+    color: #0a640a;
+}
+
+.quantumtabbtn {
+    color: #32c832;
+    background: #0a640a;
+    border: 2px solid #32c832;
+    font-family: Typewriter;
+    font-weight: bold;
+    border-radius: 4px;
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+.quantumtabbtn:hover {
+    background: #32c832;
+    color: #0a640a;
+}

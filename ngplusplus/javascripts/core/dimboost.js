@@ -72,7 +72,7 @@ function softReset(bulk) {
       interval: null,
       lastUpdate: player.lastUpdate,
       achPow: player.achPow,
-    newsArray: player.newsArray,
+      newsArray: player.newsArray,
       autobuyers: player.autobuyers,
       costMultipliers: [new Decimal(1e3), new Decimal(1e4), new Decimal(1e5), new Decimal(1e6), new Decimal(1e8), new Decimal(1e10), new Decimal(1e12), new Decimal(1e15)],
       tickspeedMultiplier: new Decimal(10),
@@ -186,11 +186,6 @@ if (player.currentChallenge == "postc2") {
   if (player.achievements.includes("r66")) player.tickspeed = player.tickspeed.times(0.98);
   if (player.achievements.includes("r83")) player.tickspeed = player.tickspeed.times(Decimal.pow(0.95,player.galaxies));
 
-
-
-
-
-  //updateInterval();
   if (player.eternities < 30) {
       document.getElementById("secondRow").style.display = "none";
       document.getElementById("thirdRow").style.display = "none";
@@ -205,14 +200,9 @@ if (player.currentChallenge == "postc2") {
       document.getElementById("eightRow").style.display = "none";
   }
 
-
   player.tickspeed = player.tickspeed.times(Decimal.pow(getTickSpeedMultiplier(), player.totalTickGained))
   updateTickSpeed()
-  if (player.challenges.includes("challenge1")) player.money = new Decimal(100).max(player.money)
-  if (player.achievements.includes("r37")) player.money = new Decimal(1000).max(player.money);
-  if (player.achievements.includes("r54")) player.money = new Decimal(2e5).max(player.money);
-  if (player.achievements.includes("r55")) player.money = new Decimal(1e10).max(player.money);
-  if (player.achievements.includes("r78")) player.money = new Decimal(1e25).max(player.money);
+  getAntimatterOnReset().max(player.money)
 
   if (player.resets >= 10) {
       giveAchievement("Boosting to the max");

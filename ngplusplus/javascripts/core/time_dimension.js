@@ -19,7 +19,7 @@ function getTimeDimensionPower(tier) {
   if (player.currentEternityChall == "eterc9") ret = ret.times((Decimal.pow(Math.max(player.infinityPower.log2(), 1), 4)).max(1))
   if (ECTimesCompleted("eterc1") !== 0) if (!player.achievements.includes("r151")) {
   ret = ret.times(Math.pow(Math.max(player.thisEternity*10, 0.9), 0.3+(ECTimesCompleted("eterc1")*0.05)))
-  } else if (player.achievements.includes("r151")) ret.times(timeMultUpg(4,1))
+  } else if (player.achievements.includes("r151")) ret = ret.times(timeMultUpg(4,1))
   let ec10bonus = new Decimal(1)
   if (ECTimesCompleted("eterc10") !== 0) ec10bonus = new Decimal(Math.max(Math.pow(getInfinitied(), 0.9) * ECTimesCompleted("eterc10") * 0.000002+1, 1))
   if (player.timestudy.studies.includes(31)) ec10bonus = ec10bonus.pow(4)
@@ -46,7 +46,9 @@ function getTimeDimensionPower(tier) {
     }
   }
 
-  document.getElementById("itmult").innerHTML = "Your 'Infinite Time' multiplier is currently " + shortenMoney(getInfiniteTimeReward().recip()) + "x."
+  if (player.achievements.includes("r105")) { 
+    document.getElementById("itmult").innerHTML = "Your 'Infinite Time' multiplier is currently " + shortenMoney(getInfiniteTimeReward().recip()) + "x."
+  } else document.getElementById("itmult").style.display = "none"
   return ret
 }
 
