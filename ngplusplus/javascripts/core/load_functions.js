@@ -1170,7 +1170,7 @@ function onLoad() {
   updateEternityUpgrades();
   loadInfAutoBuyers();
   resizeCanvas();
-  checkForEndMe();
+  checkChallengeAchievements();
   updateEternityChallenges();
   updateDilationUpgradeCosts();
   let diff = new Date().getTime() - player.lastUpdate;

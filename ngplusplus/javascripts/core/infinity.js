@@ -476,7 +476,7 @@ function infinity() {
     document.getElementById("matter").style.display = "none";
     document.getElementById("quickReset").style.display = "none";
 
-    checkForEndMe();
+    checkChallengeAchievements();
 
     giveAchievement("To infinity!");
     if (player.infinitied >= 10) giveAchievement("That's a lot of infinites");
@@ -564,21 +564,24 @@ function getReplMult() {
     replmult = replmult.times(Decimal.pow(5, player.replicanti.galaxies, 150));
   if (player.achievements.includes("r108"))
     replmult = replmult.pow(1.09)
+  if (replmult.lt(1) || isNaN(replmult)) replmult = new Decimal (1)
   return replmult
 }
 
 function r72Check() {
-  var r72 = 0
-  for (i=0, i<8; i++;) {
+var r72 = 0
+  for (let i=1; i<9; i++) {
     if (getDimensionFinalMultiplier(i).gte(1e308)) r72++
-    }
+  }
   if (r72 == 8) giveAchievement("Can't hold all these infinities");
+return r72
 }
 
 function antitablesCheck() {
-  var antitables = 0
-  for (i=0, i<8; i++;) {
+var antitables = 0
+  for (let i=0; i<8; i++) {
    if (getDimensionFinalMultiplier(i+1).lt(getDimensionFinalMultiplier(i))) antitables++
   }
   if (antitables == 8) giveAchievement("How the antitables have turned");
+return antitables
 }

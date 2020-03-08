@@ -245,11 +245,12 @@ function getMetaDimensionProductionPerSecond(tier) {
 }
 
 function metaDimensionAchievement() { // SHOULD BE SIMPLIFIED
-  var x = 0
-  for (i=0, i<8; i++;) {
+var x = 0
+  for (let i=1; i<9; i++) {
   if (getMetaDimensionMultiplier(i).gte(1e25)) x++
   }
   if (x == 8) giveAchievement("I never meta-dimension I didn't like");
+return x // returns how many dimensions satisfied the requirement.
 }
 
 function updateMetaDimensions() {

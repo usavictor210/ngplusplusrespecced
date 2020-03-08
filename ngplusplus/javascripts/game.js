@@ -3126,7 +3126,6 @@ function setAchieveTooltip() {
   var reference = document.getElementById("Yet another infinity reference");
   let blink = document.getElementById("Blink of an eye");
   let oneforeach = document.getElementById("One for each dimension");
-  let exist = document.getElementById("This achievement doesn't exist");
   let exist2 = document.getElementById("This achievement doesn't exist II");
   let spare = document.getElementById("I got a few to spare");
   let speed = document.getElementById("Ludicrous Speed");
@@ -4315,7 +4314,7 @@ function addTime(time, ip) {
 
 var infchallengeTimes = 999999999;
 
-function checkForEndMe() {
+function checkChallengeAchievements() {
   var temp = 0;
   for (var i = 0; i < 11; i++) {
     temp += player.challengeTimes[i];
@@ -4813,9 +4812,8 @@ var goals = [
   new Decimal("1e27000")
 ];
 setInterval(function() {
-  
-  r72Check()
-  antitablesCheck()
+  r72Check();
+  antitablesCheck();
   metaDimensionAchievement();
 
   if (
@@ -5630,9 +5628,10 @@ function gameLoop(diff) {
     document.getElementById("bigcrunch").style.display = "inline-block";
     if (
       (player.currentChallenge == "" || player.options.retryChallenge) &&
-      (player.bestInfinityTime <= 600 || player.break)
+      !(player.bestInfinityTime <= 600 || player.break)
     ) {
-    } else showTab("emptiness");
+    showTab("emptiness");
+    }
   } else document.getElementById("bigcrunch").style.display = "none";
 
   updateBigCrunchButton();
@@ -6781,15 +6780,6 @@ function gameLoop(diff) {
           ) +
           " planck volumes, you would have enough to make a proton.";
     }
-  }
-
-  function getFullExpansion(num) {
-    if (num === null) return "NaN";
-    if (isNaN(num)) return "NaN";
-    if (!break_infinity_js && typeof num != "number")
-      if (isNaN(num.logarithm)) return "NaN";
-    if (num > 1e12) return shorten(num);
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   var shiftRequirement = getShiftRequirement(0);
