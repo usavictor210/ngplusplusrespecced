@@ -29,7 +29,7 @@ function getTimeDimensionPower(tier) {
   if (player.replicanti.unl && player.replicanti.amount.gt(1) && player.dilation.upgrades.includes(6)) {
     ret = ret.times(getReplMult().pow(0.1))
   }
-
+  if (player.achievements.includes("r127")) ret = ret.times(r127Reward())
   if (ret.lt(0)) {
     ret = new Decimal(0)
   }
@@ -164,7 +164,7 @@ function buyMaxTimeDimensions() {
   for(var i=1; i<9; i++) {
     // strategy: repeatedly buy the maximum power of 2 possible
     var dim = player["timeDimension"+i];
-    while (true) {
+    while (true) { // unexpected constant condition
       let toBuy = .5;
       while (timeDimCost(i, dim.bought + 2 * toBuy).times(2).lte(player.eternityPoints)) {
         toBuy *= 2;

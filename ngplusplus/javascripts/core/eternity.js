@@ -381,6 +381,7 @@ function eternity(force, auto) {
         upgrades: player.dilation.upgrades,
         rebuyables: player.dilation.rebuyables,
         unstable: player.dilation.unstable,
+        timeRift: player.dilation.timeRift,
         autobuy: player.dilation.autobuy
       },
       meta: player.meta,
@@ -815,7 +816,9 @@ function startEternityChallenge(name, startgoal, goalIncrease) {
         nextThreshold: player.dilation.nextThreshold,
         freeGalaxies: player.dilation.freeGalaxies,
         upgrades: player.dilation.upgrades,
-        rebuyables: player.dilation.rebuyables
+        rebuyables: player.dilation.rebuyables,
+        unstable: player.dilation.unstable,
+        timeRift: player.dilation.timeRift
       },
       meta: player.meta,
       quantum: player.quantum,
@@ -1076,7 +1079,7 @@ function unlockEChall(idx) {
     document.getElementById(
       "eterc" + player.eternityChallUnlocked + "div"
     ).style.display = "inline-block";
-    if (!justImported) showTab("challenges");
+    if (!justImported) showTab("challengesTab");
     if (!justImported) showChallengesTab("eternitychallenges");
     if (idx !== 12 && idx !== 13) player.etercreq = idx;
   }
@@ -1429,4 +1432,8 @@ function updateECRewardText() {
 
   document.getElementById("ec10span").textContent =
     shortenMoney(ec10bonus) + "x";
+}
+
+function r127Reward() {
+return new Decimal((Decimal.pow(((player.eternityPoints.e-308)+1), (5+(Decimal.log(player.eternityPoints.e, 20)))))+1)
 }
