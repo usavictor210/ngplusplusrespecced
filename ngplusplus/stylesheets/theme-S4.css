@@ -1,16 +1,14 @@
 * {
     border-radius: 40% !important;
-}
-
-* {
     font-family: "Comic Sans MS", cursive, sans-serif !important;
+    box-shadow: 1px 1px 1px 0 #9E9E9E;
 }
 
 html{
 	background-color: #FF00FF;
     color: black !important;
     background-attachment:fixed;
-    background-position:center bottom;	
+    background-position:center bottom;
 	border: 1px solid white !important;
 }
 
@@ -38,10 +36,6 @@ body {
 .tabbtn, .secondarytabbtn {
     background-color: #1b00ff !important;
     cursor: url(cursor2.cur), auto !important;
-}
-
-* {
-	box-shadow: 1px 1px 1px 0 #9E9E9E;
 }
 
 .dilationbtn {

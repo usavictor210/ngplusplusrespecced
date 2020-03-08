@@ -1,6 +1,6 @@
 body {
     background-image: url('../images/dark-bg.png');
-    background-position: center; 
+    background-position: center;
 }
 
 button {
@@ -28,6 +28,7 @@ button {
 
 .storebtn:hover {
     background: #1B5E20 !important;
+    color: #FFF !important;
 }
 
 .newdim:hover {
@@ -234,10 +235,6 @@ input {
     color: black;
     background: #43A047 !important;
     border: 1px solid black !important;
-}
-
-.storebtn:hover {
-    color: #FFF !important;
 }
 
 #infPowAmount {

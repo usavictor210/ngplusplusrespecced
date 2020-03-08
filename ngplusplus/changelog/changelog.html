@@ -12,6 +12,38 @@
   </head>
   <body style="text-align:left">
     <h1 align="center">Changelog</h1>
+    <h2>ALPHA 0.1.2 - March 8th, 2020</h2>
+    <list>
+      <li>
+        "But I wanted another prestige layer..." has been given a reward
+        (another reward taken from Eternity Respecced): Time Dimensions gain a
+        multiplier based on EP. ((((exponent of EP-308)+1)^(5+(log20(exponent of
+        EP, 20)))))+1) (log20 might seem weird but it's just the 20th root.)
+      </li>
+      <li>Fixed more CSS things that were 0px and repeated stuff.</li>
+      <li>
+        Fixed unstable dilation variables not being saved in
+        challenges/dilation, causing it to break because of it being undefined.
+      </li>
+      <li>Fixed the font size of the popup.</li>
+      <li>Dilation upgrade 3, 4 and 7 shows its current multiplier.</li>
+      <li>
+        Fixed the bug where "Eternities are the new infinity" had less than 1x
+        multiplier.
+      </li>
+      <li>
+        Investing quarks in features work now, but THE FORMULAS FOR INVESTMENTS
+        ARE NOT FINAL.
+      </li>
+      <li>Fixed the display bug in the Quantum tab.</li>
+      <li>
+        Fixed the NaN% bug on the progress bar when it was attempting to display
+        "Percentage to "In the grim darkness of the far endgame"", as it was
+        attempting to access an achievement id that didn't exist on this
+        version, but did in Aarex's site.
+      </li>
+      <li>This is probably going to be a short update now.</li>
+    </list>
     <h2>ALPHA 0.1.1 - March 7th, 2020</h2>
     <list>
       <li>
@@ -22,7 +54,7 @@
         Changed challenge 1's reward text to mention that you get 100 antimatter
         (because the game actually relies on that to consider the antimatter
         reward, and not "To infinity!", although it doesn't matter since that
-        you get "Blink of an eye").
+        you get "Blink of an eye"'s reward).
       </li>
       <li>Changed EC reward text and put it in a new function.</li>
       <li>
@@ -46,7 +78,7 @@
       <li>Made the achievement tooltips actually update ingame.</li>
       <li>
         Buffed "Eternities are the new infinity"
-        (Math.min(Math.sqrt(player.thisEternity/20), 30)) ->
+        (Math.min(Math.sqrt(player.thisEternity/20), 30)) -&gt;
         (Math.min(Math.sqrt(player.thisEternity/12.5), 30))
       </li>
       <li>
@@ -54,15 +86,17 @@
         Respecced): Replicanti multiplier is boosted to the power of 1.09 (after
         time studies).
       </li>
-      <li>Finally fixed the IC not persisting on reload bug. Silly me.</li>
+      <li>
+        Finally fixed the IC not persisting on reload bug (made it check for
+        challenge 1 being completed). Silly me.
+      </li>
       <li>
         Fixed not being able to unstabilize dilation because of excess equal
         signs.
       </li>
       <li>
         Unstable dilation actually increases TP gain now. WARNING: COULD CAUSE
-        INFLATION. Report bugs in the #bugs_and_glitches (or was it #bugs?)
-        channel if you see it.
+        INFLATION. Report bugs in the #bugs channel if you see it.
       </li>
       <li>
         One final checkup: Running it through
@@ -73,7 +107,10 @@
         to catch the stuff I didn't fix.
       </li>
       <li>Dimboosts, galaxies and 8th dimension cost/amounts are prettier.</li>
-      <li>Change a lot of 0px to 0 in the CSS, and also fixed "all" the bugs in the html, except for ONE PHANTOM BUG.</li>
+      <li>
+        Change a lot of 0px to 0 in the CSS, and also fixed "all" the bugs in
+        the html, except for ONE PHANTOM BUG.
+      </li>
       <li>I guess it's time to actually make new content now.</li>
       <h3>Broken stuff</h3>
       <li>
@@ -103,7 +140,7 @@
       </li>
       <li>The dilation button states that you need 1.8e308 IP to gain TP.</li>
     </list>
-    <h2>ALPHA 0 - February 2020 -> March 2020: The Beginning</h2>
+    <h2>ALPHA 0 - February 2020 -&gt; March 2020: The Beginning</h2>
     <list>
       <li>Started work on NG+2 Respecced.</li>
       <li>

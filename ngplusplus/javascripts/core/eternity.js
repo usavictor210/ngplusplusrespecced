@@ -381,6 +381,7 @@ function eternity(force, auto) {
         upgrades: player.dilation.upgrades,
         rebuyables: player.dilation.rebuyables,
         unstable: player.dilation.unstable,
+        timeRift: player.dilation.timeRift,
         autobuy: player.dilation.autobuy
       },
       meta: player.meta,
@@ -815,7 +816,9 @@ function startEternityChallenge(name, startgoal, goalIncrease) {
         nextThreshold: player.dilation.nextThreshold,
         freeGalaxies: player.dilation.freeGalaxies,
         upgrades: player.dilation.upgrades,
-        rebuyables: player.dilation.rebuyables
+        rebuyables: player.dilation.rebuyables,
+        unstable: player.dilation.unstable,
+        timeRift: player.dilation.timeRift
       },
       meta: player.meta,
       quantum: player.quantum,
@@ -986,7 +989,7 @@ function calculateEternitiedGain() {
 }
 
 function r124Mult() {
-return Math.min(Math.sqrt(player.thisEternity / 12.5), 30)
+return Decimal.min(Math.sqrt(player.thisEternity / 12.5), 30).max(1)
 }
 
 function gainedEternityPoints() {
@@ -1076,7 +1079,7 @@ function unlockEChall(idx) {
     document.getElementById(
       "eterc" + player.eternityChallUnlocked + "div"
     ).style.display = "inline-block";
-    if (!justImported) showTab("challenges");
+    if (!justImported) showTab("challengesTab");
     if (!justImported) showChallengesTab("eternitychallenges");
     if (idx !== 12 && idx !== 13) player.etercreq = idx;
   }
@@ -1111,7 +1114,7 @@ function unlockDilation() {
  * @param {Cost of the upgrade} cost
  * @param {Cost increase for the upgrade, only for rebuyables} costInc
  *
- * id 1-3 are rebuyables
+ * id 1-4 are rebuyables
  *
  * id 2 resets your dilated time and free galaxies
  *
@@ -1190,6 +1193,14 @@ function updateDilationUpgradeButtons() {
           : "dilationupg";
     }
   }
+  document.getElementById("dil3desc").textContent =
+    "Currently: " + shortenMoney(Decimal.pow(3, player.dilation.rebuyables[3])) + "x"
+  document.getElementById("dil4desc").textContent =
+    "Currently: ^" + getDilExp() + " -> ^" + (getDilExp()+0.25)
+  document.getElementById("dil7desc").textContent =
+    "Currently: " +
+    shortenMoney(player.dilation.dilatedTime.pow(308).max(1)) +
+    "x";
   document.getElementById("dil9desc").textContent =
     "Currently: " +
     shortenMoney(player.dilation.dilatedTime.pow(1000).max(1)) +
@@ -1429,4 +1440,8 @@ function updateECRewardText() {
 
   document.getElementById("ec10span").textContent =
     shortenMoney(ec10bonus) + "x";
+}
+
+function r127Reward() {
+return new Decimal((Decimal.pow(((player.eternityPoints.e-308)+1), (5+(Decimal.log(player.eternityPoints.e, 20)))))+1)
 }

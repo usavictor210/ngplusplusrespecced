@@ -641,6 +641,7 @@ button {
   background-color: #E0E0E0;
   border-radius: 6px;
   text-align: center;
+  font-size: 12px;
   z-index: 2;
   color: black;
   font-family: Typewriter;

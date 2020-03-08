@@ -164,7 +164,7 @@ var player = {
   dimensionMultDecrease: 10,
   dimensionMultDecreaseCost: 1e8,
   overXGalaxies: 10,
-  version: 15.6,
+  version: 15.7,
   infDimensionsUnlocked: [
     false,
     false,
@@ -1246,8 +1246,9 @@ function updateCosts() {
     "Until 10, Cost: " +
     shortenCosts(player.eightCost.times(10 - dimBought(8)));
 
-  document.getElementById("tickSpeed").textContent =
-    "Cost: " + shortenCosts(player.tickSpeedCost);
+  document.getElementById("tickSpeed").textContent = canBuyTickSpeed()
+    ? "Cost: " + shortenCosts(player.tickSpeedCost)
+    : "Disabled";
   // see how much simple this is? I wonder why this wasn't done for the normal dimensions...
   for (var i = 1; i <= 8; i++) {
     document.getElementById("infMax" + i).textContent =
@@ -3178,8 +3179,9 @@ function setAchieveTooltip() {
   forgotAchieve.setAttribute(
     "ach-tooltip",
     "Get any Dimension multiplier over " +
-      formatValue(player.options.notation, 1e31, 0, 0)
-  ) + ". Reward: First Dimensions are 5% stronger.";
+      formatValue(player.options.notation, 1e31, 0, 0) +
+      ". Reward: First Dimensions are 5% stronger."
+  );
   sanic.setAttribute(
     "ach-tooltip",
     "Get over " +
@@ -3226,7 +3228,7 @@ function setAchieveTooltip() {
     "ach-tooltip",
     "Get to Infinity in under 200 milliseconds. Reward: Start with " +
       formatValue(player.options.notation, 1e25, 0, 0) +
-      " antimatter and all dimensions are stronger in the first 300 milliseconds of Infinity."
+      " antimatter and all dimensions are stronger in the first 300 milliseconds of an Infinity."
   );
   oneforeach.setAttribute(
     "ach-tooltip",
@@ -3300,13 +3302,17 @@ function setAchieveTooltip() {
   );
   layer.setAttribute(
     "ach-tooltip",
-    "Reach " + shortenMoney(Number.MAX_VALUE) + " EP."
+    "Reach " +
+      shortenMoney(Number.MAX_VALUE) +
+      " EP. Reward: Time Dimensions gain a multiplier based on EP. Currently: " +
+      shortenMoney(r127Reward()) +
+      "x"
   );
   fkoff.setAttribute(
     "ach-tooltip",
     "Reach " +
       shortenCosts(new Decimal("1e22000")) +
-      " IP without any time studies. Reward: Time dimensions are multiplied by the number of studies you have."
+      " IP without any time studies. Reward: Time Dimensions are multiplied by the number of studies you have."
   );
   minaj.setAttribute(
     "ach-tooltip",
@@ -5519,7 +5525,7 @@ function gameLoop(diff) {
     }`;
     if (player.meta.autoMaxAll) {
       for (let i = 1; i <= 8; i++) {
-        while (metaBuyManyDimension(i)) {}
+        while (metaBuyManyDimension(i));
       }
     }
   } else {
@@ -5814,10 +5820,9 @@ function gameLoop(diff) {
     player.replicanti.amount
   );
 
-  document.getElementById("replicantimult").textContent = shortenDimensions(
+  document.getElementById("replicantimult").textContent = shorten(
     getReplMult()
   );
-
   updateEternityButton();
   document.getElementById("metaCost").innerHTML = shortenCosts(1e24);
 
@@ -5960,7 +5965,10 @@ function gameLoop(diff) {
     }
   }
 
-  if (canAfford(player.tickSpeedCost)) {
+  if (
+    canAfford(player.tickSpeedCost) ||
+    !player.currentEternityChall == "eterc9"
+  ) {
     document.getElementById("tickSpeed").className = "storebtn";
     document.getElementById("tickSpeedMax").className = "storebtn";
   } else {
@@ -6398,7 +6406,7 @@ function gameLoop(diff) {
       if (
         goal > 131072 &&
         player.meta &&
-        !player.achievements.includes("ngpp13")
+        !player.achievements.includes("r143")
       ) {
         goal = Decimal.sub("1e40000", player.eternityPoints).log2();
         var percentage = Math.min((gepLog / goal) * 100, 100).toFixed(2) + "%";
@@ -7468,6 +7476,7 @@ function init() {
   showDimTab("antimatterdimensions");
   showChallengesTab("challenges");
   showEternityTab("timestudies", true);
+  showQuantumTab("investment")
   load_game();
   updateTickSpeed();
   updateAutobuyers();
@@ -7632,7 +7641,7 @@ window.addEventListener(
         document.getElementById("bigcrunch").onclick();
         break;
 
-      case 69: // E, also, HAHA funy sex number!1!!1!1!11!!1 (no seriously)
+      case 69: // E
         document.getElementById("eternitybtn").onclick();
         break;
     }

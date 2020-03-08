@@ -126,7 +126,7 @@ function onLoad() {
   if (player.currentChallenge === undefined) player.currentChallenge = "";
   if (player.infinitied > 0 && !player.challenges.includes("challenge1"))
     player.challenges.push("challenge1");
-  if (player.matter === undefined) player.matter = new Decimal(0);
+  if (player.matter === undefined || player.matter === null || isNaN(player.matter)) player.matter = new Decimal(0);
   if (player.autobuyers === undefined)
     player.autobuyers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   if (player.costMultipliers === undefined)
@@ -265,7 +265,6 @@ function onLoad() {
   if (!(4 in player.dilation.rebuyables)) {
     player.dilation.rebuyables[4] = 0;
   }
-  if (player.dilation.unstable.sacrificedTP === undefined) player.dilation.unstable.sacrificedTP = new Decimal(0)
   if (player.dilation.unstable === undefined)
     player.dilation.unstable = {
       times: 0,
@@ -274,6 +273,8 @@ function onLoad() {
       upgrades: [], //layers of dilation stacked
       sacrificedTP: new Decimal(0)
     };
+  if (player.dilation.unstable.sacrificedTP === undefined) player.dilation.unstable.sacrificedTP = new Decimal(0)
+  if (player.dilation.unstable.shards === undefined) player.dilation.unstable.shards = new Decimal(0) 
   if (player.dilation.timeRift === undefined)
     player.dilation.timeRift = {
       seconds: 0,
@@ -534,8 +535,6 @@ function onLoad() {
   }
   if (player.autoIP === undefined) player.autoIP = new Decimal(0);
   if (player.autoTime === undefined) player.autoTime = 1e300;
-
-  if (player.matter === null) player.matter = new Decimal(0);
   for (var i = 0; i < 12; i++) {
     if (
       player.autobuyers[i] % 1 !== 0 &&
@@ -1220,6 +1219,7 @@ function load_game(root) {
   if (saves[currentSave]) player = saves[currentSave];
   onLoad();
   ngplus();
+  transformSaveToDecimal()
 }
 
 function save_game(changed, silent) {
@@ -1258,6 +1258,7 @@ function change_save(saveId) {
   showStatsTab("stats");
   showChallengesTab("challenges");
   showEternityTab("timestudies", true);
+  showQuantumTab("investment")
 }
 
 function transformSaveToDecimal() {
@@ -1444,6 +1445,7 @@ function transformSaveToDecimal() {
   player.dilation.timeRift.temporalPower = new Decimal(
     player.dilation.timeRift.temporalPower
   );
+  player.dilation.unstable.sacrificedTP = new Decimal (player.dilation.unstable.sacrificedTP)
 }
 
 function loadAutoBuyerSettings() {
