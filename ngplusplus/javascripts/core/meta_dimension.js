@@ -34,26 +34,6 @@ function getMetaNormalBoostEffect () {
   return player.meta.bestAntimatter.pow(exp).plus(1);
 }
 
-function getDil13Bonus () {
-  return 1 + Math.log10(1 - Math.min(0, player.tickspeed.log(10)));
-}
-
-function getDil14RealBonus() {
-  if (player.dilation.upgrades.includes(14)) {
-    return getDil14Bonus();
-  } else {
-    return 2;
-  }
-}
-
-function getDil14Bonus () {
-  return Math.log(player.dilation.dilatedTime.max(1e10).min(1e100).log(10)) / Math.log(10) + 1;
-}
-
-function getDil16Bonus () {
-  return Math.pow((player.meta.bestAntimatter.log10())/2.5, .5);
-}
-
 function getMetaDimensionMultiplier (tier) {
   if (player.currentEternityChall === "eterc11") {
     return new Decimal(1);
@@ -264,14 +244,7 @@ function getMetaDimensionProductionPerSecond(tier) {
     return Decimal.floor(player.meta[tier].amount).times(getMetaDimensionMultiplier(tier));
 }
 
-function getDil18Bonus() {
-var x = new Decimal((Math.log10(player.dilation.tachyonParticles)/4))
-if (isNaN(x) || x.lt(1)) x = new Decimal(1)
-if (x.gt(12.5)) x = x.pow(.75).max(12.5)
-return x
-}
-
-function metaDimensionAchievement() {
+function metaDimensionAchievement() { // could be simplified
 if (getMetaDimensionMultiplier(1).gte(1e25) && 
 getMetaDimensionMultiplier(2).gte(1e25) &&
 getMetaDimensionMultiplier(3).gte(1e25) &&
@@ -280,4 +253,128 @@ getMetaDimensionMultiplier(5).gte(1e25) &&
 getMetaDimensionMultiplier(6).gte(1e25) &&
 getMetaDimensionMultiplier(7).gte(1e25) &&
 getMetaDimensionMultiplier(8).gte(1e25)) giveAchievement("I never meta-dimension I didn't like");
+}
+
+
+function updateMetaDimensions() {
+  if (
+    document.getElementById("metadimensions").style.display == "block" &&
+    document.getElementById("dimensions").style.display == "block"
+  ) {
+    var element0 = document.getElementById("metaAntimatterAmount");
+    element0.textContent = shortenMoney(player.meta.antimatter);
+    var element1 = document.getElementById("metaAntimatterBest");
+    element1.textContent = shortenMoney(player.meta.bestAntimatter);
+    var element2 = document.getElementById("metaAntimatterEffect");
+    element2.textContent = shortenMoney(getMetaNormalBoostEffect());
+    var element3 = document.getElementById("metaAntimatterPerSec");
+    element3.textContent =
+      "You are getting " +
+      shortenDimensions(getMetaDimensionProductionPerSecond(1)) +
+      " meta-antimatter per second.";
+    for (let tier = 1; tier <= 8; ++tier) {
+      if (
+        !canBuyMetaDimension(tier) &&
+        document.getElementById(tier + "MetaRow").style.display !== "table-row"
+      ) {
+        break;
+      }
+      document.getElementById(tier + "MetaD").childNodes[0].nodeValue =
+        DISPLAY_NAMES[tier] +
+        " Meta Dimension x" +
+        formatValue(
+          player.options.notation,
+          getMetaDimensionMultiplier(tier),
+          1,
+          1
+        );
+      document.getElementById(
+        "meta" + tier + "Amount"
+      ).textContent = getMetaDimensionDescription(tier);
+    }
+    for (let tier = 1; tier <= 8; ++tier) {
+      if (!canBuyMetaDimension(tier)) {
+        break;
+      }
+      document.getElementById(tier + "MetaRow").style.display = "table-row";
+      document.getElementById(tier + "MetaRow").style.visibility = "visible";
+    }
+
+    for (let tier = 1; tier <= 8; ++tier) {
+      document.getElementById("meta" + tier).className = canAffordMetaDimension(
+        player.meta[tier].cost
+      )
+        ? "storebtn"
+        : "unavailablebtn";
+      document.getElementById(
+        "metaMax" + tier
+      ).className = canAffordMetaDimension(getMetaMaxCost(tier))
+        ? "storebtn"
+        : "unavailablebtn";
+    }
+
+    var shiftRequirement = getMetaShiftRequirement();
+    if (shiftRequirement.tier < 8) {
+      document.getElementById("metaResetLabel").textContent =
+        "Meta-Dimension Shift (" +
+        player.meta.resets +
+        "): requires " +
+        shiftRequirement.amount +
+        " " +
+        DISPLAY_NAMES[shiftRequirement.tier] +
+        " Meta Dimensions";
+    } else {
+      document.getElementById("metaResetLabel").textContent =
+        "Meta-Dimension Boost (" +
+        player.meta.resets +
+        "): requires " +
+        shiftRequirement.amount +
+        " " +
+        DISPLAY_NAMES[shiftRequirement.tier] +
+        " Meta Dimensions";
+    }
+
+    if (shiftRequirement.tier < 8) {
+      document.getElementById("metaSoftReset").textContent =
+        "Reset Meta-Dimensions for a new Dimension";
+    } else {
+      document.getElementById("metaSoftReset").textContent =
+        "Reset Meta-Dimensions for a Boost";
+    }
+
+    if (player.meta[shiftRequirement.tier].amount.lt(shiftRequirement.amount)) {
+      document.getElementById("metaSoftReset").className = "unavailablebtn";
+    } else {
+      document.getElementById("metaSoftReset").className = "storebtn";
+    }
+    var galaxyRequirement = metaGalaxyCost();
+    document.getElementById("metaGalaxyResetLabel").textContent =
+      "Meta-Antimatter Galaxies (" +
+      player.meta.galaxy +
+      "): requires " +
+      galaxyRequirement.amount +
+      " Eighth Meta Dimensions";
+    // metaGalaxybuttondiv
+    if (
+      player.meta[galaxyRequirement.tier].amount.lt(galaxyRequirement.amount)
+    ) {
+      document.getElementById("metaGalaxySoftReset").className =
+        "unavailablebtn";
+    } else {
+      document.getElementById("metaGalaxySoftReset").className = "storebtn";
+    }
+
+    // also quantum stuff since why not
+    if (player.meta.antimatter.gte(quantRequirement())) {
+    let qg = quarkGain()
+      document.getElementById("quantumResetLabel").textContent =
+        "Go quantum: Sacrifice everything to get " +
+        shortenMoney(qg) +
+        (qg.eq(1) ? " quark" : " quarks");
+      +".";
+      document.getElementById("quantumbuttondiv").style.display = "";
+    } else {
+      document.getElementById("quantumbuttondiv").style.display = "none";
+    }
+  }
 }

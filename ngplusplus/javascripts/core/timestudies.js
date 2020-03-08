@@ -1057,3 +1057,323 @@ if (player.etercreq !== 1)
       document.getElementById("dilstudy1").innerHTML =
         "Unlock time dilation<span>Requirement: 5 EC11 and EC12 completions and 13000 total theorems<span>Cost: 5000 Time Theorems";
 }
+
+//////////////////////////////////// ETERNITY CHALLENGES \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+function canUnlockEC(idx, cost, study, study2) {
+  study2 = study2 !== undefined ? study2 : 0;
+  if (player.eternityChallUnlocked !== 0) return false;
+  if (
+    !player.timestudy.studies.includes(study) &&
+    (player.study2 == 0 || !player.timestudy.studies.includes(study2))
+  )
+    return false;
+  if (player.timestudy.theorem < cost) return false;
+  if (player.etercreq == idx && idx !== 11 && idx !== 12) return true;
+
+  switch (idx) {
+    case 1:
+      if (player.eternities >= 200 + ECTimesCompleted("eterc1") * 200)
+        return true;
+      break;
+
+    case 2:
+      if (player.totalTickGained >= 1300 + ECTimesCompleted("eterc2") * 150)
+        return true;
+      break;
+
+    case 3:
+      if (player.eightAmount.gte(17300 + ECTimesCompleted("eterc3") * 1250))
+        return true;
+      break;
+
+    case 4:
+      if (1e8 + ECTimesCompleted("eterc4") * 5e7 <= getInfinitied())
+        return true;
+      break;
+
+    case 5:
+      if (160 + ECTimesCompleted("eterc5") * 14 <= player.galaxies) return true;
+      break;
+
+    case 6:
+      if (40 + ECTimesCompleted("eterc6") * 5 <= player.replicanti.galaxies)
+        return true;
+      break;
+
+    case 7:
+      if (
+        player.money.gte(
+          new Decimal("1e500000").times(
+            new Decimal("1e300000").pow(ECTimesCompleted("eterc7"))
+          )
+        )
+      )
+        return true;
+      break;
+
+    case 8:
+      if (
+        player.infinityPoints.gte(
+          new Decimal("1e4000").times(
+            new Decimal("1e1000").pow(ECTimesCompleted("eterc8"))
+          )
+        )
+      )
+        return true;
+      break;
+
+    case 9:
+      if (
+        player.infinityPower.gte(
+          new Decimal("1e17500").times(
+            new Decimal("1e2000").pow(ECTimesCompleted("eterc9"))
+          )
+        )
+      )
+        return true;
+      break;
+
+    case 10:
+      if (
+        player.eternityPoints.gte(
+          new Decimal("1e100").times(
+            new Decimal("1e20").pow(ECTimesCompleted("eterc10"))
+          )
+        )
+      )
+        return true;
+      break;
+
+    case 11:
+      if (
+        player.timestudy.studies.includes(71) &&
+        !player.timestudy.studies.includes(72) &&
+        !player.timestudy.studies.includes(73)
+      )
+        return true;
+      break;
+
+    case 12:
+      if (
+        player.timestudy.studies.includes(73) &&
+        !player.timestudy.studies.includes(71) &&
+        !player.timestudy.studies.includes(72)
+      )
+        return true;
+      break;
+  }
+}
+
+function updateECUnlockButtons() {
+  if (canUnlockEC(1, 30, 171)) {
+    document.getElementById("ec1unl").className = "eternitychallengestudy";
+  } else {
+    document.getElementById("ec1unl").className =
+      "eternitychallengestudylocked";
+  }
+
+  if (canUnlockEC(2, 35, 171)) {
+    document.getElementById("ec2unl").className = "eternitychallengestudy";
+  } else {
+    document.getElementById("ec2unl").className =
+      "eternitychallengestudylocked";
+  }
+
+  if (canUnlockEC(3, 40, 171)) {
+    document.getElementById("ec3unl").className = "eternitychallengestudy";
+  } else {
+    document.getElementById("ec3unl").className =
+      "eternitychallengestudylocked";
+  }
+
+  if (canUnlockEC(4, 70, 143)) {
+    document.getElementById("ec4unl").className = "eternitychallengestudy";
+  } else {
+    document.getElementById("ec4unl").className =
+      "eternitychallengestudylocked";
+  }
+
+  if (canUnlockEC(5, 130, 42)) {
+    document.getElementById("ec5unl").className = "eternitychallengestudy";
+  } else {
+    document.getElementById("ec5unl").className =
+      "eternitychallengestudylocked";
+  }
+
+  if (canUnlockEC(6, 85, 121)) {
+    document.getElementById("ec6unl").className = "eternitychallengestudy";
+  } else {
+    document.getElementById("ec6unl").className =
+      "eternitychallengestudylocked";
+  }
+
+  if (canUnlockEC(7, 115, 111)) {
+    document.getElementById("ec7unl").className = "eternitychallengestudy";
+  } else {
+    document.getElementById("ec7unl").className =
+      "eternitychallengestudylocked";
+  }
+
+  if (canUnlockEC(8, 115, 123)) {
+    document.getElementById("ec8unl").className = "eternitychallengestudy";
+  } else {
+    document.getElementById("ec8unl").className =
+      "eternitychallengestudylocked";
+  }
+
+  if (canUnlockEC(9, 415, 151)) {
+    document.getElementById("ec9unl").className = "eternitychallengestudy";
+  } else {
+    document.getElementById("ec9unl").className =
+      "eternitychallengestudylocked";
+  }
+
+  if (canUnlockEC(10, 550, 181)) {
+    document.getElementById("ec10unl").className = "eternitychallengestudy";
+  } else {
+    document.getElementById("ec10unl").className =
+      "eternitychallengestudylocked";
+  }
+
+  if (canUnlockEC(11, 1, 231, 232)) {
+    document.getElementById("ec11unl").className = "eternitychallengestudy";
+  } else {
+    document.getElementById("ec11unl").className =
+      "eternitychallengestudylocked";
+  }
+
+  if (canUnlockEC(12, 1, 233, 234)) {
+    document.getElementById("ec12unl").className = "eternitychallengestudy";
+  } else {
+    document.getElementById("ec12unl").className =
+      "eternitychallengestudylocked";
+  }
+
+  if (player.eternityChallUnlocked !== 0)
+    document.getElementById(
+      "ec" + player.eternityChallUnlocked + "unl"
+    ).className = "eternitychallengestudybought";
+}
+
+// when you buy the eternity challenges, the game will subtract accordingly. this can be more efficient, come on...
+document.getElementById("ec1unl").onclick = function() {
+  if (canUnlockEC(1, 30, 171)) {
+    unlockEChall(1);
+    player.timestudy.theorem -= 30;
+    updateTheoremButtons();
+    updateTimeStudyButtons();
+    drawStudyTree();
+  }
+};
+
+document.getElementById("ec2unl").onclick = function() {
+  if (canUnlockEC(2, 35, 171)) {
+    unlockEChall(2);
+    player.timestudy.theorem -= 35;
+    updateTheoremButtons();
+    updateTimeStudyButtons();
+    drawStudyTree();
+  }
+};
+
+document.getElementById("ec3unl").onclick = function() {
+  if (canUnlockEC(3, 40, 171)) {
+    unlockEChall(3);
+    player.timestudy.theorem -= 40;
+    updateTheoremButtons();
+    updateTimeStudyButtons();
+    drawStudyTree();
+  }
+};
+
+document.getElementById("ec4unl").onclick = function() {
+  if (canUnlockEC(4, 70, 143)) {
+    unlockEChall(4);
+    player.timestudy.theorem -= 70;
+    updateTheoremButtons();
+    updateTimeStudyButtons();
+    drawStudyTree();
+  }
+};
+
+document.getElementById("ec5unl").onclick = function() {
+  if (canUnlockEC(5, 130, 42)) {
+    unlockEChall(5);
+    player.timestudy.theorem -= 130;
+    updateTheoremButtons();
+    updateTimeStudyButtons();
+    drawStudyTree();
+  }
+};
+
+document.getElementById("ec6unl").onclick = function() {
+  if (canUnlockEC(6, 85, 121)) {
+    unlockEChall(6);
+    player.timestudy.theorem -= 85;
+    updateTheoremButtons();
+    updateTimeStudyButtons();
+    drawStudyTree();
+  }
+};
+
+document.getElementById("ec7unl").onclick = function() {
+  if (canUnlockEC(7, 115, 111)) {
+    unlockEChall(7);
+    player.timestudy.theorem -= 115;
+    updateTheoremButtons();
+    updateTimeStudyButtons();
+    drawStudyTree();
+  }
+};
+
+document.getElementById("ec8unl").onclick = function() {
+  if (canUnlockEC(8, 115, 123)) {
+    unlockEChall(8);
+    player.timestudy.theorem -= 115;
+    updateTheoremButtons();
+    updateTimeStudyButtons();
+    drawStudyTree();
+  }
+};
+
+document.getElementById("ec9unl").onclick = function() {
+  if (canUnlockEC(9, 415, 151)) {
+    unlockEChall(9);
+    player.timestudy.theorem -= 415;
+    updateTheoremButtons();
+    updateTimeStudyButtons();
+    drawStudyTree();
+  }
+};
+
+document.getElementById("ec10unl").onclick = function() {
+  if (canUnlockEC(10, 550, 181)) {
+    unlockEChall(10);
+    player.timestudy.theorem -= 550;
+    updateTheoremButtons();
+    updateTimeStudyButtons();
+    drawStudyTree();
+  }
+};
+
+document.getElementById("ec11unl").onclick = function() {
+  if (canUnlockEC(11, 1, 231, 232)) {
+    unlockEChall(11);
+    player.timestudy.theorem -= 1;
+    updateTheoremButtons();
+    updateTimeStudyButtons();
+    drawStudyTree();
+  }
+};
+
+document.getElementById("ec12unl").onclick = function() {
+  if (canUnlockEC(12, 1, 233, 234)) {
+    unlockEChall(12);
+    player.timestudy.theorem -= 1;
+    updateTheoremButtons();
+    updateTimeStudyButtons();
+    drawStudyTree();
+  }
+};

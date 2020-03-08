@@ -47,7 +47,7 @@ function ngplus() {
     player.achievements.push("r22");
     player.achievements.push("r35");
     player.achievements.push("r76");
-    if (!player.achievements.includes("r133")) {
+    if (!player.achievements.includes("r133") || !player.challenges.includes("challenge1")) {
       player.challenges = [
         "challenge1",
         "challenge2",
@@ -265,7 +265,7 @@ function onLoad() {
   if (!(4 in player.dilation.rebuyables)) {
     player.dilation.rebuyables[4] = 0;
   }
-  if (player.dilation.unstable.sacrificedTP === undefined) player.dilation.unstable.sacrificedTP === new Decimal(0)
+  if (player.dilation.unstable.sacrificedTP === undefined) player.dilation.unstable.sacrificedTP = new Decimal(0)
   if (player.dilation.unstable === undefined)
     player.dilation.unstable = {
       times: 0,

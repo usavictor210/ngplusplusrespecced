@@ -410,10 +410,7 @@ function quantum(force, auto) {
     if (player.infinitied >= 1 && !player.challenges.includes("challenge1"))
       player.challenges.push("challenge1");
     updateAutobuyers();
-    if (player.achievements.includes("r37")) player.money = new Decimal(1000);
-    if (player.achievements.includes("r54")) player.money = new Decimal(2e5);
-    if (player.achievements.includes("r55")) player.money = new Decimal(1e10);
-    if (player.achievements.includes("r78")) player.money = new Decimal(1e25);
+    player.money = getAntimatterOnReset()
     if (player.achievements.includes("r85"))
       player.infMult = player.infMult.times(4);
     if (player.achievements.includes("r93"))
@@ -586,6 +583,7 @@ function updateQuantum() {
   document.getElementById("quarkAmount").textContent = `You have ${shortenDimensions(player.quantum.quarks)} quark` + plural2 + `.`
   document.getElementById("unstableShardAmount").textContent = player.dilation.unstable.shards
   //document.getElementById("totalInvest").textContent = `You have invested a total of ${shortenDimensions(getTotalInvestmentAmount())} quark` + plural3 + `.`
+  document.getElementById("dilationseverity").textContent = "Dilation's penalty on all dimensions is x^" + getDilPunish().toFixed(3) + "."
 }
 
 function updateLastTenQuantums() {
