@@ -1418,12 +1418,6 @@ document.getElementById("The first one's always free").onclick = function() {
   giveAchievement("The first one's always free");
 };
 
-function glowText(id) {
-  var text = document.getElementById(id);
-  text.style.setProperty("-webkit-animation", "glow 1s");
-  text.style.setProperty("animation", "glow 1s");
-}
-
 document.getElementById("maxall").onclick = function() {
   if (!player.break && player.money.gt(Number.MAX_VALUE)) return false;
   buyMaxTickSpeed();
@@ -5341,14 +5335,6 @@ setInterval(function() {
     giveAchievement("Should we tell them about buy max...");
 }, 1000);
 
-function fact(v) {
-  let ret = 1;
-  do {
-    ret *= v;
-  } while (--v > 1);
-  return ret;
-}
-
 function dor147Stuff() {
   if (player.achievements.includes("r147")) {
     if (player.ep5xAutobuyer) {
@@ -7495,7 +7481,7 @@ function init() {
     showTab("achievements");
   };
   document.getElementById("challengesbtn").onclick = function() {
-    showTab("challenges");
+    showTab("challengesTab");
   };
   document.getElementById("infinitybtn").onclick = function() {
     showTab("infinity");

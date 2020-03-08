@@ -1940,11 +1940,6 @@ screen and (max-width: 480px) {
     display: inline;
 }
 
-.timeriftbtn:hover {
-    background: #BEBEBE;
-    color: #000000;
-}
-
 .dilationunstableupgbtn {
     color: #008B00;
     background: #14274d;
