@@ -4,7 +4,7 @@ body {
 }
 
 * {
-    border-radius: 0px !important;
+    border-radius: 0 !important;
 }
 
 .container {
@@ -17,7 +17,7 @@ body {
 
 .popup {
     background-color: #455A64 !important;
-    box-shadow: 0px 0px 10px 0px black !important;
+    box-shadow: 0 0 10px 0 black !important;
 }
 
 #coinAmount {

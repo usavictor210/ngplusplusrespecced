@@ -647,19 +647,19 @@ function getTotalInvestmentAmount() { // gets a value from all values of the arr
   }
 }
 function getInvestMultiplier(x) { // you have to decide a formula for each feature.
-if (x = 1) {
+if (x == 1) {
   return 1
   }
-if (x = 2) {
+if (x == 2) {
   return 1
   }
-if (x = 3) {
+if (x == 3) {
   return 1
   }
-if (x = 4) {
+if (x == 4) {
   return 1
   }
-if (x = 5) {
+if (x == 5) {
   return 1
   }
 }

@@ -3126,7 +3126,6 @@ function setAchieveTooltip() {
   var reference = document.getElementById("Yet another infinity reference");
   let blink = document.getElementById("Blink of an eye");
   let oneforeach = document.getElementById("One for each dimension");
-  let exist2 = document.getElementById("This achievement doesn't exist II");
   let spare = document.getElementById("I got a few to spare");
   let speed = document.getElementById("Ludicrous Speed");
   let speed2 = document.getElementById("I brake for nobody");
@@ -5630,7 +5629,7 @@ function gameLoop(diff) {
       (player.currentChallenge == "" || player.options.retryChallenge) &&
       !(player.bestInfinityTime <= 600 || player.break)
     ) {
-    showTab("emptiness");
+      showTab("emptiness");
     }
   } else document.getElementById("bigcrunch").style.display = "none";
 
