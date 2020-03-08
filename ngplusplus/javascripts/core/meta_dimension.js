@@ -244,17 +244,13 @@ function getMetaDimensionProductionPerSecond(tier) {
     return Decimal.floor(player.meta[tier].amount).times(getMetaDimensionMultiplier(tier));
 }
 
-function metaDimensionAchievement() { // could be simplified
-if (getMetaDimensionMultiplier(1).gte(1e25) && 
-getMetaDimensionMultiplier(2).gte(1e25) &&
-getMetaDimensionMultiplier(3).gte(1e25) &&
-getMetaDimensionMultiplier(4).gte(1e25) &&
-getMetaDimensionMultiplier(5).gte(1e25) &&
-getMetaDimensionMultiplier(6).gte(1e25) &&
-getMetaDimensionMultiplier(7).gte(1e25) &&
-getMetaDimensionMultiplier(8).gte(1e25)) giveAchievement("I never meta-dimension I didn't like");
+function metaDimensionAchievement() { // SHOULD BE SIMPLIFIED
+  var x = 0
+  for (i=0, i<8; i++;) {
+  if (getMetaDimensionMultiplier(i).gte(1e25)) x++
+  }
+  if (x == 8) giveAchievement("I never meta-dimension I didn't like");
 }
-
 
 function updateMetaDimensions() {
   if (

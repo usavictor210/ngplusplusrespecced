@@ -1836,7 +1836,6 @@ function playerInfinityUpgradesOnEternity() {
       "galaxyBoost",
       "skipResetGalaxy"
     ];
-  else player.infinityUpgrades = player.infinityUpgrades;
 }
 
 document.getElementById("infi11").onclick = function() {
@@ -4814,29 +4813,9 @@ var goals = [
   new Decimal("1e27000")
 ];
 setInterval(function() {
-  if (
-    getDimensionFinalMultiplier(1).gte(new Decimal("1e308")) &&
-    getDimensionFinalMultiplier(2).gte(new Decimal("1e308")) &&
-    getDimensionFinalMultiplier(3).gte(new Decimal("1e308")) &&
-    getDimensionFinalMultiplier(4).gte(new Decimal("1e308")) &&
-    getDimensionFinalMultiplier(5).gte(new Decimal("1e308")) &&
-    getDimensionFinalMultiplier(6).gte(new Decimal("1e308")) &&
-    getDimensionFinalMultiplier(7).gte(new Decimal("1e308")) &&
-    getDimensionFinalMultiplier(8).gte(new Decimal("1e308"))
-  )
-    giveAchievement("Can't hold all these infinities");
-
-  if (
-    getDimensionFinalMultiplier(1).lt(getDimensionFinalMultiplier(2)) &&
-    getDimensionFinalMultiplier(2).lt(getDimensionFinalMultiplier(3)) &&
-    getDimensionFinalMultiplier(3).lt(getDimensionFinalMultiplier(4)) &&
-    getDimensionFinalMultiplier(4).lt(getDimensionFinalMultiplier(5)) &&
-    getDimensionFinalMultiplier(5).lt(getDimensionFinalMultiplier(6)) &&
-    getDimensionFinalMultiplier(6).lt(getDimensionFinalMultiplier(7)) &&
-    getDimensionFinalMultiplier(7).lt(getDimensionFinalMultiplier(8))
-  )
-    giveAchievement("How the antitables have turned");
-
+  
+  r72Check()
+  antitablesCheck()
   metaDimensionAchievement();
 
   if (
@@ -5195,6 +5174,7 @@ setInterval(function() {
       : " seconds or less.");
   document.getElementById("eterc12completed").textContent =
     "Completed " + ECTimesCompleted("eterc12") + " times.";
+
   updateECUnlockButtons();
 
   if (player.currentEternityChall == "eterc8") {

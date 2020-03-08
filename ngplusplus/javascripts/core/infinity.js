@@ -566,3 +566,19 @@ function getReplMult() {
     replmult = replmult.pow(1.09)
   return replmult
 }
+
+function r72Check() {
+  var r72 = 0
+  for (i=0, i<8; i++;) {
+    if (getDimensionFinalMultiplier(i).gte(1e308)) r72++
+    }
+  if (r72 == 8) giveAchievement("Can't hold all these infinities");
+}
+
+function antitablesCheck() {
+  var antitables = 0
+  for (i=0, i<8; i++;) {
+   if (getDimensionFinalMultiplier(i+1).lt(getDimensionFinalMultiplier(i))) antitables++
+  }
+  if (antitables == 8) giveAchievement("How the antitables have turned");
+}

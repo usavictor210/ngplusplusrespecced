@@ -140,7 +140,7 @@ newsArray = [//always true
 ["The amazing speedster", "infchallengeTimes <= 0.8", "c13"],
 ["More people are now grinding endlessly to no benefit in a cheese factory. What happens there may shock you.", "player.eternities > 1e12", "c14"], // respeccedx+2
 //luck
-["Technically, these luck messages are even rarer than we thought. This is considering the fact that you only have one chance to get the lucky news tickers for every news ticker out of the many news tickers in the news array, and even then, Math.random() is very random.", "Math.random() < 0.01", "l0"] // respeccedx+1
+["Technically, these luck messages are even rarer than we thought. This is considering the fact that you only have one chance to get the lucky news tickers for every news ticker out of the many news tickers in the news array, and even then, Math.random() is very random.", "Math.random() < 0.01", "l0"], // respeccedx+1
 ["This news message is 1000x rarer than all the others.", "Math.random() < 0.001", "l1"],
 ["You just won a small prize in the lottery.", "Math.random() < 1e-4", "l2"],
 ["You just won a moderate prize in the lottery.", "Math.random() < 1e-5", "l3"],
