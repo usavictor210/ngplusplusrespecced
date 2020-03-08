@@ -1,8 +1,7 @@
 html {
     background: url('../images/s1-bg.svg') no-repeat;
-    background-size: contain;
-    align-content: center;
     background-size: 100%;
+    align-content: center;
     background-color: #d72621;
     color: black !important;
     background-attachment:fixed;
