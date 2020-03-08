@@ -989,7 +989,7 @@ function calculateEternitiedGain() {
 }
 
 function r124Mult() {
-return Math.min(Math.sqrt(player.thisEternity / 12.5), 30)
+return Decimal.min(Math.sqrt(player.thisEternity / 12.5), 30).max(1)
 }
 
 function gainedEternityPoints() {
@@ -1114,7 +1114,7 @@ function unlockDilation() {
  * @param {Cost of the upgrade} cost
  * @param {Cost increase for the upgrade, only for rebuyables} costInc
  *
- * id 1-3 are rebuyables
+ * id 1-4 are rebuyables
  *
  * id 2 resets your dilated time and free galaxies
  *
@@ -1193,6 +1193,14 @@ function updateDilationUpgradeButtons() {
           : "dilationupg";
     }
   }
+  document.getElementById("dil3desc").textContent =
+    "Currently: " + shortenMoney(Decimal.pow(3, player.dilation.rebuyables[3])) + "x"
+  document.getElementById("dil4desc").textContent =
+    "Currently: ^" + getDilExp() + " -> ^" + (getDilExp()+0.25)
+  document.getElementById("dil7desc").textContent =
+    "Currently: " +
+    shortenMoney(player.dilation.dilatedTime.pow(308).max(1)) +
+    "x";
   document.getElementById("dil9desc").textContent =
     "Currently: " +
     shortenMoney(player.dilation.dilatedTime.pow(1000).max(1)) +

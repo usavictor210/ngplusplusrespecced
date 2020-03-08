@@ -1258,6 +1258,7 @@ function change_save(saveId) {
   showStatsTab("stats");
   showChallengesTab("challenges");
   showEternityTab("timestudies", true);
+  showQuantumTab("investment")
 }
 
 function transformSaveToDecimal() {

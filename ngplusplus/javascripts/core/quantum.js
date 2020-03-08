@@ -629,11 +629,12 @@ function updateLastTenQuantums() {
 }
 
 function investQuarks(feature, amount) {
-if (feature != 0 && feature < 6 && player.quantum.quarks >= amount && amount != 0 && !amount < 1) { // i screwed up on the array, it appears there is array value number 0 and it looks weird.
-  player.quantum.investmentAmount[feature] = Decimal.add(player.quantum.investmentAmount[feature], amount)
+if (feature != 0 && feature < 6 && player.quantum.quarks >= amount && !player.quantum.quarks < amount && amount != 0 && !amount < 1 && !isNaN(amount)) { // i screwed up on the array, it appears there is array value number 0 and it looks weird.
+player.quantum.investmentAmount[feature] = Decimal.add(player.quantum.investmentAmount[feature], amount)
+player.quantum.quarks = player.quantum.quarks.sub(amount)
+  }
 }
-player.dilation.quarks = Decimal.minus(player.dilation.quarks, amount)
-}
+
 
 function getTotalInvestmentAmount() { // gets a value from all values of the array and adds it into a decimal
   let ret = new Decimal(0)
@@ -644,19 +645,19 @@ function getTotalInvestmentAmount() { // gets a value from all values of the arr
 }
 function getInvestMultiplier(x) { // you have to decide a formula for each feature.
 if (x == 1) {
-  return 1
+  return new Decimal(player.quantum.investmentAmount[1]).pow(2.5)
   }
 if (x == 2) {
-  return 1
+  return new Decimal(player.quantum.investmentAmount[2]).pow(1e100)
   }
 if (x == 3) {
-  return 1
+  return new Decimal(player.quantum.investmentAmount[3]).pow(20)
   }
 if (x == 4) {
-  return 1
+  return new Decimal(player.quantum.investmentAmount[4]).pow(3.5)
   }
 if (x == 5) {
-  return 1
+  return new Decimal(player.quantum.investmentAmount[5]).times(1.5)
   }
 }
 

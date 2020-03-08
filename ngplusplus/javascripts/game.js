@@ -1246,8 +1246,9 @@ function updateCosts() {
     "Until 10, Cost: " +
     shortenCosts(player.eightCost.times(10 - dimBought(8)));
 
-  document.getElementById("tickSpeed").textContent =
-    canBuyTickSpeed() ? "Cost: " + shortenCosts(player.tickSpeedCost) : "Disabled"
+  document.getElementById("tickSpeed").textContent = canBuyTickSpeed()
+    ? "Cost: " + shortenCosts(player.tickSpeedCost)
+    : "Disabled";
   // see how much simple this is? I wonder why this wasn't done for the normal dimensions...
   for (var i = 1; i <= 8; i++) {
     document.getElementById("infMax" + i).textContent =
@@ -3178,8 +3179,8 @@ function setAchieveTooltip() {
   forgotAchieve.setAttribute(
     "ach-tooltip",
     "Get any Dimension multiplier over " +
-      formatValue(player.options.notation, 1e31, 0, 0)
-      + ". Reward: First Dimensions are 5% stronger."
+      formatValue(player.options.notation, 1e31, 0, 0) +
+      ". Reward: First Dimensions are 5% stronger."
   );
   sanic.setAttribute(
     "ach-tooltip",
@@ -3301,7 +3302,11 @@ function setAchieveTooltip() {
   );
   layer.setAttribute(
     "ach-tooltip",
-    "Reach " + shortenMoney(Number.MAX_VALUE) + " EP. Reward: Time Dimensions gain a multiplier based on EP. Currently: " + shortenMoney(r127Reward()) + "x"
+    "Reach " +
+      shortenMoney(Number.MAX_VALUE) +
+      " EP. Reward: Time Dimensions gain a multiplier based on EP. Currently: " +
+      shortenMoney(r127Reward()) +
+      "x"
   );
   fkoff.setAttribute(
     "ach-tooltip",
@@ -5815,10 +5820,9 @@ function gameLoop(diff) {
     player.replicanti.amount
   );
 
-  document.getElementById("replicantimult").textContent = shortenDimensions(
+  document.getElementById("replicantimult").textContent = shorten(
     getReplMult()
   );
-
   updateEternityButton();
   document.getElementById("metaCost").innerHTML = shortenCosts(1e24);
 
@@ -5961,7 +5965,10 @@ function gameLoop(diff) {
     }
   }
 
-  if (canAfford(player.tickSpeedCost) || !player.currentEternityChall == "eterc9") {
+  if (
+    canAfford(player.tickSpeedCost) ||
+    !player.currentEternityChall == "eterc9"
+  ) {
     document.getElementById("tickSpeed").className = "storebtn";
     document.getElementById("tickSpeedMax").className = "storebtn";
   } else {
@@ -6399,7 +6406,7 @@ function gameLoop(diff) {
       if (
         goal > 131072 &&
         player.meta &&
-        !player.achievements.includes("ngpp13")
+        !player.achievements.includes("r143")
       ) {
         goal = Decimal.sub("1e40000", player.eternityPoints).log2();
         var percentage = Math.min((gepLog / goal) * 100, 100).toFixed(2) + "%";
@@ -7469,6 +7476,7 @@ function init() {
   showDimTab("antimatterdimensions");
   showChallengesTab("challenges");
   showEternityTab("timestudies", true);
+  showQuantumTab("investment")
   load_game();
   updateTickSpeed();
   updateAutobuyers();
