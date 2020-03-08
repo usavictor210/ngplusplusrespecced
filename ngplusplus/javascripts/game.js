@@ -813,9 +813,9 @@ function updateDimensions() {
     } else
       document.getElementById("resetLabel").textContent =
         "Dimension Boost (" +
-        player.resets +
+        formatInfOrEter(player.resets) +
         "): requires " +
-        shiftRequirement.amount +
+        formatInfOrEter(shiftRequirement.amount) +
         " " +
         DISPLAY_NAMES[shiftRequirement.tier] +
         " Dimensions";
@@ -840,11 +840,11 @@ function updateDimensions() {
     )
       galString += "Distant Antimatter Galaxies (";
     else galString += "Antimatter Galaxies (";
-    galString += player.galaxies;
-    if (extraGals > 0) galString += " + " + extraGals;
+    galString += formatInfOrEter(player.galaxies);
+    if (extraGals > 0) galString += " + " + formatInfOrEter(extraGals);
     if (player.dilation.freeGalaxies > 0)
-      galString += " + " + player.dilation.freeGalaxies;
-    galString += "): requires " + getGalaxyRequirement();
+      galString += " + " + formatInfOrEter(player.dilation.freeGalaxies);
+    galString += "): requires " + formatInfOrEter(getGalaxyRequirement());
     if (player.currentChallenge == "challenge4")
       galString += " Sixth Dimensions";
     else galString += " Eighth Dimensions";
