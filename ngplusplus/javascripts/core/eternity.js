@@ -1319,6 +1319,7 @@ function getDilTimeGainPerSecond() {
     gain = gain.times(Math.pow(player.eternities, 0.1));
   if (player.dilation.upgrades.includes(16)) gain = gain.times(getDil16Bonus());
   if (player.dilation.upgrades.includes(18)) gain = gain.times(getDil18Bonus());
+  if (player.quantum.investmentAmount[5].gt(0)) gain = gain.times(getInvestMultiplier(5));
   return gain;
 }
 

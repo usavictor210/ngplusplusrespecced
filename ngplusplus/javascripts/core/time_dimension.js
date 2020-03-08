@@ -30,15 +30,18 @@ function getTimeDimensionPower(tier) {
     ret = ret.times(getReplMult().pow(0.1))
   }
   if (player.achievements.includes("r127")) ret = ret.times(r127Reward())
-  if (ret.lt(0)) {
-    ret = new Decimal(0)
-  }
 
+  if (player.quantum.investmentAmount[2].gt(0)) ret = ret.times(getInvestMultiplier(2))
+  
   if (player.dilation.active) {
     ret = Decimal.pow(10, Math.pow(ret.log10(), getDilPunish()))
     if (player.dilation.upgrades.includes(11)) {
       ret = Decimal.pow(10, Math.pow(ret.log10(), 1.05))
     }
+  }
+
+  if (ret.lt(0)) {
+    ret = new Decimal(0)
   }
 
   if (player.achievements.includes("r105")) { 

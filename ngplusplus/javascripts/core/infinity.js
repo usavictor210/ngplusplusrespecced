@@ -564,6 +564,7 @@ function getReplMult() {
     replmult = replmult.times(Decimal.pow(5, player.replicanti.galaxies, 150));
   if (player.achievements.includes("r108"))
     replmult = replmult.pow(1.09)
+  if (player.quantum.investmentAmount[3].gt(0)) replmult = replmult.pow(getInvestMultiplier(3))
   if (replmult.lt(1) || isNaN(replmult)) replmult = new Decimal (1)
   return replmult
 }
