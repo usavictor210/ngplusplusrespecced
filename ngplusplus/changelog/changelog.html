@@ -1,0 +1,189 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="../icon.png" />
+    <title>Changelog</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../stylesheets/changelog.css"
+    />
+  </head>
+  <body style="text-align:left">
+    <h1 align="center">Changelog</h1>
+    <h2>ALPHA 0.1.1 - March 7th, 2020</h2>
+    <list>
+      <li>
+        Took Aarex's progress bar and information scale code and tweaked it, and
+        put it in new functions.
+      </li>
+      <li>
+        Changed challenge 1's reward text to mention that you get 100 antimatter
+        (because the game actually relies on that to consider the antimatter
+        reward, and not "To infinity!", although it doesn't matter since that
+        you get "Blink of an eye").
+      </li>
+      <li>Changed EC reward text and put it in a new function.</li>
+      <li>
+        Giving access to more news tickers because there's one news ticker in
+        particular that requires all other tickers, and changed some news
+        tickers because I wanted to.
+      </li>
+      <li>Quark gain text displayed in meta-dimensions is now formatted.</li>
+      <li>
+        "Eternities are the new infinity" and "Long lasting relationship" will
+        now display their respective multipliers.
+      </li>
+      <li>
+        "In the grim darkness of the far endgame" now properly removes the 10x
+        replicanti interval before infinity replicanti from TS133.
+      </li>
+      <li>
+        Buffed achievement multiplier to 1.125x per achievement. Now that's an
+        achievement.
+      </li>
+      <li>Made the achievement tooltips actually update ingame.</li>
+      <li>
+        Buffed "Eternities are the new infinity"
+        (Math.min(Math.sqrt(player.thisEternity/20), 30)) ->
+        (Math.min(Math.sqrt(player.thisEternity/12.5), 30))
+      </li>
+      <li>
+        "We could afford 9" has been given a reward (inspired by Eternity
+        Respecced): Replicanti multiplier is boosted to the power of 1.09 (after
+        time studies).
+      </li>
+      <li>Finally fixed the IC not persisting on reload bug. Silly me.</li>
+      <li>
+        Fixed not being able to unstabilize dilation because of excess equal
+        signs.
+      </li>
+      <li>
+        Unstable dilation actually increases TP gain now. WARNING: COULD CAUSE
+        INFLATION. Report bugs in the #bugs_and_glitches (or was it #bugs?)
+        channel if you see it.
+      </li>
+      <li>
+        One final checkup: Running it through
+        <a
+          href="https://www.codefactor.io/repository/github/usavictor210/ngplusplusrespecced/"
+          >CodeFactor</a
+        >
+        to catch the stuff I didn't fix.
+      </li>
+      <li>Dimboosts, galaxies and 8th dimension cost/amounts are prettier.</li>
+      <li>Change a lot of 0px to 0 in the CSS, and also fixed "all" the bugs in the html, except for ONE PHANTOM BUG.</li>
+      <li>I guess it's time to actually make new content now.</li>
+      <h3>Broken stuff</h3>
+      <li>
+        "In the grim darkness of the far endgame" progress on the progress bar
+        displays NaN%.
+      </li>
+    </list>
+    <h2>ALPHA 0.1 - March 6th, 2020</h2>
+    <list>
+      <li>
+        Found out the offline IP break infinity upgrade bug existed and just
+        copied and pasted the vanilla code to fix it. (Aarex why have you not
+        fixed this yet)
+      </li>
+      <li>
+        Continued to sort out the spaghetti code. It's looking better now.
+      </li>
+      <li>Fixed plurals for the last 10 infinities and eternities.</li>
+      <li>
+        Eternities stat calculation uses ceiling (because decimals just look
+        weird).
+      </li>
+      <li>Trying to finally fix the ICs don't save on refresh bug.</li>
+      <li>
+        There has been a report on unstable shard bugs, so I will fix that later
+        if necessary.
+      </li>
+      <li>The dilation button states that you need 1.8e308 IP to gain TP.</li>
+    </list>
+    <h2>ALPHA 0 - February 2020 -> March 2020: The Beginning</h2>
+    <list>
+      <li>Started work on NG+2 Respecced.</li>
+      <li>
+        A new row of achievements spanning from the original endgame of NG++ to
+        early Quantum has been created. They have their own rewards and have
+        their own pictures.
+      </li>
+      <li>
+        Unstable Dilation has begun being worked on. This will coincide with the
+        Time Rift.
+      </li>
+      <li>2 new dilation upgrades that might make dilation bearable again.</li>
+      <li>Added lots of news tickers. Most of them are dumb.</li>
+      <li>
+        Rephrased many of vanilla game's descriptions for each mechanic,
+        challenge and achievement.
+      </li>
+      <li>Begun organizing the spaghetti code that is game.js.</li>
+      <li>
+        Quantum is being worked on, but the buttons don't actually work because
+        I didn't implement them yet.
+      </li>
+      <li>
+        You can see how many eternities and infinities you get from their
+        respective button once you can get 1e100,000 of their respective point.
+      </li>
+      <li>
+        Going to fix "I'm so meta" import later since I need to make sure
+        everything is stabilized in Quantum first.
+      </li>
+      <li>
+        Begun NG+ v3: You start with 1,012,680 eternities (this may be changed
+        on Quantum to give you the max TS191 and EU2 boost with 1,012,680
+        eternities but give you only 100 eternities), 1 trillion banked
+        infinities, start with 1,024x IP mult (which resets later), start with
+        all normal challenges completed, and also start with "Fake News" and
+        "Don't you dare sleep". All NG+ v2 changes persist.
+      </li>
+      <li>
+        "Long lasting relationship" and "Eternities are the new infinity" have
+        been given rewards: Infinity Dimensions are more powerful based on EC1's
+        reward to the power of 10, and you gain 30x eternitied stat on longer
+        eternities (reward taken from
+        <a href="https://soul147.github.io/">AD Ultimate</a> and tweaked to
+        balance for NG+2R, this is because of another reward to eternities in
+        mid-dilation.).
+      </li>
+      <li>
+        "In the grim darkness of the far endgame" has been given a reward to
+        remove active/passive/idle RG nerfs.
+      </li>
+      <li>
+        "I'm so meta" has been given a reward to unlock the dilation upgrade
+        autobuyer.
+      </li>
+      <li>"Meta-boosting to the max" has been given a better picture.</li>
+      <li>Changed the changelog files and took Aarex's CSS for them.</li>
+      <li>
+        Made EU2 actually change its formula visually when you get "The cap is a
+        million, not a trillion".
+      </li>
+      <li>
+        Max all will instead max all meta dimensions when you unlock them.
+        Speaking of meta dimensions, their autobuyers are unlocked at 1e25x of
+        each multiplier for each MD ("I never meta-dimension I didn't like").
+      </li>
+      <li>
+        Removed all Kong variables and changed the Shop to the Quantum tab.
+      </li>
+      <li>
+        Did stuff to time studies and added some stuff. However, they don't do
+        anything yet because I have no idea how to make them work. When I get a
+        time study to work though, it will be fixed.
+      </li>
+      <li>
+        Made the game buy 1 1st time dimension if you haven't bought it when you
+        attempt to buy a time theorem with EP.
+      </li>
+      <li>...and that's only the beginning. There will be more. MORE.</li>
+    </list>
+    <a href="../changelog/oldchangelog.html">Old changelog</a>
+  </body>
+</html>

@@ -7,12 +7,12 @@ button {
     color: #E0E0E0;
     background-color: #455A64 !important;
     border: 1px solid black;
-    box-shadow: 0px 0px 7px 2px #111111;
+    box-shadow: 0 0 7px 2px #111111;
 }
 
 .popup {
     background-color: #455A64 !important;
-    box-shadow: 0px 0px 15px 0px black !important;
+    box-shadow: 0 0 15px 0 black !important;
 }
 
 .achievementunlocked {
@@ -23,7 +23,7 @@ button {
     color: #E0E0E0;
     background-color: #455A64 !important;
     border: 1px solid black;
-    box-shadow: 0px 0px 7px 2px #111111;
+    box-shadow: 0 0 7px 2px #111111;
 }
 
 .storebtn:hover {
@@ -143,12 +143,12 @@ input {
 
 .IPAmount1 {
     color: white !important;
-    text-shadow: 0px 0px 7px #fff;
+    text-shadow: 0 0 7px #fff;
 }
 
 .IPAmount2 {
     color: white !important;
-    text-shadow: 0px 0px 7px #fff;
+    text-shadow: 0 0 7px #fff;
 }
 
 .statstab {
@@ -242,32 +242,32 @@ input {
 
 #infPowAmount {
     color: white !important;
-    text-shadow: 0px 0px 7px #fff;
+    text-shadow: 0 0 7px #fff;
 }
 
 #infDimMultAmount {
     color: white !important;
-    text-shadow: 0px 0px 7px #fff;
+    text-shadow: 0 0 7px #fff;
 }
 
 #timeShardAmount {
     color: #64DD17 !important;
-    text-shadow: 0px 0px 7px #64DD17;
+    text-shadow: 0 0 7px #64DD17;
 }
 
 #tickThreshold {
     color: #64DD17 !important;
-    text-shadow: 0px 0px 7px #64DD17;
+    text-shadow: 0 0 7px #64DD17;
 }
 
 #replicantiamount {
     color: #03A9F4 !important;
-    text-shadow: 0px 0px 7px #03A9F4;
+    text-shadow: 0 0 7px #03A9F4;
 }
 
 #replicantimult {
     color: #03A9F4 !important;
-    text-shadow: 0px 0px 7px #03A9F4;
+    text-shadow: 0 0 7px #03A9F4;
 }
 
 .eternitybtn {
@@ -298,17 +298,17 @@ input {
 
 .EPAmount1 {
     color: #b341e0 !important;
-    text-shadow: 0px 0px 7px #b341e0;
+    text-shadow: 0 0 7px #b341e0;
 }
 
 .EPAmount2 {
     color: #b341e0 !important;
-    text-shadow: 0px 0px 7px #b341e0;
+    text-shadow: 0 0 7px #b341e0;
 }
 
 .TheoremAmount {
     color: #64DD17 !important;
-    text-shadow: 0px 0px 7px #64DD17;
+    text-shadow: 0 0 7px #64DD17;
 }
 
 .timetheorembtn {
@@ -555,12 +555,12 @@ input {
 
 #tachyonParticleAmount {
     color: #64ddad !important;
-    text-shadow: 0px 0px 7px #64ddad;
+    text-shadow: 0 0 7px #64ddad;
 }
 
 #dilatedTimeAmount, #dilatedTimePerSecond, #galaxyThreshold, #dilatedGalaxies {
     color: #64DD17 !important;
-    text-shadow: 0px 0px 7px #64DD17;
+    text-shadow: 0 0 7px #64DD17;
 }
 
 @keyframes antimatterGlow {

@@ -27,12 +27,7 @@ function getTimeDimensionPower(tier) {
   if (player.achievements.includes("r128")) ret = ret.times(Math.max(player.timestudy.studies.length, 1))
 
   if (player.replicanti.unl && player.replicanti.amount.gt(1) && player.dilation.upgrades.includes(6)) {
-    var replmult = Decimal.pow(Decimal.log2(player.replicanti.amount), 2)
-
-    if (player.timestudy.studies.includes(21)) replmult = replmult.plus(Decimal.pow(player.replicanti.amount, 0.032))
-    if (player.timestudy.studies.includes(102)) replmult = replmult.times(Decimal.pow(5, player.replicanti.galaxies))
-
-    ret = ret.times(replmult.pow(0.1))
+    ret = ret.times(getReplMult().pow(0.1))
   }
 
   if (ret.lt(0)) {

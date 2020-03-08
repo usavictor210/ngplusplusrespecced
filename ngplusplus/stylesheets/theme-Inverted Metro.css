@@ -11,7 +11,7 @@ body {
 }
 
 * {
-    border-radius: 0px !important;
+    border-radius: 0 !important;
 }
 
 input, select {
@@ -29,7 +29,7 @@ input, select {
 .tabbtn {
     background: #EEEEEE !important;
     border: 1px solid #2196F3 !important;
-    box-shadow: 1px 1px 1px 0px #9E9E9E;
+    box-shadow: 1px 1px 1px 0 #9E9E9E;
 }
 
 .tabbtn:hover {
@@ -40,7 +40,7 @@ input, select {
 .secondarytabbtn {
     background: #EEEEEE !important;
     border: 1px solid #2196F3 !important;
-    box-shadow: 1px 1px 1px 0px #9E9E9E;
+    box-shadow: 1px 1px 1px 0 #9E9E9E;
 }
 
 .secondarytabbtn:hover {
@@ -51,7 +51,7 @@ input, select {
 .storebtn {
     background: #EEEEEE !important;
     border: 1px solid #66BB6A !important;
-    box-shadow: 1px 1px 1px 0px #9E9E9E;
+    box-shadow: 1px 1px 1px 0 #9E9E9E;
 }
 
 .storebtn:hover {
@@ -61,7 +61,7 @@ input, select {
 .unavailablebtn {
     background: #9E9E9E !important;
     border: 1px solid #EF5350 !important;
-    box-shadow: 1px 1px 1px 0px #9E9E9E;
+    box-shadow: 1px 1px 1px 0 #9E9E9E;
 }
 
 .unavailablebtn:hover {
@@ -72,7 +72,7 @@ input, select {
     color: black !important;
     background: #EEEEEE !important;
     border: 1px solid #66BB6A !important;
-    box-shadow: 1px 1px 1px 0px #9E9E9E;
+    box-shadow: 1px 1px 1px 0 #9E9E9E;
 }
 
 .newdim:hover {
@@ -82,7 +82,7 @@ input, select {
 .newdimlocked {
     background: #9E9E9E !important;
     border: 1px solid #EF5350 !important;
-    box-shadow: 1px 1px 1px 0px #9E9E9E;
+    box-shadow: 1px 1px 1px 0 #9E9E9E;
 }
 
 .newdimlocked:hover {
@@ -91,7 +91,7 @@ input, select {
 
 .infinitybtn {
     border: 1px solid #FF9800 !important;
-    box-shadow: 1px 1px 1px 0px #9E9E9E;
+    box-shadow: 1px 1px 1px 0 #9E9E9E;
 }
 
 .infinitybtn:hover {
@@ -110,7 +110,7 @@ input, select {
 .eternitytabbtn {
     color: #673AB7 !important;
     border: 1px solid #673AB7 !important;
-    box-shadow: 1px 1px 1px 0px #9E9E9E;
+    box-shadow: 1px 1px 1px 0 #9E9E9E;
 }
 
 .completedrow {
@@ -201,7 +201,7 @@ input, select {
 .postinfcrunch {
     background: #EEEEEE !important;
     border: 1px solid #2196F3 !important;
-    box-shadow: 1px 1px 1px 0px #9E9E9E;
+    box-shadow: 1px 1px 1px 0 #9E9E9E;
 }
 
 .postinfcrunch:hover {
@@ -240,7 +240,7 @@ input, select {
     color: #fff !important;
     background: #616161 !important;
     border: none !important;
-    box-shadow: 1px 1px 1px 0px #fff;
+    box-shadow: 1px 1px 1px 0 #fff;
 }
 
 .timetheorembtnlocked:hover {
@@ -374,7 +374,7 @@ input, select {
 .timestudylocked, .eternitychallengestudylocked {
     color: black !important;
     background: #9E9E9E !important;
-    box-shadow: 1px 1px 1px 0px #000;
+    box-shadow: 1px 1px 1px 0 #000;
     border: none !important;
 }
 
@@ -409,7 +409,7 @@ input, select {
 .eternityupbtn {
     color: #673AB7 !important;
     border: 1px solid #673AB7 !important;
-    box-shadow: 1px 1px 1px 0px #9E9E9E;
+    box-shadow: 1px 1px 1px 0 #9E9E9E;
 }
 
 .eternityupbtn:hover {
@@ -477,7 +477,7 @@ input, select {
 
 .milestonerewardlocked {
     background: #9E9E9E !important;
-    box-shadow: 1px 1px 1px 0px #000;
+    box-shadow: 1px 1px 1px 0 #000;
     border: none !important;
 }
 
@@ -488,7 +488,7 @@ input, select {
 .dilationupglocked, .dilationupgrebuyablelocked {
     color: black !important;
     background: #9E9E9E !important;
-    box-shadow: 1px 1px 1px 0px #000;
+    box-shadow: 1px 1px 1px 0 #000;
     border: none !important;
 }
 
@@ -497,9 +497,9 @@ input, select {
 }
 
 @keyframes metroStudyGlowIn {
-    0%  {box-shadow: inset 0px 0px 3px 0px #673AB7;}
-    50% {box-shadow: inset 0px 0px 20px 0px #673AB7;}
-    100%  {box-shadow: inset 0px 0px 3px 0px #673AB7;}
+    0%  {box-shadow: inset 0 0 3px 0 #673AB7;}
+    50% {box-shadow: inset 0 0 20px 0 #673AB7;}
+    100%  {box-shadow: inset 0 0 3px 0 #673AB7;}
 }
 
 .quantumbtn {

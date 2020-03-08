@@ -202,7 +202,7 @@ if (player.currentChallenge == "postc2") {
 
   player.tickspeed = player.tickspeed.times(Decimal.pow(getTickSpeedMultiplier(), player.totalTickGained))
   updateTickSpeed()
-  getAntimatterOnReset().max(player.money)
+  player.money = getAntimatterOnReset().max(player.money)
 
   if (player.resets >= 10) {
       giveAchievement("Boosting to the max");

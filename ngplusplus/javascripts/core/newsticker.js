@@ -66,16 +66,18 @@ newsArray = [//always true
 ["Antimatter_Dimensions.mp1.79e308", true, "a127"],
 ["https://www.youtube.com/watch?v=dQw4w9WgXcQ", true, "a128"],
 ["Click this to unlock a secret achievement.", true, "a129"],
-["Warning - We have just been informed that there is a chance of infection with a mind-virus of the Basilisk type, similar to the infamous winking parrot. This particular example is known as 'Fractal Cancer Type III'. This is believed to cause a 'crashing' of the mind, similar to a computer crash, due to the mathematical complexity of the image causing mathematical ideas that the mind can't comprehend, a Gondelian shock input eventually leading to crashing through Gondelian spoilers. All who have researched it have eventually died the same way, so it is impossible to tell exactly, but this is the common belief. Regardless, with the introduction of 'cancer' mode, as well as reports of it's spontaneous appearance, sufficient repetition of this mode's appearance may lead to  an image forming in the mind similar to 'Fractal Cancer Type III'. With this in mind, we have some suggestions if you find yourself plagued with it. First, refresh immediately and see if that fixes the issue. If not, navigate to options, and change the theme from cancer to literally anything else. And above all else, Godspeed. We can't afford to lose anymore viewers.", true, "a130"],
+["Warning - We have just been informed that there is a chance of infection with a mind-virus of the Basilisk type, similar to the infamous winking parrot. This particular example is known as 'Fractal Cancer Type III'. This is believed to cause a 'crashing' of the mind, similar to a computer crash, due to the mathematical complexity of the image causing mathematical ideas that the mind can't comprehend, a Gondelian shock input eventually leading to crashing through Gondelian spoilers. All who have researched it have eventually died the same way, so it is impossible to tell exactly, but this is the common belief. Regardless, with the introduction of 'cancer' mode, as well as reports of it's spontaneous appearance, sufficient repetition of this mode's appearance may lead to an image forming in the mind similar to 'Fractal Cancer Type III'. With this in mind, we have some suggestions if you find yourself plagued with it. First, refresh immediately and see if that fixes the issue. If not, navigate to options, and change the theme from cancer to literally anything else. And above all else, Godspeed. We can't afford to lose anymore viewers.", true, "a130"],
 ["If I have bad English, I'll study English until I have good English.", true, "a131"],
 ["Someone once told me that antimatter is gonna roll me. I ain't the sharpest atom in the shed. WELL, the tubes start coming and they don't stop coming...", true, "a132"],
 ['Because of this game I can now use the word "infinity" as a verb.', true, "a133"],
 ["Ahhh i love the smell of particle annihilation in the morning", true, "a134"],
 ["The person who said ghosts don't exist obviously doesn't have a discord", true, "a135"],
 ["AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAntimatter Dimensions was made by some dude from Finland", true, "a136"],
-['The Holy trinity of Hevipelle, Antimatter, Infinity Points, and Eternity Points. These 3 resources let us access Hevi’s gift, Time Theorems. And with these Time Theorems, we reach out to Hevi, and call, “Hevi, bless us on this fine day!” And Hevi does. He give us the blessing of Time Studies. These Time Studies were blessings so powerful, Hevi restricted their power. He said, “I will give you a choice of three paths.” and then humanity chose. The short, cheap route of Normal Dimensions, giving instant gratification, the powerful choice of Infinity Dimensions, which were a fast, middle ground path, or Time Dimensions, the long wait, and struggle, of humanity. Then, as humanity chose, a crack broke the earth. A serpent snaked out and sneered to humanity, “I will offer the powerful choice of a ninth dimension! I am Slabdrill, lord of all Unhevi.” Humanity rose and said, “Begone Slabdrill! We want none of your foul Heresy!” And Hevi rose as well, and smote Slabdrill with his godlike power. As Slabdrill’s corpse fell into the earth, he cried, “This will not be the last of me! Hevi will betr-“ and he fell in the Abyss of matter. Hevi gifted humanity with Eternity upgrades, which boosted Infinity Dimensions and Time Dimensions, and Hevi gave humanity his greatest gift. EP multipliers. He said, “These will multiply all EP gained by 5, but their cost will increase 25 times. Use them wisely.” And Humanity journeyed off with their new power, as Slabdrill’s words echoed in their heads.', true, "a137"],
+['The Holy trinity of Hevipelle, Antimatter, Infinity Points, and Eternity Points. These 3 resources let us access Hevi’s gift, Time Theorems. And with these Time Theorems, we reach out to Hevi, and call, “Hevi, bless us on this fine day!” And Hevi does. He give us the blessing of Time Studies. These Time Studies were blessings so powerful, Hevi restricted their power. He said, “I will give you a choice of three paths.” and then humanity chose. The short, cheap route of Normal Dimensions, giving instant gratification, the powerful choice of Infinity Dimensions, which were a fast, middle ground path, or Time Dimensions, the long wait, and struggle, of humanity. Then, as humanity chose, a crack broke the earth. A serpent snaked out and sneered to humanity, “I will offer the powerful choice of a ninth dimension! I am Slabdrill, lord of all Unhevi.” Humanity rose and said, “Begone Slabdrill! We want none of your foul Heresy!” And Hevi rose as well, and smote Slabdrill with his godlike power. As Slabdrill’s corpse fell into the earth, he cried, “This will not be the last of me! Hevi will betr-“ and he fell in the Abyss of matter. Hevi gifted humanity with Eternity upgrades, which boosted Infinity Dimensions and Time Dimensions, and Hevi gave humanity his greatest gift. EP multipliers. He said, “These will multiply all EP gained by 5, but their cost will increase 25 times. Use them wisely.” ...and Humanity journeyed off with their new power, as Slabdrill’s words echoed in their heads.', 'player.eternities > 0', "a137"],
 ["We have updated our Antimatter Privacy Policy.", true, "a138"],
-["Is this a jojo reference?", true, "pat1"], // patreon
+
+//patreon
+["Is this a jojo reference?", true, "pat1"],
 
 //basic (pre-inf)
 ["You just made your 1,000,000,000,000,000 antimatter. This one tastes like chicken", "player.money.e == 15", "b1"],
@@ -108,7 +110,7 @@ newsArray = [//always true
 ["Thanos is gonna be super dissapointed when he shows up with a fully powered infinity gauntlet, and Hevi has a fully powered eternity gauntlet", "player.eternities > 0", "b23"],
 ["New strange material was been found. It seems to grow exponentially, but only helps with antimatter production.", "player.replicanti.unl && player.replicanti.chance == 0.01", "b25"],
 ["It seems this \"replicanti\" stuff won't be growing any faster now.", "player.replicanti.chance == 1 && player.replicanti.interval == 1", "b26"],
-//newsarray - HEVI WHY?!
+//newsarray - these unorganized news tickers aren't good
 ["Does Hevi just pick quotes to put into the game?", "player.newsArray.length >= 30", "n3"],
 ["New news company has become rivals with us. They are made entirely of antimatter.", "player.newsArray.length >= 80", "n1"],
 ["How many times can we use \"Anti\" in a row before people stop listening?", "player.newsArray.length >= 100", "n5"],
@@ -120,13 +122,13 @@ newsArray = [//always true
 ["Asian man trys to steal the trophy of fastest infinty of -1 seconds, AND HE DOES IT!", 'player.newsArray.includes("c1")', "n4"],
 ["I broke the 8th wall, there is only chaos, Slabdrill is ritually sacrificing antimatter to the 9th dimension. This will be my last entry, may Hevipelle have mercy on our souls, we didn't listen, We should have listened.", 'player.newsArray.includes("b17")', "n6"],
 ["I thought the update was 5 hours away... -new players after more than 5 hours of gameplay", 'player.newsArray.includes("a91") && player.totalTimePlayed >= 600*300', "n7"],
-["Somebody told me to wait five hours for the update yesterday but it's today and it still hasn't come! What do I do?", 'player.newsArray.includes("a91") && player.totalTimePlayed >= 600*300', "n8"],
+["Somebody told me to wait five hours for the update yesterday, but it's today, and it still hasn't come! What do I do?", 'player.newsArray.includes("a91") && player.totalTimePlayed >= 600*300', "n8"],
 ["hackers are coming", "player.newsArray.length >= 300", "n13"],
-//hard
-["You do know that you won't reach Infinity in -1 seconds, right?", "player.bestInfinityTime == 0.1", "c1"],
-["Where does Antimatter Nemo live? In a NNnNeMI-NNnNe.", "player.totalmoney.e >= 3e6", "c2"],  //might not be poss?
+//hard, but rather easy
+["You do know that you won't reach Infinity in -1 seconds, right?", "player.bestInfinityTime <= 0.1", "c1"],
+["Where does Antimatter Nemo live? In a NNnNeMI-NNnNe.", "player.totalmoney.e >= 3e6", "c2"],  //might not be poss? // no it's just you - usavictor
 ["Anti Emoji Movie MMMCMXCIX is a major hit!", "player.spreadingCancer >= 3999", "c3"],
-["Achievement Unlocked!", "player.achievements.length == 88", "c4"],
+["Achievement Unlocked!", "player.achievements.length >= 88", "c4"],
 ["Did you use an autoclicker for that?", "player.timestudy.studies.includes(131) && player.thisInfinityTime <= 600 && player.replicanti.galaxies >= 50", "c5"],
 ["Timing is key.", "player.thisEternity < 1", "c6"],
 ["If you want to farm infinitied, why don't you just get the time study?", "!player.timestudy.studies.includes(32) && player.infinitied > 72000 * 168", "c7"],
@@ -136,7 +138,9 @@ newsArray = [//always true
 ["You can probably stop farming for eternities now...", "player.eternities > 2000000", "c11"],
 ["Are you serious?", "worstChallengeTime <= 0.1", "c12"],
 ["The amazing speedster", "infchallengeTimes <= 0.8", "c13"],
+["More people are now grinding endlessly to no benefit in a cheese factory. What happens there may shock you.", "player.eternities > 1e12", "c14"], // respeccedx+2
 //luck
+["Technically, these luck messages are even rarer than we thought. This is considering the fact that you only have one chance to get the lucky news tickers for every news ticker out of the many news tickers in the news array, and even then, Math.random() is very random.", "Math.random() < 0.01", "l0"], // respeccedx+1
 ["This news message is 1000x rarer than all the others.", "Math.random() < 0.001", "l1"],
 ["You just won a small prize in the lottery.", "Math.random() < 1e-4", "l2"],
 ["You just won a moderate prize in the lottery.", "Math.random() < 1e-5", "l3"],
@@ -148,8 +152,8 @@ newsArray = [//always true
 ["Just how lucky are you?", "Math.random() < 1e-11", "l9"],
 ["This news message is 1000000000000x rarer than all the others.", "Math.random() <= 1e-12", "l10"],
 //missable / pay req
-["How dare you actually get zero deaths on a first run?", 'player.achievements.includes("r43") && player.infinitied == 1 && player.eternities == 0', "s1"],
-["Legend says the ninth dimension is supposed to be found here, but I don't see anything.", "player.money.e >= 41900 && !player.replicanti.unl && player.eternities == 0", "s2"],
+["How dare you actually get zero deaths on a first run?", 'player.achievements.includes("r43")', "s1"],
+["Legend says the ninth dimension is supposed to be found here, but I don't see anything.", "player.money.e >= 4190000 && player.dilation.active && player.galaxies == 1 && player.resets == 4 && player.thirdAmount == new Decimal(0)", "s2"], // requirement changed to e4,190,000 antimatter, 1 galaxy, 4 resets and only up to 2nd dimensions
 ["Person with money likes to support this game.", true, "s3"],
 ["Whale is bad at making smart purchases.", true, "s4"],
 ["Whale complains that the game broke.", true, "s5"],
@@ -178,7 +182,7 @@ newsArray = [//always true
 ["If you are not playing NG+2 Respecced on http://ngplus2.glitch.me/ngplusplus/, the site is bootleg. Wait, we're already bootleg.", true, "respecced21"],
 ["I'm so meta", true, "respecced22"],
 ["I'm blue, da ba dee", true, "respecced23"],
-["From the mountains rises a new type of hill, called THE HILL. It's my hill.", true, "respecced24"],
+["From the mountains rises a new type of hill, called THE HILL. It's my hill. Uh... somebody just showed up and said they're going to live here. I guess it's their hill now... or is it?", true, "respecced24"],
 ["Thank you Devion! But our battle replicants is in another castle!", true, "respecced25"],
 ["One small step for antimatter, one giant leap for antimatterkind", "player.quantum.times > 0", "respecced26"],
 ["How it feels to chew 5 Gum", "player.dilation.active", "respecced27"],
@@ -189,8 +193,8 @@ newsArray = [//always true
 ["\"Onion was a mistake.\" ~ TheTastyPi, 2020", 'player.newsArray.includes("respecced4")', "respeccced32"],
 ["Florida man goes to idol hell, is never heard of again", true, "respecced33"],
 ["In another timeline, there isn't a thing such as the 9th dimension or the existence of 5 hours. There is instead something much worse. The unmentionable thing.", true, "respecced34"], //not sure if this is supposed to be an NGU reference 
-["If you could convert your " + shortenMoney(player.money) + " units of antimatter to dollars, the economy would inflate and go upside down and inside out.", true, "respecced35"],
-["This is a test of our new creative works software. Your random number is: " + Math.random(1,1000) + ".     ...did it work? We hope it did.", true, "respecced36"],
+["If you could convert your " + shortenMoney(player.money) + " units of antimatter to dollars, the economy would inflate and go upside down and inside out.", 'player.money.e >= 308', "respecced35"],
+["This is a test of our new creative works software. Your random number is: " + Math.random()*1000 + ".     ...did it work? We hope it did.", true, "respecced36"],
 ["We've heard that dilation seems very boring. Our scientists are changing that. It might turn too unstable soon, so watch out for that.", 'player.eternityPoints.gte(new Decimal("1e1300"))', "respecced37"],
 ["An infinite clock has been detected. It seems it just repeats the time over and over again.", true, "respecced38"],
 ["This game just gets more meta the more you look at your meta dimensions.", 'player.dilation.studies.includes(6)', "respecced39"],
@@ -225,7 +229,7 @@ newsArray = [//always true
 ["ELECTRONS CONSUME YOUR STARS", 'player.dilation.studies.includes(6)', "respecced66"],
 ["Tree of Decay isn't a upgrade tree, I have been lied to.", 'player.dilation.studies.includes(6)', "respecced67"],
 ["Who keeps breaking the news tickers?!?", true, "respecced68"],
-["Nice.", true, "respecced69"], // Nice.
+["Noice.", true, "respecced69"], // Nic- dang it this is getting old...
 ["\"I think he became depressed after he realized that Antimatter Dimensions is real.\" ~ Aarex, 2020", 'player.newsArray.includes("respecced56")', "respecced70"],
 ["You feel like baking antimatter, but no body wants to explode.", true, "respecced71"],
 ["'We need to ban standard.' - Douche who can't balance his mods correctly", true, "respecced72"],
@@ -250,14 +254,17 @@ newsArray = [//always true
 ["var 9thDimensions = NaN;", true, "respecced90"],
 ["NG+3 Respecced is the bane of my existence", true, "respecced91"],
 ["SCP-AD --- Object Class: Keter --- Special Containment Procedures: SCP-AD must be contained in a 5x5 meter cell with no matter by it, or else it will be destroyed due to annhilation. Security cameras have a chance to shut down at a 5-hour interval. --- Description: SCP-AD is a computer screen that has an odd game on it. It is a game where you collect 'antimatter' with 'dimensions'. The computer has a mouse a keyboard, and a [REDACTED] by it. The keyboard does not have QWERTY format. The arrangement of keys are [REDACTED]. --- Experiment AD-1: D-6969 was asked to play the game on SCP-AD. 5 hours later, security footage malfunctioned. When observing the containment area, D-6969 had disappeared without a trace. On the screen, it showed a '[REDACTED]' had unlocked. --- Experiment AD-3: D-8826 was asked to play the game on SCP-AD in 'Cancer' Notation. 5 hours later, D-8826 exploded from the inside. Later, all remains of the corpse had been absorbed inside the containment chamber.", true, "respecced92"],
-["Don't worry, we'll unlock Ultra Dilation in -6 minutes", 'player.dilation.unstable.times === 1', "respecced93"],
+["Don't worry, we'll unlock Ultra Dilation in -6 minutes", 'player.dilation.unstable.times >= 1', "respecced93"],
 ["Don't add way too many prestige layers", true, "respecced94"],
 //pass the mic back
 ["It cries above mount Everest, and antimatter from the raindrops of the antimatter galaxies made by Hevi Pelle who smote slabdrill and mighty aarex and produced too much antimatter and the forbidden matter from Slabdrill.", true, "respecced95"],
 ["There are now more comments in the code. We hope you understand it better.", true, "respecced96"],
 ["These news tickers are getting too meta. I need to take a break. See you later.                                 ...wait, why is it still going? The spaces I put in didn't even work! That's just dumb. I'm leaving.", true, "respecced97"],
 ["Even if you could halate snow, you don't have enough light to do that. We'd need more tickspeed. Speaking of more tickspeed... a potato's on the loose.", 'player.newsArray.includes("respecced17")', "respecced98"],
-["When the news ticker keeps coming back... and coming back...", true, "respecced99"]
+["When the news ticker keeps coming back... and coming back...", true, "respecced99"],
+["How to fix the game's bugs: Revision 45 - 1. Make sure no pesky bugs exist in your code and blast them with antimatter if you see them. 2. Do something to prevent the spread of these evil bugs. Maybe alter the code and encourage the bugs to go away. 3. Watch as more bugs emerge from the previous bugs you've exploded. If in any case the bugs begin a revolution, big crunch the universe.", true, "respecced100"],
+["This message's contents will only be viewable if you have performed [REDACTED]. I don't know if we did anything yet with it though.", true, "respecced101"],
+["This will probably be the last news ticker made by me in a while. I need to think of a better formula. If I kept going on like this, you'd get bored eventually.", true, "respecced102"]
 ];}
 
 var s = document.getElementById('news');

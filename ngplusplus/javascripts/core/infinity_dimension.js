@@ -73,7 +73,7 @@ function eterUpg2Mult () {
   } else {
     let cappedEters = Math.min(player.eternities, 100000);
     return Decimal.pow(cappedEters/200 + 1, Math.log(cappedEters*2+1)/Math.log(4)).times(
-        new Decimal((player.eternities-100000)/200 + 1).times(Math.log((player.eternities- 100000)*2+1)/Math.log(4)).max(1))
+        new Decimal((player.eternities-100000)/200 + 1).times(Math.log((player.eternities-100000)*2+1)/Math.log(4)).max(1))
   }
 }
 
@@ -86,12 +86,7 @@ function DimensionPower(tier) {
   if (player.achievements.includes("r94") && tier == 1) mult = mult.times(2);
   if (player.achievements.includes("r75")) mult = mult.times(player.achPow);
   if (player.replicanti.unl && player.replicanti.amount.gt(1)) {
-      var replmult = Decimal.pow(Decimal.log2(player.replicanti.amount), 2)
-
-      if (player.timestudy.studies.includes(21)) replmult = replmult.plus(Decimal.pow(player.replicanti.amount, 0.032))
-      if (player.timestudy.studies.includes(102)) replmult = replmult.times(Decimal.pow(5, player.replicanti.galaxies))
-
-      mult = mult.times(replmult)
+      mult = mult.times(getReplMult())
   }
 
   if (player.timestudy.studies.includes(72) && tier == 4) {
@@ -120,6 +115,8 @@ function DimensionPower(tier) {
   if (ECTimesCompleted("eterc4") !== 0) mult = mult.times(player.infinityPoints.pow(0.003 + ECTimesCompleted("eterc4")*0.002).min(new Decimal("1e200")))
 
   if (ECTimesCompleted("eterc9") !== 0) mult = mult.times(player.timeShards.pow(ECTimesCompleted("eterc9")*0.1).plus(1).min(new Decimal("1e400")))
+
+  if (player.achievements.includes("r113")) mult = mult.times(timeMultUpg(4, 1).pow(10)) // long lasting relationship
 
   if (mult.lt(0)) mult = new Decimal(0)
 

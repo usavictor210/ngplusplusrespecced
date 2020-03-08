@@ -15,7 +15,7 @@ body {
 
 .dimtab {
     color: black !important;
-    text-shadow: 0.5px 0.5px 0px white, -0.5px -0.5px 0px white;
+    text-shadow: 0.5px 0.5px 0 white, -0.5px -0.5px 0 white;
 }
 
 .achievementlocked {

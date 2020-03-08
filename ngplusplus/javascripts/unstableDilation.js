@@ -1,9 +1,11 @@
 function unstableDilation() { // begins a reset for unstable dilation
 var usGain = new Decimal(((player.dilation.tachyonParticles.log(10)/15))).max(1).floor() // formula
+var sacTPGain = player.dilation.unstable.sacrificedTP.add(player.dilation.tachyonParticles.pow(0.025).floor())
  if (!player.dilation.studies.includes(6) || player.dilation.dilatedTime.lt(9.99e99) || player.quantum.times === 0) return // if player doesn't have meta dimensions, 1e100+ DT or have went quantum, return
- if (confirm("Unstabilizing time dilation will result in harsher scaling, allowing you to get more TP, but dilation will reset in exchange for Dilation Shards. Are you prepared for this change?")) {
+ if (confirm("Unstabilizing time dilation will result in harsher scaling, allowing you to get more TP, but dilation will reset in exchange for Unstable Shards and sacrificed TP. Are you prepared for this change?")) {
         eternity(true) // forced eternity
-        player.dilation.unstable.sacrificedTP = player.dilation.unstable.sacrificedTP.add(player.dilation.tachyonParticles.pow(0.025).floor())
+        player.dilation.unstable.sacrificedTP = sacTPGain
+        Decimal.add(player.dilation.unstable.shards, usGain)
         player.dilation.studies = player.dilation.studies, // resetting dilation
         player.dilation.active = false,
         player.dilation.tachyonParticles = new Decimal(0),
@@ -18,7 +20,6 @@ var usGain = new Decimal(((player.dilation.tachyonParticles.log(10)/15))).max(1)
             3: 0,
             4: 0
         }
-        Decimal.add(player.dilation.unstable.shards, usGain)
         
         player.dilation.unstable.times++ // this affects the penalty
         giveAchievement("Time Leaper")
@@ -37,8 +38,8 @@ function checkUnstableDilationButton() {
 function calculateDilationSeverity() {
   var x = player.dilation.unstable.times
   if (x > 2) player.dilation.unstable.times**1.05 // x^1.05
-  document.getElementById("dilationseverity").textContent = "Dilation's penalty on all dimensions is x^" + getDilPunish().toFixed(3) + "."
-  return
+  if (x < 1 || isNaN(x)) x = 1
+  return x
 }
 
 function timeLeaperMult() { // for time leaper achievement
@@ -96,6 +97,6 @@ function getUnstableUpgMult(x) {
     case 6: return Decimal.max(Math.pow(Math.log10(player.dilation.tachyonParticles), 0.075), 1);
     case 7: return Decimal.max(Math.pow(player.galaxies, 0.18), 1);
     case 8: return 1
-    case 9: return
+    case 9: return 1
   } 
 }
