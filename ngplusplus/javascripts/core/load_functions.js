@@ -398,7 +398,7 @@ function onLoad() {
       1: 0,
       2: 0
     },
-    investmentAmount: [new Decimal(0), new Decimal(0), new Decimal(0), new Decimal(0), new Decimal(0)],
+    investmentAmount: [null, new Decimal(0), new Decimal(0), new Decimal(0), new Decimal(0), new Decimal(0)],
     upgrades: [],
     lastTenQuantums: [
     [600 * 60 * 24 * 31, 1],
@@ -1446,6 +1446,9 @@ function transformSaveToDecimal() {
     player.dilation.timeRift.temporalPower
   );
   player.dilation.unstable.sacrificedTP = new Decimal (player.dilation.unstable.sacrificedTP)
+  for (let i=1; i<6; i++) {
+  player.quantum.investmentAmount[i] = new Decimal(player.quantum.investmentAmount[i])
+  }
 }
 
 function loadAutoBuyerSettings() {
