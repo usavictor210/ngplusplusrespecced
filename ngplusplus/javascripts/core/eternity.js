@@ -36,7 +36,7 @@ function eternity(force, auto) {
       player.tickSpeedMultDecrease = parseFloat(
         (player.tickSpeedMultDecrease - 0.07).toFixed(2)
       );
-    if (player.infinitied < 10 && !force)
+    if (player.infinitied <= 10 && !force)
       giveAchievement("Do you really need a guide for this?");
     if (Decimal.round(player.replicanti.amount) == 9)
       giveAchievement("We could afford 9");
@@ -494,12 +494,7 @@ function eternity(force, auto) {
       : "none";
     document.getElementById("eternityPoints2").style.display = "inline-block";
     document.getElementById("eternitystorebtn").style.display = "inline-block";
-    document.getElementById("infiMult").innerHTML =
-      "Multiply infinity points from all sources by 2 <br>currently: " +
-      shorten(player.infMult) +
-      "x<br>Cost: " +
-      shortenCosts(player.infMultCost) +
-      " IP";
+    updateInfMult()
     updateEternityUpgrades();
     document.getElementById("totaltickgained").textContent =
       "You've gained " +
@@ -914,12 +909,7 @@ function startEternityChallenge(name, startgoal, goalIncrease) {
       : "none";
     document.getElementById("eternityPoints2").style.display = "inline-block";
     document.getElementById("eternitystorebtn").style.display = "inline-block";
-    document.getElementById("infiMult").innerHTML =
-      "Multiply infinity points from all sources by 2 <br>currently: " +
-      shorten(player.infMult) +
-      "x<br>Cost: " +
-      shortenCosts(player.infMultCost) +
-      " IP";
+    updateInfMult()
     updateEternityUpgrades();
     document.getElementById("totaltickgained").textContent =
       "You've gained " +
@@ -1444,5 +1434,9 @@ function updateECRewardText() {
 }
 
 function r127Reward() {
-return new Decimal((Decimal.pow(((player.eternityPoints.e-308)+1), (5+(Decimal.log(player.eternityPoints.e, 20)))))+1)
+return new Decimal((Math.pow(((player.eternityPoints.e-308)+1), (5+(Decimal.log(player.eternityPoints.e, 20)))))+1).max(1)
+}
+
+function eterUpgrade(x) {
+
 }

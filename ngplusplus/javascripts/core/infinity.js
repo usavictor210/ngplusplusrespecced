@@ -586,3 +586,12 @@ var antitables = 0
   if (antitables == 8) giveAchievement("How the antitables have turned");
 return antitables
 }
+
+function updateInfMult() {
+document.getElementById("infiMult").innerHTML =
+    "You gain 2x more IP.<br>Currently: " +
+    shorten(player.infMult) +
+    "x<br>Cost: " +
+    shortenCosts(player.infMultCost) +
+    " IP";
+}

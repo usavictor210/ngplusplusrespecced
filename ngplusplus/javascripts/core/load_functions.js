@@ -375,7 +375,6 @@ function onLoad() {
   if (player.meta.bestAntimatter === undefined)
     player.meta.bestAntimatter = player.meta.antimatter;
   if (player.meta.galaxy === undefined) player.meta.galaxy = 0;
-  if (player.quantum.investmentAmount === undefined || player.quantum.investmentAmount.length != 6) player.quantum.investmentAmount = [null, new Decimal(0), new Decimal(0), new Decimal(0), new Decimal(0), new Decimal(0)]
   if (player.quantum === undefined) {
     player.quantum = {
     times: 0,
@@ -414,6 +413,7 @@ function onLoad() {
     ],
     }
   }
+  if (player.quantum.investmentAmount === undefined || player.quantum.investmentAmount.length != 6) player.quantum.investmentAmount = [null, new Decimal(0), new Decimal(0), new Decimal(0), new Decimal(0), new Decimal(0)]
   if (player.why === undefined) player.why = 0;
   if (player.options.animations === undefined)
     player.options.animations = {
@@ -806,13 +806,7 @@ function onLoad() {
 
   if (player.break == true)
     document.getElementById("break").textContent = "FIX INFINITY";
-  document.getElementById("infiMult").innerHTML =
-    "Multiply infinity points from all sources by 2 <br>currently: " +
-    shortenDimensions(player.infMult) +
-    "x<br>Cost: " +
-    shortenCosts(player.infMultCost) +
-    " IP";
-
+  updateInfMult()
   document.getElementById("notation").textContent =
     "Notation: " + player.options.notation;
 
@@ -1008,7 +1002,7 @@ function onLoad() {
   if (player.version < 12.1) {
     player.version = 12.1;
     if (player.achievements.includes("s36")) {
-      player.achievements.splice(player.achievements.indexOf("s36"), 1);
+      player.achievements.splice(player.achievements.indexOf("s36"), 1); // removing the old "dip the antimatter" secret achievement
       updateAchievements();
     }
   }
@@ -1020,8 +1014,50 @@ function onLoad() {
         player.dilation.upgrades[i] = 19;
       }
     }
+    if (player.quantum === undefined) player.quantum = { // migrate save to ng+2 respecced
+    times: 0,
+    quarks: new Decimal(0),
+    thisQuantum: 0,
+    bestQuantum: 9999999999,
+    producedGluons: 0,
+    realGluons: 0,
+    bosons: {
+      "w+": 0,
+      "w-": 0,
+      z0: 0
+    },
+    neutronstar: {
+      quarks: new Decimal(0),
+      metaAntimatter: new Decimal(0),
+      dilatedTime: new Decimal(0)
+    },
+    rebuyables: {
+      1: 0,
+      2: 0
+    },
+    investmentAmount: [
+      null,
+      new Decimal(0),
+      new Decimal(0),
+      new Decimal(0),
+      new Decimal(0),
+      new Decimal(0)
+    ],
+    upgrades: [],
+    lastTenQuantums: [
+      [600 * 60 * 24 * 31, 1],
+      [600 * 60 * 24 * 31, 1],
+      [600 * 60 * 24 * 31, 1],
+      [600 * 60 * 24 * 31, 1],
+      [600 * 60 * 24 * 31, 1],
+      [600 * 60 * 24 * 31, 1],
+      [600 * 60 * 24 * 31, 1],
+      [600 * 60 * 24 * 31, 1],
+      [600 * 60 * 24 * 31, 1],
+      [600 * 60 * 24 * 31, 1]
+    ]
+    }
   }
-
   if (player.version < 15.1) {
     player.version = 15.1;
     player.ngPlus = 0;
@@ -1059,6 +1095,7 @@ function onLoad() {
   }
 
   if (player.version < 15.6) {
+    player.version = 15.6
   if (player.dilation.unstable.upgrades === undefined)
     player.dilation.unstable = {
       times: player.dilation.unstable.times,
@@ -1073,6 +1110,13 @@ function onLoad() {
       upgrades: []
     };
   }
+
+  if (player.version < 15.7) {
+    player.version = 15.7
+    if (player.quantum.investmentAmount === undefined) player.quantum.investmentAmount = [null, new Decimal(0), new Decimal(0), new Decimal(0), new Decimal(0), new Decimal(0)]
+    
+  }
+
   
   if (player.meta.autoMaxAll === undefined) player.meta.autoMaxAll = false
   

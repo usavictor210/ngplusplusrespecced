@@ -9,7 +9,7 @@ function getTimeDimensionPower(tier) {
   if (player.achievements.includes("r105")) ret = ret.div(getInfiniteTimeReward())
   if (player.eternityUpgrades.includes(4)) ret = ret.times(player.achPow)
   if (player.eternityUpgrades.includes(5)) ret = ret.times(Math.max(player.timestudy.theorem, 1))
-  if (player.eternityUpgrades.includes(6)) ret = ret.times(player.totalTimePlayed / 10 / 60 / 60 / 24)
+  if (player.eternityUpgrades.includes(6)) ret = ret.times(player.totalTimePlayed / (10*21600)).max(1)
   if (player.timestudy.studies.includes(73) && tier == 3) ret = ret.times(calcTotalSacrificeBoost().pow(0.005).min(new Decimal("1e1300")))
   if (player.timestudy.studies.includes(93)) ret = ret.times(Decimal.pow(player.totalTickGained, 0.25).max(1))
   if (player.timestudy.studies.includes(103)) ret = ret.times(Math.max(player.replicanti.galaxies, 1))
@@ -40,8 +40,8 @@ function getTimeDimensionPower(tier) {
     }
   }
 
-  if (ret.lt(0)) {
-    ret = new Decimal(0)
+  if (ret.lt(1)) {
+    ret = new Decimal(1)
   }
 
   if (player.achievements.includes("r105")) { 

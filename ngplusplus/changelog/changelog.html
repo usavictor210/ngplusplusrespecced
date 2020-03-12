@@ -12,13 +12,127 @@
   </head>
   <body style="text-align:left">
     <h1 align="center">Changelog</h1>
+    <h2>ALPHA 0.1.5 - March 11th, 2020</h2>
+    <list>
+      <li><b>VANILLA AND OLD NG+2 COMPATIBILITY IS FIXED!</b></li>
+      <li>
+        QUANTUM BUG IS ALSO (mostly) FIXED! (just infinity stat multiplier
+        errors...)
+      </li>
+      <li>
+        Reset investment amounts. From this point on, please tell me what
+        formulas should change. (Time dimension formula should probably be
+        changed, to be honest)
+      </li>
+      <li>
+        Hi, I'm typing this text on a phone, so it is very likely I could code
+        on a mobile device, and thus more slightly bigger updates.
+      </li>
+      <li>
+        This version will fix the quantum bug and allow for compatibility with
+        old vanilla and NG+2 saves.
+      </li>
+      <li>
+        Moved the Discord server invite links to another section because I might
+        be posting a Scratch project about the stuff I work on outside of
+        Scratch.
+      </li>
+      <li>
+        I'm thinking to cap EU6 since it might give others a slight advantage,
+        but it'd affect the other time dimension multiplier sources.
+      </li>
+      <li>
+        Sub-atomic will give you the time theorem autobuyer. (not coded in
+        yet)
+      </li>
+      <li>Started work on fixing the how to page.</li>
+      <h3>
+        Broken stuff/really annoying bugs (Yes, these are really annoying)
+      </h3>
+      <li>
+        player.ngPlus sets to undefined when you infinity, eternity or quantum.
+        This ties into our next problem:
+      </li>
+      <li>
+        Infinity Challenges keep resetting on refresh if you have at least 7
+        eternities but don't have "I never liked this infinity stuff anyway". I
+        thought I fixed this bug already...
+      </li>
+      <li>
+        <s>Time dimensions are now broken when you quantum;</s> This is now
+        fixed, as "But I wanted another prestige layer..." became NaNx if you
+        had less than 1.8e308 EP, causing Time Dimension multipliers to break.
+      </li>
+    </list>
+    <h2>ALPHA 0.1.4 - March 10th, 2020</h2>
+    <list>
+      <li>
+        Actually fixing the time studies this time. I found that editing the css
+        messed it up. (it'll look less weird for the EP/eternity button and time
+        studies)
+      </li>
+      <li>
+        Buffed EU6 to be instead based on time played/6 hours (216000 "ticks"
+        because the seconds are messed up in this game), and cannot go below 1x.
+      </li>
+      <li>Buffed TS62 to make replicanti 5 times faster to replicate.</li>
+      <li>
+        Nerfed (or rather fixed) "But I wanted another prestige layer..."
+        because it got powerful too quickly (changed to Math.pow rather than
+        Decimal.pow).
+      </li>
+      <li>
+        In other news: Eternity Respecced is being revived. However, I will try
+        to balance my fair share of side projects and not get caught up in them.
+        <a
+          href="https://github.com/usavictor210/b/commit/b533cafee58cc111a77df637cb389e9b86971825"
+          >Here...</a
+        >
+      </li>
+      <h3>Broken stuff</h3>
+      <li>
+        Importing your save from vanilla is broken. This will be fixed later, I
+        promise. Same thing for the quantum 1x normal dimension bug. (some
+        people should really help me soon)
+      </li>
+      <li>
+        It's probably important to know that balance in NG+2R will be
+        significantly different from vanilla, so feel free to play from the
+        beginning.
+      </li>
+    </list>
+    <h2>ALPHA 0.1.3 - March 9th, 2020</h2>
+    <list>
+      <li>
+        Made the time theorems purchase section hide the buy max theorems button
+        and lower its height when you get "Generate time theorems based on
+        tachyon particles", and also changed it a little bit...
+      </li>
+      <li>
+        Reworded more of the time studies, the break infinity upgrades, some
+        achievements, and the IP multiplier upgrade.
+      </li>
+      <li>
+        Made "Do you really need a guide for this?" "easier" by changing the
+        requirement to be at most 10 infinitied stat on Eternity. (This change
+        isn't really needed though... or is it?)
+      </li>
+      <li>
+        Fixed total quark investment amount by just grabbing the next five
+        values after the null instead...
+      </li>
+      <li>
+        Made the post infinity crunch button, new dimension button and infinity
+        button wider.
+      </li>
+    </list>
     <h2>ALPHA 0.1.2 - March 8th, 2020</h2>
     <list>
       <li>
         "But I wanted another prestige layer..." has been given a reward
         (another reward taken from Eternity Respecced): Time Dimensions gain a
         multiplier based on EP. ((((exponent of EP-308)+1)^(5+(log20(exponent of
-        EP, 20)))))+1) (log20 might seem weird but it's just the 20th root.)
+        EP)))))+1) (log20 might seem weird but it's just the 20th root.)
       </li>
       <li>Fixed more CSS things that were 0px and repeated stuff.</li>
       <li>
@@ -46,6 +160,18 @@
       <li>
         This is probably going to be a short update now because I have to do
         other stuff.
+      </li>
+      <li>
+        Also, I'm trying to fix the time display, so I may need some help with
+        that, unless of course Aarex fixed that already. Oh wait, he actually
+        didn't.
+      </li>
+      <h3>Broken stuff</h3>
+      <li>
+        Going quantum breaks all the normal dimension multipliers. This is a
+        fatal bug, meaning going quantum must be blocked off for now until I can
+        resolve the issue. Apparently, this is reset after doing an eternity.
+        However, I would like for it to be reset when you quantum.
       </li>
     </list>
     <h2>ALPHA 0.1.1 - March 7th, 2020</h2>
@@ -119,22 +245,22 @@
       <h3>Broken stuff</h3>
       <li>
         "In the grim darkness of the far endgame" progress on the progress bar
-        displays NaN%.
+        displays NaN%. (FIXED AS OF 3/8/2020)
       </li>
     </list>
     <h2>ALPHA 0.1 - March 6th, 2020</h2>
     <list>
       <li>
         Found out the offline IP break infinity upgrade bug existed and just
-        copied and pasted the vanilla code to fix it. (Aarex why have you not
-        fixed this yet)
+        copied and pasted the vanilla code to fix it. (Aarex, why have you not
+        fixed this yet???)
       </li>
       <li>
         Continued to sort out the spaghetti code. It's looking better now.
       </li>
       <li>Fixed plurals for the last 10 infinities and eternities.</li>
       <li>
-        Eternities stat calculation uses ceiling (because decimals just look
+        Eternities stat calculation now uses ceiling (because decimals just look
         weird).
       </li>
       <li>Trying to finally fix the ICs don't save on refresh bug.</li>
@@ -142,7 +268,10 @@
         There has been a report on unstable shard bugs, so I will fix that later
         if necessary.
       </li>
-      <li>The dilation button states that you need 1.8e308 IP to gain TP.</li>
+      <li>
+        The dilation button will now state that you need 1.8e308 IP to gain TP
+        if you have under 1.8e308 IP.
+      </li>
     </list>
     <h2>ALPHA 0 - February 2020 -&gt; March 2020: The Beginning</h2>
     <list>
