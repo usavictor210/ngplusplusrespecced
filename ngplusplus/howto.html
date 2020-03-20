@@ -1,7 +1,9 @@
+
+<!-- To be fixed. -->
 <html>
   <head>
   <title>How to play</title>
-  <link rel='stylesheet' type='text/css' href='stylesheets/howto.css'>
+  <link rel="stylesheet" type="text/css" href="stylesheets/howto.css">
   <link rel="icon" type="image/png" href="icon.png">
   </head>
   <body style="padding: 10px 20%">
@@ -13,16 +15,16 @@
   </div>
   <hr>
   <div style="text-align: center">
-  Antimatter Dimensions is an Idle Incremental game with multiple layers of unlocks, prestige, and achievements. The basic Goal is to reach infinity and receive an infinity point, which can be spent on various skills to increase your overall production.
+  Antimatter Dimensions is an Idle Incremental game with multiple layers of unlocks, prestige, and achievements. The basic goal of the game is to reach infinity and receive an infinity point, which can be spent on various upgrades to increase your overall production. Beyond that, there lies even more content that allow you to get even bigger numbers, and even go beyond the limit of infinity.
   </div>
   <hr>
   <div style="text-align: center">
-  You can choose whether or not you would like to see spoilers here. Setting this to "Avoid spoilers" will only show the content you have access to, as well as the next piece(s) of content you will unlock.
+  You can choose whether or not you would like to see spoilers here. Setting this to "Avoid spoilers" will only show the content you have access to, as well as the next piece(s) of content you will unlock. To be fair though, this is NG+2 Respecced, so its highly suggested you have played up to the endgame of Time Dilation before you read this/play the game.
   </div>
   <table style="margin: auto;">
     <tr>
       <td>
-          <button onclick='showspoilers()' class="storebtn" id="showspoilersbtn" style="margin-top: 5px;">View: <br> Avoid spoilers</button>
+          <button "onclick"='showspoilers()' class="storebtn" id="showspoilersbtn" style="margin-top: 5px;">View:<br>Avoid spoilers</button>
       </td>
       <td>
           <button class="storebtn" id="importbtn" style="margin-top: 5px;">Import your save</button>
@@ -34,45 +36,45 @@
   <div style="text-align: left" id='div1' class='hidden'>
   <b>Dimensions:</b>
   <br>
-  Dimensions are your production units in game.  The first Dimension produces your Antimatter.  Each consecutive dimension produces the previous one, allowing you to have steady growth. There are eight dimensions total.
+  Dimensions are your production units in the game. The first Dimension produces Antimatter, used to buy dimensions.  Each consecutive dimension produces the previous one, allowing you to have steady growth. There are eight dimensions total.
   <br>
-  <b>Dimension Multiplier:</b> Beside the dimension there is a multiplier (example: First Dimension x1.0). The base production of each dimension is multiplied by this number.  This multiplier increases by 2x(Base) for every 10 of that dimension purchased. Each time this occurs, the price of the dimension will increase.
+  <b>Dimension Multiplier:</b> Beside the dimension there is a multiplier (example: First Dimension x1.0). The base production of each dimension is multiplied by this number.  This multiplier increases by 2x (base multiplier) for every 10 of that dimension purchased. Each time this occurs, the price of the dimension will increase.
   <br>
   <b>Accumulated Dimension Quantity:</b> The next column is your current amount of that dimension you own. This is a combination of how many you have purchased with antimatter, as well as produced from the higher dimension.
   <br>
-  <b>Purchased Dimensions Quantity:</b>  Next to each accumulated quantity of owned dimensions, the amount of that dimension purchased toward the next multiplier upgrade is displayed in brackets.  If you have (4) next to your accumulated dimension quaintly, you will need 6 more of that dimension for the next multiplier increase.
+  <b>Purchased Dimensions Quantity:</b> Next to each accumulated quantity of owned dimensions, the amount of that dimension purchased toward the next multiplier upgrade is displayed in brackets. For example, if you have (4) next to your accumulated dimension quaintly, you will need 6 more of that dimension for the next multiplier increase.
   <br>
-  <b>Dimension Growth Percent:</b>  This number represents the amount of growth that dimensions experiences per second. +100% means the dimension is doubling each second.  This allows you to judge overall growth.
+  <b>Dimension Growth Percent:</b> This number represents the amount of growth that dimensions experiences per second. +100% means the dimension is doubling each second.  This allows you to judge overall growth.
   <br>
   <b>Cost & until 10:</b> You can buy a single quantity of each dimension with antimatter when the cost button is highlighted.  Alternatively, if the Until 10 buttons is highlighted, you can buy whatever quantity gets you to that dimensions next dimension multiplier.
   <br>
   <b>Max all:</b> Max all will buy max tickspeed (see below), then will buy until 10 of 8th dimension until it can't anymore, then 7th, and so on.
   <br>
-  <b>Dimension base prices:</b> 10, 100, 10000, 1e6, 1e9, 1e13, 1e18, 1e24
+  <b>Dimension base prices:</b> 10 (1e1), 100 (1e2), 10000 (1e4), 1e6, 1e9, 1e13, 1e18, 1e24
   <br>
-  <b>Base per 10 bought dimension price increases:</b>1000, 10000, 1e5, 1e6, 1e8, 1e10, 1e12, 1e15
+  <b>Base per 10 bought dimension price increases:</b>1000 (1e3), 10000 (1e4), 1e5, 1e6, 1e8, 1e10, 1e12, 1e15
       <br>
-    <b>Hotkeys: 1, 2, 3, 4, 5, 6, 7, 8</b> for buy until 10 []th dimension, <b>M</b> for Max all
+    <b>Hotkeys: 1, 2, 3, 4, 5, 6, 7, 8</b> for buy until 10 []th dimension, <b>M</b> for Max all.
   </div>
   <hr id='div1hr'>
   <button onclick='changestate(2)' id='div2btn' class="storebtn">Ticks</button>
   <div style="text-align: left" id='div2' class='hidden'>
-  <b>Tick:</b> Production in the game happens on each “tick”.
+  <b>Tick:</b> Production in the game happens on each “tick”. When a "tick" happens, each dimension will produce resources.
   <br>
   <b>Interval:</b> The length of time between ticks. This is lowered by purchasing tick interval reductions.
   <br>
-  <b>Cost:</b> The cost of antimatter for reducing the tick interval by the % displayed above (Without Galaxies your base tickspeed decrease is 11% per purchase)
+  <b>Cost:</b> The cost of antimatter for reducing the tick interval by the % displayed above (without galaxies, your base tickspeed decrease is 11% per purchase.)
   <br>
   <b>Buy Max:</b> This will buy the maximum amount of tick interval decreases available with your current amount of Antimatter.
   <br>
-  Note that the actual tickspeed time is fake and the game always runs at 20 ticks per second.
+  Note that the actual tickspeed time is fake and the game always runs at 20 ticks per second. (based on your update rate)
   </div>
   <hr id='div2hr'>
   <button onclick='changestate(3)' id='div3btn' class="storebtn">Dimension Shift/Boost</button>
   <div style="text-align: left" id='div3' class='hidden'>
-  <b>Dimension Shift:</b> This resets your current game, but unlocks another dimension for your next run. Each one requires 20 (base) of your highest unlocked dimension.
+  <b>Dimension Shift:</b> This resets your dimensions, but unlocks another dimension for your next run. Each one requires 20 (base) of your highest unlocked dimension.
   <br>
-  <b>Dimension Boost:</b> A dimension shift, but you don't unlock a new dimension. This happens after 4 dimension shifts. Each one requires 20+(boosts*15) (base) eighth dimensions.
+  <b>Dimension Boost:</b> This acts like dimension shift, but you don't unlock a new dimension. Instead, it will only provide a boost to dimensions. This happens after 4 dimension shifts. Each one requires 20+(boosts*15) (base) eighth dimensions.
   <br>
   Each dimension shift and boost will provide a x2 (base) multiplier to first dimension, and each dimension after will have half (base) multiplier as the previous (min 1).
       <br>
@@ -81,14 +83,14 @@
   <hr id='div3hr'>
   <button onclick='changestate(4)' id='div4btn' class="storebtn">Antimatter Galaxies</button>
   <div style="text-align: left" id='div4' class='hidden'>
-  Purchasing an Antimatter Galaxy will reset your game back to the point where only 4 Dimensions are available, but will increase the effect of your tick speed interval reduction by 2%.
+  Purchasing an Antimatter Galaxy will reset your game back to the point where only 4 Dimensions are available, but will increase the effect of your tickspeed interval reduction by 2%. This effect decreases as you get more galaxies.
   <br>
-  Though it will have very little impact for the first few purchases, the increase is multiplicative and won’t take long to be visible.
+  Though it will have very little impact for the first few purchases, the increase is multiplicative and won’t take long to be visible. Soon, you will notice that you get even more than what you had before.
   <br>
-  Your first galaxy will increase your tickspeed interval upgrade as if it were 10% originally, so you will have 12% after 1 galaxy.
+  Your first galaxy will increase your tickspeed interval upgrade as if it were 11% originally, so you will have 13% after 1 galaxy.
   <br>
   Galaxies require 80+(galaxies*60) (base) Eighth Dimensions. (80+galaxies*60+(galaxies-99)^2*2 when above 100 non-replicanti galaxies)
-  <br>
+  <br>After a certain point (100 galaxies), galaxies will become distant and will have stricter scaling. After 800 galaxies, galaxies become remote and will have exponential scaling.
     <b>Hotkey: G</b>
   </div>
   <hr id='div4hr'>
@@ -109,26 +111,28 @@
   Eighth Dimension Autobuyer Challenge: m^0.05/n^0.04*j, where m is the current number of first dimensions you have and j is your previous sacrifice multiplier.
   <br>
   After Infinity Challenge 2: n^m, where m is 0.01 at base and 0.011 with the "Yet another infinity reference" achievement.
+  <br>
+  Once you get TS228, m will be 0.013.
       <br>
     <b>Hotkey: S</b>
   </div>
   <hr id='div5hr'>
   <button onclick='changestate(6)' id='div6btn' class="storebtn">Infinity</button>
   <div style="text-align: left" id='div6' class='hidden'>
-  Once you have too much Antimatter for the world to handle (2^1024, or 1.7976931348623159e308) you’ll reach infinity and be able to perform a “Big Crunch”.
+  Once you have too much Antimatter for the world (or rather, the universe) to handle (2^1024, or 1.7976931348623159e308), you’ll reach infinity and be able to perform a “Big Crunch”.
   <br>
-  Each Infinity completed will give an Infinity Point. These can be spent on upgrades in the new infinity tab. You must purchase these upgrades from top to bottom.
+  Each Infinity completed will give an Infinity Point. These can be spent on upgrades in the new infinity tab. You must purchase these upgrades from top to bottom, and cannot skip any upgrades.
   <br>
-  The "x2 IP from all sources" upgrade can be bought multiple times, but each purchase requires 10 times as much IP. You must buy all 16 previous infinity upgrades to buy the first level.
+  The "x2 IP from all sources" upgrade can be bought multiple times, but each purchase requires 10 times as much IP. You must buy all 16 previous infinity upgrades to buy the IP multiplier upgrade.
   <br>
-  <b>When should I try to reach Infinity?</b> It's recommend to get 2 galaxies before attempting to reach it. On the way there, you should dimension boost as many times as you can.
+  <b>When should I try to reach Infinity?</b> It's recommended to get 2 galaxies before attempting to reach it. On the way there, you should dimension boost as many times as you can. You should also get as many achievements as possible (e.g. "There's no point in doing that...", "The 9th dimension is a lie", and "The Gods are pleased").
   </div>
   <hr id='div6hr'>
   <button onclick='changestate(7)' id='div7btn' class="storebtn">Achievements</button>
   <div style="text-align: left" id='div7' class='hidden'>
-  Each achievement has conditions that must be met before they are earned.  Some are very simple, and some are significantly trickier.  You may have to infinity or start a challenge before attempting some of the harder ones.
+  Each achievement has conditions that must be met before they are earned. Some are very simple, and some are significantly trickier.  You may have to infinity or start a challenge before attempting some of the harder ones.
   <br>
-  You will recieve a x1.5 multiplier to all dimensions for each completed row. In addition, some achievements have their own rewards.
+  You will recieve a x1.125 multiplier to all dimensions for each achievement. In addition, some achievements have their own rewards.
   </div>
   <hr id='div7hr'>
   <button onclick='changestate(8)' id='div8btn' class="storebtn">Challenges</button>
@@ -176,17 +180,16 @@
   <br>
   <b>Fixing Infinity:</b>You can revert the breaking at anytime by clicking fix infinity.
   <br>
-  <b>IP Gain Formula:</b>10^(log(current antimatter)/n-0.75)*bonuses, where n is 308 at default, 307.8 with the "This achievement doesn't exist II" achievement, or 290 with the relevant timestudy.
+  <b>IP Gain Formula:</b>10^(log(current antimatter)/n-0.75)*bonuses, where n is 308 at default, 307.8 with the achievement "This achievement doesn't exist II", or 290 with TS111.
   </div>
   <hr id='div10hr'>
   <button onclick='changestate(11)' id='div11btn' class="storebtn">Infinity Dimensions</button>
   <div style="text-align: left" id='div11' class='hidden'>
-  <b>Unlocking Infinity Dimensions:</b>Infinity Dimensions are unlocked by reaching a certain amount of antimatter.
+  <b>Unlocking Infinity Dimensions:</b>Infinity Dimensions are unlocked by reaching a certain amount of antimatter. Once you have enough, you can press the unlock button to unlock them.
   <br>
   <b>Infinity Dimension Cost:</b>Infinity dimensions are only purchasable in sets of 10, and cost Infinity points.
   <br>
-  <b>Infinity Dimension Production:</b>Similar to the original dimensions, each infinity dimension produces the dimension above it. Dimension 3 produce 2, 2 produces 1.  Instead of antimatter, Infinity Dimension produces Infinity power, which translates to an overall multiplier on all original dimensions.
-  <br>
+  <b>Infinity Dimension Production:</b>Like the original dimensions, each infinity dimension produces the dimension above it. Dimension 3 produces Dimension 2, 2 produces 1. However, instead of antimatter, Infinity Dimension produces Infinity power, which translates to an overall multiplier on all normal dimensions, making them significantly more powerful.
   Infinity Power gives a boost to all dimensions equal to (power^7).
   </div>
   <hr id='div11hr'>
@@ -207,17 +210,17 @@
   <br>
   When at low values (100-1000) (when none of the conditions above are true), there may be some minor variances in the expected amount of replicanti gain.
   <br><b>Formulas:
-  <br>Infinity Dimension power increase:</b> log2(replicanti)^2, plus replicanti^0.032 if you have the relevant time study, times 5^galaxies if you have that time study.
-  <br><b>Chance upgrade cost:</b>x(1e15) per upgrade
-  <br><b>Speed upgrade cost:</b>x(1e10) per upgrade
+  <br>Infinity Dimension power increase:</b> log2(replicanti)^2, plus replicanti^0.032 if you have TS21, times 5^galaxies if you have TS102, and is increased to the power of 1.09 if you have "We could afford 9".
+  <br><b>Chance upgrade cost:</b>x(1e15) per upgrade, caps out at 100%.
+  <br><b>Speed upgrade cost:</b>x(1e10) per upgrade, caps out at 50 ms, but can be reduced further to 1 ms with TS22, and can be decreased even further with TS62 (5x faster), TS213 (20x faster), and a dilation upgrade that decreased replicanti interval based on DT.
   <br><b>Galaxy upgrade cost:</b>1e(170+n*25+n^2*5)
   </div>
   <hr id='div13hr'>
   <button onclick='changestate(14)' id='div14btn' class="storebtn">Eternity</button>
   <div style="text-align: left" id='div14' class='hidden'>
-  Upon reaching infinity Infinity Points, you can eternity. Eternities will reset everything before this point except challenge times, achievements, and total antimatter. You also unlock a new tab.
+  Upon reaching infinity Infinity Points, you can eternity. Eternities will reset everything before this point except challenge times, achievements, and total antimatter. You also unlock the Eternity tab.
   <br>
-  You can pass infinity Infinity Points whenever. You will recieve more Eternity Points the nore Infinity Points you had before going Eternal.
+  You can pass infinity Infinity Points whenever you want. You will recieve more Eternity Points the more Infinity Points you had before going Eternal.
   <br>
   <b>EP gain formula:</b> floor(5^(floor(log10(IP))/308-0.7)*bonuses. The x10 EP time study gives the bonus before the outer floor.
   </div>
@@ -226,7 +229,7 @@
   <div style="text-align: left" id='div15' class='hidden'>
     To make eternities faster and more convenient, you will unlock various buffs as you get more eternities. These buffs are either making you start with something on eternity or unlock an autobuyer.
     <br>
-    For the buffs at the the start of an eternity, you will keep the relevant statistic on the run you unlock the milestone. (On 1 > 2, you will keep your autobuyers.)
+    For the buffs at the the start of an eternity, you will keep the relevant statistic on the run you unlock the milestone. (On 1 &gt; 2, you will keep your autobuyers.)
     <br>
     The last milestone is at 100 eternities and allows full automation.
     </div>
@@ -237,16 +240,16 @@
     <br>
     Similarly to the other dimensions, a Time Dimension 2 produces a Time Dimension 1 and so on.
     <br>
-    Each tick threshold takes 33% more time shards than the previous (25% with the relevant time study).
+    Each tick threshold takes 33% more time shards than the previous (25% with TS171).
     </div>
     <hr id='div16hr'>
   <button onclick='changestate(17)' id='div17btn' class="storebtn">Time Study</button>
   <div style="text-align: left" id='div17' class='hidden'>
-    A Time Study is a powerful post-eternity upgrade, which costs Time Theorems. Time Studies are laid out in a tree-like fashion, where you must buy preresiquites before continuing. There are sometimes choices to make with which Time Study to buy, as you cannot get all of them even if affordable.
+    A Time Study is a powerful post-eternity upgrade, which costs Time Theorems. Time Studies are laid out in a tree-like fashion, where you must buy preresiquites before continuing. There are sometimes choices to make with which Time Study to buy, as you cannot get all of them even if affordable. Eventually, it is possible to get almost all of the time studies.
     <br>
     Time Theorems are a limited resource which costs more for each one you buy. They can be bought with antimatter, infinity points, and eternity points.
     <br>
-    <b>Respecs:</b> A Respec allows you to reset the upgrades you have in the tree to retreive the Time Theorems spent on them. It can be done for free on eternity.
+    <b>Respecs:</b> A Respec allows you to reset the upgrades you have in the tree to retreive the Time Theorems spent on them. It can be done for free, but you will have to eternity when you want to respec.
     <br>
     <b>Costs:</b> (1e20000^times bought) for antimatter, (1e100^times bought) for IP, (2^times bought) for EP.
     </div>
@@ -261,7 +264,17 @@ Tachyon Particles generate another currency, Dilated Time. Dilated time is trans
 <br> 
 Dilation Upgrades are upgrades that are purchasable with Dilated Time. Some upgrades improve the amount of Dilated Time you gain or reset your free galaxies but decrease the threshold required to get to them. In addition, there is also a TT generator as one of the Dilation upgrades. The first row of dilation upgrades is purchasable as many times as possible, but the rest cannot. 
 </div> 
-<hr id='div18hr'> 
+<hr id='div18hr'>
+<button onclick='changestate(19)' id='div19btn' class="storebtn">Meta Dimensions</button> 
+<div style="text-align: left" id='div19' class="hidden"> 
+TBD 
+</div>
+<hr id='div19hr'>
+<button onclick='changestate(20)' id='div20btn' class="storebtn">Quantum</button> 
+<div style="text-align: left" id='div20' class="hidden"> 
+TBD 
+</div>
+<hr id='div20hr'> 
     <a href="https://www.reddit.com/r/AntimatterDimensions/comments/73jhqe/patashus_antimatter_dimensions_guide/?utm_content=title&utm_medium=hot&utm_source=reddit&utm_name=AntimatterDimensions">Strategy Guide</a>
   </body>
   <script src='javascripts/howto.js'></script>

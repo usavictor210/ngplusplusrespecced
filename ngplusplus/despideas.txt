@@ -1,8 +1,29 @@
 /*
 
+      OOOOOOOOOOOOO
+O      O         O       O
+OO      OOOOOOOOO      OO
+O O  OOO        OOO   O O
+O  OO               OO  O
+O O                   O O
+O O                   O O
+O  OO               OO  O
+O O  OOO         OOO  O O
+OO      OOOOOOOOO      OO
+O      O         O      O
+      OOOOOOOOOOOOO
+
 Quantum idea: quarks, gluons, investment
 
 When you quantum, you gain quarks.
 Quarks can be invested into different mechanics.
+
+Quantum idea: Exponential Challenges
+
+Exponential Challenges are like regular challenges, but each of them has different goals. Additionally, they can be completed multiple times, like Eternity Challenges.
+
+ExC1: You are locked to 4 dimensions in all categories except Meta.
+Goal: 1e160000 AM, 1e32000 IPw, 1e5000 TSh 
+Reward: You gain [completions] free 8th dimensions outside of dilation/challenges.
 
 */ 

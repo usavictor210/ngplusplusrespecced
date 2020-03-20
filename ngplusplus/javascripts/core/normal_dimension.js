@@ -1,5 +1,4 @@
 function getDimensionFinalMultiplier(tier) {
-  //if (player.currentEternityChall == "eterc3" && tier > 4) return new Decimal(0)
   var name = TIER_NAMES[tier];
 
   let multiplier = new Decimal(player[name + 'Pow']);
@@ -168,13 +167,13 @@ function hasInfinityMult(tier) {
 
     function getDimensionPowerMultiplier(tier) {
         let dimMult = 2;
-
-
+      
         if (player.currentChallenge == "challenge9" || player.currentChallenge == "postc1") dimMult = Math.pow(10/0.30,Math.random())*0.30
 
         if (player.infinityUpgrades.includes('dimMult')) dimMult *= 1.1;
         if (player.achievements.includes("r58")) dimMult *= 1.01;
-        dimMult += ECTimesCompleted("eterc3") * 0.8
+        dimMult += eterChallReward(3)
+        if (player.timestudy.studies.includes("242")) dimMult += Math.pow(player.replicanti.galaxies / 200, 0.25)
         return dimMult;
     }
 
@@ -217,7 +216,6 @@ function hasInfinityMult(tier) {
         postc8Mult = new Decimal(1)
         if (tier != 8) player.dimlife = false
         if (tier != 1) player.dead = false
-
 
     }
 

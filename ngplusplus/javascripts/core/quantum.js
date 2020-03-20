@@ -15,7 +15,7 @@ function quantum(force, auto) {
     }
     player.thisQuantum = 0
     player = {
-      ngPlus: player.ngPlus,
+      ngPlus: 1,
       money: new Decimal(10),
       tickSpeedCost: new Decimal(1000),
       tickspeed: new Decimal(1000),
@@ -455,10 +455,7 @@ function quantum(force, auto) {
       "</span> Infinity points.";
     if (player.eternities < 2)
       document.getElementById("break").textContent = "BREAK INFINITY";
-    document.getElementById("replicantireset").innerHTML =
-      "Reset replicanti amount for a free galaxy.<br>" +
-      player.replicanti.galaxies +
-      " replicated galaxies created.";
+      RGDisplayAmount()
     document.getElementById(
       "eternitybtn"
     ).style.display = player.infinityPoints.gte(player.eternityChallGoal)
@@ -466,12 +463,7 @@ function quantum(force, auto) {
       : "none";
     document.getElementById("eternityPoints2").style.display = "inline-block";
     document.getElementById("eternitystorebtn").style.display = "inline-block";
-    document.getElementById("infiMult").innerHTML =
-      "Multiply infinity points from all sources by 2 <br>currently: " +
-      shorten(player.infMult) +
-      "x<br>Cost: " +
-      shortenCosts(player.infMultCost) +
-      " IP";
+    updateInfMult()
     updateEternityUpgrades();
     document.getElementById("totaltickgained").textContent =
       "You've gained " +
@@ -574,14 +566,10 @@ function updateQuantum() {
   document.getElementById("pastquantums").style.display = "none";
 }
   let plural2 = player.quantum.quarks != 1 ? "s" : "";
-  var x = new Decimal(0)
-  for (i=1; i<6; i++) {
-  x = x.add(player.quantum.investmentAmount[i])
-  }
-  let plural3 = x.notEquals(1) ? "s" : ""
+  let plural3 = getTotalInvestmentAmount().notEquals(1) ? "s" : ""
   document.getElementById("quarkAmount").textContent = `You have ${shortenDimensions(player.quantum.quarks)} quark` + plural2 + `.`
   document.getElementById("unstableShardAmount").textContent = player.dilation.unstable.shards
-  //document.getElementById("totalInvest").textContent = `You have invested a total of ${shortenDimensions(getTotalInvestmentAmount())} quark` + plural3 + `.`
+  document.getElementById("totalInvest").textContent = `You have invested a total of ${shortenDimensions(getTotalInvestmentAmount())} quark` + plural3 + `.`
   document.getElementById("dilationseverity").textContent = "Dilation's penalty on all dimensions is x^" + getDilPunish().toFixed(3) + "."
 }
 
@@ -638,27 +626,28 @@ player.quantum.quarks = player.quantum.quarks.sub(amount)
 
 function getTotalInvestmentAmount() { // gets a value from all values of the array and adds it into a decimal
   let ret = new Decimal(0)
-  for (let feature of Object.values(player.quantum.investmentAmount)) { // currently breaks because null
-  Decimal.add(ret, feature) //add to decimal
+  for (i=1; i<6; i++) { // let feature of Object.values(player.quantum.investmentAmount)  
+  ret = Decimal.add(ret, player.quantum.investmentAmount[i]) //add to decimal
+  }
   return ret
-  }
 }
+
 function getInvestMultiplier(x) { // you have to decide a formula for each feature.
-if (x == 1) { // time studies; this will probably multiply the softcaps.
-  return new Decimal(player.quantum.investmentAmount[1]).pow(2.5)
-  }
-if (x == 2) { // time dimensions
-  return new Decimal(player.quantum.investmentAmount[2]).pow(100)
-  }
-if (x == 3) { // replicantis
-  return new Decimal(player.quantum.investmentAmount[3]).pow(1.0025)
-  }
-if (x == 4) { // meta dimensions
-  return new Decimal(player.quantum.investmentAmount[4]).times(4)
-  }
-if (x == 5) { // time dilation
-  return new Decimal(player.quantum.investmentAmount[5]).times(1.25)
-  }
+    switch (x) {
+        case 1: // time studies; this will probably multiply the softcaps.
+            return new Decimal(player.quantum.investmentAmount[1]).pow(2.5).max(1)
+        case 2: // time dimensions
+            return new Decimal(player.quantum.investmentAmount[2]).pow(3).max(1)
+        case 3: // replicantis
+            let y = new Decimal(player.quantum.investmentAmount[3]).pow(0.75).max(1)
+            return y.gt(25) ? y.pow(0.675).max(25) : y
+        case 4: // meta dimensions
+            return new Decimal(player.quantum.investmentAmount[4]).times(2).max(1)
+        case 5: // time dilation
+            return new Decimal(player.quantum.investmentAmount[5]).times(1.5).max(1)
+        default:
+            return new Decimal(1)
+    }
 }
 
 function showQuantumTab(tabName, init) {

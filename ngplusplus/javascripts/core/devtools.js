@@ -24,6 +24,10 @@ dev.spin3d = function() {
     else document.getElementById("body").style.animation = ""
 }
 
+dev.infTT = function() {
+  player.timestudy.theorem = 1e300
+}
+
 dev.cancerize = function() {
     player.options.theme = "S4";
     player.options.secretThemeKey = "Cancer";
@@ -71,6 +75,7 @@ dev.implode = function() {
     setTimeout(function(){ document.getElementById("body").style.animation = ""; }, 2000)
 }
 
+// time dimensions
 dev.updateCosts = function() {
     for (var i=1; i<9; i++) {
         var dim = player["timeDimension"+i]
@@ -86,6 +91,7 @@ dev.updateCosts = function() {
     }
 }
 
+// outdated as heck
 dev.testTDCosts = function() {
     for (var i=1; i<9; i++) {
         var timeDimStartCosts = [null, 1, 5, 100, 1000, "1e2350", "1e2650", "1e2900", "1e3300"]
