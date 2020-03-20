@@ -455,10 +455,7 @@ function quantum(force, auto) {
       "</span> Infinity points.";
     if (player.eternities < 2)
       document.getElementById("break").textContent = "BREAK INFINITY";
-    document.getElementById("replicantireset").innerHTML =
-      "Reset replicanti amount for a free galaxy.<br>" +
-      player.replicanti.galaxies +
-      " replicated galaxies created.";
+      RGDisplayAmount()
     document.getElementById(
       "eternitybtn"
     ).style.display = player.infinityPoints.gte(player.eternityChallGoal)
@@ -634,22 +631,23 @@ function getTotalInvestmentAmount() { // gets a value from all values of the arr
   }
   return ret
 }
+
 function getInvestMultiplier(x) { // you have to decide a formula for each feature.
-if (x == 1) { // time studies; this will probably multiply the softcaps.
-  return new Decimal(player.quantum.investmentAmount[1]).pow(2.5).max(1)
-  }
-if (x == 2) { // time dimensions
-  return new Decimal(player.quantum.investmentAmount[2]).pow(100).max(1)
-  }
-if (x == 3) { // replicantis
-  return new Decimal(player.quantum.investmentAmount[3]).pow(1.0025).max(1)
-  }
-if (x == 4) { // meta dimensions
-  return new Decimal(player.quantum.investmentAmount[4]).times(4).max(1)
-  }
-if (x == 5) { // time dilation
-  return new Decimal(player.quantum.investmentAmount[5]).times(1.25).max(1)
-  }
+    switch (x) {
+        case 1: // time studies; this will probably multiply the softcaps.
+            return new Decimal(player.quantum.investmentAmount[1]).pow(2.5).max(1)
+        case 2: // time dimensions
+            return new Decimal(player.quantum.investmentAmount[2]).pow(3).max(1)
+        case 3: // replicantis
+            let y = new Decimal(player.quantum.investmentAmount[3]).pow(0.75).max(1)
+            return y.gt(25) ? y.pow(0.675).max(25) : y
+        case 4: // meta dimensions
+            return new Decimal(player.quantum.investmentAmount[4]).times(2).max(1)
+        case 5: // time dilation
+            return new Decimal(player.quantum.investmentAmount[5]).times(1.5).max(1)
+        default:
+            return new Decimal(1)
+    }
 }
 
 function showQuantumTab(tabName, init) {

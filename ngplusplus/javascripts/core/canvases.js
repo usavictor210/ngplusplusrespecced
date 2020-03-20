@@ -5,7 +5,7 @@ var particles = {}
 var direction = 0;
 var velocityX = 0;
 var velocityY = 0;
-
+var eternalStudy = [241, 242, 251, 252, 261, 262, 271, 272, 281, 282, 283, 284, 285, 291, 292, 293]
 var canvas = document.getElementById("studyTreeCanvas");
 var ctx = canvas.getContext("2d");
 var canvas3 = document.getElementById("dilationCanvas");
@@ -95,7 +95,7 @@ function drawTreeBranch(num1, num2) {
         var name2 = parseInt(num2.split("y")[1]);
     } else if (num2.includes("diltime")) {
         var isDilTimeName = true;
-        var name2 = parseInt(num2.split("e")[2]) // i want to make this blue
+        var name2 = parseInt(num2.split("e")[1]) // i want to make this blue
     } else var name2 = parseInt(num2)
     var start = document.getElementById(num1).getBoundingClientRect();
     var end = document.getElementById(num2).getBoundingClientRect();
@@ -122,9 +122,9 @@ function drawTreeBranch(num1, num2) {
             ctx.strokeStyle="#5E33B6";
         } else if (name2 == 123 || name2 == 133 || name2 == 143 || name1 == 143) {
             ctx.strokeStyle="#0080ff";
-        } else {
-            ctx.strokeStyle="#000000";
-        }
+        } else if (eternalStudy.includes(name2)) {
+            ctx.strokeStyle="#00fff9";
+        } else ctx.strokeStyle="#000000";
     } else {
         if (name2 < 20) {
             ctx.strokeStyle="#4b3753";
@@ -140,12 +140,11 @@ function drawTreeBranch(num1, num2) {
             ctx.strokeStyle="#403753";
         } else if (name2 == 123 || name2 == 133 || name2 == 143 || name1 == 143) {
             ctx.strokeStyle="#374553";
-        } else {
-            ctx.strokeStyle="#444";
-        }
+        } else if (eternalStudy.includes(name2)) {
+            ctx.strokeStyle="#006967";
+        } else ctx.strokeStyle="#444";
     }
     if (num2 == "secretstudy") ctx.strokeStyle="#000000";
-    if (num2 == "diltime") ctx.strokeStyle="#00fff9"
     ctx.moveTo(x1, y1);
     ctx.lineTo(x2, y2);
     ctx.stroke();
@@ -240,24 +239,30 @@ function drawStudyTree() {
     drawTreeBranch("ec11unl", "dilstudy1")
     drawTreeBranch("ec12unl", "dilstudy1")
     drawTreeBranch("dilstudy1", "dilstudy2")
-    drawTreeBranch("dilstudy1", "diltime241")
-    drawTreeBranch("dilstudy1", "diltime242")
-    drawTreeBranch("diltime241", "diltime251")
-    drawTreeBranch("diltime242", "diltime252")
+    drawTreeBranch("dilstudy1", "241")
+    drawTreeBranch("dilstudy1", "242")
+    drawTreeBranch("241", "251")
+    drawTreeBranch("242", "252")
+    drawTreeBranch("251", "252")
     drawTreeBranch("dilstudy2", "dilstudy3")
     drawTreeBranch("dilstudy3", "dilstudy4")
-    drawTreeBranch("diltime251", "diltime261")
-    drawTreeBranch("diltime252", "diltime262")
+    drawTreeBranch("251", "261")
+    drawTreeBranch("252", "262")
+    drawTreeBranch("261", "262")
     drawTreeBranch("dilstudy4", "dilstudy5")
     drawTreeBranch("dilstudy5", "dilstudy6")
-    drawTreeBranch("diltime261", "diltime271")
-    drawTreeBranch("diltime262", "diltime272")
-    drawTreeBranch("diltime271", "diltime281")
-    drawTreeBranch("diltime272", "diltime283")
-    drawTreeBranch("diltime281", "diltime282")
-    drawTreeBranch("diltime283", "diltime282")
-    drawTreeBranch("diltime282", "diltime291")
-    
+    drawTreeBranch("261", "271")
+    drawTreeBranch("262", "272")
+    drawTreeBranch("271", "272")
+    drawTreeBranch("271", "281")
+    drawTreeBranch("271", "282")
+    drawTreeBranch("272", "284")
+    drawTreeBranch("272", "285")
+    drawTreeBranch("282", "283")
+    drawTreeBranch("283", "284")
+    drawTreeBranch("281", "291")
+    drawTreeBranch("285", "293")
+    drawTreeBranch("283", "292")
     if (shiftDown && document.getElementById("eternitystore").style.display !== "none" && document.getElementById("timestudies").style.display !== "none") {
         for (i=0; i<all.length; i++) {
             var start = document.getElementById(all[i]).getBoundingClientRect();
@@ -273,13 +278,13 @@ function drawStudyTree() {
                 //console.log(all[i]) we really don't need the console to say anything, do we?
                 if (all[i] == 222 || all[i] == 223 || all[i] == 226 || all[i] == 227 || all[i] == 232 || all[i] == 233) name = "dark"
                 else if (all[i] == 221 || all[i] == 224 || all[i] == 225 || all[i] == 228 || all[i] == 231 || all[i] == 234) name = "light"
+                else if (eternalStudy.includes(all[i])) name = "eternal study"
                 else if (tempName.includes("normaldimstudy")) name = "normal dims"
                 else if (tempName.includes("infdimstudy")) name = "infinity dims"
                 else if (tempName.includes("timedimstudy")) name = "time dims"
                 else if (tempName.includes("activestudy")) name = "active"
                 else if (tempName.includes("passivestudy")) name = "passive"
                 else if (tempName.includes("idlestudy")) name = "idle"
-                else if (tempName.includes("diltime")) name = "bent study"
                 ctx.strokeText(all[i]+" "+name, x1 - start.width / 2, y1 - start.height / 2 - 1);
                 ctx.fillText(all[i]+" "+name, x1 - start.width / 2, y1 - start.height / 2 - 1);
             } else {

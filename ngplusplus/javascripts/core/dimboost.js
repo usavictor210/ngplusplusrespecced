@@ -222,6 +222,7 @@ function getShiftRequirement(bulk) {
   let mult = 15
   if (player.timestudy.studies.includes(211)) mult -= 5
   if (player.timestudy.studies.includes(222)) mult -= 2
+  if (player.timestudy.studies.includes(232) && player.timestudy.studies.includes(261)) mult -= Math.floor(Math.pow(player.resets, 0.3)**0.12)
 
   if (tier == 8) amount += Math.ceil((player.resets+bulk - 4) * mult);
   if (player.currentEternityChall == "eterc5") {

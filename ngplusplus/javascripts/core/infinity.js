@@ -3,7 +3,9 @@ function getInfinitiedGain() {
   if (player.thisInfinityTime > 50 && player.achievements.includes("r87")) {
       infGain = 250;
   }
-  player.timestudy.studies.includes(32) ? infGain *= Math.max(player.resets, 1) : infGain = infGain
+  let TS32 = Math.max(player.resets, 1)
+  if (player.timestudy.studies.includes(271)) TS32 = TS32 * (1e3 * (player.meta.resets + 1))
+  player.timestudy.studies.includes(32) ? infGain *= TS32 : infGain
   player.achievements.includes("r133") ? infGain *= Math.max(1, Math.floor(player.dilation.dilatedTime.pow(0.25).toNumber())) : infGain = infGain
   player.achievements.includes("r156") ? infGain *= Math.max(1, Math.floor(Math.log10(player.eternities/250)**0.8)) : infGain = infGain
   return infGain
@@ -445,10 +447,7 @@ function infinity() {
       document.getElementById("matter").style.display = "block";
     else document.getElementById("matter").style.display = "none";
 
-    document.getElementById("replicantireset").innerHTML =
-      "Reset replicanti amount, but get a free galaxy<br>" +
-      player.replicanti.galaxies +
-      " replicated galaxies created.";
+    RGDisplayAmount()
 
     if (player.achievements.includes("r36"))
       player.tickspeed = player.tickspeed.times(0.98);
@@ -589,9 +588,22 @@ return antitables
 
 function updateInfMult() {
 document.getElementById("infiMult").innerHTML =
-    "You gain 2x more IP.<br>Currently: " +
+    "You gain " + getInfMult() + "x more IP.<br>Currently: " +
     shorten(player.infMult) +
     "x<br>Cost: " +
     shortenCosts(player.infMultCost) +
     " IP";
+}
+
+function getInfMult() {
+var infMult = 2
+if (player.timestudy.studies.includes(272)) infMult = 2.2
+return infMult
+}
+
+function resetInfMult() {
+player.infMult = new Decimal (1)
+if (player.achievements.includes("r85")) player.infMult = player.infMult.times(4)
+if (player.achievements.includes("r93")) player.infMult = player.infMult.times(4)
+player.infMultCost = new Decimal (10)
 }

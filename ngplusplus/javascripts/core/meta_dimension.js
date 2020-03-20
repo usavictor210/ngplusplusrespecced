@@ -22,7 +22,7 @@ function getMetaResetPower () {
   return ret;
 }
 
-function getMetaPerTenPower () {
+function getMetaPerTenPower() {
   return getDil14RealBonus();
 }
 

@@ -47,7 +47,7 @@ function ngplus() {
     player.achievements.push("r22");
     player.achievements.push("r35");
     player.achievements.push("r76");
-    if (!player.achievements.includes("r133") || !player.challenges.includes("challenge1")) {
+    if (!player.achievements.includes("r133") && !player.challenges.includes("challenge1")) {
       player.challenges = [
         "challenge1",
         "challenge2",

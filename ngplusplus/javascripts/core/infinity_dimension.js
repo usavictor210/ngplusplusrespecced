@@ -21,7 +21,7 @@ function DimensionDescription(tier) {
 
 
 function DimensionRateOfChange(tier) {
-  if (tier === 8) var toGain = getTimeDimensionProduction(1).pow(ECTimesCompleted("eterc7")*0.2).minus(1).max(0)
+  if (tier === 8) var toGain = eterChallReward(7)
   else var toGain = DimensionProduction(tier+1)
   var current = Decimal.max(player["infinityDimension"+tier].amount, 1);
   var change  = toGain.times(10).dividedBy(current);
@@ -109,12 +109,12 @@ function DimensionPower(tier) {
 
   if (player.timestudy.studies.includes(92)) mult = mult.times(Decimal.pow(2, 600/Math.max(player.bestEternity, 20)))
   if (player.timestudy.studies.includes(162)) mult = mult.times(1e11)
-  if (ECTimesCompleted("eterc2") !== 0 && tier == 1) mult = mult.times(player.infinityPower.pow(1.5/(700-ECTimesCompleted("eterc2")*100)).min(new Decimal("1e100")).plus(1))
+  if (ECTimesCompleted("eterc2") !== 0 && tier == 1) mult = mult.times(eterChallReward(2).plus(1))
   if (player.currentEternityChall == "eterc2") mult = mult.times(0)
 
-  if (ECTimesCompleted("eterc4") !== 0) mult = mult.times(player.infinityPoints.pow(0.003 + ECTimesCompleted("eterc4")*0.002).min(new Decimal("1e200")))
+  if (ECTimesCompleted("eterc4") !== 0) mult = mult.times(eterChallReward(4))
 
-  if (ECTimesCompleted("eterc9") !== 0) mult = mult.times(player.timeShards.pow(ECTimesCompleted("eterc9")*0.1).plus(1).min(new Decimal("1e400")))
+  if (ECTimesCompleted("eterc9") !== 0) mult = mult.times(eterChallReward(9))
 
   if (player.achievements.includes("r113")) mult = mult.times(timeMultUpg(4, 1).pow(10)) // long lasting relationship
 

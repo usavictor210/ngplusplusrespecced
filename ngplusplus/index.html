@@ -86,11 +86,11 @@
         <div class="quantumtab" id="investment" style="font-size: 15px">
           <input type="text" id="investAmount" name="investAmount"><br>Amount to invest:
           <br>
-          <td><button class="investmentbtn" id="timestudyinvestment" onclick="investQuarks(1, 1)" style="font-size: 16px">Invest your quarks in Time Studies</button></td>
-          <td><button class="investmentbtn" id="tdinvestment" onclick="investQuarks(2, 1)" style="font-size: 16px">Invest your quarks in Time Dimensions</button></td>
-          <td><button class="investmentbtn" id="replicantiinvestment" onclick="investQuarks(3, 1)" style="font-size: 16px">Invest your quarks in Replicantis</button></td>
-          <td><button class="investmentbtn" id="mdinvestment" onclick="investQuarks(4, 1)" style="font-size: 16px">Invest your quarks in Meta Dimensions</button></td>
-          <td><button class="investmentbtn" id="timedilationinvestment" onclick="investQuarks(5, 1)" style="font-size: 16px">Invest your quarks in Time Dilation</button></td>
+          <td><button class="investmentbtn" id="timestudyinvestment" onclick="investQuarks(1, 1)" style="font-size: 16px">Invest your quarks in Time Studies<span id="amount1">(0)</span></button></td>
+          <td><button class="investmentbtn" id="tdinvestment" onclick="investQuarks(2, 1)" style="font-size: 16px">Invest your quarks in Time Dimensions<span id="amount2">(0)</span></button></td>
+          <td><button class="investmentbtn" id="replicantiinvestment" onclick="investQuarks(3, 1)" style="font-size: 16px">Invest your quarks in Replicantis<span id="amount3">(0)</span></button></td>
+          <td><button class="investmentbtn" id="mdinvestment" onclick="investQuarks(4, 1)" style="font-size: 16px">Invest your quarks in Meta Dimensions<span id="amount4">(0)</span></button></td>
+          <td><button class="investmentbtn" id="timedilationinvestment" onclick="investQuarks(5, 1)" style="font-size: 16px">Invest your quarks in Time Dilation<span id="amount5">(0)</span></button></td>
           <div id="totalInvest">You have invested a total of x quarks.</div>
         </div>
         <div class="quantumtab" id="gluons" style="font-size: 15px">
@@ -123,7 +123,7 @@
                 <table class="table" id="studytable1">
                     <tr>
                         <td style="opacity: 0;"><button class="timestudylocked"></button></td>
-                        <td><button class="timestudylocked" id="11" onclick="buyTimeStudy(11, 1)">Tickspeed slightly boosts the 1st Time Dimension<span id="11desc">Currently: 1x</span>Cost: 1 Time Theorem</button></td>
+                        <td><button class="timestudylocked" id="11" onclick="buyTimeStudy(11, 1)" style="font-size: 0.65rem; width: 225px; height: 100px;">Tickspeed slightly boosts the 1st Time Dimension<span>Requirement: 1 First Time Dimension</span><span id="11desc">Currently: 1x</span>Cost: 1 Time Theorem</button></td>
                       <td><button class="timestudybought" id="secretstudy" style="opacity: 0; cursor: pointer; transition-duration: 2s;">Unlock a secret achievement<span>Cost: 0 Time Theorems</span></button></td>
                     </tr>
                 </table>
@@ -145,7 +145,7 @@
                 <table class="table" id="studytable4">
                     <tr>
                         <td><button class="timestudy" id="41" onclick="buyTimeStudy(41, 4)">You gain 1.2x more IP per galaxy.<span>Cost: 4 Time Theorems</span></button></td>
-                        <td><button class="timestudy" id="42" onclick="buyTimeStudy(42, 6)">Galaxy cost scaling is reduced by 8 (60 -&gt; 52).<span>Cost: 6 Time Theorems</span></button></td>
+                        <td><button class="timestudy" id="42" onclick="buyTimeStudy(42, 6)">Normal galaxy cost scaling is reduced by 8 (60 -&gt; 52).<span>Cost: 6 Time Theorems</span></button></td>
                     </tr>
                 </table>
                 <br>
@@ -258,7 +258,7 @@
                     <tr>
                       <td><button class="timestudy" id="191" onclick="buyTimeStudy(191, 400)">You bank 5% of your infinities on Eternity (permanently kept).<span>Cost: 400 Time Theorems</span></button></td>
                         <td><button class="timestudy" id="192" onclick="buyTimeStudy(192, 730)" style="font-size: 10px;"><span id="192desc">You can get beyond 1.8e308 replicantis, but the interval increases with your amount</span>Cost: 730 Time Theorems</button></td>
-                        <td><button class="timestudy" id="193" onclick="buyTimeStudy(193, 300)">Normal dimension boost based on eternities<span id="193desc">Currently: 1x</span>Cost: 300 Time Theorems</button></td>
+                        <td><button class="timestudy" id="193" onclick="buyTimeStudy(193, 300)">Normal dimensions are more powerful based on eternities<span id="193desc">Currently: 1x</span>Cost: 300 Time Theorems</button></td>
                     </tr>
                 </table>
                 <table class="table" id="studytable18">
@@ -278,11 +278,11 @@
                     <tr class="wideRow">
                         <td><button class="timestudy darkstudy" style="margin: 1px; width: 150px; font-size: 0.55rem; padding: 3px;" id="221" onclick="buyTimeStudy(221, 900)">Dimension boosts affect time dimensions with reduced power.<span id="221desc">Currently: x</span>Cost: 900 Time Theorems</button></td>
                       <td><button class="timestudy lightstudy" style="margin: 1px; width: 150px; font-size: 0.55rem; padding: 3px;" id="222" onclick="buyTimeStudy(222, 900)">Dimension boost cost scaling decreases by 2.<span>Cost: 900 Time Theorems</span></button></td>
-                        <td><button class="timestudy darkstudy" style="margin: 1px; width: 150px; font-size: 0.55rem; padding: 3px;" id="223" onclick="buyTimeStudy(223, 900)">Galaxy cost scaling starts 7 galaxies later.<span>Cost: 900 Time Theorems</span></button></td>
-                      <td><button class="timestudy lightstudy" style="margin: 1px; width: 150px; font-size: 0.55rem; padding: 3px;" id="224" onclick="buyTimeStudy(224, 900)">Galaxy cost scaling starts 1 galaxy later for every 2000 dimensional boosts.<span id="224desc">Currently: x galaxies later</span>Cost: 900 Time Theorems</button></td>
-                      <td><button class="timestudy darkstudy" style="margin: 1px; width: 150px; font-size: 0.55rem; padding: 3px;" id="225" onclick="buyTimeStudy(225, 900)">You gain extra RGs for every 1e1000x more replicanti.<span id="225desc">Currently: x RGs</span>Cost: 900 Time Theorems</button></td>
+                        <td><button class="timestudy darkstudy" style="margin: 1px; width: 150px; font-size: 0.55rem; padding: 3px;" id="223" onclick="buyTimeStudy(223, 900)">Distant galaxy cost scaling starts 7 galaxies later.<span>Cost: 900 Time Theorems</span></button></td>
+                      <td><button class="timestudy lightstudy" style="margin: 1px; width: 150px; font-size: 0.55rem; padding: 3px;" id="224" onclick="buyTimeStudy(224, 900)">Distant galaxy cost scaling starts 1 galaxy later for every 2000 dimensional boosts.<span id="224desc">Currently: x galaxies later</span>Cost: 900 Time Theorems</button></td>
+                      <td><button class="timestudy darkstudy" style="margin: 1px; width: 150px; font-size: 0.55rem; padding: 3px;" id="225" onclick="buyTimeStudy(225, 900)">You gain 1 extra RG for every 1e1000x more replicanti.<span id="225desc">Currently: x RGs</span>Cost: 900 Time Theorems</button></td>
                         <td><button class="timestudy lightstudy" style="margin: 1px; width: 150px; font-size: 0.55rem; padding: 3px;" id="226" onclick="buyTimeStudy(226, 900)">You gain 1 extra RG for every 15 normal RGs.<span id="226desc">Currently: x RGs</span>Cost: 900 Time Theorems</button></td>
-                      <td><button class="timestudy darkstudy" style="margin: 1px; width: 150px; font-size: 0.55rem; padding: 3px;" id="227" onclick="buyTimeStudy(227, 900)">Sacrifice affects the 4th Time Dimension with reduced effect.<span id="227desc">Currently: x</span>Cost: 900 Time Theorems</button></td>
+                      <td><button class="timestudy darkstudy" style="margin: 1px; width: 150px; font-size: 0.55rem; padding: 3px;" id="227" onclick="buyTimeStudy(227, 900)">Sacrifice slightly boosts the 4th Time Dimension.<span id="227desc">Currently: x</span>Cost: 900 Time Theorems</button></td>
                         <td><button class="timestudy lightstudy" style="margin: 1px; width: 150px; font-size: 0.55rem; padding: 3px;" id="228" onclick="buyTimeStudy(228, 900)">Sacrifice scales better (x^0.013).<span>Cost: 900 Time Theorems</span></button></td>
                     </tr>
                 </table>
@@ -291,7 +291,7 @@
                         <td><button class="timestudy darkstudy" id="231" onclick="buyTimeStudy(231, 500)" style="font-size: 0.55rem">Dimensional boosts are more effective based on their amount.<span id="231desc">Currently: x</span>Cost: 500 Time Theorems</button></td>
                         <td><button class="timestudy lightstudy" id="232" onclick="buyTimeStudy(232, 500)">Galaxies are more effective based on non-replicated galaxies.<span id="232desc">Currently: x</span>Cost: 500 Time Theorems</button></td>
                         <td><button class="timestudy darkstudy" id="233" onclick="buyTimeStudy(233, 500)">Max replicanti galaxy upgrade cost is reduced based on replicanti amount.<span>Cost: 500 Time Theorems</span></button></td>
-                        <td><button class="timestudy lightstudy" id="234" onclick="buyTimeStudy(234, 500)">Sacrifice boosts First Dimension.<span>Cost: 500 Time Theorems</span></button></td>
+                        <td><button class="timestudy lightstudy" id="234" onclick="buyTimeStudy(234, 500)">Sacrifice boosts the First Dimension.<span>Cost: 500 Time Theorems</span></button></td>
                     </tr>
                 </table>
                 <table class="table" id="studytable22">
@@ -302,49 +302,62 @@
                 </table>
                 <table class="table" id="studytable23">
                     <tr>
-                      <td><button class="timestudylocked" id="diltime241" onclick="">4th Time Dimension is boosted based on your Tachyon Particles.<span id="241desc">Currently: x</span>Cost: 1e12 Time Theorems</button></td>
+                      <td><button class="timestudy diltimestudy" id="241" onclick="buyTimeStudy(241, 1e12)">4th Time Dimension is boosted based on your Tachyon Particles.<span id="241desc">Currently: x</span>Cost: 1e12 Time Theorems</button></td>
                         <td><button class="timestudylocked" id="dilstudy1" onclick="buyDilationStudy(1, 5000)">Unlock time dilation<span>Requirement: 5 Eternity Challenge 11 and 12 completions</span>Cost: 5000 Time Theorems</button></td>
-                          <td><button class="timestudylocked" id="diltime242" onclick="">Per-10 multiplier is boosted based on RG amount.<span id="242desc">Currently: x</span>Cost: 1e18 Time Theorems</button></td>
+                          <td><button class="timestudy diltimestudy" id="242" onclick="buyTimeStudy(242, 1e18)">Per-10 multiplier is boosted based on RG amount.<span id="242desc">Currently: x</span>Cost: 1e18 Time Theorems</button></td>
                     </tr>
                 </table>
                 <table class="table" id="studytable24">
                     <tr>
-                      <td><button class="timestudylocked" id="diltime251" onclick="">TS193 is massively softcapped instead of being hardcapped.<span>Cost: 1e24 Time Theorems</span></button></td>
+                      <td><button class="timestudy diltimestudy" id="251" onclick="buyTimeStudy(251, 1e24)" style="font-size: 0.575rem">Distant cost scaling starts 1 galaxy later for every 40 RGs.<span id="251desc">Currently: x galaxies later</span>Cost: 1e24 Time Theorems</button></td>
                         <td><button class="timestudylocked" id="dilstudy2" onclick="buyDilationStudy(2, 1000000)">Unlock the 5th Time Dimension<span>Cost: 1,000,000 Time Theorems</span></button></td>
                         <td><button class="timestudylocked" id="dilstudy3" onclick="buyDilationStudy(3, 1e7)">Unlock the 6th Time Dimension<span>Cost: 10,000,000 Time Theorems</span></button></td>
-                      <td><button class="timestudylocked" id="diltime252" onclick="">EC2, EC4 and EC9's rewards are softcapped instead of hardcapped.<span>Cost: 1e30 Time Theorems</span></button></td>
+                      <td><button class="timestudy diltimestudy" id="252" onclick="buyTimeStudy(252, 1e30)" style="font-size: 0.575rem">Remote cost scaling starts 1 galaxy later for every 100 free galaxies.<span id="252desc">Currently: x galaxies later</span>Cost: 1e30 Time Theorems</button></td>
                     </tr>
                 </table>
                 <table class="table" id="studytable25">
                     <tr>
-                      <td><button class="timestudylocked" id="diltime261" onclick="">Massively decrease the replicanti interval limit from 1ms to 0.01ms.<span>Cost: 1e40 Time Theorems</span></button></td>
+                      <td><button class="timestudy diltimestudy" id="261" onclick="buyTimeStudy(261, 1e40)">TS231 also decreases the scaling of dimension boosts.<span id="261desc">Currently: 1x</span>Cost: 1e40 Time Theorems</button></td>
                         <td><button class="timestudylocked" id="dilstudy4" onclick="buyDilationStudy(4, 1e8)">Unlock the 7th Time Dimension<span>Cost: 100,000,000 Time Theorems</span></button></td>
                         <td><button class="timestudylocked" id="dilstudy5" onclick="buyDilationStudy(5, 1e9)">Unlock the 8th Time Dimension<span>Cost: 1,000,000,000 Time Theorems</span></button></td>
-                      <td><button class="timestudylocked" id="diltime262" onclick="">Raise the replicanti multiplier formula to x^0.1.<span>Cost: 1e50 Time Theorems</span></button></td>
+                      <td><button class="timestudy diltimestudy" id="262" onclick="buyTimeStudy(262, 1e50)">Sacrifice slightly boosts the 2nd Time Dimension.<span id="262desc">Currently: 1x</span>Cost: 1e50 Time Theorems</button></td>
                     </tr>
                 </table>
                 <table class="table" id="studytable26">
                     <tr>
-                      <td><button class="timestudylocked" id="diltime271" onclick="">TS32 is 1e6x more powerful.<span>Cost: 1e60 Time Theorems</span></button></td>
+                      <td><button class="timestudy diltimestudy" id="271" onclick="buyTimeStudy(271, 1e60)">TS32 is more powerful based on your Meta DimShifts/Boosts.<span id="271desc">Currently: 1e3x</span>Cost: 1e60 Time Theorems</button></td>
                         <td><button class="timestudylocked" id="dilstudy6" onclick="buyDilationStudy(6, 1e24)">Unlock Meta Dimensions<span>Cost: <span id="metaCost" style="display: inline;">1e24</span> Time Theorems</span></button></td>
-                      <td><button class="timestudylocked" id="diltime272" onclick="">You gain 2.2x IP per IP multiplier purchase.<span>Cost: 1e75 Time Theorems</span></button></td>
+                      <td><button class="timestudy diltimestudy" id="272" onclick="buyTimeStudy(272, 1e75)">You gain 2.2x IP per IP multiplier purchase.<span>Cost: 1e75 Time Theorems</span></button></td>
                     </tr>
                 </table>
                 <table class="table" id="studytable27">
                     <tr>
-                      <td><button class="timestudylocked" id="diltime281" onclick="">Light and dark studies are boosted.<span>Cost: 1e100 Time Theorems</span></button></td>
-                      <td><button class="timestudylocked" id="diltime282" onclick="">Unstable shards boost Meta Dimensions.<span>Cost: 1e110 Time Theorems</span></button></td>
-                      <td><button class="timestudylocked" id="diltime283" onclick="">Galaxies are more effective based on temporal power.<span>Cost: 1e120 Time Theorems</span></button></td>
+                      <td><button class="timestudy diltimestudy" id="281" onclick="buyTimeStudy(281, 1e80)">TS81 is stronger based on per-10 multiplier.<span>Cost: 1e80 Time Theorems</span></button></td>
+                      <td><button class="timestudy diltimestudy" id="282" onclick="buyTimeStudy(282, 1e85)">You gain 100% of your IP gained on crunch every second.<span>Cost: 1e85 Time Theorems</span></button></td>
+                      <td><button class="timestudy diltimestudy" id="283" onclick="buyTimeStudy(283, 1e90)">Unstable shards boost Meta Dimensions.<span id="283desc">Currently: 1x</span>Cost: 1e90 Time Theorems</button></td>
+                      <td><button class="timestudy diltimestudy" id="284" onclick="buyTimeStudy(284, 1e85)">Temporal power boosts TS233.<span id="284desc">Currently: 1x</span>Cost: 1e85 Time Theorems</button></td>
+                      <td><button class="timestudy diltimestudy" id="285" onclick="buyTimeStudy(285, 1e80)">You gain more dilated time based on your normal galaxies.<span id="285desc">Currently: 1x</span>Cost: 1e80 Time Theorems</button></td>
                     </tr>
                 </table>
                 <table class="table" id="studytable28">
                     <tr>
-                      <td><button class="timestudylocked" id="diltime291" onclick="">You can buy all light and dark time studies.<span>Cost: 1e130 Time Theorems</span></button></td>
+                      <td><button class="timestudy diltimestudy" id="291" onclick="buyTimeStudy(291, 1e130)">Make the EP formula better.<span>Cost: 1e100 Time Theorems</span></button></td>
+                      <td style="width:600px; text-align:center;"><button class="timestudy diltimestudy" id="292" onclick="buyTimeStudy(292, 1e130)">You can buy all light and dark time studies.<span>Cost: 1e100 Time Theorems</span></button></td>
+                      <td><button class="timestudy diltimestudy" id="293" onclick="buyTimeStudy(293, 1e130)">You gain more IP based on your meta-antimatter.<span>Cost: 1e115 Time Theorems</span></button></td>
                     </tr>
                 </table>
                 <table class="table" id="studytable29">
-                    <td><button class="timestudylocked" id="dilstudy7" onclick="buyDilationStudy(7, 1e100)">Unlock ???<span>Cost: <span id="unknownCost" style="display: inline;">1e300</span> Time Theorems</span></button></td>
+                    <td><button class="timestudylocked" id="dilstudy7" onclick="buyDilationStudy(7, 1e308)">Unlock something cool<span>Cost: 1e150 Time Theorems</span></button></td>
                 </table>
+                <table class="table" id="studytable30">
+                    <td><button class="timestudylocked" id="dilstudy8" onclick="buyDilationStudy(8, 1e308)">Unlock something way past cool (These are placeholders)<span>Cost: 1e200 Time Theorems</span></button></td>
+                </table>
+                <table class="table" id="studytable31">
+                    <td><button class="timestudylocked" id="dilstudy9" onclick="buyDilationStudy(9, 1e308)">Unlock ???<span>Cost: <span id="unknownCost" style="display: inline;">1e300</span> Time Theorems</span></button></td>
+                </table>
+             <!--   <table class="table" id="studytable32">
+                    <td><button class="timestudylocked" id="dilstudy10" onclick="">Learn multiversal studying - Into the infinite, vast abyss of space.<span>Cost: 1e999 TT</span></button></td>
+                </table> NOTE: THIS IS TOO POWERFUL FOR OUR MINDS TO COMPREHEND... It has been sealed until we know what exactly it is. !-->
                 <div style="height: 120px;"></div>
             </div>
             <div  class="eternitytab" id="eternityupgrades">
@@ -396,16 +409,17 @@
                     </tr>
                 </table>
                 <div><button class="storebtn" onclick="buyMaxEPMult()" style="height: 25px; width: 190px; font-size:10px; margin-top: -3px;">Max EP mult</button></div>
-                <div><button class="storebtn" id="epautotoggle" onclick="ep5xAutoToggle()" style="fheight: 25px; width: 190px; font-size:10px; margin-top: -3px;">Auto max 5x EP OFF</button></div>
+                <div><button class="storebtn" id="epautotoggle" onclick="ep5xAutoToggle()" style="height: 25px; width: 190px; font-size:10px; margin-top: -3px;">Auto max 5x EP: OFF</button></div>
             </div>
             <div class="eternitytab" id="milestones">
                 <table class="table" align="center" style="margin: auto" id="etermilestones">
+                    <button class="storebtn" id="reward26enable" style="width: 225px; height: 40px;">Enable reward 26: OFF</button>
                     <tr>
                         <td class="milestoneText">1 Eternity:</td>
                         <td class="milestoneText">2 Eternities:</td>
                     </tr>
                     <tr>
-                        <td><button class="milestonerewardlocked" id="reward0">Unlock IP multiplier autobuyer</button></td>
+                        <td><button class="milestonerewardlocked" id="reward0">Unlock the IP multiplier autobuyer</button></td>
                         <td><button class="milestonerewardlocked" id="reward1">You keep your autobuyers on Eternity</button></td>
                     </tr>
                     <tr>
@@ -413,7 +427,7 @@
                         <td class="milestoneText">4 Eternities:</td>
                     </tr>
                     <tr>
-                        <td><button class="milestonerewardlocked" id="reward2">Unlock replicanti galaxy autobuyer</button></td>
+                        <td><button class="milestonerewardlocked" id="reward2">Unlock the replicanti galaxy autobuyer</button></td>
                         <td><button class="milestonerewardlocked" id="reward3">You keep your infinity upgrades on Eternity</button></td>
                     </tr>
                     <tr>
@@ -469,7 +483,7 @@
                         <td class="milestoneText">25 Eternities:</td>
                     </tr>
                     <tr>
-                        <td><button class="milestonerewardlocked" id="reward16">You keep your Breaking infinity upgrades on Eternity</button></td>
+                        <td><button class="milestonerewardlocked" id="reward16">You keep your Break Infinity upgrades on Eternity</button></td>
                         <td><button class="milestonerewardlocked" id="reward17">You automatically unlock Infinity Dimensions upon reaching them</button></td>
                     </tr>
                     <tr>
@@ -477,8 +491,8 @@
                         <td class="milestoneText">40 Eternities:</td>
                     </tr>
                     <tr>
-                        <td><button class="milestonerewardlocked" id="reward18">Start with all normal dimensions available for purchase</button></td>
-                        <td><button class="milestonerewardlocked" id="reward19">Unlock autobuyer for replicanti chance upgrade</button></td>
+                        <td><button class="milestonerewardlocked" id="reward18">Start with all normal dimensions available on Eternity</button></td>
+                        <td><button class="milestonerewardlocked" id="reward19">Unlock the autobuyer for replicanti chance upgrade</button></td>
                     </tr>
                     <tr>
                         <td class="milestoneText">50 Eternities:</td>
@@ -486,15 +500,31 @@
                     </tr>
                     <tr>
                         <td><button class="milestonerewardlocked" id="reward20">You start with replicanti unlocked</button></td>
-                        <td><button class="milestonerewardlocked" id="reward21">Unlock autobuyer for replicanti interval upgrade</button></td>
+                        <td><button class="milestonerewardlocked" id="reward21">Unlock the autobuyer for replicanti interval upgrade</button></td>
                     </tr>
                     <tr>
                         <td class="milestoneText">80 Eternities:</td>
                         <td class="milestoneText">100 Eternities:</td>
                     </tr>
                     <tr>
-                        <td><button class="milestonerewardlocked" id="reward22">Unlock autobuyer for replicanti galaxy upgrade</button></td>
-                        <td><button class="milestonerewardlocked" id="reward23">Unlock autobuyer for Eternities</button></td>
+                        <td><button class="milestonerewardlocked" id="reward22">Unlock the autobuyer for replicanti galaxy upgrade</button></td>
+                        <td><button class="milestonerewardlocked" id="reward23">Unlock the autobuyer for Eternities</button></td>
+                    </tr>
+                    <tr>
+                        <td class="milestoneText">1e10 Eternities:</td>
+                        <td class="milestoneText">1e11 Eternities:</td>
+                    </tr>
+                    <tr>
+                        <td><button class="milestonerewardlocked" id="reward24">Your Infinity Dimensions and Replicanti autobuyers are faster based on your fastest eternity</button></td>
+                        <td><button class="milestonerewardlocked" id="reward25">Dimension boosts don't reset dimensions</button></td>
+                    </tr>
+                    <tr>
+                    <td class="milestoneText">1e12 Eternities:</td>
+                    <td class="milestoneText">1e13 Eternities:</td>
+                    </tr>
+                    <tr>
+                        <td><button class="milestonerewardlocked" id="reward26" style="font-size: 0.65rem;">You start eternities with 100% replicanti chance and 1 ms interval upgrades (can be disabled)</button></td>
+                        <td><button class="milestonerewardlocked" id="reward27">You keep all of your replicanti galaxies on infinity</button></td>
                     </tr>
                 </table>
             </div>
@@ -546,7 +576,7 @@
                             <button class="dilationupg" id="dil10" onclick="buyDilationUpgrade(10)">Pick all the study paths from the first split.<br>(TS201 is disabled)<br><span id="dil10cost"></span></button>
                         </td>
                         <td>
-                            <button class="dilationupg" id="dil11" onclick="buyDilationUpgrade(11)">Reduce the dilation penalty. (^ 1.05 after reduction)<br><span id="dil11cost"></span></button>
+                            <button class="dilationupg" id="dil11" onclick="buyDilationUpgrade(11)">Give a post-dilation exponent multiplier to all dimensions in dilation<br><span id="dil11desc">Currently: x^1.05, applied post-dilation.</span><br><span id="dil11cost"></span></button>
                         </td>
                         <td>
                             <button class="dilationupg" id="dil12" onclick="buyDilationUpgrade(12)">Eternities and dilated time power up each other (each multiplies production of the other by x^0.1).<br><span id="dil12cost"></span></button>
@@ -2213,7 +2243,7 @@
                         </td>
                         <td>
                             <div class="eterchallengediv" id="eterc8div" style="height: 140px; display: none">
-                                <span>You can only upgrade Infinity Dimensions 50 times, and Replicanti upgrades 40 times.
+                                <span>You can only upgrade Infinity Dimensions 50 times, and Replicanti upgrades 40 times. The autobuyers of these features are disabled.
                                 </span>
                                 <br>
                                 <br>
@@ -2276,7 +2306,7 @@
                         </td>
                         <td>
                             <div class="eterchallengediv" id="eterc12div" style="height: 140px; display: none">
-                                <span>The game runs 1000x slower.</span>
+                                <span>The game runs 1,000x slower.</span>
                                 <br>
                                 <br>
                                 <div class="outer">
@@ -2377,11 +2407,11 @@
         <div id="autobuyers" class="inftab">
             <br>
             <table class="table" style="margin: 0 auto">
-                <button class="storebtn" id="toggleautobuyers" style="font-size: 100%; width: 150px; height: 40px; margin: 3px" onclick="toggleAutoBuyers()">Enable/disable autobuyers</button>
-                <button class="storebtn" id="togglebulk" style="font-size: 100%; width: 150px; height: 40px;margin: 3px" onclick="toggleBulk()">Disable bulk buy                     </button>
-                <button class="storebtn" id="togglecrunchmode" style="font-size: 100%; width: 150px; height: 40px;margin: 3px; display: none" onclick="toggleCrunchMode()">Auto crunch mode: amount</button>
-                <button class="storebtn" id="toggleautoetermode" style="font-size: 100%; width: 150px; height: 40px;margin: 3px; display: none" onclick="toggleAutoEterMode()">Auto eternity mode: amount</button>
-                <button class="storebtn" id="maxallautobuyers" style="font-size: 100%; width: 150px; height: 40px;margin: 3px" onclick="for(var i = 0; i < 12; i++) while(buyAutobuyer(i));">Max all autobuyers</button>
+                <button class="storebtn" id="toggleautobuyers" style="font-size: 100%; width: 200px; height: 40px; margin: 3px" onclick="toggleAutoBuyers()">Enable/disable autobuyers</button>
+                <button class="storebtn" id="togglebulk" style="font-size: 100%; width: 200px; height: 40px; margin: 3px" onclick="toggleBulk()">Disable bulk buy                     </button>
+                <button class="storebtn" id="togglecrunchmode" style="font-size: 100%; width: 200px; height: 40px; margin: 3px; display: none" onclick="toggleCrunchMode()">Auto crunch mode: amount</button>
+                <button class="storebtn" id="toggleautoetermode" style="font-size: 100%; width: 200px; height: 40px; margin: 3px; display: none" onclick="toggleAutoEterMode()">Auto eternity mode: amount</button>
+                <button class="storebtn" id="maxallautobuyers" style="font-size: 100%; width: 200px; height: 40px; margin: 3px" onclick="for(var i = 0; i < 12; i++) while(buyAutobuyer(i));">Max all autobuyers</button>
                 <br>
                 <div class="autoBuyerDiv" id="autoBuyerEter">
                     <div>Automatic Eternity</div>
@@ -2749,7 +2779,7 @@
                 <br><br><br>
                 <p id="replicantiapprox"></p>
                 <br>
-                <button class="storebtn" id="replicantireset" onclick="replicantiGalaxy()" style="width: 200px; height: 100px; font-size: 12px">Reset replicanti amount for a free galaxy.</button>
+                <button class="storebtn" id="replicantireset" onclick="replicantiGalaxy()" style="width: 250px; height: 100px; font-size: 12px">Reset replicanti amount for a free galaxy.</button>
                 <br>
                 <button class="storebtn" id="replicantiresettoggle" onclick="replicantiGalaxyAutoToggle()" style="width: 200px; height: 50px; font-size: 12px; display: none">Auto galaxy OFF</button>
                 <button class="storebtn" id="replicantibulkmodetoggle" onclick="replicantiGalaxyBulkModeToggle()" style="width: 200px; height: 50px; font-size: 12px; display: none">Galaxy bulk mode: single</button>
@@ -2793,7 +2823,7 @@
         <button id="tachyonParticleAnimBtn" class="storebtn" onclick="animationOnOff('tachyonParticles')" style="width: 200px; height: 55px; font-size: 15px; display: inline">ON</button>
 	</div>
     <div id="TTbuttons" style="display:none;">
-        <button class="timetheorembtn" onclick="maxTheorems()" id="theoremmax" style="margin-left:-296px; width:130px; height: 30px; font-size: 0.75rem; bottom: 77px;">Buy max Theorems</button>
+        <button class="timetheorembtn" onclick="toggleAutoTT()" id="theoremmax" style="margin-left:-296px; width:150px; height: 30px; font-size: 0.65rem; bottom: 77px;">Buy max Theorems</button>
         <button class="timetheorembtn" onclick="studyTreeSaveButton(1)" id="layout1" style="margin-left:206px; width:30px; height: 30px; font-size: 0.75rem; bottom: 77px;">1</button>
         <button class="timetheorembtn" onclick="studyTreeSaveButton(2)" id="layout2" style="margin-left:241px; width:30px; height: 30px; font-size: 0.75rem; bottom: 77px;">2</button>
         <button class="timetheorembtn" onclick="studyTreeSaveButton(3)" id="layout3" style="margin-left:276px; width:30px; height: 30px; font-size: 0.75rem; bottom: 77px;">3</button>
