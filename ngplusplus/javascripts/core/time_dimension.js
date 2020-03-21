@@ -16,6 +16,7 @@ function getTimeDimensionPower(tier) {
   if (player.timestudy.studies.includes(151)) ret = ret.times(1e4)
   if (player.timestudy.studies.includes(221)) ret = ret.times(Decimal.pow(1.0025, player.resets))
   if (player.timestudy.studies.includes(227) && tier == 4) ret = ret.times(Math.max(Math.pow(calcTotalSacrificeBoost().log10(), 10), 1))
+  if (player.timestudy.studies.includes(241) && tier == 4) ret = ret.times(Decimal.pow(player.dilation.tachyonParticles, (10 + (player.dilation.tachyonParticles).log10())).max(1))
   if (player.timestudy.studies.includes(262) && tier == 2) ret = ret.times(Decimal.pow(calcTotalSacrificeBoost().log10(), 25 + calcTotalSacrificeBoost().log(1000) ** 0.75 / 10000)).max(1)
   if (player.currentEternityChall == "eterc9") ret = ret.times((Decimal.pow(Math.max(player.infinityPower.log2(), 1), 4)).max(1))
   if (ECTimesCompleted("eterc1") !== 0) if (!player.achievements.includes("r151")) {

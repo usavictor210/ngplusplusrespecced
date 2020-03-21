@@ -623,13 +623,18 @@ player.quantum.quarks = player.quantum.quarks.sub(amount)
   }
 }
 
-
 function getTotalInvestmentAmount() { // gets a value from all values of the array and adds it into a decimal
   let ret = new Decimal(0)
   for (i=1; i<6; i++) { // let feature of Object.values(player.quantum.investmentAmount)  
   ret = Decimal.add(ret, player.quantum.investmentAmount[i]) //add to decimal
   }
   return ret
+}
+
+function updateInvestmentDisplay() {
+ for (i=1; i<6; i++) {
+ document.getElementById("amount" + i).textContent = player.quantum.investmentAmount[i] 
+ }
 }
 
 function getInvestMultiplier(x) { // you have to decide a formula for each feature.

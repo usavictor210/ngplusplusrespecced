@@ -1127,7 +1127,7 @@ function getTimeStudiesDescription() {
     "%";
   document.getElementById("241desc").textContent =
     "Currently: " +
-    shortenMoney(Decimal.pow(player.dilation.tachyonParticles, 4).max(1)) +
+    shortenMoney(Decimal.pow(player.dilation.tachyonParticles, (10 + (player.dilation.tachyonParticles).log10())).max(1)) +
     "x";
   document.getElementById("242desc").textContent =
     "Currently: +" +
