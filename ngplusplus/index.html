@@ -6,7 +6,7 @@
     <title>Antimatter Dimensions</title>
     <link rel="icon" type="image/png" href="icon.png">
     <meta name="Antimatter Dimensions" content="A game about huge numbers and watching them go up. Mod: NG+2 Respecced" charset="utf-8"/>
-    <h1 id="hiddenheader" style="display: none">Antimatter Dimensions</h1>
+    <h1 id="hiddenheader" style="display: none">Antimatter Dimensions NG+2 Respecced</h1>
     <script type="text/javascript" src="javascripts/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="javascripts/notify.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheets/styles.css?3">
@@ -86,11 +86,11 @@
         <div class="quantumtab" id="investment" style="font-size: 15px">
           <input type="text" id="investAmount" name="investAmount"><br>Amount to invest:
           <br>
-          <td><button class="investmentbtn" id="timestudyinvestment" onclick="investQuarks(1, 1)" style="font-size: 16px">Invest your quarks in Time Studies<span id="amount1">(0)</span></button></td>
-          <td><button class="investmentbtn" id="tdinvestment" onclick="investQuarks(2, 1)" style="font-size: 16px">Invest your quarks in Time Dimensions<span id="amount2">(0)</span></button></td>
-          <td><button class="investmentbtn" id="replicantiinvestment" onclick="investQuarks(3, 1)" style="font-size: 16px">Invest your quarks in Replicantis<span id="amount3">(0)</span></button></td>
-          <td><button class="investmentbtn" id="mdinvestment" onclick="investQuarks(4, 1)" style="font-size: 16px">Invest your quarks in Meta Dimensions<span id="amount4">(0)</span></button></td>
-          <td><button class="investmentbtn" id="timedilationinvestment" onclick="investQuarks(5, 1)" style="font-size: 16px">Invest your quarks in Time Dilation<span id="amount5">(0)</span></button></td>
+          <td><button class="investmentbtn" id="timestudyinvestment" onclick="investQuarks(1, 1)" style="font-size: 16px">Invest your quarks in Time Studies<br><span id="amount1">(0)</span></button></td>
+          <td><button class="investmentbtn" id="tdinvestment" onclick="investQuarks(2, 1)" style="font-size: 16px">Invest your quarks in Time Dimensions<br><span id="amount2">(0)</span></button></td>
+          <td><button class="investmentbtn" id="replicantiinvestment" onclick="investQuarks(3, 1)" style="font-size: 16px">Invest your quarks in Replicantis<br><span id="amount3">(0)</span></button></td>
+          <td><button class="investmentbtn" id="mdinvestment" onclick="investQuarks(4, 1)" style="font-size: 16px">Invest your quarks in Meta Dimensions<br><span id="amount4">(0)</span></button></td>
+          <td><button class="investmentbtn" id="timedilationinvestment" onclick="investQuarks(5, 1)" style="font-size: 16px">Invest your quarks in Time Dilation<br><span id="amount5">(0)</span></button></td>
           <div id="totalInvest">You have invested a total of x quarks.</div>
         </div>
         <div class="quantumtab" id="gluons" style="font-size: 15px">
@@ -166,13 +166,13 @@
                 <br>
                 <table class="table" id="studytable7">
                     <tr>
-                        <td><button class="timestudy normaldimstudy" id="71" onclick="buyTimeStudy(71, 4)">Sacrifice affects all other normal dimensions with reduced effect<span id="71desc">Currently: 1x</span>Cost: 4 Time Theorems</button></td>
-                        <td><button class="timestudy infdimstudy" id="72" onclick="buyTimeStudy(72, 6)">Sacrifice affects 4th Infinity Dimension with greatly reduced effect<span id="72desc">Currently: 1x</span>Cost: 6 Time Theorems</button></td>
-                        <td><button class="timestudy timedimstudy" id="73" onclick="buyTimeStudy(73, 5)">Sacrifice affects 3rd Time Dimension with greatly reduced effect<span id="73desc">Currently: 1x</span>Cost: 5 Time Theorems</button></td>
+                        <td><button class="timestudy normaldimstudy" id="71" onclick="buyTimeStudy(71, 4)">Sacrifice gives a multiplier to all Normal Dimensions<span id="71desc">Currently: 1x</span>Cost: 4 Time Theorems</button></td>
+                        <td><button class="timestudy infdimstudy" id="72" onclick="buyTimeStudy(72, 6)">Sacrifice gives a small multiplier to the 4th Infinity Dimension<span id="72desc">Currently: 1x</span>Cost: 6 Time Theorems</button></td>
+                        <td><button class="timestudy timedimstudy" id="73" onclick="buyTimeStudy(73, 5)">Sacrifice gives a small multiplier to the 3rd Time Dimension<span id="73desc">Currently: 1x</span>Cost: 5 Time Theorems</button></td>
                     </tr>
                     <tr>
                         <td><button class="timestudy normaldimstudy" id="81" onclick="buyTimeStudy(81, 4)">Dimension boost power is increased to 10x<span>Cost: 4 Time Theorems</span></button></td>
-                        <td><button class="timestudy infdimstudy" id="82" onclick="buyTimeStudy(82, 6)">Dimension boosts affect Infinity Dimensions<span id="82desc">Currently: 1x</span>Cost: 6 Time Theorems</button></td>
+                        <td><button class="timestudy infdimstudy" id="82" onclick="buyTimeStudy(82, 6)">Dimension boosts give a multiplier to Infinity Dimensions<span id="82desc">Currently: 1x</span>Cost: 6 Time Theorems</button></td>
                         <td><button class="timestudy timedimstudy" id="83" onclick="buyTimeStudy(83, 5)">Dimension boosts are 0.04% more effective for each free tickspeed upgrade<span>Cost: 5 Time Theorems</span></button></td>
                     </tr>
                     <tr>
@@ -182,7 +182,7 @@
                     </tr>
                     <tr>
                         <td><button class="timestudy normaldimstudy" id="101" onclick="buyTimeStudy(101, 4)">Replicantis give a multiplier to Normal Dimensions equal to their amount.<span>Cost: 4 Time Theorems</span></button></td>
-                        <td><button class="timestudy infdimstudy" id="102" onclick="buyTimeStudy(102, 6)">Replicanti galaxies power replicanti multiplier<span>Cost: 6 Time Theorems</span></button></td>
+                        <td><button class="timestudy infdimstudy" id="102" onclick="buyTimeStudy(102, 6)">Replicanti galaxies power up replicanti multiplier (5^RG)<span>Cost: 6 Time Theorems</span></button></td>
                         <td><button class="timestudy timedimstudy" id="103" onclick="buyTimeStudy(103, 6)">Time Dimensions gain a multiplier equal to replicanti galaxy amount<span>Cost: 6 Time Theorems</span></button></td>
                     </tr>
                 </table>
@@ -190,7 +190,7 @@
                 <table class="table" id="studytable8">
                     <tr>
                         <td><button class="eternitychallengestudy" id="ec7unl">Eternity Challenge 7<span>Requirement: 1e550,000 antimatter</span>Cost: 115 Time Theorems</button></td>
-                        <td><button class="timestudy" id="111" onclick="buyTimeStudy(111, 12)">Make the IP formula better<span>Cost: 12 Time Theorems</span></button></td>
+                        <td><button class="timestudy" id="111" onclick="buyTimeStudy(111, 12)">Make the IP formula better. /308 -&gt; /290<span>Cost: 12 Time Theorems</span></button></td>
                         <td style="opacity: 0;"><button class="timestudylocked"></button></td>
                     </tr>
                 </table>
@@ -213,9 +213,9 @@
                 </table>
                 <table class="table" id="studytable11">
                     <tr>
-                        <td><button class="timestudy activestudy" id="141" onclick="buyTimeStudy(141, 4)">Multiplier to IP, decaying over this infinity<span id="141desc">Currently 1x</span>Cost: 4 Time Theorems</button></td>
+                        <td><button class="timestudy activestudy" id="141" onclick="buyTimeStudy(141, 4)">Gain a multiplier to IP, decaying over this infinity<span id="141desc">Currently 1x</span>Cost: 4 Time Theorems</button></td>
                         <td><button class="timestudy passivestudy" id="142" onclick="buyTimeStudy(142, 4)"><span id="142desc">You gain 1e25x more IP</span>Cost: 4 Time Theorems</button></td>
-                        <td><button class="timestudy idlestudy" id="143" onclick="buyTimeStudy(143, 4)">Multiplier to IP, increasing over this infinity<span id="143desc">Currently 1x</span>Cost: 4 Time Theorems</button></td>
+                        <td><button class="timestudy idlestudy" id="143" onclick="buyTimeStudy(143, 4)">Gain a multiplier to IP, increasing over this infinity<span id="143desc">Currently 1x</span>Cost: 4 Time Theorems</button></td>
                     </tr>
                 </table>
                 <br>
@@ -268,7 +268,7 @@
                 </table>
                 <table class="table" id="studytable19">
                     <tr>
-                      <td><button class="timestudy" id="211" onclick="buyTimeStudy(211, 120)">Dimensional boost requirement scaling is reduced by 5<span>Cost: 120 Time Theorems</span></button></td>
+                      <td><button class="timestudy" id="211" onclick="buyTimeStudy(211, 120)">Dimension boost requirement scaling is reduced by 5<span>Cost: 120 Time Theorems</span></button></td>
                         <td><button class="timestudy" id="212" onclick="buyTimeStudy(212, 150)">Galaxies are more effective based on your timeshards<span id="212desc">Currently: 1x</span>Cost: 150 Time Theorems</button></td>
                       <td><button class="timestudy" id="213" onclick="buyTimeStudy(213, 200)">You gain replicanti 20 times faster<span>Cost: 200 Time Theorems</span></button></td>
                         <td><button class="timestudy" id="214" onclick="buyTimeStudy(214, 120)">Sacrifice's multiplier on the 8th dimension increases<span id="214desc">Currently: 1x</span>Cost: 120 Time Theorems</button></td>
@@ -279,7 +279,7 @@
                         <td><button class="timestudy darkstudy" style="margin: 1px; width: 150px; font-size: 0.55rem; padding: 3px;" id="221" onclick="buyTimeStudy(221, 900)">Dimension boosts affect time dimensions with reduced power.<span id="221desc">Currently: x</span>Cost: 900 Time Theorems</button></td>
                       <td><button class="timestudy lightstudy" style="margin: 1px; width: 150px; font-size: 0.55rem; padding: 3px;" id="222" onclick="buyTimeStudy(222, 900)">Dimension boost cost scaling decreases by 2.<span>Cost: 900 Time Theorems</span></button></td>
                         <td><button class="timestudy darkstudy" style="margin: 1px; width: 150px; font-size: 0.55rem; padding: 3px;" id="223" onclick="buyTimeStudy(223, 900)">Distant galaxy cost scaling starts 7 galaxies later.<span>Cost: 900 Time Theorems</span></button></td>
-                      <td><button class="timestudy lightstudy" style="margin: 1px; width: 150px; font-size: 0.55rem; padding: 3px;" id="224" onclick="buyTimeStudy(224, 900)">Distant galaxy cost scaling starts 1 galaxy later for every 2000 dimensional boosts.<span id="224desc">Currently: x galaxies later</span>Cost: 900 Time Theorems</button></td>
+                      <td><button class="timestudy lightstudy" style="margin: 1px; width: 150px; font-size: 0.55rem; padding: 3px;" id="224" onclick="buyTimeStudy(224, 900)">Distant galaxy cost scaling starts 1 galaxy later for every 2000 dimension boosts.<span id="224desc">Currently: x galaxies later</span>Cost: 900 Time Theorems</button></td>
                       <td><button class="timestudy darkstudy" style="margin: 1px; width: 150px; font-size: 0.55rem; padding: 3px;" id="225" onclick="buyTimeStudy(225, 900)">You gain 1 extra RG for every 1e1000x more replicanti.<span id="225desc">Currently: x RGs</span>Cost: 900 Time Theorems</button></td>
                         <td><button class="timestudy lightstudy" style="margin: 1px; width: 150px; font-size: 0.55rem; padding: 3px;" id="226" onclick="buyTimeStudy(226, 900)">You gain 1 extra RG for every 15 normal RGs.<span id="226desc">Currently: x RGs</span>Cost: 900 Time Theorems</button></td>
                       <td><button class="timestudy darkstudy" style="margin: 1px; width: 150px; font-size: 0.55rem; padding: 3px;" id="227" onclick="buyTimeStudy(227, 900)">Sacrifice slightly boosts the 4th Time Dimension.<span id="227desc">Currently: x</span>Cost: 900 Time Theorems</button></td>
@@ -288,7 +288,7 @@
                 </table>
                 <table class="table" id="studytable21">
                     <tr>
-                        <td><button class="timestudy darkstudy" id="231" onclick="buyTimeStudy(231, 500)" style="font-size: 0.55rem">Dimensional boosts are more effective based on their amount.<span id="231desc">Currently: x</span>Cost: 500 Time Theorems</button></td>
+                        <td><button class="timestudy darkstudy" id="231" onclick="buyTimeStudy(231, 500)" style="font-size: 0.55rem">Dimension boosts are more effective based on their amount.<span id="231desc">Currently: x</span>Cost: 500 Time Theorems</button></td>
                         <td><button class="timestudy lightstudy" id="232" onclick="buyTimeStudy(232, 500)">Galaxies are more effective based on non-replicated galaxies.<span id="232desc">Currently: x</span>Cost: 500 Time Theorems</button></td>
                         <td><button class="timestudy darkstudy" id="233" onclick="buyTimeStudy(233, 500)">Max replicanti galaxy upgrade cost is reduced based on replicanti amount.<span>Cost: 500 Time Theorems</span></button></td>
                         <td><button class="timestudy lightstudy" id="234" onclick="buyTimeStudy(234, 500)">Sacrifice boosts the First Dimension.<span>Cost: 500 Time Theorems</span></button></td>
@@ -444,7 +444,7 @@
                     </tr>
                     <tr>
                         <td><button class="milestonerewardlocked" id="reward6">Unlock autobuy max galaxies</button></td>
-                        <td><button class="milestonerewardlocked" id="reward7">Unlock autobuy max Dimensional Boosts</button></td>
+                        <td><button class="milestonerewardlocked" id="reward7">Unlock autobuy max Dimension Boosts</button></td>
                     </tr>
                     <tr>
                         <td class="milestoneText">11 Eternities:</td>
@@ -1239,7 +1239,7 @@
             <div id="stats" class="statstab">
                 <br>
                 <div id="totalmoney">You have made x antimatter.</div>
-                <div id="totalresets">You have made x dimensional boosts/shifts.</div>
+                <div id="totalresets">You have made x dimension boosts/shifts.</div>
                 <div id="galaxies">You have made x Antimatter galaxies.</div>
                 <br>
                 <div id="quantumed">You have gone quantum x times.</div>
@@ -2383,7 +2383,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <button id="infi14" class="infinistorebtn1">Decrease the number of dimensions needed for Dimensional Boosts and galaxies by 9<br>Cost: 1 IP</button>
+                        <button id="infi14" class="infinistorebtn1">Decrease the number of dimensions needed for Dimension Boosts and galaxies by 9<br>Cost: 1 IP</button>
                     </td>
                     <td>
                         <button id="infi24" class="infinistorebtn2">Antimatter Galaxies are twice as effective<br>Cost: 2 IP</button>
