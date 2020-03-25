@@ -78,8 +78,8 @@ var player = {
   challenges: [],
   currentChallenge: "",
   infinityPoints: new Decimal(0),
-  infinitied: 0,
-  infinitiedBank: 0,
+  infinitied: new Decimal(0),
+  infinitiedBank: new Decimal(0),
   totalTimePlayed: 0,
   bestInfinityTime: 9999999999,
   thisInfinityTime: 0,
@@ -181,7 +181,7 @@ var player = {
   postC4Tier: 0,
   postC3Reward: new Decimal(1),
   eternityPoints: new Decimal(0),
-  eternities: 0,
+  eternities: new Decimal(0),
   thisEternity: 0,
   bestEternity: 9999999999,
   eternityUpgrades: [],
@@ -657,7 +657,7 @@ function updateCoinPerSec() {
 }
 
 function getInfinitied() {
-  return Math.max(player.infinitied + player.infinitiedBank, 0);
+  return Decimal.max(new Decimal(player.infinitied).add(player.infinitiedBank), 0);
 }
 
 function getGalaxyCostScalingStart() {
@@ -918,13 +918,13 @@ function updateDimensions() {
         shortenDimensions(player.infinityPoints) +
         "</span> Infinity points.";
     }
-    if (player.infinitied == 1)
+    if (new Decimal(player.infinitied).eq(1))
       document.getElementById("infinitied").textContent =
         "You have infinitied 1 time.";
     else
       document.getElementById("infinitied").textContent =
         "You have infinitied " + formatInfOrEter(player.infinitied) + " times.";
-    if (player.infinitiedBank > 0)
+    if (player.eternities.gt(0))
       document.getElementById("infinitied").textContent =
         "You have infinitied " +
         formatInfOrEter(player.infinitied) +
@@ -948,7 +948,7 @@ function updateDimensions() {
     document.getElementById("totalTime").textContent =
       "You have played for " + timeDisplay(player.totalTimePlayed) + ".";
 
-    if (player.eternities == 0) {
+    if (player.eternities.eq(0)) {
       document.getElementById("eternitied").textContent = "";
       document.getElementById("besteternity").textContent = "";
       document.getElementById("thiseternity").textContent = "";
@@ -1042,8 +1042,8 @@ function updateDimensions() {
         shortenCosts(1e6) +
         " IP";
       var postinfi12 = player.timestudy.studies.includes(31)
-        ? Math.pow(Math.log10(getInfinitied() + 1) * 10, 4)
-        : 1 + Math.log10(getInfinitied() + 1) * 10
+        ? Decimal.pow(new Decimal(getInfinitied().log(10)), 4).max(1)
+        : new Decimal(getInfinitied().log(10)).max(1)
       document.getElementById("postinfi12").innerHTML =
         "Dimensions are more powerful based on your infinitied stat<br>Currently: " +
         shortenMoney(postinfi12) +
@@ -1791,19 +1791,8 @@ function buyEPMult() {
       );
     }
     player.eternityPoints = player.eternityPoints.minus(player.epmultCost);
-    let count = player.epmult.ln() / Math.log(5);
-    if (player.epmultCost.gte(new Decimal("1e4000")))
-      player.epmultCost = Decimal.pow(
-        1000,
-        count + Math.pow(count - 1334, 1.2)
-      ).times(500);
-    else if (player.epmultCost.gte(new Decimal("1e1300")))
-      player.epmultCost = Decimal.pow(1000, count).times(500);
-    else if (player.epmultCost.gte(Number.MAX_VALUE))
-      player.epmultCost = Decimal.pow(500, count).times(500);
-    else if (player.epmultCost.gte(new Decimal("1e100")))
-      player.epmultCost = Decimal.pow(100, count).times(500);
-    else player.epmultCost = Decimal.pow(50, count).times(500);
+    let count = Math.round(player.epmult.ln() / Math.log(5));
+    player.epmultCost = calculateEPMultCost(count)
     document.getElementById("epmult").innerHTML =
       "You gain 5 times more EP<p>Currently: " +
       shortenDimensions(player.epmult) +
@@ -1815,9 +1804,25 @@ function buyEPMult() {
 }
 
 function buyMaxEPMult() {
-  while (player.eternityPoints.gte(player.epmultCost)) {
-    buyEPMult();
-  }
+  if (player.eternityPoints.lt(player.epmultCost)) return
+  var bought = Math.round(player.epmult.ln()/Math.log(5))
+}
+
+function calculateEPMultCost(x) {
+  let y = new Decimal (1);
+    if (y.gte(new Decimal("1e4000")))
+     y = Decimal.pow(
+        1000,
+        x + Math.pow(x - 1334, 1.2)
+      ).times(500);
+    else if (y.gte(new Decimal("1e1300")))
+      y = Decimal.pow(1000, x).times(500);
+    else if (y.gte(Number.MAX_VALUE))
+      y = Decimal.pow(500, x).times(500);
+    else if (y.gte(new Decimal("1e100")))
+      y = Decimal.pow(100, x).times(500);
+    else y = Decimal.pow(50, x).times(500);
+  return y
 }
 
 function playerInfinityUpgradesOnEternity() {
@@ -2308,7 +2313,7 @@ var milestoneRequirements = [
     1e12, //26
     1e13 //27
   ];
-if (player.eternities >= milestoneRequirements[x]) return true;
+if (player.eternities.gte(milestoneRequirements[x])) return true;
 else return false;
 }
 
@@ -4838,9 +4843,9 @@ setInterval(function() {
   metaDimensionAchievement();
 
   if (
-    player.infinitied == 0 &&
+    new Decimal(player.infinitied).eq(0) &&
     player.infinityPoints.lt(new Decimal(1e50)) &&
-    player.eternities <= 0
+    player.eternities.eq(0)
   )
     document.getElementById("infinityPoints2").style.display = "none";
   else
@@ -5412,13 +5417,13 @@ function gameLoop(diff) {
   )
     player.partInfinitied += diff / player.bestInfinityTime;
   if (player.partInfinitied >= 50) {
-    player.infinitied += Math.floor(player.partInfinitied / 5);
+    player.infinitied.add(Math.floor(player.partInfinitied / 5));
     player.partInfinitied = 0;
   }
 
   if (player.partInfinitied >= 5) {
     player.partInfinitied -= 5;
-    player.infinitied++;
+    player.infinitied = player.infinitied.add(1);
   }
 
   player.infinityPoints = player.infinityPoints.plus(
@@ -7163,7 +7168,7 @@ function maxBuyDimBoosts(manual) {
 
 var timer = 0;
 function autoBuyerTick() {
-  if (player.eternities >= 100 && player.eternityBuyer.isOn) {
+  if (milestoneCheck(23) && player.eternityBuyer.isOn) {
     if (player.autoEterMode === "amount") {
       if (player.eternityBuyer.limit.lte(gainedEternityPoints())) {
         eternity(false, true);

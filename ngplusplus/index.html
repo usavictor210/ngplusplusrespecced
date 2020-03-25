@@ -3,10 +3,10 @@
 <html>
 
 <head>
-    <title>Antimatter Dimensions</title>
+    <title>Antimatter Dimensions | NG+2 Respecced</title>
     <link rel="icon" type="image/png" href="icon.png">
     <meta name="Antimatter Dimensions" content="A game about huge numbers and watching them go up. Mod: NG+2 Respecced" charset="utf-8"/>
-    <h1 id="hiddenheader" style="display: none">Antimatter Dimensions NG+2 Respecced</h1>
+    <h1 id="hiddenheader" style="display: none">Antimatter Dimensions | NG+2 Respecced</h1>
     <script type="text/javascript" src="javascripts/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="javascripts/notify.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheets/styles.css?3">
@@ -45,7 +45,7 @@
         <div style="position: relative">
             <button id="postInfinityButton" class="postinfcrunch" onclick="infinity()">Big Crunch for 1 Infinity Points.</button>
             <button id="newDimensionButton" class="newdim" onclick="newDimension()">Get 1e1100 antimatter to unlock a new Dimension.</button>
-            <button id="eternitybtn" class="eternitybtn" onclick="eternity()">Other times await.. I need to become Eternal</button>
+            <button id="eternitybtn" class="eternitybtn" onclick="eternity()">Other times await.. I need to become Eternal.</button>
         </div>
         <div id="coinsPerSec">You are getting 0 antimatter per second.</div>
 
@@ -173,7 +173,7 @@
                     <tr>
                         <td><button class="timestudy normaldimstudy" id="81" onclick="buyTimeStudy(81, 4)">Dimension boost power is increased to 10x<span>Cost: 4 Time Theorems</span></button></td>
                         <td><button class="timestudy infdimstudy" id="82" onclick="buyTimeStudy(82, 6)">Dimension boosts give a multiplier to Infinity Dimensions<span id="82desc">Currently: 1x</span>Cost: 6 Time Theorems</button></td>
-                        <td><button class="timestudy timedimstudy" id="83" onclick="buyTimeStudy(83, 5)">Dimension boosts are 0.04% more effective for each free tickspeed upgrade<span>Cost: 5 Time Theorems</span></button></td>
+                        <td><button class="timestudy timedimstudy" id="83" onclick="buyTimeStudy(83, 5)" style="font-size: 0.625rem;">Dimension boosts are 0.04% more effective for each free tickspeed upgrade<span id="83desc">Currently: 0%</span>Cost: 5 Time Theorems</button></td>
                     </tr>
                     <tr>
                         <td><button class="timestudy normaldimstudy" id="91" onclick="buyTimeStudy(91, 4)">Normal dimensions gain a multiplier based on time spent this eternity<span id="91desc">Currently: 1x</span>Cost: 4 Time Theorems</button></td>
@@ -182,7 +182,7 @@
                     </tr>
                     <tr>
                         <td><button class="timestudy normaldimstudy" id="101" onclick="buyTimeStudy(101, 4)">Replicantis give a multiplier to Normal Dimensions equal to their amount.<span>Cost: 4 Time Theorems</span></button></td>
-                        <td><button class="timestudy infdimstudy" id="102" onclick="buyTimeStudy(102, 6)">Replicanti galaxies power up replicanti multiplier (5^RG)<span>Cost: 6 Time Theorems</span></button></td>
+                        <td><button class="timestudy infdimstudy" id="102" onclick="buyTimeStudy(102, 6)">Replicanti galaxies power up replicanti multiplier (5^RG)<span id="102desc">Currently: 1x</span>Cost: 6 Time Theorems</button></td>
                         <td><button class="timestudy timedimstudy" id="103" onclick="buyTimeStudy(103, 6)">Time Dimensions gain a multiplier equal to replicanti galaxy amount<span>Cost: 6 Time Theorems</span></button></td>
                     </tr>
                 </table>
@@ -190,7 +190,7 @@
                 <table class="table" id="studytable8">
                     <tr>
                         <td><button class="eternitychallengestudy" id="ec7unl">Eternity Challenge 7<span>Requirement: 1e550,000 antimatter</span>Cost: 115 Time Theorems</button></td>
-                        <td><button class="timestudy" id="111" onclick="buyTimeStudy(111, 12)">Make the IP formula better. /308 -&gt; /290<span>Cost: 12 Time Theorems</span></button></td>
+                        <td><button class="timestudy" id="111" onclick="buyTimeStudy(111, 12)" style="font-size: 0.625rem;">Make the IP formula better, reducing the amount of antimatter divided <span id="111desc">(/308 -&gt; /285)</span><span>Cost: 12 Time Theorems</span></button></td>
                         <td style="opacity: 0;"><button class="timestudylocked"></button></td>
                     </tr>
                 </table>
@@ -236,7 +236,7 @@
                 </table>
                 <table class="table" id="studytable14">
                     <tr>
-                      <td><button class="timestudy" id="171" onclick="buyTimeStudy(171, 15)">The timeshard requirement for the next tickspeed upgrade increases slower<span>Cost: 15 Time Theorems</span></button></td>
+                      <td><button class="timestudy" id="171" onclick="buyTimeStudy(171, 15)">The timeshard requirement for the next tickspeed upgrade increases slower (33% -&gt; 25%)<span>Cost: 15 Time Theorems</span></button></td>
                     </tr>
                 </table>
                 <table class="table" id="studytable15">
@@ -420,7 +420,7 @@
                     </tr>
                     <tr>
                         <td><button class="milestonerewardlocked" id="reward0">Unlock the IP multiplier autobuyer</button></td>
-                        <td><button class="milestonerewardlocked" id="reward1">You keep your autobuyers on Eternity</button></td>
+                        <td><button class="milestonerewardlocked" id="reward1">You keep your autobuyers and normal challenge completions on Eternity</button></td>
                     </tr>
                     <tr>
                         <td class="milestoneText">3 Eternities:</td>
@@ -428,7 +428,7 @@
                     </tr>
                     <tr>
                         <td><button class="milestonerewardlocked" id="reward2">Unlock the replicanti galaxy autobuyer</button></td>
-                        <td><button class="milestonerewardlocked" id="reward3">You keep your infinity upgrades on Eternity</button></td>
+                        <td><button class="milestonerewardlocked" id="reward3">You keep your Infinity upgrades on Eternity, except for your IP multiplier.</button></td>
                     </tr>
                     <tr>
                         <td class="milestoneText">5 Eternities:</td>
@@ -436,15 +436,15 @@
                     </tr>
                     <tr>
                         <td><button class="milestonerewardlocked" id="reward4" style="font-size: 12px">Unlock more big crunch autobuyer options.</button></td>
-                        <td><button class="milestonerewardlocked" id="reward5" style="font-size: 10px">You complete Infinity Challenges as soon as you unlock them (you get sacrifice autobuyer immediately)</button></td>
+                        <td><button class="milestonerewardlocked" id="reward5" style="font-size: 10px">You complete Infinity Challenges as soon as you unlock them (you get the sacrifice autobuyer immediately)</button></td>
                     </tr>
                     <tr>
                         <td class="milestoneText">9 Eternities:</td>
                         <td class="milestoneText">10 Eternities:</td>
                     </tr>
                     <tr>
-                        <td><button class="milestonerewardlocked" id="reward6">Unlock autobuy max galaxies</button></td>
-                        <td><button class="milestonerewardlocked" id="reward7">Unlock autobuy max Dimension Boosts</button></td>
+                        <td><button class="milestonerewardlocked" id="reward6">Unlock the ability to autobuy max galaxies</button></td>
+                        <td><button class="milestonerewardlocked" id="reward7">Unlock the ability to autobuy max Dimension Boosts</button></td>
                     </tr>
                     <tr>
                         <td class="milestoneText">11 Eternities:</td>
@@ -1452,10 +1452,10 @@
                             <div id="Limit Break" class="achievement achievementlocked" style="background-image: url(images/33.png)" ach-tooltip="Break Infinity."><br></div>
                         </td>
                         <td>
-                            <div id="Age of Automation" class="achievement achievementlocked" style="background-image: url(images/34.png)" ach-tooltip="Max any 9 autobuyers."><br></div>
+                            <div id="Age of Automation" class="achievement achievementlocked" style="background-image: url(images/34.png)" ach-tooltip="Max any of the 9 autobuyers' intervals."><br></div>
                         </td>
                         <td>
-                            <div id="Definitely not worth it" class="achievement achievementlocked" style="background-image: url(images/35.png)" ach-tooltip="Max all the autobuyers."><br></div>
+                            <div id="Definitely not worth it" class="achievement achievementlocked" style="background-image: url(images/35.png)" ach-tooltip="Max all of the autobuyers' intervals."><br></div>
                         </td>
                         <td>
                             <div id="That's faster!" class="achievement achievementlocked" style="background-image: url(images/36.png)" ach-tooltip="Big Crunch in 10 minutes or less. Reward: Start with 200,000 antimatter."><br></div>
@@ -1585,7 +1585,7 @@
                                 <div id="This mile took an Eternity" class="achievement achievementlocked" style="background-image: url(images/66.png)" ach-tooltip="Get the 100th eternity milestone."><br></div>
                             </td>
                             <td>
-                                <div id="This achievement doesn't exist II" class="achievement achievementlocked" style="background-image: url(images/67.png)" ach-tooltip="Reach 9.99999e999 IP. Reward: Gain more IP based on your antimatter amount."><br></div> <!-- Funny Story III: There is actually something within this achievement picture that ticked Aarex when he realized there was a middle finger emoji. It's slightly subtle. -->
+                                <div id="This achievement doesn't exist II" class="achievement achievementlocked" style="background-image: url(images/67.png)" ach-tooltip="Reach 9.99999e999 IP. Reward: You gain more IP based on your antimatter amount (the formula for IP divides by 307.8 instead of 308)."><br></div> <!-- Funny Story III: There is actually something within this achievement picture that ticked Aarex when he realized there was a middle finger emoji. It's slightly subtle. -->
                             </td>
                             <td>
                                 <div id="That wasn't an eternity" class="achievement achievementlocked" style="background-image: url(images/68.png)" ach-tooltip="Eternity in under 30 seconds. Reward: Start eternities with 2e25 IP."><br></div>

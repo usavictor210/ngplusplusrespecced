@@ -8,7 +8,8 @@ var saves = {
 function ngplus() {
   if (player.ngPlus === 0) {
     player.money = new Decimal(1e25);
-    if (player.infinitiedBank < 1e12) player.infinitiedBank = 1e12;
+      player.infinitiedBank = new Decimal(player.infinitiedBank)
+    if (player.infinitiedBank.lt(1e12)) player.infinitiedBank = new Decimal(1e12);
     if (!player.infinityUpgrades.includes("skipReset1"))
       player.infinityUpgrades = [
         "timeMult",
@@ -108,7 +109,7 @@ function onLoad() {
   if (player.infinityUpgrades === undefined) player.infinityUpgrades = [];
   if (player.infinityPoints === undefined)
     player.infinityPoints = new Decimal(0);
-  if (player.infinitied === undefined) player.infinitied = 0;
+  if (player.infinitied === undefined) player.infinitied = new Decimal(0);
   if (player.totalTimePlayed === undefined) player.totalTimePlayed = 0;
   if (player.bestInfinityTime === undefined)
     player.bestInfinityTime = 9999999999;
@@ -124,7 +125,8 @@ function onLoad() {
     document.getElementById("secondRow").style.display = "table-row";
   if (player.challenges === undefined) player.challenges = [];
   if (player.currentChallenge === undefined) player.currentChallenge = "";
-  if (player.infinitied > 0 && !player.challenges.includes("challenge1"))
+    player.infinitied = new Decimal(player.infinitied)
+  if (player.infinitied.gt(0) && !player.challenges.includes("challenge1"))
     player.challenges.push("challenge1");
   if (player.matter === undefined || player.matter === null || isNaN(player.matter)) player.matter = new Decimal(0);
   if (player.autobuyers === undefined)
@@ -243,7 +245,7 @@ function onLoad() {
   if (player.options.updateRate === undefined) player.options.updateRate = 50;
   if (player.eterc8ids === undefined) player.eterc8ids = 50;
   if (player.eterc8repl === undefined) player.eterc8repl = 40;
-  if (player.infinitiedBank === undefined) player.infinitiedBank = 0;
+  if (player.infinitiedBank === undefined) player.infinitiedBank = new Decimal(0);
   if (player.dimlife === undefined) player.dimlife = false;
   if (player.dead === undefined) player.dead = false;
   if (player.dilation === undefined) player.dilation = {};
@@ -475,7 +477,7 @@ function onLoad() {
     player.eternityPoints = new Decimal(0);
     player.tickThreshold = new Decimal(1);
     player.totalTickGained = 0;
-    player.eternities = 0;
+    player.eternities = new Decimal(0);
     player.timeDimension1 = {
       cost: new Decimal(1),
       amount: new Decimal(0),
@@ -561,22 +563,22 @@ function onLoad() {
   }
   if (player.autobuyers[8].tier == 10) player.autobuyers[8].tier = 9;
 
-  if (player.thirdAmount !== 0 || player.eternities >= 30)
+  if (player.thirdAmount !== 0 || milestoneCheck(18))
     document.getElementById("fourthRow").style.display = "table-row";
-  if (player.fourthAmount !== 0 || player.eternities >= 30)
+  if (player.fourthAmount !== 0 || milestoneCheck(18))
     if (player.resets > 0)
       document.getElementById("fifthRow").style.display = "table-row";
-  if (player.fifthAmount !== 0 || player.eternities >= 30)
+  if (player.fifthAmount !== 0 || milestoneCheck(18))
     if (player.resets > 1)
       document.getElementById("sixthRow").style.display = "table-row";
-  if (player.sixthAmount !== 0 || player.eternities >= 30)
+  if (player.sixthAmount !== 0 || milestoneCheck(18))
     if (
       player.resets > 2 &&
       player.currentChallenge !== "challenge4" &&
       player.currentChallenge !== "postc1"
     )
       document.getElementById("seventhRow").style.display = "table-row";
-  if (player.seventhAmount !== 0 || player.eternities >= 30)
+  if (player.seventhAmount !== 0 || milestoneCheck(18))
     if (player.resets > 3 && player.currentChallenge !== "challenge4")
       document.getElementById("eightRow").style.display = "table-row";
 
@@ -818,7 +820,7 @@ function onLoad() {
     "Tachyon particles: " +
     (player.options.animations.tachyonParticles ? "ON" : "OFF");
 
-  if (player.infinitied == 0 && player.eternities == 0)
+  if (player.infinitied.eq(0) && player.eternities.eq(0))
     document.getElementById("infinityPoints2").style.display = "none";
 
   if (
@@ -1307,8 +1309,9 @@ function change_save(saveId) {
 
 function transformSaveToDecimal() {
   player.infinityPoints = new Decimal(player.infinityPoints);
+  player.eternities = new Decimal(player.eternities)
   document.getElementById("eternitybtn").style.display =
-    player.infinityPoints.gte(Number.MAX_VALUE) || player.eternities > 0
+    player.infinityPoints.gte(Number.MAX_VALUE) || player.eternities.gt(0)
       ? "inline-block"
       : "none";
 
@@ -1380,7 +1383,7 @@ function transformSaveToDecimal() {
   player.infinityDimension8.amount = new Decimal(
     player.infinityDimension8.amount
   );
-
+  player.infinitied = new Decimal(player.infinitied)
   player.timeDimension1.amount = new Decimal(player.timeDimension1.amount);
   player.timeDimension2.amount = new Decimal(player.timeDimension2.amount);
   player.timeDimension3.amount = new Decimal(player.timeDimension3.amount);
@@ -1539,7 +1542,7 @@ function get_save(name) {
       return v === Infinity ? "Infinity" : v;
     });
   } catch (e) {
-    console.log("Error happened:", e);
+    console.log("An error happened while attempting to get the save (your save is probably wiped):", e);
   }
 }
 

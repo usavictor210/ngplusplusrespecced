@@ -454,7 +454,7 @@ function updateNewsArray() {
     ],
     [
       "The Holy trinity of Hevipelle, Antimatter, Infinity Points, and Eternity Points. These 3 resources let us access Hevi’s gift, Time Theorems. And with these Time Theorems, we reach out to Hevi, and call, “Hevi, bless us on this fine day!” And Hevi does. He give us the blessing of Time Studies. These Time Studies were blessings so powerful, Hevi restricted their power. He said, “I will give you a choice of three paths.” and then humanity chose. The short, cheap route of Normal Dimensions, giving instant gratification, the powerful choice of Infinity Dimensions, which were a fast, middle ground path, or Time Dimensions, the long wait, and struggle, of humanity. Then, as humanity chose, a crack broke the earth. A serpent snaked out and sneered to humanity, “I will offer the powerful choice of a ninth dimension! I am Slabdrill, lord of all Unhevi.” Humanity rose and said, “Begone Slabdrill! We want none of your foul Heresy!” And Hevi rose as well, and smote Slabdrill with his godlike power. As Slabdrill’s corpse fell into the earth, he cried, “This will not be the last of me! Hevi will betr-“ and he fell in the Abyss of matter. Hevi gifted humanity with Eternity upgrades, which boosted Infinity Dimensions and Time Dimensions, and Hevi gave humanity his greatest gift. EP multipliers. He said, “These will multiply all EP gained by 5, but their cost will increase 25 times. Use them wisely.” ...and Humanity journeyed off with their new power, as Slabdrill’s words echoed in their heads.",
-      "player.eternities > 0",
+      "player.eternities.gt(0)",
       "a137"
     ],
     ["We have updated our Antimatter Privacy Policy.", true, "a138"],
@@ -470,7 +470,7 @@ function updateNewsArray() {
     ],
     [
       "Nerf the galaxies please.",
-      "player.galaxies == 2 || player.infinitied > 0",
+      "player.galaxies == 2 || player.infinitied.gt(0)",
       "b2"
     ],
     [
@@ -490,7 +490,7 @@ function updateNewsArray() {
     ],
     [
       "Antimatter people seem to be even more afraid of 13 then we are. They destroyed entire galaxies just to remove 13 from their percents.",
-      "player.galaxies > 0 || player.infinitied > 0",
+      "player.galaxies > 0 || player.infinitied.gt(0)",
       "b8"
     ],
     [
@@ -559,7 +559,7 @@ function updateNewsArray() {
     //basic (post-inf pre-rep)
     [
       "I've got 1.79e308 problems, but none of them antimatters",
-      "player.infinitied > 0 && !player.break",
+      "player.infinitied.gt(0) && !player.break",
       "b15"
     ],
     ["Anti Emoji Movie a huge hit", "player.spreadingCancer >= 5", "b18"],
@@ -666,18 +666,18 @@ function updateNewsArray() {
     ],
     [
       "The achievement is for two million, not two billion...",
-      "player.infinitied > 2e9",
+      "player.infinitied.gt(2e9)",
       "c8"
     ],
     ["Keep up the quick pace!", "Marathon > 1200", "c9"],
     [
       "One day you will stop your incessant grind.",
-      "player.eternities > 50000",
+      "player.eternities.gt(50000)",
       "c10"
     ],
     [
       "You can probably stop farming for eternities now...",
-      "player.eternities > 2000000",
+      "player.eternities.gt(2000000)",
       "c11"
     ],
     ["Are you serious?", "worstChallengeTime <= 0.1", "c12"],
@@ -840,7 +840,7 @@ function updateNewsArray() {
     ["How it feels to chew 5 Gum", "player.dilation.active", "respecced27"],
     [
       "A man has fallen into the 9th dimension in Antimatter City! Start the new big crunch! Hey! Build the big crunch and off to the rescue. Prepare the crunch, wipe the 9th dimension and make the rescue. The new big crunch collection from Antimatter Dimensions",
-      "player.infinitied > 0",
+      "player.infinitied.gt(0)",
       "respecced28"
     ],
     ["5 hours left till the next UA:RP update", true, "respecced29"],
@@ -1215,7 +1215,8 @@ function updateNewsArray() {
       'player.newsArray.includes("respecced33")',
       "respcecced116"
     ],
-    ["The power of the eternal studies surpasses all others. They're mastery studies, but better.", 'player.timestudy.studies.includes(241) || player.timestudy.studies.includes(242)', "respecced117"]
+    ["The power of the eternal studies surpasses all others. They're mastery studies, but better.", 'player.timestudy.studies.includes(241) || player.timestudy.studies.includes(242)', "respecced117"],
+    ["The glitch is glitching now. That's not good. Everything is falling apart!", true, "respecced118"]
   ];
   }
 var s = document.getElementById("news");

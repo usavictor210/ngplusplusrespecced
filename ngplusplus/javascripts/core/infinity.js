@@ -1,25 +1,37 @@
 function getInfinitiedGain() {
-  let infGain = 1;
+  let infGain = new Decimal(1);
   if (player.thisInfinityTime > 50 && player.achievements.includes("r87")) {
-      infGain = 250;
+    infGain = new Decimal(250);
   }
-  let TS32 = Math.max(player.resets, 1)
-  if (player.timestudy.studies.includes(271)) TS32 = TS32 * (1e3 * (player.meta.resets + 1))
-  player.timestudy.studies.includes(32) ? infGain *= TS32 : infGain
-  player.achievements.includes("r133") ? infGain *= Math.max(1, Math.floor(player.dilation.dilatedTime.pow(0.25).toNumber())) : infGain = infGain
-  player.achievements.includes("r156") ? infGain *= Math.max(1, Math.floor(Math.log10(player.eternities/250)**0.8)) : infGain = infGain
-  return infGain
+  let TS32 = Math.max(player.resets, 1);
+  if (player.timestudy.studies.includes(271))
+    TS32 = TS32 * (1e3 * (player.meta.resets + 1));
+  player.timestudy.studies.includes(32) ? infGain.times(TS32) : infGain;
+  player.achievements.includes("r133")
+    ? infGain.times(
+        Math.max(
+          1,
+          Math.floor(player.dilation.dilatedTime.pow(0.25).toNumber())
+        )
+      )
+    : (infGain = infGain);
+  player.achievements.includes("r156")
+    ? infGain.times(
+        Decimal.max(1, Decimal.floor(Decimal.log(player.eternities / 250), 10).pow(0.8))
+      )
+    : (infGain = infGain);
+  return infGain;
 }
 
 function getAntimatterOnReset() {
-let tier = 0
-let antimatter = [10, 100, 1000, 2e5, 1e10, 1e25]
-  if (player.challenges.includes("challenge1")) tier = 1
-  if (player.achievements.includes("r37")) tier = 2
-  if (player.achievements.includes("r54")) tier = 3
-  if (player.achievements.includes("r55")) tier = 4
-  if (player.achievements.includes("r78")) tier = 5
-return new Decimal (antimatter[tier])
+  let tier = 0;
+  let antimatter = [10, 100, 1000, 2e5, 1e10, 1e25];
+  if (player.challenges.includes("challenge1")) tier = 1;
+  if (player.achievements.includes("r37")) tier = 2;
+  if (player.achievements.includes("r54")) tier = 3;
+  if (player.achievements.includes("r55")) tier = 4;
+  if (player.achievements.includes("r78")) tier = 5;
+  return new Decimal(antimatter[tier]);
 }
 
 function gainedInfinityPoints() {
@@ -70,7 +82,7 @@ function gainedInfinityPoints() {
 }
 
 function updateBigCrunchButton() {
- if (
+  if (
     player.break &&
     player.money.gte(Number.MAX_VALUE) &&
     player.currentChallenge == ""
@@ -104,7 +116,9 @@ function updateBigCrunchButton() {
       "<b>Gain " +
       shortenDimensions(gainedInfinityPoints()) +
       " Infinity Points.</b>" +
-      "<br>+" + shortenDimensions(getInfinitiedGain()) + " infinities"
+      "<br>+" +
+      shortenDimensions(getInfinitiedGain()) +
+      " infinities";
 }
 
 function infinity() {
@@ -237,7 +251,7 @@ function infinity() {
 
     if (player.currentEternityChall == "eterc4") {
       infGain = 1;
-      if (player.infinitied >= 16 - ECTimesCompleted("eterc4") * 4) {
+      if (player.infinitied.gte(16 - ECTimesCompleted("eterc4") * 4)) {
         document.getElementById("challfail").style.display = "block";
         setTimeout(exitChallenge, 500);
         giveAchievement("You're a mistake");
@@ -304,7 +318,7 @@ function infinity() {
       currentChallenge: player.currentChallenge,
       infinityUpgrades: player.infinityUpgrades,
       infinityPoints: player.infinityPoints,
-      infinitied: player.infinitied + getInfinitiedGain(),
+      infinitied: player.infinitied.add(getInfinitiedGain()),
       infinitiedBank: player.infinitiedBank,
       totalTimePlayed: player.totalTimePlayed,
       bestInfinityTime: Math.min(
@@ -447,7 +461,7 @@ function infinity() {
       document.getElementById("matter").style.display = "block";
     else document.getElementById("matter").style.display = "none";
 
-    RGDisplayAmount()
+    RGDisplayAmount();
 
     if (player.achievements.includes("r36"))
       player.tickspeed = player.tickspeed.times(0.98);
@@ -478,14 +492,15 @@ function infinity() {
     checkChallengeAchievements();
 
     giveAchievement("To infinity!");
-    if (player.infinitied >= 10) giveAchievement("That's a lot of infinites");
-    if (player.infinitied >= 1 && !player.challenges.includes("challenge1"))
+    if (player.infinitied.gt(10)) giveAchievement("That's a lot of infinites");
+    if (player.infinitied.gt(1) && !player.challenges.includes("challenge1"))
       player.challenges.push("challenge1");
 
     updateAutobuyers();
     player.money = getAntimatterOnReset();
     if (player.challenges.length >= 2) giveAchievement("Daredevil");
-    if (player.challenges.length == 12) giveAchievement("AntiChallenged");
+    if (player.challenges.length >= 12 && player.challenges.includes("postc1"))
+      giveAchievement("AntiChallenged");
     resetInfDimensions();
     player.tickspeed = player.tickspeed.times(
       Decimal.pow(getTickSpeedMultiplier(), player.totalTickGained)
@@ -495,7 +510,7 @@ function infinity() {
     IPminpeak = new Decimal(0);
 
     if (
-      player.eternities > 10 &&
+      player.eternities.gt(10) &&
       player.currentEternityChall !== "eterc8" &&
       player.currentEternityChall !== "eterc2" &&
       player.currentEternityChall !== "eterc10"
@@ -509,7 +524,7 @@ function infinity() {
     }
 
     if (
-      player.eternities >= 40 &&
+      milestoneCheck(19) &&
       player.replicanti.auto[0] &&
       player.currentEternityChall !== "eterc8"
     ) {
@@ -522,7 +537,7 @@ function infinity() {
     }
 
     if (
-      player.eternities >= 60 &&
+      milestoneCheck(21) &&
       player.replicanti.auto[1] &&
       player.currentEternityChall !== "eterc8"
     ) {
@@ -537,7 +552,7 @@ function infinity() {
     }
 
     if (
-      player.eternities >= 80 &&
+      milestoneCheck(22) &&
       player.replicanti.auto[2] &&
       player.currentEternityChall !== "eterc8"
     ) {
@@ -550,7 +565,7 @@ function infinity() {
   updateChallenges();
   updateChallengeTimes();
   updateLastTenRuns();
-  };
+}
 
 function getReplMult() {
   var replmult = Decimal.pow(
@@ -561,34 +576,37 @@ function getReplMult() {
     replmult = replmult.plus(Decimal.pow(player.replicanti.amount, 0.032));
   if (player.timestudy.studies.includes(102))
     replmult = replmult.times(Decimal.pow(5, player.replicanti.galaxies, 150));
-  if (player.achievements.includes("r108"))
-    replmult = replmult.pow(1.09)
-  if (player.quantum.investmentAmount[3].gt(0)) replmult = replmult.pow(getInvestMultiplier(3))
-  if (replmult.lt(1) || isNaN(replmult)) replmult = new Decimal (1)
-  return replmult
+  if (player.achievements.includes("r108")) replmult = replmult.pow(1.09);
+  if (player.quantum.investmentAmount[3].gt(0))
+    replmult = replmult.pow(getInvestMultiplier(3));
+  if (replmult.lt(1) || isNaN(replmult)) replmult = new Decimal(1);
+  return replmult;
 }
 
 function r72Check() {
-var r72 = 0
-  for (let i=1; i<9; i++) {
-    if (getDimensionFinalMultiplier(i).gte(1e308)) r72++
+  var r72 = 0;
+  for (let i = 1; i < 9; i++) {
+    if (getDimensionFinalMultiplier(i).gte(1e308)) r72++;
   }
   if (r72 == 8) giveAchievement("Can't hold all these infinities");
-return r72
+  return r72;
 }
 
 function antitablesCheck() {
-var antitables = 0
-  for (let i=0; i<8; i++) {
-   if (getDimensionFinalMultiplier(i+1).lt(getDimensionFinalMultiplier(i))) antitables++
+  var antitables = 0;
+  for (let i = 0; i < 8; i++) {
+    if (getDimensionFinalMultiplier(i + 1).lt(getDimensionFinalMultiplier(i)))
+      antitables++;
   }
   if (antitables == 8) giveAchievement("How the antitables have turned");
-return antitables
+  return antitables;
 }
 
 function updateInfMult() {
-document.getElementById("infiMult").innerHTML =
-    "You gain " + getInfMult() + "x more IP.<br>Currently: " +
+  document.getElementById("infiMult").innerHTML =
+    "You gain " +
+    getInfMult() +
+    "x more IP.<br>Currently: " +
     shorten(player.infMult) +
     "x<br>Cost: " +
     shortenCosts(player.infMultCost) +
@@ -596,14 +614,16 @@ document.getElementById("infiMult").innerHTML =
 }
 
 function getInfMult() {
-var infMult = 2
-if (player.timestudy.studies.includes(272)) infMult = 2.2
-return infMult
+  var infMult = 2;
+  if (player.timestudy.studies.includes(272)) infMult = 2.2;
+  return infMult;
 }
 
 function resetInfMult() {
-player.infMult = new Decimal (1)
-if (player.achievements.includes("r85")) player.infMult = player.infMult.times(4)
-if (player.achievements.includes("r93")) player.infMult = player.infMult.times(4)
-player.infMultCost = new Decimal (10)
+  player.infMult = new Decimal(1);
+  if (player.achievements.includes("r85"))
+    player.infMult = player.infMult.times(4);
+  if (player.achievements.includes("r93"))
+    player.infMult = player.infMult.times(4);
+  player.infMultCost = new Decimal(10);
 }

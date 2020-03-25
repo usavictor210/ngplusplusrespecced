@@ -129,7 +129,7 @@ function load() {
   for (var i=1; i<game.costs.length-5; i++) {
     var pbtn = document.createElement("button")
     var otherbtn = document.getElementById(i)
-    pbtn.innerHTML = "Reset to increase multiplier bonus to "+Math.max(game.costs.length-i-5, game.prestige[i-1])+"x boost."
+    pbtn.innerHTML = "Reset to increase the multiplier bonus for this producer to "+Math.max(game.costs.length-i-5, game.prestige[i-1])+"x boost."
     pbtn.id = i+"prestige"
     pbtn.className = "prestigebtn"
     pbtn.onclick = function() {prestige(parseInt(this.id));}
@@ -151,9 +151,9 @@ var cheat = false;
 
 setInterval(function() {
   game.depression = game.depression.plus(game.amounts[0].times(game.prestige[0]/33))
-  document.getElementById("1").innerHTML = "Amount: "+formatValue(game.amounts[0], 2)+"<br>Power: "+formatValue(game.prestige[0], 2)+"x<br>Cost:"+formatValue(game.costs[0], 2)
+  document.getElementById("1").innerHTML = "Amount: "+formatValue(game.amounts[0], 2)+"<br>Power: "+formatValue(game.prestige[0], 2)+"x<br>Cost: "+formatValue(game.costs[0], 2)
   for (var i=2; i <= game.costs.length; i++) {
-    document.getElementById(i).innerHTML = "Amount: "+formatValue(game.amounts[i-1], 2)+"<br>Power: "+formatValue(game.prestige[i-1], 2)+"x<br>Cost:"+formatValue(game.costs[i-1], 2)
+    document.getElementById(i).innerHTML = "Amount: "+formatValue(game.amounts[i-1], 2)+"<br>Power: "+formatValue(game.prestige[i-1], 2)+"x<br>Cost: "+formatValue(game.costs[i-1], 2)
     game.amounts[i-2] = game.amounts[i-2].plus(game.amounts[i-1].times(game.prestige[i-1]/33).times(Math.pow((Date.now() - game.start) / 1000 + 1, .25)))
   }
 

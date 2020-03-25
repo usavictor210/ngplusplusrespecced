@@ -57,7 +57,7 @@ function quantum(force, auto) {
       currentChallenge: "",
       infinityUpgrades: player.infinityUpgrades,
       infinityPoints: new Decimal(0),
-      infinitied: 0,
+      infinitied: new Decimal(0),
       infinitiedBank: player.infinitiedBank,
       totalTimePlayed: player.totalTimePlayed,
       bestInfinityTime: 9999999999,
