@@ -78,8 +78,8 @@ var player = {
   challenges: [],
   currentChallenge: "",
   infinityPoints: new Decimal(0),
-  infinitied: new Decimal(0),
-  infinitiedBank: new Decimal(0),
+  infinitied: 0,
+  infinitiedBank: 0,
   totalTimePlayed: 0,
   bestInfinityTime: 9999999999,
   thisInfinityTime: 0,
@@ -164,7 +164,7 @@ var player = {
   dimensionMultDecrease: 10,
   dimensionMultDecreaseCost: 1e8,
   overXGalaxies: 10,
-  version: 15.7,
+  version: 15.8,
   infDimensionsUnlocked: [
     false,
     false,
@@ -181,7 +181,7 @@ var player = {
   postC4Tier: 0,
   postC3Reward: new Decimal(1),
   eternityPoints: new Decimal(0),
-  eternities: new Decimal(0),
+  eternities: 0,
   thisEternity: 0,
   bestEternity: 9999999999,
   eternityUpgrades: [],
@@ -495,7 +495,8 @@ var player = {
       bigCrunch: true,
       eternity: true,
       tachyonParticles: true
-    }
+    },
+    ngPlusConfirm: 0
   }
 };
 
@@ -657,7 +658,7 @@ function updateCoinPerSec() {
 }
 
 function getInfinitied() {
-  return Decimal.max(new Decimal(player.infinitied).add(player.infinitiedBank), 0);
+  return Math.max(player.infinitied + player.infinitiedBank, 0);
 }
 
 function getGalaxyCostScalingStart() {
@@ -918,13 +919,13 @@ function updateDimensions() {
         shortenDimensions(player.infinityPoints) +
         "</span> Infinity points.";
     }
-    if (new Decimal(player.infinitied).eq(1))
+    if (player.infinitied == 1)
       document.getElementById("infinitied").textContent =
         "You have infinitied 1 time.";
     else
       document.getElementById("infinitied").textContent =
         "You have infinitied " + formatInfOrEter(player.infinitied) + " times.";
-    if (player.eternities.gt(0))
+    if (player.infinitiedBank > 0)
       document.getElementById("infinitied").textContent =
         "You have infinitied " +
         formatInfOrEter(player.infinitied) +
@@ -948,7 +949,7 @@ function updateDimensions() {
     document.getElementById("totalTime").textContent =
       "You have played for " + timeDisplay(player.totalTimePlayed) + ".";
 
-    if (player.eternities.eq(0)) {
+    if (player.eternities == 0) {
       document.getElementById("eternitied").textContent = "";
       document.getElementById("besteternity").textContent = "";
       document.getElementById("thiseternity").textContent = "";
@@ -1042,8 +1043,8 @@ function updateDimensions() {
         shortenCosts(1e6) +
         " IP";
       var postinfi12 = player.timestudy.studies.includes(31)
-        ? Decimal.pow(new Decimal(getInfinitied().log(10)), 4).max(1)
-        : new Decimal(getInfinitied().log(10)).max(1)
+        ? Math.pow(Math.log10(getInfinitied() + 1) * 10, 4)
+        : 1 + Math.log10(getInfinitied() + 1) * 10
       document.getElementById("postinfi12").innerHTML =
         "Dimensions are more powerful based on your infinitied stat<br>Currently: " +
         shortenMoney(postinfi12) +
@@ -1791,8 +1792,19 @@ function buyEPMult() {
       );
     }
     player.eternityPoints = player.eternityPoints.minus(player.epmultCost);
-    let count = Math.round(player.epmult.ln() / Math.log(5));
-    player.epmultCost = calculateEPMultCost(count)
+    let count = player.epmult.ln() / Math.log(5);
+    if (player.epmultCost.gte(new Decimal("1e4000")))
+      player.epmultCost = Decimal.pow(
+        1000,
+        count + Math.pow(count - 1334, 1.2)
+      ).times(500);
+    else if (player.epmultCost.gte(new Decimal("1e1300")))
+      player.epmultCost = Decimal.pow(1000, count).times(500);
+    else if (player.epmultCost.gte(Number.MAX_VALUE))
+      player.epmultCost = Decimal.pow(500, count).times(500);
+    else if (player.epmultCost.gte(new Decimal("1e100")))
+      player.epmultCost = Decimal.pow(100, count).times(500);
+    else player.epmultCost = Decimal.pow(50, count).times(500);
     document.getElementById("epmult").innerHTML =
       "You gain 5 times more EP<p>Currently: " +
       shortenDimensions(player.epmult) +
@@ -1804,25 +1816,9 @@ function buyEPMult() {
 }
 
 function buyMaxEPMult() {
-  if (player.eternityPoints.lt(player.epmultCost)) return
-  var bought = Math.round(player.epmult.ln()/Math.log(5))
-}
-
-function calculateEPMultCost(x) {
-  let y = new Decimal (1);
-    if (y.gte(new Decimal("1e4000")))
-     y = Decimal.pow(
-        1000,
-        x + Math.pow(x - 1334, 1.2)
-      ).times(500);
-    else if (y.gte(new Decimal("1e1300")))
-      y = Decimal.pow(1000, x).times(500);
-    else if (y.gte(Number.MAX_VALUE))
-      y = Decimal.pow(500, x).times(500);
-    else if (y.gte(new Decimal("1e100")))
-      y = Decimal.pow(100, x).times(500);
-    else y = Decimal.pow(50, x).times(500);
-  return y
+  while (player.eternityPoints.gte(player.epmultCost)) {
+    buyEPMult();
+  }
 }
 
 function playerInfinityUpgradesOnEternity() {
@@ -2313,7 +2309,7 @@ var milestoneRequirements = [
     1e12, //26
     1e13 //27
   ];
-if (player.eternities.gte(milestoneRequirements[x])) return true;
+if (player.eternities >= milestoneRequirements[x]) return true;
 else return false;
 }
 
@@ -2887,7 +2883,7 @@ let canGiveUniversalHarmony = function() {
   );
 };
 
-document.getElementById("exportbtn").onclick = function() {
+function exportSave() {
   let output = document.getElementById("exportOutput");
   let parent = output.parentElement;
 
@@ -2961,10 +2957,11 @@ function verify_save(obj) {
   return true;
 }
 
-document.getElementById("importbtn").onclick = function() {
+function importSave() {
   var save_data = prompt(
-    "Input your save. (your current save file will be overwritten!)"
+    "Input your save. Your current save file will be overwritten! DO NOT IMPORT TESTING VERSION SAVES."
   );
+  var backup = player;
   if (save_data.constructor !== String) save_data = "";
   if (
     sha512_256(save_data.replace(/\s/g, "").toUpperCase()) ===
@@ -3044,7 +3041,7 @@ document.getElementById("importbtn").onclick = function() {
     if (verify_save(save_data)) document.getElementById("reset").click();
     forceHardReset = false;
     if (!save_data || !verify_save(save_data)) {
-      alert("could not load the save..");
+      alert("Could not load the save...");
       load_custom_game();
       return;
     }
@@ -3060,10 +3057,17 @@ document.getElementById("importbtn").onclick = function() {
     mult18 = new Decimal(1);
     ec10bonus = new Decimal(1);
     player = save_data;
+    if (player.version > 15.8) {
+    alert("You cannot import this save into the game because it is from the testing version. If this repeatedly shows up when reloading, please contact usavictor#4761 on Discord.")
+    player = backup;
+    save_game();
+    location.reload();
+    } else {
     save_game();
     load_game();
     updateChallenges();
     transformSaveToDecimal();
+    }
   }
 };
 
@@ -3234,7 +3238,7 @@ function setAchieveTooltip() {
     "ach-tooltip",
     "Get at least " +
       formatValue(player.options.notation, 1e12, 0, 0) +
-      " of all dimensions except for the 8th dimension."
+      " of each dimension except for the 8th dimension."
   );
   IPBelongs.setAttribute(
     "ach-tooltip",
@@ -3328,9 +3332,7 @@ function setAchieveTooltip() {
     "ach-tooltip",
     "Reach " +
       shortenMoney(Number.MAX_VALUE) +
-      " EP. Reward: Time Dimensions gain a multiplier based on EP. Currently: " +
-      shortenMoney(r127Reward()) +
-      "x"
+      " EP. Reward: ???"
   );
   fkoff.setAttribute(
     "ach-tooltip",
@@ -4843,9 +4845,9 @@ setInterval(function() {
   metaDimensionAchievement();
 
   if (
-    new Decimal(player.infinitied).eq(0) &&
+    player.infinitied == 0 &&
     player.infinityPoints.lt(new Decimal(1e50)) &&
-    player.eternities.eq(0)
+    player.eternities <= 0
   )
     document.getElementById("infinityPoints2").style.display = "none";
   else
@@ -5231,7 +5233,7 @@ setInterval(function() {
     formatInfOrEter(player.infinitiedBank) +
     " banked infinities.";
 
-  if (player.dilation.tachyonParticles !== 0 || player.quantum.times !== 0)
+  if (player.dilation.tachyonParticles != 0 && player.quantum.times == 0) 
     document.getElementById("dilationconf").style.display = "inline-block";
   else document.getElementById("dilationconf").style.display = "none";
   if (player.quantum.times !== 0)
@@ -5417,13 +5419,13 @@ function gameLoop(diff) {
   )
     player.partInfinitied += diff / player.bestInfinityTime;
   if (player.partInfinitied >= 50) {
-    player.infinitied.add(Math.floor(player.partInfinitied / 5));
+    player.infinitied += Math.floor(player.partInfinitied / 5);
     player.partInfinitied = 0;
   }
 
   if (player.partInfinitied >= 5) {
     player.partInfinitied -= 5;
-    player.infinitied = player.infinitied.add(1);
+    player.infinitied++;
   }
 
   player.infinityPoints = player.infinityPoints.plus(
@@ -6451,9 +6453,9 @@ function gameLoop(diff) {
           .getElementById("progresspercent")
           .setAttribute(
             "ach-tooltip",
-            "Percentage to " +
+            "Percentage to gaining " +
               shortenDimensions(Decimal.pow(2, goal)) +
-              " EP gain"
+              " EP"
           );
       }
     }
@@ -7483,6 +7485,9 @@ function init() {
   };
   document.getElementById("quantumbtn").onclick = function() {
     showTab("quantum");
+  };
+  document.getElementById("metatabbtn").onclick = function() {
+    showTab("infoalpha");
   };
   document.getElementById("eternitystorebtn").onclick = function() {
     showTab("eternitystore");

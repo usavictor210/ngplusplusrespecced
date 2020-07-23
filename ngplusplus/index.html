@@ -3,10 +3,10 @@
 <html>
 
 <head>
-    <title>Antimatter Dimensions | NG+2 Respecced</title>
+    <title>Antimatter Dimensions</title>
     <link rel="icon" type="image/png" href="icon.png">
     <meta name="Antimatter Dimensions" content="A game about huge numbers and watching them go up. Mod: NG+2 Respecced" charset="utf-8"/>
-    <h1 id="hiddenheader" style="display: none">Antimatter Dimensions | NG+2 Respecced</h1>
+    <h1 id="hiddenheader" style="display: none">Antimatter Dimensions NG+2 Respecced</h1>
     <script type="text/javascript" src="javascripts/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="javascripts/notify.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheets/styles.css?3">
@@ -45,7 +45,7 @@
         <div style="position: relative">
             <button id="postInfinityButton" class="postinfcrunch" onclick="infinity()">Big Crunch for 1 Infinity Points.</button>
             <button id="newDimensionButton" class="newdim" onclick="newDimension()">Get 1e1100 antimatter to unlock a new Dimension.</button>
-            <button id="eternitybtn" class="eternitybtn" onclick="eternity()">Other times await.. I need to become Eternal.</button>
+            <button id="eternitybtn" class="eternitybtn" onclick="eternity()">Other times await.. I need to become Eternal</button>
         </div>
         <div id="coinsPerSec">You are getting 0 antimatter per second.</div>
 
@@ -67,11 +67,32 @@
             <button id="infinitybtn" style="font-family: Typewriter; font-size: 20px; display: none" class="infinitybtn">Infinity</button>
             <button id="eternitystorebtn" style="font-family: Typewriter; font-size: 20px; display: none" class="eternitytabbtn">Eternity</button>
             <button id="quantumbtn" style="font-family: Typewriter; font-size: 20px; display: none" class="quantumtabbtn">Quantum</button>
+            <button id="metatabbtn" style="font-family: Typewriter; font-size: 20px" class="tabbtn">IMPORTANT INFO </button>
         </div>
         <div id="emptiness" class="tab" style="font-size: 150%">
             <br> The world has collapsed on itself due to the overflowing amount of antimatter.
             <br>
             <br>
+        </div>
+        <div id="infoalpha" class="tab" style="font-size: 15px">
+          <p>
+          The next update will heavily change tons of game balancing, features and other stuff that may make transferring your current saves to the new version impossible without immense amounts of effort.
+          <br>
+          <br>
+          Because of this, I have decided to warn you about this now: EXPORT YOUR SAVES.
+          <br>
+          <br>
+          I am not quite sure how much the saves will break, but testing should reveal that none of that ever happens. Going on the test site should help with preparing for future content changes. However, I will change many variables and other things in the new update.
+          <br>
+          <br>
+          The new update is expected to come out soon under ALPHA 0.4. Alpha 0.4 will have content from early-mid Quantum balanced. For what exactly is to come, check usavictorideas.txt.
+          <br>
+          <br>
+          Also, from this point forward, the main site you should go to is <a href="https://usavictor210.github.io/ngplusplusrespecced/ngplusplus/">https://usavictor210.github.io/ngplusplusrespecced/ngplusplus/</a>. <br>Glitch made hosting this game really annoying as it constantly goes down now for some unexplained reasons, probably because of some massive memory usage.
+          <br>
+          <br>
+          Once all content in Quantum is done, there could be a new prestige layer coming up, but don't be too sure about it because I don't really intend to go way beyond e9e15. I don't think you need to know what it is yet.
+          </p>
         </div>
         <div id="quantum" class="tab" style="font-size: 15px">
           <div id="quarkAmount">You have x quarks.</div>
@@ -420,7 +441,7 @@
                     </tr>
                     <tr>
                         <td><button class="milestonerewardlocked" id="reward0">Unlock the IP multiplier autobuyer</button></td>
-                        <td><button class="milestonerewardlocked" id="reward1">You keep your autobuyers and normal challenge completions on Eternity</button></td>
+                        <td><button class="milestonerewardlocked" id="reward1">You keep your autobuyers on Eternity</button></td>
                     </tr>
                     <tr>
                         <td class="milestoneText">3 Eternities:</td>
@@ -428,7 +449,7 @@
                     </tr>
                     <tr>
                         <td><button class="milestonerewardlocked" id="reward2">Unlock the replicanti galaxy autobuyer</button></td>
-                        <td><button class="milestonerewardlocked" id="reward3">You keep your Infinity upgrades on Eternity, except for your IP multiplier.</button></td>
+                        <td><button class="milestonerewardlocked" id="reward3">You keep your infinity upgrades on Eternity</button></td>
                     </tr>
                     <tr>
                         <td class="milestoneText">5 Eternities:</td>
@@ -436,15 +457,15 @@
                     </tr>
                     <tr>
                         <td><button class="milestonerewardlocked" id="reward4" style="font-size: 12px">Unlock more big crunch autobuyer options.</button></td>
-                        <td><button class="milestonerewardlocked" id="reward5" style="font-size: 10px">You complete Infinity Challenges as soon as you unlock them (you get the sacrifice autobuyer immediately)</button></td>
+                        <td><button class="milestonerewardlocked" id="reward5" style="font-size: 10px">You complete Infinity Challenges as soon as you unlock them (you get sacrifice autobuyer immediately)</button></td>
                     </tr>
                     <tr>
                         <td class="milestoneText">9 Eternities:</td>
                         <td class="milestoneText">10 Eternities:</td>
                     </tr>
                     <tr>
-                        <td><button class="milestonerewardlocked" id="reward6">Unlock the ability to autobuy max galaxies</button></td>
-                        <td><button class="milestonerewardlocked" id="reward7">Unlock the ability to autobuy max Dimension Boosts</button></td>
+                        <td><button class="milestonerewardlocked" id="reward6">Unlock autobuy max galaxies</button></td>
+                        <td><button class="milestonerewardlocked" id="reward7">Unlock autobuy max Dimension Boosts</button></td>
                     </tr>
                     <tr>
                         <td class="milestoneText">11 Eternities:</td>
@@ -1188,8 +1209,8 @@
                 </tr>
                 <tr>
 					<td><div><button id="retry" onclick="toggleChallengeRetry()" class="storebtn" style="color:black; width: 200px; height: 55px; font-size:120%">Automatically retry challenges</button></div></td>
-                    <td><div><button id="exportbtn" class="storebtn" style="color:black; width: 200px; height: 55px; font-size: 20px">Export</button></div></td>
-                    <td><div><button id="importbtn" class="storebtn" style="color:black; width: 200px; height: 55px; font-size: 20px">Import</button></div></td>
+                    <td><div><button id="exportbtn" class="storebtn" style="color:black; width: 200px; height: 55px; font-size: 20px" onclick="exportSave()">Export</button></div></td>
+                    <td><div><button id="importbtn" class="storebtn" style="color:black; width: 200px; height: 55px; font-size: 20px" onclick="importSave()">Import</button></div></td>
                 </tr>
                 <tr>
                     <td><div><button id="challengeconfirmation" class="storebtn" style="color:black; width: 200px; height: 55px; font-size: 15px">Challenge confirmation ON</button></div></td>
@@ -1218,11 +1239,11 @@
             <div style="display: none;"><textarea id="exportOutput" style="color:black; width: 200px; height: 55px;"></textarea></div>
             <p>Hotkeys: 1-8 for buy 10 dimension, shift+1-8 for buy 1 dimension, T to buy max tickspeed, shift+T to buy one tickspeed, M for max all<br>S for sacrifice, D for dimension boost, G for galaxy, C for crunch, A for toggle autobuyers, R for replicanti galaxies, E for eternity.<br>You can hold shift while buying time studies to buy all up until that point, see each study's number, and save study trees.<br>Hotkeys do not work while holding control.<br>Import "I'm so meta" without quotation marks to get a save at meta-dimensions.</p>
             <td>
-                <div style="text-align:center">
+                <div style="text-align:center; font-size: 16px;">
                    <a href="howto.html" target="_newtab">How to play  </a> |
                    <a href="about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate/about    </a> |
-                   <a href="/ngplusplus/changelog/changelog.html" target="_newtab">Changelog   </a> |
-                   <a href="https://www.reddit.com/r/AntimatterDimensions/" target="_newtab">Subreddit</a>      |    <a href="https://ivark.github.io/savefixer/index.html" target="_newtab">Savefixer</a>
+                   <a href="/ngplusplus/changelog/changelog.html" target="_newtab">Changelog   </a> | <a href="https://ngplusplus-testing.glitch.me/ngplusplus/">Testing Version (UNSTABLE, Alpha 0.3)</a> |
+                   <a href="https://www.reddit.com/r/AntimatterDimensions/" target="_newtab">AD Subreddit (vanilla)</a>      |    <a href="https://ivark.github.io/savefixer/index.html" target="_newtab">Savefixer</a>
                 </div>
           </td>
         </div>

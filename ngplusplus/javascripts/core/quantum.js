@@ -1,6 +1,6 @@
 function quantum(force, auto) {
   if (
-    (player.meta.antimatter.gte(quantRequirement()) && player.dilation.dilatedTime.gte(1e100) &&
+    (player.meta.antimatter.gte(quantRequirement()) &&
       (!player.options.quantumconfirm ||
         auto ||
         confirm(
@@ -57,7 +57,7 @@ function quantum(force, auto) {
       currentChallenge: "",
       infinityUpgrades: player.infinityUpgrades,
       infinityPoints: new Decimal(0),
-      infinitied: new Decimal(0),
+      infinitied: 0,
       infinitiedBank: player.infinitiedBank,
       totalTimePlayed: player.totalTimePlayed,
       bestInfinityTime: 9999999999,

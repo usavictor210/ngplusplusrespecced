@@ -6,10 +6,9 @@ var saves = {
 };
 
 function ngplus() {
-  if (player.ngPlus === 0) {
+  if (player.ngPlus == 0 && player.options.ngPlusConfirm == 0) {
     player.money = new Decimal(1e25);
-      player.infinitiedBank = new Decimal(player.infinitiedBank)
-    if (player.infinitiedBank.lt(1e12)) player.infinitiedBank = new Decimal(1e12);
+    if (player.infinitiedBank < 1e12) player.infinitiedBank = 1e12;
     if (!player.infinityUpgrades.includes("skipReset1"))
       player.infinityUpgrades = [
         "timeMult",
@@ -32,10 +31,14 @@ function ngplus() {
     if (player.eternities < 1012680) player.eternities = 1012680;
     player.replicanti.unl = true;
     player.replicanti.amount = new Decimal(1);
-    for (ec = 1; ec < 13; ec++) player.eternityChalls["eterc" + ec] = 5;
     if (player.eternityChalls.eterc1 != 5) player.eternityChalls.eterc1 = 1;
     if (player.eternityChalls.eterc4 != 5) player.eternityChalls.eterc4 = 1;
     if (player.eternityChalls.eterc10 != 5) player.eternityChalls.eterc10 = 1;
+    for (ec = 1; ec < 13; ec++) {
+    if (ec != 1 || ec != 4 || ec != 10) {
+      player.eternityChalls["eterc" + ec] = 5;
+      } else if (player.eternityChalls["eterc"+ec] != 5) player.eternityChalls["eterc" + ec] = 1;
+    }
     if (!player.dilation.studies.includes(1)) player.dilation.studies = [1];
     player.achievements.push("r77");
     player.achievements.push("r78");
@@ -69,6 +72,13 @@ function ngplus() {
 }
 
 function onLoad() {
+  if (player.version > 15.8) {
+    alert("You cannot use this save in the game because it is from the testing version. If this repeatedly shows up when reloading, please contact usavictor#4761 on Discord. The save will now be hard reset.")
+    forceHardReset = true;
+    document.getElementById("reset").click();
+    location.reload();
+    return
+    } 
   if (player.ngPlus === undefined) player.ngPlus = 0
   if (player.totalmoney === undefined || isNaN(player.totalmoney))
     player.totalmoney = player.money;
@@ -101,6 +111,7 @@ function onLoad() {
     player.options.dilationconfirm = true;
   if (player.options.quantumconfirm === undefined)
     player.options.quantumconfirm = true;
+  if (player.options.ngPlusConfirm === undefined) player.options.ngPlusConfirm = 0
   if (player.options.themes === undefined) player.options.themes = "Normal";
   if (player.options.secretThemeKey === undefined)
     player.options.secretThemeKey = 0;
@@ -109,7 +120,7 @@ function onLoad() {
   if (player.infinityUpgrades === undefined) player.infinityUpgrades = [];
   if (player.infinityPoints === undefined)
     player.infinityPoints = new Decimal(0);
-  if (player.infinitied === undefined) player.infinitied = new Decimal(0);
+  if (player.infinitied === undefined) player.infinitied = 0;
   if (player.totalTimePlayed === undefined) player.totalTimePlayed = 0;
   if (player.bestInfinityTime === undefined)
     player.bestInfinityTime = 9999999999;
@@ -125,8 +136,7 @@ function onLoad() {
     document.getElementById("secondRow").style.display = "table-row";
   if (player.challenges === undefined) player.challenges = [];
   if (player.currentChallenge === undefined) player.currentChallenge = "";
-    player.infinitied = new Decimal(player.infinitied)
-  if (player.infinitied.gt(0) && !player.challenges.includes("challenge1"))
+  if (player.infinitied > 0 && !player.challenges.includes("challenge1"))
     player.challenges.push("challenge1");
   if (player.matter === undefined || player.matter === null || isNaN(player.matter)) player.matter = new Decimal(0);
   if (player.autobuyers === undefined)
@@ -245,7 +255,7 @@ function onLoad() {
   if (player.options.updateRate === undefined) player.options.updateRate = 50;
   if (player.eterc8ids === undefined) player.eterc8ids = 50;
   if (player.eterc8repl === undefined) player.eterc8repl = 40;
-  if (player.infinitiedBank === undefined) player.infinitiedBank = new Decimal(0);
+  if (player.infinitiedBank === undefined) player.infinitiedBank = 0;
   if (player.dimlife === undefined) player.dimlife = false;
   if (player.dead === undefined) player.dead = false;
   if (player.dilation === undefined) player.dilation = {};
@@ -477,7 +487,7 @@ function onLoad() {
     player.eternityPoints = new Decimal(0);
     player.tickThreshold = new Decimal(1);
     player.totalTickGained = 0;
-    player.eternities = new Decimal(0);
+    player.eternities = 0;
     player.timeDimension1 = {
       cost: new Decimal(1),
       amount: new Decimal(0),
@@ -820,7 +830,7 @@ function onLoad() {
     "Tachyon particles: " +
     (player.options.animations.tachyonParticles ? "ON" : "OFF");
 
-  if (player.infinitied.eq(0) && player.eternities.eq(0))
+  if (player.infinitied == 0 && player.eternities == 0)
     document.getElementById("infinityPoints2").style.display = "none";
 
   if (
@@ -1063,7 +1073,9 @@ function onLoad() {
   if (player.version < 15.1) {
     player.version = 15.1;
     player.ngPlus = 0;
-    ngplus();
+    if (player.eternities < 100 || parseInt(player.eternities.toString()) < 100) {
+      ngplusConfirmation();
+    }
   }
 
   if (player.version < 15.2) {
@@ -1116,9 +1128,13 @@ function onLoad() {
   if (player.version < 15.7) {
     player.version = 15.7
     if (player.quantum.investmentAmount === undefined) player.quantum.investmentAmount = [null, new Decimal(0), new Decimal(0), new Decimal(0), new Decimal(0), new Decimal(0)]
-    
   }
-
+  
+  if (player.version < 15.8) {
+    player.version = 15.8
+    if (player.ngPlusConfirm) player.ngPlusConfirm = player.options.ngPlusConfirm
+    delete player.ngPlusConfirm
+  }
   
   if (player.meta.autoMaxAll === undefined) player.meta.autoMaxAll = false
   
@@ -1264,8 +1280,8 @@ function load_game(root) {
 
   if (saves[currentSave]) player = saves[currentSave];
   onLoad();
-  ngplus();
-  transformSaveToDecimal()
+  transformSaveToDecimal();
+  ngplusConfirmation();
 }
 
 function save_game(changed, silent) {
@@ -1309,9 +1325,8 @@ function change_save(saveId) {
 
 function transformSaveToDecimal() {
   player.infinityPoints = new Decimal(player.infinityPoints);
-  player.eternities = new Decimal(player.eternities)
   document.getElementById("eternitybtn").style.display =
-    player.infinityPoints.gte(Number.MAX_VALUE) || player.eternities.gt(0)
+    player.infinityPoints.gte(Number.MAX_VALUE) || player.eternities > 0
       ? "inline-block"
       : "none";
 
@@ -1383,7 +1398,7 @@ function transformSaveToDecimal() {
   player.infinityDimension8.amount = new Decimal(
     player.infinityDimension8.amount
   );
-  player.infinitied = new Decimal(player.infinitied)
+
   player.timeDimension1.amount = new Decimal(player.timeDimension1.amount);
   player.timeDimension2.amount = new Decimal(player.timeDimension2.amount);
   player.timeDimension3.amount = new Decimal(player.timeDimension3.amount);
@@ -1542,7 +1557,7 @@ function get_save(name) {
       return v === Infinity ? "Infinity" : v;
     });
   } catch (e) {
-    console.log("An error happened while attempting to get the save (your save is probably wiped):", e);
+    console.log("Error happened:", e);
   }
 }
 
@@ -1551,4 +1566,13 @@ function getRootSaveObject() {
     current: currentSave,
     saves: saves
   };
+}
+
+function ngplusConfirmation() { // confirm ng+
+if (player.options.ngPlusConfirm != 0) return
+if (player.options.ngPlusConfirm == 0 && confirm("Enable NG+ features on this save? This will unlock and give some content to speed up the early game.")) {
+  ngplus()
+  player.options.ngPlusConfirm = 1 // enabled
+  console.log("enabled ng+")
+  } else player.options.ngPlusConfirm = 2 // disabled, won't ask again
 }

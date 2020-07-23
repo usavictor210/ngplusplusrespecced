@@ -68,6 +68,7 @@ function buyTickSpeed() {
 
 document.getElementById("tickSpeed").onclick = function () {
   buyTickSpeed();
+
   updateTickSpeed();
 };
 
