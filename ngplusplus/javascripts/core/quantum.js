@@ -1,6 +1,6 @@
 function quantum(force, auto) {
   if (
-    (player.meta.antimatter.gte(quantRequirement()) && player.dilation.dilatedTime.gte(1e100) &&
+    (player.meta.antimatter.gte(quantRequirement()) &&
       (!player.options.quantumconfirm ||
         auto ||
         confirm(

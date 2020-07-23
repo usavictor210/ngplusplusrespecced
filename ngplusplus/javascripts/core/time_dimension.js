@@ -31,7 +31,6 @@ function getTimeDimensionPower(tier) {
   if (player.replicanti.unl && player.replicanti.amount.gt(1) && player.dilation.upgrades.includes(6)) {
     ret = ret.times(getReplMult().pow(0.1))
   }
-  if (player.achievements.includes("r127")) ret = ret.times(r127Reward())
 
   if (player.quantum.investmentAmount[2].gt(0)) ret = ret.times(getInvestMultiplier(2))
   

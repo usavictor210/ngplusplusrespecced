@@ -63,10 +63,7 @@ function eternity(force, auto) {
       if (!player.challenges[i].includes("post") && player.eternities > 1)
         temp.push(player.challenges[i]);
     }
-    if (player.timestudy.studies.includes(191))
-      player.infinitiedBank += Math.floor(player.infinitied * 0.05);
-    if (player.achievements.includes("r131"))
-      player.infinitiedBank += Math.floor(player.infinitied * 0.05);
+    player.infinitiedBank += getBankedInfinities()
     if (player.infinitiedBank > 5000000000)
       giveAchievement("No ethical consumption");
     if (
@@ -382,7 +379,7 @@ function eternity(force, auto) {
     if (player.respec) respecTimeStudies();
     player.respec = false;
     giveAchievement("Time is relative");
-    if (player.eternities >= 100) giveAchievement("This mile took an Eternity");
+    if (milestoneCheck(23)) giveAchievement("This mile took an Eternity"); // 100 eternities
     if (player.eternities >= 1e12)
       giveAchievement("The cap is a million, not a trillion");
     if (player.replicanti.unl) player.replicanti.amount = new Decimal(1);
@@ -393,7 +390,7 @@ function eternity(force, auto) {
     if (player.achievements.includes("r45"))
       player.tickspeed = player.tickspeed.times(0.98);
 
-    if (player.eternities <= 30) {
+    if (!milestoneCheck(18)) {
       document.getElementById("secondRow").style.display = "none";
       document.getElementById("thirdRow").style.display = "none";
       document.getElementById("tickSpeed").style.visibility = "hidden";
@@ -456,12 +453,12 @@ function eternity(force, auto) {
         "inline-block";
     } else if (
       document.getElementById("replicantidiv").style.display === "none" &&
-      player.eternities >= 50
+      milestoneCheck(20)
     ) {
       document.getElementById("replicantidiv").style.display = "inline-block";
       document.getElementById("replicantiunlock").style.display = "none";
     }
-    if (player.eternities > 2 && player.replicanti.galaxybuyer === undefined)
+    if (milestoneCheck(3) && player.replicanti.galaxybuyer === undefined)
       player.replicanti.galaxybuyer = false;
     document.getElementById("infinityPoints1").innerHTML =
       'You have <span class="IPAmount1">' +
@@ -961,6 +958,13 @@ function calculateEternitiedGain() {
   return base; // grand total
 }
 
+function getBankedInfinities() {
+let bank = 0
+if (player.achievements.includes("r131")) bank += 0.05
+if (player.timestudy.studies.includes(191)) bank += 0.05
+return player.infinitied * bank
+}
+
 function r124Mult() {
   return Decimal.min(Math.sqrt(player.thisEternity / 12.5), 30).max(1);
 }
@@ -1389,16 +1393,7 @@ function updateECRewardText() {
 
   document.getElementById("ec10span").textContent =
     shortenMoney(ec10bonus) + "x";
-}
-
-function r127Reward() {
-  return new Decimal(
-    Math.pow(
-      player.eternityPoints.e - 308 + 1,
-      5 + Decimal.log(player.eternityPoints.e, 20)
-    ) + 1
-  ).max(1);
-}
+  }
 
 function eterUpgrade(x) {}
 

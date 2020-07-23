@@ -6,7 +6,7 @@ var saves = {
 };
 
 function ngplus() {
-  if (player.ngPlus === 0) {
+  if (player.ngPlus == 0 && player.options.ngPlusConfirm == 0) {
     player.money = new Decimal(1e25);
     if (player.infinitiedBank < 1e12) player.infinitiedBank = 1e12;
     if (!player.infinityUpgrades.includes("skipReset1"))
@@ -31,10 +31,14 @@ function ngplus() {
     if (player.eternities < 1012680) player.eternities = 1012680;
     player.replicanti.unl = true;
     player.replicanti.amount = new Decimal(1);
-    for (ec = 1; ec < 13; ec++) player.eternityChalls["eterc" + ec] = 5;
     if (player.eternityChalls.eterc1 != 5) player.eternityChalls.eterc1 = 1;
     if (player.eternityChalls.eterc4 != 5) player.eternityChalls.eterc4 = 1;
     if (player.eternityChalls.eterc10 != 5) player.eternityChalls.eterc10 = 1;
+    for (ec = 1; ec < 13; ec++) {
+    if (ec != 1 || ec != 4 || ec != 10) {
+      player.eternityChalls["eterc" + ec] = 5;
+      } else if (player.eternityChalls["eterc"+ec] != 5) player.eternityChalls["eterc" + ec] = 1;
+    }
     if (!player.dilation.studies.includes(1)) player.dilation.studies = [1];
     player.achievements.push("r77");
     player.achievements.push("r78");
@@ -68,6 +72,13 @@ function ngplus() {
 }
 
 function onLoad() {
+  if (player.version > 15.8) {
+    alert("You cannot use this save in the game because it is from the testing version. If this repeatedly shows up when reloading, please contact usavictor#4761 on Discord. The save will now be hard reset.")
+    forceHardReset = true;
+    document.getElementById("reset").click();
+    location.reload();
+    return
+    } 
   if (player.ngPlus === undefined) player.ngPlus = 0
   if (player.totalmoney === undefined || isNaN(player.totalmoney))
     player.totalmoney = player.money;
@@ -100,6 +111,7 @@ function onLoad() {
     player.options.dilationconfirm = true;
   if (player.options.quantumconfirm === undefined)
     player.options.quantumconfirm = true;
+  if (player.options.ngPlusConfirm === undefined) player.options.ngPlusConfirm = 0
   if (player.options.themes === undefined) player.options.themes = "Normal";
   if (player.options.secretThemeKey === undefined)
     player.options.secretThemeKey = 0;
@@ -561,22 +573,22 @@ function onLoad() {
   }
   if (player.autobuyers[8].tier == 10) player.autobuyers[8].tier = 9;
 
-  if (player.thirdAmount !== 0 || player.eternities >= 30)
+  if (player.thirdAmount !== 0 || milestoneCheck(18))
     document.getElementById("fourthRow").style.display = "table-row";
-  if (player.fourthAmount !== 0 || player.eternities >= 30)
+  if (player.fourthAmount !== 0 || milestoneCheck(18))
     if (player.resets > 0)
       document.getElementById("fifthRow").style.display = "table-row";
-  if (player.fifthAmount !== 0 || player.eternities >= 30)
+  if (player.fifthAmount !== 0 || milestoneCheck(18))
     if (player.resets > 1)
       document.getElementById("sixthRow").style.display = "table-row";
-  if (player.sixthAmount !== 0 || player.eternities >= 30)
+  if (player.sixthAmount !== 0 || milestoneCheck(18))
     if (
       player.resets > 2 &&
       player.currentChallenge !== "challenge4" &&
       player.currentChallenge !== "postc1"
     )
       document.getElementById("seventhRow").style.display = "table-row";
-  if (player.seventhAmount !== 0 || player.eternities >= 30)
+  if (player.seventhAmount !== 0 || milestoneCheck(18))
     if (player.resets > 3 && player.currentChallenge !== "challenge4")
       document.getElementById("eightRow").style.display = "table-row";
 
@@ -1061,7 +1073,9 @@ function onLoad() {
   if (player.version < 15.1) {
     player.version = 15.1;
     player.ngPlus = 0;
-    ngplus();
+    if (player.eternities < 100 || parseInt(player.eternities.toString()) < 100) {
+      ngplusConfirmation();
+    }
   }
 
   if (player.version < 15.2) {
@@ -1114,9 +1128,13 @@ function onLoad() {
   if (player.version < 15.7) {
     player.version = 15.7
     if (player.quantum.investmentAmount === undefined) player.quantum.investmentAmount = [null, new Decimal(0), new Decimal(0), new Decimal(0), new Decimal(0), new Decimal(0)]
-    
   }
-
+  
+  if (player.version < 15.8) {
+    player.version = 15.8
+    if (player.ngPlusConfirm) player.ngPlusConfirm = player.options.ngPlusConfirm
+    delete player.ngPlusConfirm
+  }
   
   if (player.meta.autoMaxAll === undefined) player.meta.autoMaxAll = false
   
@@ -1262,8 +1280,8 @@ function load_game(root) {
 
   if (saves[currentSave]) player = saves[currentSave];
   onLoad();
-  ngplus();
-  transformSaveToDecimal()
+  transformSaveToDecimal();
+  ngplusConfirmation();
 }
 
 function save_game(changed, silent) {
@@ -1548,4 +1566,13 @@ function getRootSaveObject() {
     current: currentSave,
     saves: saves
   };
+}
+
+function ngplusConfirmation() { // confirm ng+
+if (player.options.ngPlusConfirm != 0) return
+if (player.options.ngPlusConfirm == 0 && confirm("Enable NG+ features on this save? This will unlock and give some content to speed up the early game.")) {
+  ngplus()
+  player.options.ngPlusConfirm = 1 // enabled
+  console.log("enabled ng+")
+  } else player.options.ngPlusConfirm = 2 // disabled, won't ask again
 }

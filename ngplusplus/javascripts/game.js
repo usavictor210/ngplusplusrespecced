@@ -164,7 +164,7 @@ var player = {
   dimensionMultDecrease: 10,
   dimensionMultDecreaseCost: 1e8,
   overXGalaxies: 10,
-  version: 15.7,
+  version: 15.8,
   infDimensionsUnlocked: [
     false,
     false,
@@ -495,7 +495,8 @@ var player = {
       bigCrunch: true,
       eternity: true,
       tachyonParticles: true
-    }
+    },
+    ngPlusConfirm: 0
   }
 };
 
@@ -2882,7 +2883,7 @@ let canGiveUniversalHarmony = function() {
   );
 };
 
-document.getElementById("exportbtn").onclick = function() {
+function exportSave() {
   let output = document.getElementById("exportOutput");
   let parent = output.parentElement;
 
@@ -2956,10 +2957,11 @@ function verify_save(obj) {
   return true;
 }
 
-document.getElementById("importbtn").onclick = function() {
+function importSave() {
   var save_data = prompt(
-    "Input your save. (your current save file will be overwritten!)"
+    "Input your save. Your current save file will be overwritten! DO NOT IMPORT TESTING VERSION SAVES."
   );
+  var backup = player;
   if (save_data.constructor !== String) save_data = "";
   if (
     sha512_256(save_data.replace(/\s/g, "").toUpperCase()) ===
@@ -3039,7 +3041,7 @@ document.getElementById("importbtn").onclick = function() {
     if (verify_save(save_data)) document.getElementById("reset").click();
     forceHardReset = false;
     if (!save_data || !verify_save(save_data)) {
-      alert("could not load the save..");
+      alert("Could not load the save...");
       load_custom_game();
       return;
     }
@@ -3055,10 +3057,17 @@ document.getElementById("importbtn").onclick = function() {
     mult18 = new Decimal(1);
     ec10bonus = new Decimal(1);
     player = save_data;
+    if (player.version > 15.8) {
+    alert("You cannot import this save into the game because it is from the testing version. If this repeatedly shows up when reloading, please contact usavictor#4761 on Discord.")
+    player = backup;
+    save_game();
+    location.reload();
+    } else {
     save_game();
     load_game();
     updateChallenges();
     transformSaveToDecimal();
+    }
   }
 };
 
@@ -3229,7 +3238,7 @@ function setAchieveTooltip() {
     "ach-tooltip",
     "Get at least " +
       formatValue(player.options.notation, 1e12, 0, 0) +
-      " of all dimensions except for the 8th dimension."
+      " of each dimension except for the 8th dimension."
   );
   IPBelongs.setAttribute(
     "ach-tooltip",
@@ -3323,9 +3332,7 @@ function setAchieveTooltip() {
     "ach-tooltip",
     "Reach " +
       shortenMoney(Number.MAX_VALUE) +
-      " EP. Reward: Time Dimensions gain a multiplier based on EP. Currently: " +
-      shortenMoney(r127Reward()) +
-      "x"
+      " EP. Reward: ???"
   );
   fkoff.setAttribute(
     "ach-tooltip",
@@ -5226,7 +5233,7 @@ setInterval(function() {
     formatInfOrEter(player.infinitiedBank) +
     " banked infinities.";
 
-  if (player.dilation.tachyonParticles !== 0 || player.quantum.times !== 0)
+  if (player.dilation.tachyonParticles != 0 && player.quantum.times == 0) 
     document.getElementById("dilationconf").style.display = "inline-block";
   else document.getElementById("dilationconf").style.display = "none";
   if (player.quantum.times !== 0)
@@ -6446,9 +6453,9 @@ function gameLoop(diff) {
           .getElementById("progresspercent")
           .setAttribute(
             "ach-tooltip",
-            "Percentage to " +
+            "Percentage to gaining " +
               shortenDimensions(Decimal.pow(2, goal)) +
-              " EP gain"
+              " EP"
           );
       }
     }
@@ -7163,7 +7170,7 @@ function maxBuyDimBoosts(manual) {
 
 var timer = 0;
 function autoBuyerTick() {
-  if (player.eternities >= 100 && player.eternityBuyer.isOn) {
+  if (milestoneCheck(23) && player.eternityBuyer.isOn) {
     if (player.autoEterMode === "amount") {
       if (player.eternityBuyer.limit.lte(gainedEternityPoints())) {
         eternity(false, true);
@@ -7478,6 +7485,9 @@ function init() {
   };
   document.getElementById("quantumbtn").onclick = function() {
     showTab("quantum");
+  };
+  document.getElementById("metatabbtn").onclick = function() {
+    showTab("infoalpha");
   };
   document.getElementById("eternitystorebtn").onclick = function() {
     showTab("eternitystore");

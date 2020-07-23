@@ -5,7 +5,7 @@ function getInfinitiedGain() {
   }
   let TS32 = Math.max(player.resets, 1)
   if (player.timestudy.studies.includes(271)) TS32 = TS32 * (1e3 * (player.meta.resets + 1))
-  player.timestudy.studies.includes(32) ? infGain *= TS32 : infGain
+  player.timestudy.studies.includes(32) ? infGain *= TS32 : infGain = infGain
   player.achievements.includes("r133") ? infGain *= Math.max(1, Math.floor(player.dilation.dilatedTime.pow(0.25).toNumber())) : infGain = infGain
   player.achievements.includes("r156") ? infGain *= Math.max(1, Math.floor(Math.log10(player.eternities/250)**0.8)) : infGain = infGain
   return infGain
@@ -509,7 +509,7 @@ function infinity() {
     }
 
     if (
-      player.eternities >= 40 &&
+      milestoneCheck(19) &&
       player.replicanti.auto[0] &&
       player.currentEternityChall !== "eterc8"
     ) {
@@ -522,7 +522,7 @@ function infinity() {
     }
 
     if (
-      player.eternities >= 60 &&
+      milestoneCheck(21) &&
       player.replicanti.auto[1] &&
       player.currentEternityChall !== "eterc8"
     ) {
@@ -537,7 +537,7 @@ function infinity() {
     }
 
     if (
-      player.eternities >= 80 &&
+      milestoneCheck(22) &&
       player.replicanti.auto[2] &&
       player.currentEternityChall !== "eterc8"
     ) {

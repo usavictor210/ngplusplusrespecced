@@ -67,11 +67,32 @@
             <button id="infinitybtn" style="font-family: Typewriter; font-size: 20px; display: none" class="infinitybtn">Infinity</button>
             <button id="eternitystorebtn" style="font-family: Typewriter; font-size: 20px; display: none" class="eternitytabbtn">Eternity</button>
             <button id="quantumbtn" style="font-family: Typewriter; font-size: 20px; display: none" class="quantumtabbtn">Quantum</button>
+            <button id="metatabbtn" style="font-family: Typewriter; font-size: 20px" class="tabbtn">IMPORTANT INFO </button>
         </div>
         <div id="emptiness" class="tab" style="font-size: 150%">
             <br> The world has collapsed on itself due to the overflowing amount of antimatter.
             <br>
             <br>
+        </div>
+        <div id="infoalpha" class="tab" style="font-size: 15px">
+          <p>
+          The next update will heavily change tons of game balancing, features and other stuff that may make transferring your current saves to the new version impossible without immense amounts of effort.
+          <br>
+          <br>
+          Because of this, I have decided to warn you about this now: EXPORT YOUR SAVES.
+          <br>
+          <br>
+          I am not quite sure how much the saves will break, but testing should reveal that none of that ever happens. Going on the test site should help with preparing for future content changes. However, I will change many variables and other things in the new update.
+          <br>
+          <br>
+          The new update is expected to come out soon under ALPHA 0.4. Alpha 0.4 will have content from early-mid Quantum balanced. For what exactly is to come, check usavictorideas.txt.
+          <br>
+          <br>
+          Also, from this point forward, the main site you should go to is <a href="https://usavictor210.github.io/ngplusplusrespecced/ngplusplus/">https://usavictor210.github.io/ngplusplusrespecced/ngplusplus/</a>. <br>Glitch made hosting this game really annoying as it constantly goes down now for some unexplained reasons, probably because of some massive memory usage.
+          <br>
+          <br>
+          Once all content in Quantum is done, there could be a new prestige layer coming up, but don't be too sure about it because I don't really intend to go way beyond e9e15. I don't think you need to know what it is yet.
+          </p>
         </div>
         <div id="quantum" class="tab" style="font-size: 15px">
           <div id="quarkAmount">You have x quarks.</div>
@@ -173,7 +194,7 @@
                     <tr>
                         <td><button class="timestudy normaldimstudy" id="81" onclick="buyTimeStudy(81, 4)">Dimension boost power is increased to 10x<span>Cost: 4 Time Theorems</span></button></td>
                         <td><button class="timestudy infdimstudy" id="82" onclick="buyTimeStudy(82, 6)">Dimension boosts give a multiplier to Infinity Dimensions<span id="82desc">Currently: 1x</span>Cost: 6 Time Theorems</button></td>
-                        <td><button class="timestudy timedimstudy" id="83" onclick="buyTimeStudy(83, 5)">Dimension boosts are 0.04% more effective for each free tickspeed upgrade<span>Cost: 5 Time Theorems</span></button></td>
+                        <td><button class="timestudy timedimstudy" id="83" onclick="buyTimeStudy(83, 5)" style="font-size: 0.625rem;">Dimension boosts are 0.04% more effective for each free tickspeed upgrade<span id="83desc">Currently: 0%</span>Cost: 5 Time Theorems</button></td>
                     </tr>
                     <tr>
                         <td><button class="timestudy normaldimstudy" id="91" onclick="buyTimeStudy(91, 4)">Normal dimensions gain a multiplier based on time spent this eternity<span id="91desc">Currently: 1x</span>Cost: 4 Time Theorems</button></td>
@@ -182,7 +203,7 @@
                     </tr>
                     <tr>
                         <td><button class="timestudy normaldimstudy" id="101" onclick="buyTimeStudy(101, 4)">Replicantis give a multiplier to Normal Dimensions equal to their amount.<span>Cost: 4 Time Theorems</span></button></td>
-                        <td><button class="timestudy infdimstudy" id="102" onclick="buyTimeStudy(102, 6)">Replicanti galaxies power up replicanti multiplier (5^RG)<span>Cost: 6 Time Theorems</span></button></td>
+                        <td><button class="timestudy infdimstudy" id="102" onclick="buyTimeStudy(102, 6)">Replicanti galaxies power up replicanti multiplier (5^RG)<span id="102desc">Currently: 1x</span>Cost: 6 Time Theorems</button></td>
                         <td><button class="timestudy timedimstudy" id="103" onclick="buyTimeStudy(103, 6)">Time Dimensions gain a multiplier equal to replicanti galaxy amount<span>Cost: 6 Time Theorems</span></button></td>
                     </tr>
                 </table>
@@ -190,7 +211,7 @@
                 <table class="table" id="studytable8">
                     <tr>
                         <td><button class="eternitychallengestudy" id="ec7unl">Eternity Challenge 7<span>Requirement: 1e550,000 antimatter</span>Cost: 115 Time Theorems</button></td>
-                        <td><button class="timestudy" id="111" onclick="buyTimeStudy(111, 12)">Make the IP formula better. /308 -&gt; /290<span>Cost: 12 Time Theorems</span></button></td>
+                        <td><button class="timestudy" id="111" onclick="buyTimeStudy(111, 12)" style="font-size: 0.625rem;">Make the IP formula better, reducing the amount of antimatter divided <span id="111desc">(/308 -&gt; /285)</span><span>Cost: 12 Time Theorems</span></button></td>
                         <td style="opacity: 0;"><button class="timestudylocked"></button></td>
                     </tr>
                 </table>
@@ -236,7 +257,7 @@
                 </table>
                 <table class="table" id="studytable14">
                     <tr>
-                      <td><button class="timestudy" id="171" onclick="buyTimeStudy(171, 15)">The timeshard requirement for the next tickspeed upgrade increases slower<span>Cost: 15 Time Theorems</span></button></td>
+                      <td><button class="timestudy" id="171" onclick="buyTimeStudy(171, 15)">The timeshard requirement for the next tickspeed upgrade increases slower (33% -&gt; 25%)<span>Cost: 15 Time Theorems</span></button></td>
                     </tr>
                 </table>
                 <table class="table" id="studytable15">
@@ -1188,8 +1209,8 @@
                 </tr>
                 <tr>
 					<td><div><button id="retry" onclick="toggleChallengeRetry()" class="storebtn" style="color:black; width: 200px; height: 55px; font-size:120%">Automatically retry challenges</button></div></td>
-                    <td><div><button id="exportbtn" class="storebtn" style="color:black; width: 200px; height: 55px; font-size: 20px">Export</button></div></td>
-                    <td><div><button id="importbtn" class="storebtn" style="color:black; width: 200px; height: 55px; font-size: 20px">Import</button></div></td>
+                    <td><div><button id="exportbtn" class="storebtn" style="color:black; width: 200px; height: 55px; font-size: 20px" onclick="exportSave()">Export</button></div></td>
+                    <td><div><button id="importbtn" class="storebtn" style="color:black; width: 200px; height: 55px; font-size: 20px" onclick="importSave()">Import</button></div></td>
                 </tr>
                 <tr>
                     <td><div><button id="challengeconfirmation" class="storebtn" style="color:black; width: 200px; height: 55px; font-size: 15px">Challenge confirmation ON</button></div></td>
@@ -1218,11 +1239,11 @@
             <div style="display: none;"><textarea id="exportOutput" style="color:black; width: 200px; height: 55px;"></textarea></div>
             <p>Hotkeys: 1-8 for buy 10 dimension, shift+1-8 for buy 1 dimension, T to buy max tickspeed, shift+T to buy one tickspeed, M for max all<br>S for sacrifice, D for dimension boost, G for galaxy, C for crunch, A for toggle autobuyers, R for replicanti galaxies, E for eternity.<br>You can hold shift while buying time studies to buy all up until that point, see each study's number, and save study trees.<br>Hotkeys do not work while holding control.<br>Import "I'm so meta" without quotation marks to get a save at meta-dimensions.</p>
             <td>
-                <div style="text-align:center">
+                <div style="text-align:center; font-size: 16px;">
                    <a href="howto.html" target="_newtab">How to play  </a> |
                    <a href="about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate/about    </a> |
-                   <a href="/ngplusplus/changelog/changelog.html" target="_newtab">Changelog   </a> |
-                   <a href="https://www.reddit.com/r/AntimatterDimensions/" target="_newtab">Subreddit</a>      |    <a href="https://ivark.github.io/savefixer/index.html" target="_newtab">Savefixer</a>
+                   <a href="/ngplusplus/changelog/changelog.html" target="_newtab">Changelog   </a> | <a href="https://ngplusplus-testing.glitch.me/ngplusplus/">Testing Version (UNSTABLE, Alpha 0.3)</a> |
+                   <a href="https://www.reddit.com/r/AntimatterDimensions/" target="_newtab">AD Subreddit (vanilla)</a>      |    <a href="https://ivark.github.io/savefixer/index.html" target="_newtab">Savefixer</a>
                 </div>
           </td>
         </div>
@@ -1452,10 +1473,10 @@
                             <div id="Limit Break" class="achievement achievementlocked" style="background-image: url(images/33.png)" ach-tooltip="Break Infinity."><br></div>
                         </td>
                         <td>
-                            <div id="Age of Automation" class="achievement achievementlocked" style="background-image: url(images/34.png)" ach-tooltip="Max any 9 autobuyers."><br></div>
+                            <div id="Age of Automation" class="achievement achievementlocked" style="background-image: url(images/34.png)" ach-tooltip="Max any of the 9 autobuyers' intervals."><br></div>
                         </td>
                         <td>
-                            <div id="Definitely not worth it" class="achievement achievementlocked" style="background-image: url(images/35.png)" ach-tooltip="Max all the autobuyers."><br></div>
+                            <div id="Definitely not worth it" class="achievement achievementlocked" style="background-image: url(images/35.png)" ach-tooltip="Max all of the autobuyers' intervals."><br></div>
                         </td>
                         <td>
                             <div id="That's faster!" class="achievement achievementlocked" style="background-image: url(images/36.png)" ach-tooltip="Big Crunch in 10 minutes or less. Reward: Start with 200,000 antimatter."><br></div>
@@ -1585,7 +1606,7 @@
                                 <div id="This mile took an Eternity" class="achievement achievementlocked" style="background-image: url(images/66.png)" ach-tooltip="Get the 100th eternity milestone."><br></div>
                             </td>
                             <td>
-                                <div id="This achievement doesn't exist II" class="achievement achievementlocked" style="background-image: url(images/67.png)" ach-tooltip="Reach 9.99999e999 IP. Reward: Gain more IP based on your antimatter amount."><br></div> <!-- Funny Story III: There is actually something within this achievement picture that ticked Aarex when he realized there was a middle finger emoji. It's slightly subtle. -->
+                                <div id="This achievement doesn't exist II" class="achievement achievementlocked" style="background-image: url(images/67.png)" ach-tooltip="Reach 9.99999e999 IP. Reward: You gain more IP based on your antimatter amount (the formula for IP divides by 307.8 instead of 308)."><br></div> <!-- Funny Story III: There is actually something within this achievement picture that ticked Aarex when he realized there was a middle finger emoji. It's slightly subtle. -->
                             </td>
                             <td>
                                 <div id="That wasn't an eternity" class="achievement achievementlocked" style="background-image: url(images/68.png)" ach-tooltip="Eternity in under 30 seconds. Reward: Start eternities with 2e25 IP."><br></div>
