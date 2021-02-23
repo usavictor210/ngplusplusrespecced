@@ -4,7 +4,7 @@ function getTimeDimensionPower(tier) {
   if (player.currentEternityChall == "eterc11") return new Decimal(1)
   var dim = player["timeDimension"+tier]
   var ret = dim.power.pow(2)
-
+  var r132 = player.achievements.includes("r132") ? Decimal.floor(player.galaxies/4) : 0
   if (player.timestudy.studies.includes(11) && tier == 1) ret = ret.dividedBy(player.tickspeed.dividedBy(1000).pow(0.005).times(0.95).plus(player.tickspeed.dividedBy(1000).pow(0.0003).times(0.05)).max(Decimal.fromMantissaExponent(1, -2500)))
   if (player.achievements.includes("r105")) ret = ret.div(getInfiniteTimeReward())
   if (player.eternityUpgrades.includes(4)) ret = ret.times(player.achPow)
@@ -12,7 +12,7 @@ function getTimeDimensionPower(tier) {
   if (player.eternityUpgrades.includes(6)) ret = ret.times(player.totalTimePlayed / (10*21600)).max(1)
   if (player.timestudy.studies.includes(73) && tier == 3) ret = ret.times(calcTotalSacrificeBoost().pow(0.005).min(new Decimal("1e1300")))
   if (player.timestudy.studies.includes(93)) ret = ret.times(Decimal.pow(player.totalTickGained, 0.25).max(1))
-  if (player.timestudy.studies.includes(103)) ret = ret.times(Math.max(player.replicanti.galaxies, 1))
+  if (player.timestudy.studies.includes(103)) ret = ret.times(Decimal.max((new Decimal (player.replicanti.galaxies).add(r132)), 1))
   if (player.timestudy.studies.includes(151)) ret = ret.times(1e4)
   if (player.timestudy.studies.includes(221)) ret = ret.times(Decimal.pow(1.0025, player.resets))
   if (player.timestudy.studies.includes(227) && tier == 4) ret = ret.times(Math.max(Math.pow(calcTotalSacrificeBoost().log10(), 10), 1))
@@ -39,6 +39,9 @@ function getTimeDimensionPower(tier) {
     if (player.dilation.upgrades.includes(11)) {
       ret = Decimal.pow(10, Math.pow(ret.log10(), 1.05))
     }
+    if (player.achievements.includes("r137")) {
+      ret = Decimal.pow(10, Math.pow(ret.log10(), 1.01))
+    }
   }
 
   if (ret.lt(1)) {
@@ -54,6 +57,7 @@ function getTimeDimensionPower(tier) {
 function getInfiniteTimeReward() {
 return (player.tickspeed.div(1000).pow(0.000005))
 }
+
 function getTimeDimensionProduction(tier) {
   if (player.currentEternityChall == "eterc10") return new Decimal(0)
   var dim = player["timeDimension"+tier]

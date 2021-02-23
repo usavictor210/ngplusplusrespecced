@@ -1,5 +1,5 @@
 var newsArray;
-// how to make a proper news ticker: ["x", 'y', "z"] (x is the news ticker itself, y is the condition to show it, and z is the "code")
+// how to make a proper news ticker: ["x", 'y', "z"] (x is the news ticker itself, y is the condition to show it, and z is the "id")
 function updateNewsArray() {
   newsArray = [
     //always true
@@ -81,7 +81,7 @@ function updateNewsArray() {
       "a29"
     ],
     [
-      "Rate 5 on Kongregate so more people can experience this 5 star Rating",
+      "Rate 5 on Kongregate so more people can experience this 5 star Rating. Wait, it died. Nevermind, send it to your friends.",
       true,
       "a30"
     ],
@@ -90,7 +90,7 @@ function updateNewsArray() {
     ["I hate myself. -Boo-chan", true, "a33"],
     ["Gee golly -Xandawesome", true, "a34"],
     ["Above us, there is nothing above, But the stars, above.", true, "a35"],
-    ["If black lives matter, do white lives antimatter?", true, "a36"],
+    ["'Insert quote' - quoter", true, "a36"],
     ["Somebody wasn't nice, he got an antimatter-storm.", true, "a37"],
     [
       "You are living, you occupy space, you have a mass, you matter... unless you antimatter.",
@@ -189,7 +189,7 @@ function updateNewsArray() {
     ],
     ["And nothing Antimatters", true, "a65"],
     [
-      "School starting up strikes fear in students universe-wide, as schools are no longer segregated between Matter and antimatter. Annihilation is prominent.",
+      "School starting up strikes fear in students universe-wide, as schools are no longer segregated between Matter and Antimatter. Annihilation is prominent.",
       true,
       "a66"
     ],
@@ -270,7 +270,7 @@ function updateNewsArray() {
       true,
       "a91"
     ],
-    ["#DimensionLivesAntimatter", true, "a92"],
+    ["This news ticker has been replaced by an elephant", true, "a92"],
     [
       "Do antimatter people with suicidal thoughts get depressants?",
       true,
@@ -453,8 +453,8 @@ function updateNewsArray() {
       "a136"
     ],
     [
-      "The Holy trinity of Hevipelle, Antimatter, Infinity Points, and Eternity Points. These 3 resources let us access Hevi’s gift, Time Theorems. And with these Time Theorems, we reach out to Hevi, and call, “Hevi, bless us on this fine day!” And Hevi does. He give us the blessing of Time Studies. These Time Studies were blessings so powerful, Hevi restricted their power. He said, “I will give you a choice of three paths.” and then humanity chose. The short, cheap route of Normal Dimensions, giving instant gratification, the powerful choice of Infinity Dimensions, which were a fast, middle ground path, or Time Dimensions, the long wait, and struggle, of humanity. Then, as humanity chose, a crack broke the earth. A serpent snaked out and sneered to humanity, “I will offer the powerful choice of a ninth dimension! I am Slabdrill, lord of all Unhevi.” Humanity rose and said, “Begone Slabdrill! We want none of your foul Heresy!” And Hevi rose as well, and smote Slabdrill with his godlike power. As Slabdrill’s corpse fell into the earth, he cried, “This will not be the last of me! Hevi will betr-“ and he fell in the Abyss of matter. Hevi gifted humanity with Eternity upgrades, which boosted Infinity Dimensions and Time Dimensions, and Hevi gave humanity his greatest gift. EP multipliers. He said, “These will multiply all EP gained by 5, but their cost will increase 25 times. Use them wisely.” ...and Humanity journeyed off with their new power, as Slabdrill’s words echoed in their heads.",
-      "player.eternities > 0",
+      "The Holy Trinity of Hevipelle, Antimatter, Infinity Points, and Eternity Points. These 3 resources let us access Hevi’s gift, Time Theorems. And with these Time Theorems, we reach out to Hevi, and call, “Hevi, bless us on this fine day!” And Hevi does. He give us the blessing of Time Studies. These Time Studies were blessings so powerful, Hevi restricted their power. He said, “I will give you a choice of three paths.” and then humanity chose. The short, cheap route of Antimatter Dimensions, giving instant gratification, the powerful choice of Infinity Dimensions, which were a fast, middle ground path, or Time Dimensions, the long wait, and struggle, of humanity. Then, as humanity chose, a crack broke the earth. A serpent snaked out and sneered to humanity, “I will offer the powerful choice of a ninth dimension! I am Slabdrill, lord of all Unhevi.” Humanity rose and said, “Begone Slabdrill! We want none of your foul Heresy!” And Hevi rose as well, and smote Slabdrill with his godlike power. As Slabdrill’s corpse fell into the earth, he cried, “This will not be the last of me! Hevi will betr-” and he fell in the Abyss of matter. Hevi gifted humanity with Eternity upgrades, which boosted Infinity Dimensions and Time Dimensions, and Hevi gave humanity his greatest gift. EP multipliers. He said, “These will multiply all EP gained by 5, but their cost will increase 25 times. Use them wisely.” ...and Humanity journeyed off with their new power, as Slabdrill’s words echoed in their heads.",
+      "player.eternities.gt(0)",
       "a137"
     ],
     ["We have updated our Antimatter Privacy Policy.", true, "a138"],
@@ -465,12 +465,12 @@ function updateNewsArray() {
     //basic (pre-inf)
     [
       "You just made your 1,000,000,000,000,000 antimatter. This one tastes like chicken",
-      "player.money.e == 15",
+      "player.money.e >= 15",
       "b1"
     ],
     [
       "Nerf the galaxies please.",
-      "player.galaxies == 2 || player.infinitied > 0",
+      "player.galaxies == 2 || player.infinitied.gt(0)",
       "b2"
     ],
     [
@@ -490,7 +490,7 @@ function updateNewsArray() {
     ],
     [
       "Antimatter people seem to be even more afraid of 13 then we are. They destroyed entire galaxies just to remove 13 from their percents.",
-      "player.galaxies > 0 || player.infinitied > 0",
+      "player.galaxies > 0 || player.infinitied.gt(0)",
       "b8"
     ],
     [
@@ -516,7 +516,7 @@ function updateNewsArray() {
     ["What does the CTRL button do again?", "controlDown", "b27"],
     //9th dim
     [
-      "9th Dimension is a lie.",
+      "The 9th Dimension is a lie.",
       "player.resets >= 5 || player.galaxies > 0",
       "b6"
     ],
@@ -559,7 +559,7 @@ function updateNewsArray() {
     //basic (post-inf pre-rep)
     [
       "I've got 1.79e308 problems, but none of them antimatters",
-      "player.infinitied > 0 && !player.break",
+      "player.infinitied.gt(0) && !player.break",
       "b15"
     ],
     ["Anti Emoji Movie a huge hit", "player.spreadingCancer >= 5", "b18"],
@@ -569,23 +569,23 @@ function updateNewsArray() {
       "b19"
     ],
     [
-      "Florida man attempts to get Zero Deaths on first run, is stopped by heat death of the universe.",
+      "Florida man attempts to get Zero Deaths on first run, is stopped by the heat death of the universe.",
       'player.achievements.includes("r43")',
       "b16"
     ],
     [
       "Having done half the achievements isn't much of an achievement -Boo",
-      " player.achievements.length >= 40",
+      "player.achievements.length >= 40",
       "b20"
     ],
     //basic (post-rep)
     [
-      "Thanos is gonna be super dissapointed when he shows up with a fully powered infinity gauntlet, and Hevi has a fully powered eternity gauntlet",
+      "Thanos is gonna be super disappointed when he shows up with a fully powered infinity gauntlet, and Hevi has a fully powered eternity gauntlet",
       "player.eternities > 0",
       "b23"
     ],
     [
-      "New strange material was been found. It seems to grow exponentially, but only helps with antimatter production.",
+      "A new strange material has been found. It seems to grow exponentially, but it only helps with antimatter production. We'll call this thing \"replicanti\", whatever that means.",
       "player.replicanti.unl && player.replicanti.chance == 0.01",
       "b25"
     ],
@@ -612,9 +612,10 @@ function updateNewsArray() {
     ],
     ["Need more quotes! -hevipelle", "player.newsArray.length >= 135", "n2"],
     ["You're almost there!", "player.newsArray.length >= 160", "n11"],
-    ["You can stop now", "player.newsArray.length >= 165", "n9"],
-    ["fucking hacker", "player.newsArray.length >= 200", "n10"],
+    ["You can stop now", "player.newsArray.length >= 175", "n9"],
+    ["fricking hacker, ok how do i turn off news", "player.newsArray.length >= 200", "n10"],
     ["You are a pure being of chaos", "player.newsArray.length >= 250", "n12"],
+    ["You should've stopped these quotes from coming long ago", "player.newsArray.length >= 333", "n13"],
     [
       "Asian man trys to steal the trophy of fastest infinty of -1 seconds, AND HE DOES IT!",
       'player.newsArray.includes("c1")',
@@ -666,18 +667,18 @@ function updateNewsArray() {
     ],
     [
       "The achievement is for two million, not two billion...",
-      "player.infinitied > 2e9",
+      "player.infinitied.gt(2e9)",
       "c8"
     ],
     ["Keep up the quick pace!", "Marathon > 1200", "c9"],
     [
       "One day you will stop your incessant grind.",
-      "player.eternities > 50000",
+      "player.eternities.gt(50000)",
       "c10"
     ],
     [
       "You can probably stop farming for eternities now...",
-      "player.eternities > 2000000",
+      "player.eternities.gt(2000000)",
       "c11"
     ],
     ["Are you serious?", "worstChallengeTime <= 0.1", "c12"],
@@ -687,7 +688,7 @@ function updateNewsArray() {
       "player.eternities > 1e12",
       "c14"
     ], // respeccedx+2
-    //luck
+    //luck, these are actually way more missable than you think they are.
     [
       "Technically, these luck messages are even rarer than we thought. This is considering the fact that you only have one chance to get the lucky news tickers for every news ticker out of the many news tickers in the news array, and even then, Math.random() is very random.",
       "Math.random() < 0.01",
@@ -739,7 +740,7 @@ function updateNewsArray() {
     ],
     [
       "Legend says the ninth dimension is supposed to be found here, but I don't see anything.",
-      "player.money.e >= 4190000 && player.dilation.active && player.galaxies == 1 && player.resets == 4 && player.thirdAmount == new Decimal(0)", // reminder to make this a achievement
+      "player.money.e >= 4190000 && player.dilation.active && player.galaxies == 1 && player.resets == 4 && player.thirdAmount == new Decimal(0)", // reminder to make this a achievement...?
       "s2"
     ], // requirement changed to e4,190,000 antimatter, 1 galaxy, 4 resets and only up to 2nd dimensions
     ["Person with money likes to support this game.", true, "s3"],
@@ -840,7 +841,7 @@ function updateNewsArray() {
     ["How it feels to chew 5 Gum", "player.dilation.active", "respecced27"],
     [
       "A man has fallen into the 9th dimension in Antimatter City! Start the new big crunch! Hey! Build the big crunch and off to the rescue. Prepare the crunch, wipe the 9th dimension and make the rescue. The new big crunch collection from Antimatter Dimensions",
-      "player.infinitied > 0",
+      "player.infinitied.gt(0)",
       "respecced28"
     ],
     ["5 hours left till the next UA:RP update", true, "respecced29"],
@@ -874,18 +875,18 @@ function updateNewsArray() {
     ],
     [
       "This is a test of our new creative works software. Your random number is: " +
-        Math.random() * 1000 +
-        ".     ...did it work? We hope it did.",
+        Math.floor(Math.random() * 1000) +
+        ".   Hey, did it work? We hope it did.",
       true,
       "respecced36"
     ],
     [
-      "We've heard that dilation seems very boring. Our scientists are changing that. It might turn too unstable soon, so watch out for that.",
+      "We've heard that dilation seems very boring. Our scientists are changing that. It might turn too unstable soon, so watch out for some weird quirks.",
       'player.eternityPoints.gte(new Decimal("1e1300"))',
       "respecced37"
     ],
     [
-      "An infinite clock has been detected. It seems it just repeats the time over and over again.",
+      "An infinite clock has been found near the end of universe #6,210,322. It seems it just repeats the time over and over again, however that works.",
       true,
       "respecced38"
     ],
@@ -994,7 +995,7 @@ function updateNewsArray() {
       "respecced60"
     ],
     [
-      "Whenever I try to give Aarex a antimatter onion, the onion vanishes. Does this mean Aarex is made of matter?",
+      "Whenever I try to give Aarex an antimatter onion, the onion vanishes. Does this mean Aarex is made of matter?",
       true,
       "respecced61"
     ],
@@ -1074,7 +1075,7 @@ function updateNewsArray() {
     //news tickers from randomtuba
     ["Just wait six hours and your package will arrive", true, "respecced79"],
     [
-      "Anti-Jake from StateFarm says that he is not on your side.",
+      "Anti-Jake from State Farm says that he is not on your side.",
       true,
       "respecced80"
     ],
@@ -1084,7 +1085,7 @@ function updateNewsArray() {
       "respecced81"
     ],
     [
-      "If there's no triple exponentiational growth in this game I will stop playing",
+      "If there's no triple exponentiational growth in this game I will stop playing.",
       true,
       "respecced82"
     ],
@@ -1094,16 +1095,16 @@ function updateNewsArray() {
       "respecced83"
     ],
     [
-      "Did antimatter cause the Local58 incidents? If it did, boy were they wrong",
+      "Did antimatter cause the Local58 incidents? If it did, boy were they wrong.",
       true,
       "respecced84"
     ],
     [
-      "PLEASE INSERT THE ANTIMATTER INTO THE PROPER SLOT. IF THERE IS NO MORE SLOT, THEN PLEASE TRY AGAIN.",
+      "PLEASE INSERT THE ANTIMATTER INTO THE PROPER SLOT. IF THERE ARE NO MORE SLOTS, THEN PLEASE TRY AGAIN WITH AN EMPTY SLOT.",
       true,
       "respecced85"
     ],
-    ["https://safeyoutube.net/w/4nj1", true, "respecced86"],
+    ["https://safeyoutube.net/w/4nj1", true, "respecced86"], //rickroll
     ["John, I want a divorce.", true, "respecced87"],
     [
       "If the 9th dimension doesn't exist, then why can you obtain 9 antimatter galaxies?",
@@ -1115,7 +1116,7 @@ function updateNewsArray() {
       true,
       "respecced89"
     ],
-    ["var 9thDimensions = NaN;", true, "respecced90"],
+    ["var 9thDimensions = NaN; | Uncaught SyntaxError: Invalid or unexpected token", true, "respecced90"],
     ["NG+3 Respecced is the bane of my existence", true, "respecced91"],
     [
       "SCP-AD --- Object Class: Keter --- Special Containment Procedures: SCP-AD must be contained in a 5x5 meter cell with no matter by it, or else it will be destroyed due to annhilation. Security cameras have a chance to shut down at a 5-hour interval. --- Description: SCP-AD is a computer screen that has an odd game on it. It is a game where you collect 'antimatter' with 'dimensions'. The computer has a mouse, a keyboard, and a [REDACTED] by it. The keyboard does not have QWERTY format. The arrangement of keys are [REDACTED]. --- Experiment AD-1: D-6969 was asked to play the game on SCP-AD. 5 hours later, security footage malfunctioned. When observing the containment area, D-6969 had disappeared without a trace. On the screen, it showed a '[REDACTED]' had unlocked. --- Experiment AD-3: D-8826 was asked to play the game on SCP-AD in 'Cancer' Notation. 5 hours later, D-8826 exploded from the inside. Later, all remains of the corpse had been absorbed inside the containment chamber.",
@@ -1127,7 +1128,7 @@ function updateNewsArray() {
       "player.dilation.unstable.times >= 1",
       "respecced93"
     ],
-    ["Don't add way too many prestige layers", true, "respecced94"],
+    ["Don't add way too many prestige layers.", true, "respecced94"],
     //pass the mic back
     [
       "It cries above mount Everest, and antimatter from the raindrops of the antimatter galaxies made by Hevi Pelle who smote slabdrill and mighty aarex and produced too much antimatter and the forbidden matter from Slabdrill.",
@@ -1160,7 +1161,7 @@ function updateNewsArray() {
       "respecced100"
     ],
     [
-      "This message's contents will only be viewable if you have performed [REDACTED]. I don't know if we did anything yet with it though.",
+      "This message's contents will only be viewable if you buy the News Ticker DLC. Sorry!",
       true,
       "respecced101"
     ],
@@ -1194,14 +1195,14 @@ function updateNewsArray() {
       true,
       "respecced107"
     ],
-    ["This is a news ticker. It just is.", true, "respecced108"],
+    ["This is a news ticker. It just is, don't question it.", true, "respecced108"],
     [
-      "Hmm, what if there is an alternative universe, where 9th Dimensions are [REDACTED]?",
+      "Hmm, what if there is an alternative universe, where 9th Dimensions are [REDACTED]? Meh, bad idea.",
       "player.resets > 4",
       "respecced109"
     ],
     ["The 9th Dimension isn't real, but it will be real 5 hours from now. ...But, maybe... maybe it might just be you.", "player.resets > 4", "respecced110"],
-    ["\"But now is 2020!\" - C16946986", true, "respecced111"],
+    ["\"But now it's " + (1970 + Math.floor((Date.now()/1000)/3.154e+7)) + "!\" - C16946986", true, "respecced111"],
     ["<a href ='https://www.youtube.com/watch?v=TN25ghkfgQA'>\"What if you pinged yourself?\"</a>", true, "respecced112"],
     ["\"plz make this an entry to the news ticker\" ~ Diamboy, 2020", true, "respecced113"],
     /*["I used to rule the world, antimatter came when I gave the word. Now in the night, I dared to sleep, in the projects that were to be. I developed a game, that would exceed past infinity. ", true, "respecced114"]*/// viva la vida parody, probably a very dumb idea to make.
@@ -1209,15 +1210,53 @@ function updateNewsArray() {
       "Hey there, Despacit here. What the FUCK HAVE YOU DONE?!?!?",
       "player.firstPow.eq(1) && player.quantums.gt(1)",
       "respecced115"
-    ],
+    ], // happens if quantums somehow break something
     [
       "Florida man survived idol hell, but can never forget the past again. Everyone is relieved of the incident. ...well, not everyone, the only thing that might be very annoyed is the things in hell itself.",
       'player.newsArray.includes("respecced33")',
       "respcecced116"
     ],
-    ["The power of the eternal studies surpasses all others. They're mastery studies, but better.", 'player.timestudy.studies.includes(241) || player.timestudy.studies.includes(242)', "respecced117"],
-    ["The glitch is glitching now. That's not good. Everything is falling apart!", true, "respecced118"]
-  ];
+    ["The power of the eternal studies surpasses all others. They're mastery studies, but they're better, as far as we know.", 'player.timestudy.studies.includes(241) || player.timestudy.studies.includes(242)', "respecced117"],
+    ["The glitch is glitching now. That's not good. Everything is falling apart!", true, "respecced118"],
+    ["Time goes over infinity? I thought we would've died from the heat death by then and never reached infinity seconds! Eh, whatever, who tracks the time anyway...", true, "respecced119"],
+    ["Thanos is going to be super disappointed when he has a full infinity gauntlet and Hevi has a full eternity gauntlet, but Hevi is going to be super disappointed too because he has a full eternity gauntlet and Aarex has a...  Wait, who is the owner of the quantum gauntlet? Usavictor? Despacit? Aarex? Who knows. Anyways, Hevi is upgrading his eternity gauntlet, named the Reality gauntlet, and it is expected to be stronger than the full power Quantum gauntlet. It is unknown who will have the upper hand. Will it be the man who creates the meaning of reality, or the man who is elaborate in the cosmos?", 'player.quantum.times != 0 && player.newsArray.includes("b23")', "respecced120"],
+    ["If each dimension contains 1.79e308x the antimatter of the last dimension, how do we ever reach 1.05e2466 antimatter?", 'player.money.gt(new Decimal("1.05e2466"))', "respecced121"],
+    ["In another universe, Challenge 8 is much more painful and involves manual labor.", true, "respecced122"], // New tickers in Alpha 0.2.1
+    ["Hey Scott, all here", true, "respecced123"], // Breakout - 3D Dot Game Heroes
+    ["OK, fine, Time Leaper is from that impossible game, but there's no such manual to actually leap over time in the first place.", 'player.newsArray.includes("respecced43")', "respecced124"],
+    ["BREAKING NEWS: News reporter recently broke the 'news ticker' after an incident in the facility broke the machine that was running it. He was promptly fired.", 'player.newsArray.includes("respecced68")', "respecced125"],
+    ["what's the deal with investment", 'player.quantum.times > 0', "respecced126"],
+    ["In AD 2101, war was beginning. *explosion* What happen? Someone set up us the bomb. We get signal. What! Main screen turn on. It's you!! How are you gentlemen!! All your antimatter are belong to us. You are on the way to destruction. What you say!! You have no chance to survive make your time. Ha ha ha ha... Captain!! Take off every \"dimension\"! You know what you doing. Move \"dimensions\". For great justice.", 'player.newsArray.length > 250', "respecced127"],
+    ["happy birthday despacit", '(new Date().getMonth() == 5 && new Date().getDate() == 12)', "respecced128"],
+    ["Pounding into straw Pounding into straw Pounding into straw five-inch, five-inch, five-inch nails!", '!player.break', "respecced129"],
+    ["Antimatter is known to create annoying bullet patterns and ruin people's 1cc attempts, violating the rules of spell cards.", 'player.newsArray.includes("respecced132")', "respecced130"],
+    ["Aren't you bored or something?", 'player.totalTimePlayed >= 600*3000', "respecced131"], // 50 hours
+    ["Kirby begins to devour the universe and turn into Hypernova Kirby.", "player.newsArray.includes('r134')", "respecced132"],
+    ["If the big bang happened 13.8 billion years ago and should've produced matter, where does the antimatter come from?", "player.money.gt('1e200000000')", "respecced133"],
+    ["To be fair, you have to have a very high IQ to understand Antimatter Dimensions.", true, "respecced134"],
+    ["2 + 2 = 5, I have been lied to, the universe is no more.", 'player.quantum.times > 0', "respecced135"],
+    ["The Return of Killer Bean", true, "respecced136"],
+    ["But before we start this video, you have to check out Antimatter Dimensions™️. It's got over 100,000 downloads, and it's completely redefined what a mobile game can do for me. It's got great mechanics, 4 prestige layers, 32 unique and original challenges, a deep skill tree, and the largest numbers I've ever seen. Like, seriously, look at them. And the best part is, it's free! Yes, that's right. Free. And if you use the link in the description, you'll start the game with 10 septillion antimatter. Yes, that's right, 10 septillion. So what are you waiting for, click the link in the description and start playing Antimatter Dimensions™️ today!", true, "respecced137"], // weee50's dank maymay
+    ["With the power of the Chaos Emeralds, we're able to move at hypersanic speed. Nothing else can go beyond that.", false, "respecced138"],
+    ["If 3 is the root of all evil, what's √3 supposed to be then?", "player.newsArray.includes('b24')", "respeccced139"],
+    ["There is deep lore within Antimatter Dimensions, you just have to reach Reality first, where'll you find the meaning of your existence.", "(player.newsArray.includes('a101') && player.eternityPoints.gte('1e4000')) || player.quantum.times > 0", "respeccced140"],
+    ["Antimatter power plants have been proven to become unstable, as there has been an increase in power in the past few days. It has been reported that people have gotten large power bills. The scientists believe the power cells will break eventually, and they cannot create a new one immediately, leading to the blackouts in the city. Citizens have caused an uproar, and have resorted to using regular remote batteries. Stay tuned for more details.", "player.newsArray.includes('a3')", "respeccced141"],
+    ["Antimatter can now transport people between multiple timelines, making it easier to move across time and space, as long as you have some antimatter on you.", 'player.newsArray.includes("a99")', "respecced142"],
+    ["The Hitchhiker's Guide to the Antimatter Galaxy", 'player.galaxies > 0', "respecced143"],
+    ["\"...And then, once you get to level 9,000, you can ascend. Not really sure why you'd want to do that, it just resets all of your hard earned xp for some small buffs, mechanics like this will never catch on.\" - Someone in 2012", "player.quantum.times > 0", "respecced144"], //mobile news ticker #1030
+    ["Obtaining unobtainium shouldn't be possible, but if obtained through reasonable actions, it's definitely obtainium.", "player.quantum.times > 0", "respecced145"],
+    ["Every 18,000 seconds in the Antimatter Universe, 5 hours pass. Together we can stop this.", true, "respecced146"], //mobile news ticker #445
+    ["Why, back in my day, we considered a million to be a huge number! Kids these days with their ol' " + shortenMoney(player.money) + " numbers...", "player.money.gte(1e6)", "respecced147"], //mobile news ticker #282 made by multivberse
+    ["Buy the paperclip emojis now at https://aarextiaokhiao.github.io/blob/master/docs/en.json", true, "respecced148"], //mobile ai news ticker #-137
+    ["With a new recent scientific discovery, scientists found out how to reach Infinity in 0.000 seconds. They have announced we are one step closer to breaking the world record of -1 second by that Asian man, but replicating such a task is inconceivable. One day, it will be possible.", "player.eternityChalls.eterc12 > 0 && player.newsArray.includes('n4')", "respecced149"],
+    ["If the second installment of Sound Voltex is subtitled \"Infinite Infection\", why isn't the third installment subtitled \"Eternity Wars\"?", true, "respecced150"], //mobile news ticker #388
+    ["It's been a while. Watch out, world, I'm going quantum.", true, "respecced151"],
+    ["Is it me, or am I hearing something in these space walls? Nothing's come around here for a while...", true, "respecced152"],
+    ["usavictor please stop making news tickers and get back to work", true, "respecced153"],
+    ["\"too much snow, please, no more snow, no more halating\" ~ Anti-Mikey", "player.newsArray.includes('respecced98')", "respecced154"],
+    ["The news ticker machine is currently overheating and cannot take any more requests right now. Please try again later.", true, "respecced155"],
+    ["\"Sorry usavictor, no procrastination for you today. Go work on Antimatter Dimensions NG+2 Respecced Now!\" ~ Pylon", true, "respecced156"] // exclusive to testing
+    ]
   }
 var s = document.getElementById("news");
 document.addEventListener(

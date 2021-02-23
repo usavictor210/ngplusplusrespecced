@@ -1,19 +1,20 @@
 function quantum(force, auto) {
   if (
     (player.meta.antimatter.gte(quantRequirement()) &&
+      player.dilation.dilatedTime.gte(1e100) &&
       (!player.options.quantumconfirm ||
         auto ||
         confirm(
-          "Quantum will reset everything eternity resets, including dilation, and meta-dimensions, in exchange for a quark and unlock various upgrades. Are you sure you want to do this?"
+          "Quantum will reset everything Eternity resets, including Time Dilation and Meta-Dimensions, in exchange for a quark and unlock various upgrades. Are you sure you want to do this?"
         ))) ||
-    force === true
+    force
   ) {
     player.quantum.quarks = player.quantum.quarks.plus(quarkGain());
     player.quantum.gluons = 0;
     if (player.thisQuantum < player.bestQuantum && !force) {
-    player.bestQuantum = player.thisQuantum;
+      player.bestQuantum = player.thisQuantum;
     }
-    player.thisQuantum = 0
+    player.thisQuantum = 0;
     player = {
       ngPlus: 1,
       money: new Decimal(10),
@@ -57,7 +58,7 @@ function quantum(force, auto) {
       currentChallenge: "",
       infinityUpgrades: player.infinityUpgrades,
       infinityPoints: new Decimal(0),
-      infinitied: 0,
+      infinitied: new Decimal(0),
       infinitiedBank: player.infinitiedBank,
       totalTimePlayed: player.totalTimePlayed,
       bestInfinityTime: 9999999999,
@@ -409,19 +410,22 @@ function quantum(force, auto) {
     if (player.infinitied >= 1 && !player.challenges.includes("challenge1"))
       player.challenges.push("challenge1");
     updateAutobuyers();
-    player.money = getAntimatterOnReset()
+    player.money = getAntimatterOnReset();
     if (player.achievements.includes("r85"))
       player.infMult = player.infMult.times(4);
     if (player.achievements.includes("r93"))
       player.infMult = player.infMult.times(4);
     if (player.achievements.includes("r104"))
       player.infinityPoints = new Decimal(2e25);
-    if (player.achievements.includes("r142") && !player.achievements.includes("r152")) {
+    if (
+      player.achievements.includes("r142") &&
+      !player.achievements.includes("r152")
+    ) {
       player.meta.antimatter = new Decimal(100);
-  } else if (player.achievements.includes("r152")) {
-    player.meta.antimatter = new Decimal (1000)
-  }
-    
+    } else if (player.achievements.includes("r152")) {
+      player.meta.antimatter = new Decimal(1000);
+    }
+
     resetInfDimensions();
     updateChallenges();
     updateChallengeTimes();
@@ -455,7 +459,7 @@ function quantum(force, auto) {
       "</span> Infinity points.";
     if (player.eternities < 2)
       document.getElementById("break").textContent = "BREAK INFINITY";
-      RGDisplayAmount()
+    RGDisplayAmount();
     document.getElementById(
       "eternitybtn"
     ).style.display = player.infinityPoints.gte(player.eternityChallGoal)
@@ -463,7 +467,7 @@ function quantum(force, auto) {
       : "none";
     document.getElementById("eternityPoints2").style.display = "inline-block";
     document.getElementById("eternitystorebtn").style.display = "inline-block";
-    updateInfMult()
+    updateInfMult();
     updateEternityUpgrades();
     document.getElementById("totaltickgained").textContent =
       "You've gained " +
@@ -477,28 +481,28 @@ function quantum(force, auto) {
       "</span> Eternity point" +
       (player.eternityPoints.eq(1) ? "." : "s.");
     if (player.lastTenQuantums === undefined) {
-    player.lastTenQuantums = [
-      [600 * 60 * 24 * 31, 1],
-      [600 * 60 * 24 * 31, 1],
-      [600 * 60 * 24 * 31, 1],
-      [600 * 60 * 24 * 31, 1],
-      [600 * 60 * 24 * 31, 1],
-      [600 * 60 * 24 * 31, 1],
-      [600 * 60 * 24 * 31, 1],
-      [600 * 60 * 24 * 31, 1],
-      [600 * 60 * 24 * 31, 1],
-      [600 * 60 * 24 * 31, 1]
-    ];
-  }
+      player.lastTenQuantums = [
+        [600 * 60 * 24 * 31, 1],
+        [600 * 60 * 24 * 31, 1],
+        [600 * 60 * 24 * 31, 1],
+        [600 * 60 * 24 * 31, 1],
+        [600 * 60 * 24 * 31, 1],
+        [600 * 60 * 24 * 31, 1],
+        [600 * 60 * 24 * 31, 1],
+        [600 * 60 * 24 * 31, 1],
+        [600 * 60 * 24 * 31, 1],
+        [600 * 60 * 24 * 31, 1]
+      ];
+    }
     updateEternityChallenges();
     updateTheoremButtons();
     updateTimeStudyButtons();
     drawStudyTree();
-    //updateLastTenQuantums(); this is too buggy right now, either we could pull a NG^^ or actually fix it
+    //updateLastTenQuantums(); this is too buggy right now, either we could pull a NG^^ (by not showing it), or actually fix it.
     Marathon2 = 0;
     player.quantum.times++;
     document.getElementById("mdtabbtn").style.display = "none";
-    showDimTab('antimatterdimensions')
+    showDimTab("antimatterdimensions");
     giveAchievement("Sub-atomic");
   }
 }
@@ -556,21 +560,38 @@ function updateQuantum() {
     document.getElementById("quantumed").textContent =
       "You have gone quantum " + player.quantum.times + " time" + plural + ".";
     document.getElementById("thisquantum").textContent =
-      "You have spent " + timeDisplay(player.quantum.thisQuantum) + " in this Quantum.";
+      "You have spent " +
+      timeDisplay(player.quantum.thisQuantum) +
+      " in this Quantum.";
     document.getElementById("bestquantum").textContent =
-      "Your fastest Quantum is in " + timeDisplay(player.quantum.bestQuantum) + ".";
-  } else { document.getElementById("quantumbtn").style.display = "none";
-  document.getElementById("quantumed").textContent = "";
-  document.getElementById("thisquantum").textContent = "";
-  document.getElementById("bestquantum").textContent = "";
-  document.getElementById("pastquantums").style.display = "none";
-}
+      "Your fastest Quantum is in " +
+      timeDisplay(player.quantum.bestQuantum) +
+      ".";
+  } else {
+    document.getElementById("quantumbtn").style.display = "none";
+    document.getElementById("quantumed").textContent = "";
+    document.getElementById("thisquantum").textContent = "";
+    document.getElementById("bestquantum").textContent = "";
+    document.getElementById("pastquantums").style.display = "none";
+  }
   let plural2 = player.quantum.quarks != 1 ? "s" : "";
-  let plural3 = getTotalInvestmentAmount().notEquals(1) ? "s" : ""
-  document.getElementById("quarkAmount").textContent = `You have ${shortenDimensions(player.quantum.quarks)} quark` + plural2 + `.`
-  document.getElementById("unstableShardAmount").textContent = player.dilation.unstable.shards
-  document.getElementById("totalInvest").textContent = `You have invested a total of ${shortenDimensions(getTotalInvestmentAmount())} quark` + plural3 + `.`
-  document.getElementById("dilationseverity").textContent = "Dilation's penalty on all dimensions is x^" + getDilPunish().toFixed(3) + "."
+  let plural3 = getTotalInvestmentAmount().notEquals(1) ? "s" : "";
+  document.getElementById("quarkAmount").textContent =
+    `You have ${shortenDimensions(player.quantum.quarks)} quark` +
+    plural2 +
+    `.`;
+  document.getElementById("unstableShardAmount").textContent =
+    player.dilation.unstable.shards;
+  document.getElementById("totalInvest").textContent =
+    `You have invested a total of ${shortenDimensions(
+      getTotalInvestmentAmount()
+    )} quark` +
+    plural3 +
+    `.`;
+  document.getElementById("dilationseverity").textContent =
+    "Dilation's penalty on all dimensions is x^" +
+    getDilPunish().toFixed(3) +
+    ".";
 }
 
 function updateLastTenQuantums() {
@@ -588,14 +609,16 @@ function updateLastTenQuantums() {
     var qkpm = player.quantum.lastTenQuantums[i][1].dividedBy(
       player.quantum.lastTenQuantums[i][0] / 600
     );
-    var plural = s
+    var plural = s;
     if (qkpm.gt(tempBest)) tempBest = qkpm;
     var tempstring = shorten(qkpm) + " QK/min";
     if (qkpm < 1) tempstring = shorten(qkpm * 60) + " QK/hour";
     document.getElementById("quantumrun" + (i + 1)).textContent =
       "The Quantum " +
       (i + 1) +
-      " quantum" + plural + " ago took " +
+      " quantum" +
+      plural +
+      " ago took " +
       timeDisplayShort(player.lastTenQuantums[i][0]) +
       " and gave " +
       shortenDimensions(player.lastTenQuantums[i][1]) +
@@ -617,42 +640,73 @@ function updateLastTenQuantums() {
 }
 
 function investQuarks(feature, amount) {
-if (feature != 0 && feature < 6 && player.quantum.quarks >= amount && !player.quantum.quarks < amount && amount != 0 && !amount < 1 && !isNaN(amount)) { // i screwed up on the array, it appears there is array value number 0 and it looks weird.
-player.quantum.investmentAmount[feature] = Decimal.add(player.quantum.investmentAmount[feature], amount)
-player.quantum.quarks = player.quantum.quarks.sub(amount)
+  if (
+    feature != 0 &&
+    feature < 6 &&
+    player.quantum.quarks >= amount &&
+    !player.quantum.quarks < amount &&
+    amount != 0 &&
+    !amount < 1 &&
+    !isNaN(amount)
+  ) {
+    // i screwed up on the array, it appears there is array value number 0 and it looks weird.
+    player.quantum.investmentAmount[feature] = Decimal.add(
+      player.quantum.investmentAmount[feature],
+      amount
+    );
+    player.quantum.quarks = player.quantum.quarks.sub(amount);
   }
 }
 
-function getTotalInvestmentAmount() { // gets a value from all values of the array and adds it into a decimal
-  let ret = new Decimal(0)
-  for (i=1; i<6; i++) { // let feature of Object.values(player.quantum.investmentAmount)  
-  ret = Decimal.add(ret, player.quantum.investmentAmount[i]) //add to decimal
+function getTotalInvestmentAmount() {
+  // gets a value from all values of the array and adds it into a decimal
+  let ret = new Decimal(0);
+  for (i = 1; i < 6; i++) {
+    // let feature of Object.values(player.quantum.investmentAmount)
+    ret = Decimal.add(ret, player.quantum.investmentAmount[i]); //add to decimal
   }
-  return ret
+  return ret;
 }
 
-function updateInvestmentDisplay() {
- for (i=1; i<6; i++) {
- document.getElementById("amount" + i).textContent = player.quantum.investmentAmount[i] 
- }
+function doQuantumProgress() {
+  id = 1;
+  var className = id > 4 ? "idekProgress" : "quantumProgress";
+  if (document.getElementById("progressbar").className != className)
+    document.getElementById("progressbar").className = className;
+  if (id == 1) {
+    var percentage =
+      Math.min(
+        (player.meta.antimatter.max(1).log10() /
+          Decimal.log10(Number.MAX_VALUE)) *
+          100,
+        100
+      ).toFixed(2) + "%";
+    document.getElementById("progressbar").style.width = percentage;
+    document.getElementById("progresspercent").textContent = percentage;
+    document
+      .getElementById("progresspercent")
+      .setAttribute("ach-tooltip", "Percentage to Quantum");
+  }
 }
 
-function getInvestMultiplier(x) { // you have to decide a formula for each feature.
-    switch (x) {
-        case 1: // time studies; this will probably multiply the softcaps.
-            return new Decimal(player.quantum.investmentAmount[1]).pow(2.5).max(1)
-        case 2: // time dimensions
-            return new Decimal(player.quantum.investmentAmount[2]).pow(3).max(1)
-        case 3: // replicantis
-            let y = new Decimal(player.quantum.investmentAmount[3]).pow(0.75).max(1)
-            return y.gt(25) ? y.pow(0.675).max(25) : y
-        case 4: // meta dimensions
-            return new Decimal(player.quantum.investmentAmount[4]).times(2).max(1)
-        case 5: // time dilation
-            return new Decimal(player.quantum.investmentAmount[5]).times(1.5).max(1)
-        default:
-            return new Decimal(1)
-    }
+// Retired in Alpha 0.3
+function getInvestMultiplier(x) {
+  // you have to decide a formula for each feature.
+  switch (x) {
+    case 1: // time studies; this will probably multiply the softcaps.
+      return new Decimal(player.quantum.investmentAmount[1]).pow(2.5).max(1);
+    case 2: // time dimensions
+      return new Decimal(player.quantum.investmentAmount[2]).pow(3).max(1);
+    case 3: // replicantis
+      let y = new Decimal(player.quantum.investmentAmount[3]).pow(0.75).max(1);
+      return y.gt(25) ? y.pow(0.675).max(25) : y;
+    case 4: // meta dimensions
+      return new Decimal(player.quantum.investmentAmount[4]).times(2).max(1);
+    case 5: // time dilation
+      return new Decimal(player.quantum.investmentAmount[5]).times(1.5).max(1);
+    default:
+      return new Decimal(1);
+  }
 }
 
 function showQuantumTab(tabName, init) {

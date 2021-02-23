@@ -422,7 +422,7 @@ button {
 }
 
 .IP {
-  left: 73%;
+  left: 73.375%;
   position: absolute;
   font-size: 12px;
   width: 300px;
@@ -433,7 +433,7 @@ button {
 }
 
 .EP {
-  right: 72.5%;
+  right: 72.75%;
   position: absolute;
   font-size: 12px;
   width: 300px;

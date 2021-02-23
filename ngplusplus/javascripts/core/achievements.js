@@ -264,8 +264,8 @@ function updateAchievements() {
           document.getElementById("secretAchRow"+i).className = ""
       }
   }
-  player.achPow = Decimal.pow(1.125, amount)
-  document.getElementById("achmultlabel").textContent = "Current achievement multiplier on each Dimension: " + shortenDimensions(player.achPow) + "x"
+  player.achPow = Decimal.pow(1.1, amount)
+  document.getElementById("achmultlabel").textContent = "Current achievement multiplier on each Dimension: " + shorten(player.achPow) + "x"
 }
 
 function getSecretAchAmount() {
