@@ -393,6 +393,7 @@ button {
   transition-duration: 0.2s;
   cursor: pointer;
   position: absolute;
+  top: 45px;
   left: 75%;
   width: 240px;
   height: 70px;
@@ -422,7 +423,7 @@ button {
 }
 
 .IP {
-  left: 73%;
+  left: 73.375%;
   position: absolute;
   font-size: 12px;
   width: 300px;
@@ -433,7 +434,7 @@ button {
 }
 
 .EP {
-  right: 72.5%;
+  right: 72.75%;
   position: absolute;
   font-size: 12px;
   width: 300px;
@@ -441,6 +442,13 @@ button {
 
 .EPAmount2 {
   font-weight: bold;
+}
+
+.QK {
+  right: 42%;
+  position: absolute;
+  font-size: 12px;
+  width: 300px;
 }
 
 .newdim {
@@ -492,6 +500,7 @@ button {
   right: 74.5%;
   width: 240px;
   height: 70px;
+  top: 45px;
   font-family: Typewriter;
   color: #b341e0;
   background: black;
@@ -759,8 +768,8 @@ button {
   border: 1px solid black;
   font-weight: bold;
   font-family: Typewriter;
-  width: 170px;
-  height: 80px;
+  width: 180px;
+  height: 100px;
   transition-duration: 0.2s;
   cursor: pointer;
   border-radius: 4px;
@@ -776,8 +785,8 @@ button {
   border: 1px solid #b341e0;
   font-weight: bold;
   font-family: Typewriter;
-  width: 170px;
-  height: 80px;
+  width: 180px;
+  height: 100px;
   transition-duration: 0.2s;
   cursor: pointer;
   border-radius: 4px;
@@ -920,8 +929,8 @@ button {
   font-weight: bold;
   font-family: Typewriter;
   border: 1px solid #691fa5;
-  width: 170px;
-  height: 80px;
+  width: 180px;
+  height: 100px;
   transition-duration: 0.2s;
   border-radius: 4px;
   font-size: 0.65rem;
@@ -941,8 +950,8 @@ button {
   font-weight: bold;
   font-family: Typewriter;
   border: 1px solid #691fa5;
-  width: 170px;
-  height: 80px;
+  width: 180px;
+  height: 100px;
   transition-duration: 0.2s;
   border-radius: 4px;
   font-size: 0.65rem;
@@ -956,8 +965,8 @@ button {
   font-weight: bold;
   font-family: Typewriter;
   border: 1px solid black;
-  width: 170px;
-  height: 80px;
+  width: 180px;
+  height: 100px;
   transition-duration: 0.2s;
   border-radius: 4px;
   font-size: 0.65rem;
@@ -1961,9 +1970,28 @@ br {
   color: #32c832;
   background: #0a640a;
   border: 2px solid #32c832;
+  width: 240px;
+  height: 70px;
   font-family: Typewriter;
-  font-weight: bold;
+  font-size: 11px;
   border-radius: 4px;
+  margin-top: 45px;
+  margin-bottom: 15px;
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+
+.quantumbtnlocked {
+  color: #c9c9c9;
+  background: #0f310f;
+  border: 2px solid #243b24;
+  width: 240px;
+  height: 70px;
+  font-family: Typewriter;
+  font-size: 11px;
+  border-radius: 4px;
+  margin-top: 45px;
+  margin-bottom: 15px;
   transition-duration: 0.2s;
   cursor: pointer;
 }

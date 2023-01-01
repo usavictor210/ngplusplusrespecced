@@ -12,17 +12,17 @@ function getGalaxies (broken) {
     else if (player.achievements.includes('r143')) galaxies += player.replicanti.galaxies
     if (player.timestudy.studies.includes(132)) if (!player.achievements.includes('r143')) galaxies += player.replicanti.galaxies*0.4
     else if (player.achievements.includes('r143')) galaxies += player.replicanti.galaxies*0.5
+    if (player.achievements.includes("r132")) galaxies += player.replicanti.galaxies*0.0005
     if (player.timestudy.studies.includes(225)) galaxies += Math.floor(player.replicanti.amount.e / 1000)
     if (player.timestudy.studies.includes(226)) galaxies += Math.floor(player.replicanti.gal / 15)
-    galaxies += Math.min(player.replicanti.galaxies, player.replicanti.gal) *
-    Math.max(Math.pow(Math.log10(player.infinityPower.plus(1).log10()+1), 0.03 * ECTimesCompleted("eterc8"))-1, 0)
+    galaxies += Math.min(player.replicanti.galaxies, player.replicanti.gal) * Decimal.max(Decimal.pow(Math.log10(player.infinityPower.plus(1).log10()+1), 0.03 * ECTimesCompleted("eterc8")), 0)
   }
   if (player.infinityUpgrades.includes("galaxyBoost")) galaxies *= 2;
   if (player.infinityUpgrades.includes("postGalaxy")) galaxies *= 1.5;
   if (player.challenges.includes("postc5")) galaxies *= 1.1;
   if (player.achievements.includes("r86")) galaxies *= 1.01;
   if (player.achievements.includes("r148")) galaxies *= 1.001;
-  if (player.timestudy.studies.includes(212)) galaxies *= Math.min(Math.pow(player.timeShards.max(2).log2(), 0.005), 1.1);
+  if (player.timestudy.studies.includes(212)) galaxies *= Math.min(Decimal.pow(player.timeShards.max(2).log2(), 0.005), 1.1);
   if (player.timestudy.studies.includes(232)) galaxies *= Math.pow(1+player.galaxies/1000, 0.2);
   return galaxies;
 }
@@ -60,7 +60,7 @@ function buyTickSpeed() {
   if (player.tickSpeedCost.gte(Number.MAX_VALUE)) player.tickspeedMultiplier = player.tickspeedMultiplier.times(player.tickSpeedMultDecrease);
   if (player.currentChallenge == "challenge2" || player.currentChallenge == "postc1") player.chall2Pow = 0
   player.tickspeed = player.tickspeed.times(getTickSpeedMultiplier());
-  if (player.challenges.includes("postc3") || player.currentChallenge == "postc3") player.postC3Reward = player.postC3Reward.times(1.05+(player.galaxies*0.005))
+  if (player.challenges.includes("postc3") || player.currentChallenge == "postc3") player.postC3Reward = player.postC3Reward.times
   postc8Mult = new Decimal(1)
   player.why = player.why + 1
   return true;
@@ -68,7 +68,6 @@ function buyTickSpeed() {
 
 document.getElementById("tickSpeed").onclick = function () {
   buyTickSpeed();
-
   updateTickSpeed();
 };
 

@@ -1,5 +1,4 @@
 // Time studies
-
 function checkIfTTNaN() {
   if (isNaN(player.timestudy.theorem)) {
     player.timestudy.theorem = 0;
@@ -112,18 +111,18 @@ function updatePenalty() {
   document.getElementById(
     "131penalty"
   ).innerHTML = player.achievements.includes("r143")
-    ? "You can get 50% more replicanti galaxies"
-    : "Automatic replicanti galaxies are disabled, but you can get 50% more";
+    ? "You can get 50% more replicanti galaxies."
+    : "Automatic replicanti galaxies are disabled, but you can get 50% more.";
   document.getElementById(
     "132penalty"
   ).innerHTML = player.achievements.includes("r143")
-    ? "Replicanti galaxies are 50% stronger"
-    : "Replicanti galaxies are 40% stronger";
+    ? "Replicanti galaxies are 50% stronger."
+    : "Replicanti galaxies are 40% stronger.";
   document.getElementById(
     "133penalty"
   ).innerHTML = player.achievements.includes("r143")
-    ? "Replicanti galaxies are 50% stronger"
-    : "Replicanti interval is 10x slower until infinity, but RGs are 50% stronger";
+    ? "Replicanti galaxies are 50% stronger."
+    : "Replicanti interval is 10x slower if replicanti is less than " + shortenMoney(Number.MAX_VALUE) + ", but RGs are 50% stronger.";
 }
 function updateTheoremButtons() {
   if (player.dilation.upgrades.includes(17)) {
@@ -207,7 +206,7 @@ function autoTTCycle() {
     player.timestudy.autobuyer = false;
   if (
     player.achievements.includes("r155") &&
-    player.timestudy.autobuyer == true &&
+    player.timestudy.autobuyer &&
     !player.dilation.upgrades.includes(17)
   )
     maxTheorems();
@@ -494,7 +493,7 @@ function canBuyStudy(name) {
 
 function canBuyDilationStudy(name) {
   if (
-    name == 1 && //buying Time Dilation for 5000 TT
+    name == 1 && // buying Time Dilation for 5000 TT
     ECTimesCompleted("eterc11") >= 5 &&
     ECTimesCompleted("eterc12") >= 5 &&
     player.timestudy.amcost.log10() / 20000 +
@@ -669,7 +668,7 @@ var eternalStudyCosts = [
   1e100,
   1e115
 ];
-//these two lines below are adding the entries of bent studies and existing studies together since i need to refer to bent studies as they are for some functions.
+//these two lines below are adding the entries of eternal studies and existing studies together since i need to refer to eternal studies as they are for some functions.
 studyCosts = studyCosts.concat(eternalStudyCosts);
 all = all.concat(eternalStudy);
 function updateTimeStudyButtons() {
@@ -942,6 +941,11 @@ function getTimeStudiesDescription() {
   let desc3 = Math.floor(player.dilation.freeGalaxies / 80) == 1 ? " galaxy later" : " galaxies later"; //TS272
   let desc4 = Math.floor(Math.pow(player.resets, 0.3) ** 0.12) != 1 ? "s" : ""; // for TS261
   let desc5 = player.achievements.includes("r103") ? "307.8" : "308"
+  let r132 = player.achievements.includes("r132") ? Decimal.floor(player.galaxies/4) : 0
+  let desc102a = player.achievements.includes("r132") ? r132 : 0
+  let desc102b = player.achievements.includes("r132") ? "and normal galaxies " : ""
+  let desc103a = player.achievements.includes("r132") ? r132 : 0
+  let desc103b = player.achievements.includes("r132") ? "and normal galaxy " : ""
   document.getElementById("11desc").textContent =
     "Currently: " +
     shortenMoney(
@@ -977,10 +981,8 @@ function getTimeStudiesDescription() {
   let TS32 = Math.max(player.resets, 1);
   if (player.timestudy.studies.includes(271))
     TS32 = TS32 * (1e3 * (player.meta.resets + 1));
-  document.getElementById("32desc").textContent =
-    "You gain " +
-    shortenDimensions(TS32) +
-    "x more infinitied stat (based on dimension boosts)";
+  document.getElementById("32desc").textContent ="Currently: " + shortenDimensions(TS32) +
+    "x";
   document.getElementById("51desc").textContent =
     "You gain " + shortenCosts(1e15) + "x more IP";
   document.getElementById("71desc").textContent =
@@ -1034,10 +1036,18 @@ function getTimeStudiesDescription() {
     "Currently: " +
     shortenMoney(Decimal.pow(player.totalTickGained, 0.25)) +
     "x";
+  document.getElementById("102startdesc").textContent = "Replicanti galaxies " + desc102b + "power up replicanti multiplier."
   document.getElementById("102desc").textContent =
     "Currently: " +
     shortenMoney(
-      Decimal.pow(5, player.replicanti.galaxies)
+      Decimal.pow(5, Decimal.max((new Decimal (player.replicanti.galaxies).add(r132)), 1))
+    ) +
+    "x";
+  document.getElementById("103startdesc").textContent = "Time Dimensions are stronger based on your replicanti galaxy " + desc103b + "amount." 
+  document.getElementById("103desc").textContent =
+    "Currently: " +
+    shortenMoney(
+      Decimal.max(Decimal.max((new Decimal (player.replicanti.galaxies).add(r132)), 1))
     ) +
     "x";
   document.getElementById("111desc").textContent = "(/" + desc5 + " -> /285)"
@@ -1088,9 +1098,9 @@ function getTimeStudiesDescription() {
   document.getElementById("161desc").textContent =
     "Give a " +
     shortenCosts(new Decimal("1e616")) +
-    "x multiplier on all normal dimensions";
+    "x multiplier to all Antimatter Dimensions";
   document.getElementById("162desc").textContent =
-    "Give a " + shortenCosts(1e11) + "x multiplier on all Infinity Dimensions";
+    "Give a " + shortenCosts(1e11) + "x multiplier to all Infinity Dimensions";
   document.getElementById("192desc").textContent =
     "You can get beyond " +
     shortenMoney(Number.MAX_VALUE) +
@@ -1167,7 +1177,7 @@ function getTimeStudiesDescription() {
     "x";
   document.getElementById("unknownCost").textContent = shortenCosts(
     // the unknown time theorem isn't even coded yet, this is a placeholder
-    new Decimal.pow(10, Math.random() * 20 + 300)
+    new Decimal(10).pow(Math.random() * 20 + 300)
   );
 }
 function getECStudyDescription() {
@@ -1210,7 +1220,7 @@ function getECStudyDescription() {
     document.getElementById("ec5unl").innerHTML =
       "Eternity Challenge 5<span>Requirement: " +
       (160 + ECTimesCompleted("eterc5") * 14) +
-      " galaxies<span>Cost: 130 Time Theorems";
+      " normal galaxies<span>Cost: 130 Time Theorems";
   else
     document.getElementById("ec5unl").innerHTML =
       "Eternity Challenge 5<span>Cost: 130 Time Theorems";
@@ -1272,9 +1282,9 @@ function getECStudyDescription() {
       "Eternity Challenge 10<span>Cost: 550 Time Theorems";
 
   document.getElementById("ec11unl").innerHTML =
-    "Eternity Challenge 11<span>Requirement: Use only the Normal Dimension path<span>Cost: 1 Time Theorem";
+    "Eternity Challenge 11<span>Requirement: Use only the Normal Dimension path.<span>Cost: 1 Time Theorem";
   document.getElementById("ec12unl").innerHTML =
-    "Eternity Challenge 12<span>Requirement: Use only the Time Dimension path<span>Cost: 1 Time Theorem";
+    "Eternity Challenge 12<span>Requirement: Use only the Time Dimension path.<span>Cost: 1 Time Theorem";
 
   if (player.dilation.studies.includes(1))
     document.getElementById("dilstudy1").innerHTML =

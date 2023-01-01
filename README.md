@@ -1,10 +1,12 @@
-ngplus2 - NG++ Respecced
+ngplusplus-testing - NG++ Respecced TESTING
 
-read the changelog for very important update information!!!!!
+THIS IS THE TESTING VERSION, NOTHING IS PERMANENT. STUFF WILL BREAK (perhaps way too often)!
 
-http://ngplus2.glitch.me/ngplusplus/changelog/changelog.html
+read the changelog for very important update information!
 
-http://ngplus2.glitch.me/ngplusplus/
+http://ngplusplus-testing.glitch.me/ngplusplus/changelog/changelog.html
+
+http://ngplusplus-testing.glitch.me/ngplusplus/
 
 a "fork" of https://github.com/Ivark/IvarK.github.io
 

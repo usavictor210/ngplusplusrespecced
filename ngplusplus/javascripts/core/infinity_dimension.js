@@ -1,5 +1,5 @@
 //infinity dimensions
-
+var cap = 25000000; // maximum dimensions that can be bought
 
 function DimensionDescription(tier) {
   var name = TIER_NAMES[tier];
@@ -32,6 +32,7 @@ function DimensionRateOfChange(tier) {
 
 
 function updateInfinityDimensions() {
+  updateInfDimPurchaseLimit() 
   if (document.getElementById("infinitydimensions").style.display == "block" && document.getElementById("dimensions").style.display == "block") {
     for (let tier = 1; tier <= 8; ++tier) {
         document.getElementById("infD"+tier).textContent = DISPLAY_NAMES[tier] + " Infinity Dimension x" + shortenMoney(DimensionPower(tier));
@@ -125,6 +126,9 @@ function DimensionPower(tier) {
     if (player.dilation.upgrades.includes(11)) {
       mult = Decimal.pow(10, Math.pow(mult.log10(), 1.05))
     }
+    if (player.achievements.includes("r137")) {
+      mult = Decimal.pow(10, Math.pow(mult.log10(), 1.01))
+    }
   }
 
   return mult
@@ -202,6 +206,7 @@ function buyManyInfinityDimension(tier) {
   if (player.infinityPoints.lt(dim.cost)) return false
   if (!player.infDimensionsUnlocked[tier-1]) return false
   if (player.eterc8ids == 0) return false
+  if (tier != 8 && dim.baseAmount >= cap) return false
   player.infinityPoints = player.infinityPoints.minus(dim.cost)
   dim.amount = dim.amount.plus(10);
   if (ECTimesCompleted("eterc12")) {
@@ -211,7 +216,7 @@ function buyManyInfinityDimension(tier) {
   }
   dim.power = dim.power.times(infPowerMults[tier])
   dim.baseAmount += 10
-
+  dim.bought += 1
   if (player.currentEternityChall == "eterc8") player.eterc8ids-=1
   document.getElementById("eterc8ids").textContent = "You have "+player.eterc8ids+" purchases left."
   return true
@@ -222,6 +227,7 @@ function buyMaxInfDims(tier) {
 
   if (player.infinityPoints.lt(dim.cost)) return false
   if (!player.infDimensionsUnlocked[tier-1]) return false
+  if (tier != 8 && dim.baseAmount >= cap) return false
 
   let costMult;
   if (ECTimesCompleted("eterc12")) {
@@ -231,11 +237,24 @@ function buyMaxInfDims(tier) {
   }
 
   var toBuy = Math.floor((player.infinityPoints.e - dim.cost.e) / Math.log10(costMult))
+  ///console.log("About to buy " + toBuy + " Infinity Dimension " + tier)
+  //console.log("Checking if exceeds limit")
+  var couldBuy = toBuy * 10 + dim.baseAmount;
+  //console.log("dim.baseAmount = " + dim.baseAmount)
+  //console.log("couldBuy = " + couldBuy)
+  if (tier != 8 && toBuy * 10 + dim.baseAmount > cap) {
+    //console.log("Limit exceeded! " + (couldBuy - cap) + " purchases over.")
+    //console.log("Must buy " + (cap - dim.baseAmount) + " instead.")
+    toBuy = (cap - dim.baseAmount) / 10;
+  }
+
   dim.cost = dim.cost.times(Decimal.pow(costMult, toBuy-1))
+  //console.log("Infinity Dimension " + tier + " costs " + shortenDimensions(dim.cost))
   player.infinityPoints = player.infinityPoints.minus(dim.cost)
   dim.cost = dim.cost.times(costMult)
   dim.amount = dim.amount.plus(10*toBuy);
   dim.power = dim.power.times(Decimal.pow(infPowerMults[tier], toBuy))
+  dim.bought +=  toBuy;
   dim.baseAmount += 10*toBuy
   buyManyInfinityDimension(tier)
 }
@@ -271,6 +290,17 @@ function loadInfAutoBuyers() {
       if (player.infDimBuyers[i-1]) document.getElementById("infauto"+i).textContent = "Auto: ON"
       else document.getElementById("infauto"+i).textContent = "Auto: OFF"
   }
+}
+
+function updateInfDimPurchaseLimit() {
+  document.getElementById("idRestriction").textContent = "All Infinity Dimensions except for the 8th can no longer be bought after " + formatInfOrEter(cap/10) + " purchases."
+}
+
+// checks for if you can buy the infinity dimension based on cap
+function canBuyInfDim(tier) {
+  // note: the cap is 25 million
+  var dim = player["infinityDimension" + tier]
+  return !(dim.baseAmount >= cap) || tier == 8;
 }
 
 var infDimPow = 1

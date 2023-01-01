@@ -591,8 +591,14 @@
 				"color": "black",
 				"background-color": "#DBD800",
 				"border-color": "#BAB700",
-        "font-family": "TypeWriter"
-      },
+       			"font-family": "TypeWriter"
+      		},
+			lore: {
+				"color": "black",
+				"background-color": "#DBD800",
+				"border-color": "#BAB700",
+       			"font-family": "TypeWriter"
+      		},
 			info: {
 				"color": "black",
 				"background-color": "#48C0E8",

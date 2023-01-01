@@ -1,3 +1,5 @@
+// Obsoleted
+
 function unstableDilation() { // begins a reset for unstable dilation
 var usGain = new Decimal(((player.dilation.tachyonParticles.log(10)/15))).max(1).floor() // formula
 var sacTPGain = player.dilation.unstable.sacrificedTP.add(player.dilation.tachyonParticles.pow(0.025)).floor()
@@ -35,7 +37,7 @@ function checkUnstableDilationButton() {
   } else document.getElementById("enabledilation2").innerHTML = "Unstabilize dilation for " + new Decimal(((player.dilation.tachyonParticles.log(10)/15))).max(1).floor() + " unstable shards and " + player.dilation.tachyonParticles.pow(0.025).floor() + " sacrificed TP."
 }
 // for deciding how harsh dilation is. 
-function calculateDilationSeverity() {
+function getDilationSeverity() {
   var x = player.dilation.unstable.times
   if (x > 2) player.dilation.unstable.times**1.05 // x^1.05
   if (x < 1 || isNaN(x)) x = 1
@@ -48,7 +50,7 @@ function timeLeaperMult() { // for time leaper achievement
   else return x
 }
 
-function calculateTemporalPowerPerSec() {
+function getTemporalPowerPerSec() {
   var x = Decimal.pow(player.dilation.unstable.sacrificedTP, 0.1).div(1000).floor()
   return x
 }

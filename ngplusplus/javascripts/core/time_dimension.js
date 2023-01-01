@@ -4,7 +4,7 @@ function getTimeDimensionPower(tier) {
   if (player.currentEternityChall == "eterc11") return new Decimal(1)
   var dim = player["timeDimension"+tier]
   var ret = dim.power.pow(2)
-
+  var r132 = player.achievements.includes("r132") ? Decimal.floor(player.galaxies/4) : 0
   if (player.timestudy.studies.includes(11) && tier == 1) ret = ret.dividedBy(player.tickspeed.dividedBy(1000).pow(0.005).times(0.95).plus(player.tickspeed.dividedBy(1000).pow(0.0003).times(0.05)).max(Decimal.fromMantissaExponent(1, -2500)))
   if (player.achievements.includes("r105")) ret = ret.div(getInfiniteTimeReward())
   if (player.eternityUpgrades.includes(4)) ret = ret.times(player.achPow)
@@ -12,7 +12,7 @@ function getTimeDimensionPower(tier) {
   if (player.eternityUpgrades.includes(6)) ret = ret.times(player.totalTimePlayed / (10*21600)).max(1)
   if (player.timestudy.studies.includes(73) && tier == 3) ret = ret.times(calcTotalSacrificeBoost().pow(0.005).min(new Decimal("1e1300")))
   if (player.timestudy.studies.includes(93)) ret = ret.times(Decimal.pow(player.totalTickGained, 0.25).max(1))
-  if (player.timestudy.studies.includes(103)) ret = ret.times(Math.max(player.replicanti.galaxies, 1))
+  if (player.timestudy.studies.includes(103)) ret = ret.times(Decimal.max((new Decimal (player.replicanti.galaxies).add(r132)), 1))
   if (player.timestudy.studies.includes(151)) ret = ret.times(1e4)
   if (player.timestudy.studies.includes(221)) ret = ret.times(Decimal.pow(1.0025, player.resets))
   if (player.timestudy.studies.includes(227) && tier == 4) ret = ret.times(Math.max(Math.pow(calcTotalSacrificeBoost().log10(), 10), 1))
@@ -39,6 +39,9 @@ function getTimeDimensionPower(tier) {
     if (player.dilation.upgrades.includes(11)) {
       ret = Decimal.pow(10, Math.pow(ret.log10(), 1.05))
     }
+    if (player.achievements.includes("r137")) {
+      ret = Decimal.pow(10, Math.pow(ret.log10(), 1.01))
+    }
   }
 
   if (ret.lt(1)) {
@@ -54,6 +57,7 @@ function getTimeDimensionPower(tier) {
 function getInfiniteTimeReward() {
 return (player.tickspeed.div(1000).pow(0.000005))
 }
+
 function getTimeDimensionProduction(tier) {
   if (player.currentEternityChall == "eterc10") return new Decimal(0)
   var dim = player["timeDimension"+tier]
@@ -88,6 +92,7 @@ function getTimeDimensionDescription(tier) {
 }
 
 function updateTimeDimensions() {
+  updateTimeDimPurchaseLimit() 
   if (document.getElementById("timedimensions").style.display == "block" && document.getElementById("dimensions").style.display == "block") {
     for (let tier = 1; tier <= 4; ++tier) {
       document.getElementById("timeD"+tier).textContent = DISPLAY_NAMES[tier] + " Time Dimension x" + shortenMoney(getTimeDimensionPower(tier));
@@ -195,4 +200,32 @@ function buyMaxTimeDimensions() {
     // if we can buy more than 1 now we definitely clearly could have bought 1.
     buyTimeDimension(i);
   }
+}
+
+function getHyperTickspeedScalingStart() {
+  return 1e6; // start at 1,000,000 tickspeed upgrades
+}
+
+function getHyperTickspeedScalingEffect() {
+  return Math.max((player.totalTickGained - getHyperTickspeedScalingStart()) / 100000, 0); // max is necessary to prevent any unnecessary issues
+}
+
+function updateTimeDimPurchaseLimit() {
+  document.getElementById("tdRestriction").innerHTML = "The Time Dimension costs jump after " + shortenDimensions(new Decimal("1.8e308")) + " EP, " + shortenDimensions(new Decimal("1e1300")) + " EP, <br>and the cost increase is superexponential after " + shortenDimensions(new Decimal("1e4000")) + " EP.<br>Tickspeed upgrades scale much faster after " + formatInfOrEter(getHyperTickspeedScalingStart()) + " tickspeed upgrades."
+}
+
+function getTickThreshold(num) {
+  // determine the tick shards needed for the next free tickspeed upgrade
+  // ts171 decreases the requirement from 33% to 25%
+  var ts171 = player.timestudy.studies.includes(171) ? 1.25 : 1.33
+  var total = new Decimal(1).times(ts171).pow(Math.min(num, 1e6))
+
+  // after 1 million tickspeed upgrades, the requirement scales a lot faster
+  if (num > 1e6) {
+      // welcome to hyperscaling
+      total = total.times(1.5).pow(Math.max((num - 1e6), 1))
+  }
+
+  // return in decimal
+  return total
 }

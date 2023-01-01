@@ -6,4 +6,4 @@
 - ^ FIXED: It was timeLeaperMult()
 
 ## Minor
-- TS271 breaks the shift click (buy all studies)
+- TS271 breaks the shift click (buy all studies) - FIXED, time studies needed to be fixed, so we did that.

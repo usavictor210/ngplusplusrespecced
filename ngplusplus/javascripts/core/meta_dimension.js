@@ -27,9 +27,9 @@ function getMetaPerTenPower() {
 }
 
 function getMetaNormalBoostEffect () {
-  let exp = 8;
+  let exp = 5;
   if (player.dilation.upgrades.includes(15)) {
-    exp = 9;
+    exp = 6;
   }
   return player.meta.bestAntimatter.pow(exp).plus(1);
 }
@@ -55,6 +55,8 @@ function getMetaDimensionMultiplier (tier) {
     }
   }
   if (player.quantum.investmentAmount[4].gt(0)) multiplier = multiplier.times(getInvestMultiplier(4))
+
+  // The softcap
   if (multiplier.gt(1e36)) multiplier = multiplier.pow(0.96).max(1e36)
   
   return multiplier;
@@ -76,9 +78,7 @@ function getMetaDimensionRateOfChange(tier) {
   if (tier === 8) {
       return 0;
   }
-
   let toGain = getMetaDimensionProductionPerSecond(tier + 1);
-
   var current = player.meta[tier].amount.max(1);
   var change  = toGain.times(10).dividedBy(current);
 
@@ -105,7 +105,15 @@ function clearMetaDimensions () {
 function getMetaShiftRequirement () {
   return {
     tier: Math.min(8, player.meta.resets + 4),
-    amount: Math.max(20, -40 + 15 * player.meta.resets)
+    amount: getMetaShiftRequirementScaling()
+  }
+}
+
+function getMetaShiftRequirementScaling() {
+  if (player.meta.resets >= 12) {
+    return Math.max(150, 150 + (25 * ((player.meta.resets) - 12)))
+  } else {
+    return Math.max(20, -40 + 15 * player.meta.resets)
   }
 }
 
@@ -152,7 +160,7 @@ function metaGalaxy () {
     player.meta.antimatter = new Decimal(10);
     if (player.achievements.includes('r142') && !player.achievements.includes('r152')) {
       player.meta.antimatter = new Decimal(100);
-    } else if (player.achievements.includes('r152')) player.meta.antimatter = new Decimal(1000);
+    } else if (player.achievements.includes('r151')) player.meta.antimatter = new Decimal(2000);
     else player.meta.antimatter = new Decimal(10);
 
     clearMetaDimensions();
@@ -161,7 +169,7 @@ function metaGalaxy () {
       document.getElementById(i + "MetaRow").style.display = "none"
     }
     player.meta.galaxy++;
-    giveAchievement("That's too meta");
+    //giveAchievement("That's too meta");
     return true;
 }
 
@@ -247,7 +255,7 @@ function getMetaDimensionProductionPerSecond(tier) {
 function metaDimensionAchievement() { // SHOULD BE SIMPLIFIED
 var x = 0
   for (let i=1; i<9; i++) {
-  if (getMetaDimensionMultiplier(i).gte(1e25)) x++
+  if (getMetaDimensionMultiplier(i).gte(1e30)) x++
   }
   if (x == 8) giveAchievement("I never meta-dimension I didn't like");
 return x // returns how many dimensions satisfied the requirement.

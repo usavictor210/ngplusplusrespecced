@@ -61,15 +61,15 @@ function updateChartValues() {
     document.getElementById("chartDurationInput").value = player.options.chart.duration;
     player.options.chart.updateRate = Math.min(Math.max(parseInt(document.getElementById("chartUpdateRateInput").value), 50), 10000);
     document.getElementById("chartUpdateRateInput").value = player.options.chart.updateRate;
-    if (Number.isInteger(player.options.chart.updateRate) === false) {
+    if (!Number.isInteger(player.options.chart.updateRate)) {
         player.options.chart.updateRate = 1000;
     }
     if ((player.options.chart.updateRate <= 200 && player.options.chart.duration >= 30) && player.options.chart.warning === 0) {
-        alert("Warning: setting the duration and update rate too high can cause performance issues.");
+        alert("Warning: Setting the duration with a long period of time and a fast update rate can cause performance issues. Change these settings if you are experiencing lag.");
         player.options.chart.warning = 1;
     }
     if (player.options.chart.duration / player.options.chart.updateRate * 1000 >= 1000 && player.options.chart.warning !== 2) {
-        alert("Warning: you have set the duration and update rate quite high, make sure you know what you're doing or have a good computer");
+        alert("Warning: You have set the duration to a very long period of time and the update rate is very fast, make sure you know what you're doing or have a good computer before doing this.");
         player.options.chart.warning = 2;
     }
 }

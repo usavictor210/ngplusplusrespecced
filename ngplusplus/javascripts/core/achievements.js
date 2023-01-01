@@ -1,4 +1,5 @@
 const allAchievements = {
+  // Vanilla
   r11 : "You gotta start somewhere",
   r12 : "100 antimatter is a lot",
   r13 : "Half life 3 confirmed",
@@ -103,6 +104,8 @@ const allAchievements = {
   r136 : "I told you already, time is relative",
   r137 : "Now you're thinking with dilation!",
   r138 : "This is what I have to do to get rid of you.",
+  
+  // NG++
   r141 : "I'm so meta",
   r142 : "And still no ninth dimension...",
   r143 : "In the grim darkness of the far endgame",
@@ -111,14 +114,26 @@ const allAchievements = {
   r146 : "It will never be enough",
   r147 : "GAS GAS GAS",
   r148 : "Universal harmony",
-  r151: "Time Leaper",
-  r152: "That's too meta",
-  r153: "Time waits for me",
-  r154: "Unusual space and time",
-  r155: "Sub-atomic",
-  r156: "I never meta-dimension I didn't like",
-  r157: "The future is now, old man",
-  r158: "Deeper Sanctum",
+  
+  // NG+2R
+  r151: "Quantum Leap",
+  r152: "Takyon (Death Yon)",
+  r153: "May the forces be with you",
+  r154: "I've never meta-dimension I didn't like",
+  r155: "Space is great",
+  r156: "The whole table",
+  r157: "Life and death at every tick",
+  r158: "Theory of Everything",
+  r161: "Planck time",
+  r162: "Hyper Sanic",
+  r163: "Augmented Misery",
+  r164: "It's a secret to everybody",
+  r165: "5 hours after the update",
+  r166: "Everything, everywhere, all at once",
+  r167: "My Mates",
+  r168: "Revengeance",
+
+  // Secret achievements (vanilla)
   s11 : "The first one's always free",
   s12 : "Just in case",
   s13 : "It pays to have respect",
@@ -150,8 +165,8 @@ const secretAchievementTooltips = {
     s13 : "Pay respects.",
     s14 : "Say something naughty.",
     s15 : "Do a barrel roll.",
-    s16 : "Use standard, cancer, or bracket notation for 10 minutes with more than 1 eternity without refreshing.",
-    s17 : "Input the konami code.",
+    s16 : "Use standard, cancer, or bracket notation for 10 minutes with more than 1 Eternity without refreshing.",
+    s17 : "Input the Konami code.",
     s18 : "You have a 1/100,000 chance of getting this achievement every second.",
     s21 : "Purchase the secret time study.",
     s22 : "Buy one million Galaxies in total while using cancer notation.",
@@ -202,7 +217,7 @@ function giveAchievement(name) {
 
     if (player.achievements.includes(allAchievementNums[name])) return false
 
-    $.notify(name, "success");
+    $.notify("Achievement get! " + name, "success");
     player.achievements.push(allAchievementNums[name]);
     document.getElementById(name).className = "achievementunlocked"
     if (name == "All your IP are belong to us" || name == "MAXIMUM OVERDRIVE") {
@@ -264,8 +279,8 @@ function updateAchievements() {
           document.getElementById("secretAchRow"+i).className = ""
       }
   }
-  player.achPow = Decimal.pow(1.125, amount)
-  document.getElementById("achmultlabel").textContent = "Current achievement multiplier on each Dimension: " + shortenDimensions(player.achPow) + "x"
+  player.achPow = Decimal.pow(1.1, amount)
+  document.getElementById("achmultlabel").textContent = "Current achievement multiplier on each Dimension: " + shorten(player.achPow) + "x"
 }
 
 function getSecretAchAmount() {

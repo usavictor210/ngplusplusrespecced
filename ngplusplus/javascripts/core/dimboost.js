@@ -184,9 +184,10 @@ if (player.currentChallenge == "postc2") {
   if (player.achievements.includes("r36")) player.tickspeed = player.tickspeed.times(0.98);
   if (player.achievements.includes("r45")) player.tickspeed = player.tickspeed.times(0.98);
   if (player.achievements.includes("r66")) player.tickspeed = player.tickspeed.times(0.98);
-  if (player.achievements.includes("r83")) player.tickspeed = player.tickspeed.times(Decimal.pow(0.95,player.galaxies));
+  if (player.achievements.includes("r135")) player.tickspeed = player.tickspeed.times(0.95);
+  if (player.achievements.includes("r83")) player.tickspeed = player.tickspeed.times(Decimal.pow(0.95, player.galaxies));
 
-  if (player.eternities < 30) {
+  if (player.eternities.lt(30)) {
       document.getElementById("secondRow").style.display = "none";
       document.getElementById("thirdRow").style.display = "none";
       document.getElementById("tickSpeed").style.visibility = "hidden";
