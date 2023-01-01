@@ -1,4 +1,5 @@
 const allAchievements = {
+  // Vanilla
   r11 : "You gotta start somewhere",
   r12 : "100 antimatter is a lot",
   r13 : "Half life 3 confirmed",
@@ -103,6 +104,8 @@ const allAchievements = {
   r136 : "I told you already, time is relative",
   r137 : "Now you're thinking with dilation!",
   r138 : "This is what I have to do to get rid of you.",
+  
+  // NG++
   r141 : "I'm so meta",
   r142 : "And still no ninth dimension...",
   r143 : "In the grim darkness of the far endgame",
@@ -111,6 +114,8 @@ const allAchievements = {
   r146 : "It will never be enough",
   r147 : "GAS GAS GAS",
   r148 : "Universal harmony",
+  
+  // NG+2R
   r151: "Time Leaper",
   r152: "That's too meta",
   r153: "Time waits for me",
@@ -119,6 +124,8 @@ const allAchievements = {
   r156: "I never meta-dimension I didn't like",
   r157: "The future is now, old man",
   r158: "Deeper Sanctum",
+  
+  // Secret achievements (vanilla)
   s11 : "The first one's always free",
   s12 : "Just in case",
   s13 : "It pays to have respect",

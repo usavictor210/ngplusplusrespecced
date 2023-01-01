@@ -5202,9 +5202,10 @@ setInterval(function() {
   )
     giveAchievement("This is what I have to do to get rid of you.");
   if (
-    player.infinityPoints.gte(new Decimal("1e70000")) &&
+    player.money(new Decimal("1e1000000")) &&
     player.dilation.active &&
     player.galaxies == 1 &&
+    player.dilation.rebuyables[2] == 0 &&
     player.replicanti.galaxies == 0
   )
     giveAchievement("Deeper Sanctum");

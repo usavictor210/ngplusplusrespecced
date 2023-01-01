@@ -1,6 +1,6 @@
 ngplusplus-testing - NG++ Respecced TESTING
 
-THIS IS THE TESTING VERSION, NOTHING IS PERMANENT. STUFF WILL BREAK!
+THIS IS THE TESTING VERSION, NOTHING IS PERMANENT. STUFF WILL BREAK (perhaps way too often)!
 
 read the changelog for very important update information!
 
