@@ -1,3 +1,5 @@
+console.log("Antimatter Dimensions NG+2 Respecced: Quantification")
+
 // ok, this code is absolutely very messy and we'll need to separate it into parts, and also simplify some parts of the code.
 var gameLoopIntervalId;
 var Marathon = 0;
@@ -658,6 +660,8 @@ function updateCoinPerSec() {
 }
 
 function getGalaxyCostScalingStart() {
+  if (player.currentEternityChall == "eterc5") return 0;
+
   var n = 100 + eterChallReward(5);
   if (player.timestudy.studies.includes(223)) n += 7;
   if (player.timestudy.studies.includes(224))
@@ -841,24 +845,8 @@ function updateDimensions() {
       document.getElementById("softReset").textContent =
         "Reset your Dimensions for a new Dimension";
     }
-    let extraGals = getTotalRGs();
-    var galString = "";
-    if (player.galaxies >= 800) galString += "Remote Antimatter Galaxies (";
-    else if (
-      player.galaxies >= getGalaxyCostScalingStart() ||
-      player.currentEternityChall === "eterc5"
-    )
-      galString += "Distant Antimatter Galaxies (";
-    else galString += "Antimatter Galaxies (";
-    galString += formatInfOrEter(player.galaxies);
-    if (extraGals > 0) galString += " + " + formatInfOrEter(extraGals);
-    if (player.dilation.freeGalaxies > 0)
-      galString += " + " + formatInfOrEter(player.dilation.freeGalaxies);
-    galString += "): requires " + formatInfOrEter(getGalaxyRequirement());
-    if (player.currentChallenge == "challenge4")
-      galString += " Sixth Dimensions";
-    else galString += " Eighth Dimensions";
-    document.getElementById("secondResetLabel").textContent = galString;
+    
+    updateGalaxyText();
   }
 
   updateMetaDimensions();
@@ -2528,6 +2516,57 @@ function galaxyReset() {
   updateTickSpeed();
 }
 
+function updateGalaxyText() {
+  
+  let extraGals = getTotalRGs();
+  var scaling = ["", "Distant", "Remote", "Dark Matter", "Superclusters", "Void"]
+  var galString = "";
+
+  // Determine scaling
+  galString += determineGalaxyScaling() + " Galaxies ("
+
+  // Current antimatter galaxy amount
+  galString += formatInfOrEter(player.galaxies);
+  
+  // Add replicanti galaxies and tachyon galaxies
+  if (extraGals > 0) galString += " + " + formatInfOrEter(extraGals) + " RG";
+  if (player.dilation.freeGalaxies > 0) galString += " + " + formatInfOrEter(player.dilation.freeGalaxies) + " TG";
+
+  // End the string with the cost
+  galString += "): requires " + formatInfOrEter(getGalaxyRequirement());
+
+  // Determine Dimension Tier
+  if (player.currentChallenge == "challenge4")
+    galString += " Sixth Dimensions"
+  else galString += " Eighth Dimensions"
+
+  // todo: make galaxy text a separate function
+  document.getElementById("secondResetLabel").textContent = galString
+}
+
+function determineGalaxyScaling() {
+  // Antimatter galaxy requirements
+  // Distant: 100
+  // Remote: 800
+  // Dark Matter: 3,000
+  // Galaxy Superclusters: 100,000
+  // Void: 1,000,000
+  var ag = player.galaxies
+  var scaling = ["Antimatter", "Distant Antimatter", "Remote Antimatter", "Dark Matter", "Superclustered", "Void"]
+  var scalingBegin = [0, getGalaxyCostScalingStart(), 800, 3000, 100000, 1000000]
+
+  // checking an entry after the current item
+  for (var i = 0; i < scaling.length - 1; i++) {
+    if (ag < (scalingBegin[i + 1])) {
+      console.log(i)
+      return scaling[i]
+    }
+  }
+
+  return scaling[scaling.length - 1]
+}
+
+// put in an achievement
 let canGiveUniversalHarmony = function() {
   return (
     player.galaxies >= 700 &&
@@ -4956,7 +4995,7 @@ function gameLoop(diff) {
     );
     softReset(0);
   }
-
+  
   if (player.currentChallenge == "postc8")
     postc8Mult = postc8Mult.times(Math.pow(0.000000046416, diff));
 
@@ -6490,24 +6529,6 @@ function showChallengesTab(tabName) {
       tab.style.display = "none";
     }
   }
-}
-
-function showEternityTab(tabName, init) {
-  //iterate over all elements in div_tab class. Hide everything that's not tabName and show tabName
-  var tabs = document.getElementsByClassName("eternitytab");
-  var tab;
-  for (var i = 0; i < tabs.length; i++) {
-    tab = tabs.item(i);
-    if (tab.id === tabName) {
-      tab.style.display = "block";
-    } else {
-      tab.style.display = "none";
-    }
-  }
-  if (tabName === "timestudies" && !init)
-    document.getElementById("TTbuttons").style.display = "block";
-  else document.getElementById("TTbuttons").style.display = "none";
-  resizeCanvas();
 }
 
 function showAchTab(tabName) {

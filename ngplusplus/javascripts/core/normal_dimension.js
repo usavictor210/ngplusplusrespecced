@@ -136,8 +136,9 @@ function getDimensionFinalMultiplier(tier) {
     }
   }
 
-  if (player.dilation.upgrades.includes(7))
-    multiplier = multiplier.times(player.dilation.dilatedTime.pow(308));
+  if (player.dilation.upgrades.includes(7)) multiplier = multiplier.times(player.dilation.dilatedTime.pow(308));
+
+  if (checkEarlyGameBuff()) multiplier = multiplier.pow((1) + (0.1 * (Math.max((4000 - player.eternityPoints.e), 0) / 4000)))
   return multiplier;
 }
 

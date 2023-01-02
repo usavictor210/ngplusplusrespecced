@@ -641,7 +641,7 @@ function updateLastTenQuantums() {
       timeDisplayShort(player.lastTenQuantums[i][0]) +
       " and gave " +
       shortenDimensions(player.lastTenQuantums[i][1]) +
-      " QK. " +
+      " QK (Quantum Score: 1). " +
       tempstring;
   }
 

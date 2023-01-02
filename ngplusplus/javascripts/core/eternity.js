@@ -923,6 +923,37 @@ function startEternityChallenge(name, startgoal, goalIncrease) {
   }
 }
 
+function showEternityTab(tabName, init) {
+  //iterate over all elements in div_tab class. Hide everything that's not tabName and show tabName
+  var tabs = document.getElementsByClassName("eternitytab");
+  var tab;
+  for (var i = 0; i < tabs.length; i++) {
+    tab = tabs.item(i);
+    if (tab.id === tabName) {
+      tab.style.display = "block";
+    } else {
+      tab.style.display = "none";
+    }
+  }
+  if (tabName === "timestudies" && !init)
+    document.getElementById("TTbuttons").style.display = "block";
+  else document.getElementById("TTbuttons").style.display = "none";
+  resizeCanvas();
+}
+
+function showEternityMilestoneSubtab(tabName, init) {
+  //iterate over all elements in div_tab class. Hide everything that's not tabName and show tabName
+  var tabs = document.getElementsByClassName("eterMilestone");
+  var tab;
+  for (var i = 0; i < tabs.length; i++) {
+    tab = tabs.item(i);
+    if (tab.id === tabName) {
+      tab.style.display = "inline-block";
+    } else {
+      tab.style.display = "none";
+    }
+  }
+}
 
 function updateECRewardText() {
   document.getElementById("ec1reward").textContent =

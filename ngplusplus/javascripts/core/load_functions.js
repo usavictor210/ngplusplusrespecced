@@ -1633,3 +1633,7 @@ if (player.options.ngPlusConfirm != 0) return
     console.log("enabled ng+");
   } else player.options.ngPlusConfirm = 2; // disabled, won't ask again
 }
+
+function checkEarlyGameBuff() {
+  return (player.eternityPoints.lte(new Decimal("1e4000")));
+}

@@ -163,21 +163,21 @@ function updateTheoremButtons() {
       ? "timetheorembtn"
       : "timetheorembtnlocked";
     document.getElementById("theoremep").innerHTML =
-      "Buy Time Theorems <br>Cost: " +
+      "+1 Time Theorem <br>Cost: " +
       shortenDimensions(player.timestudy.epcost) +
       " EP";
     document.getElementById("theoremip").innerHTML =
-      "Buy Time Theorems <br>Cost: " +
+      "+1 Time Theorem <br>Cost: " +
       shortenCosts(player.timestudy.ipcost) +
       " IP";
     document.getElementById("theoremam").innerHTML =
-      "Buy Time Theorems <br>Cost: " +
+      "+1 Time Theorem <br>Cost: " +
       shortenCosts(player.timestudy.amcost) +
       " AM";
   }
   document.getElementById(
     "theoremmax"
-  ).innerHTML = player.achievements.includes("r155")
+  ).innerHTML = player.achievements.includes("r158")
     ? "Auto buy theorems: O" + (player.timestudy.autobuyer ? "N" : "FF")
     : "Buy max Theorems";
   document.getElementById("timetheorems").innerHTML =
@@ -192,7 +192,7 @@ function updateTheoremButtons() {
 function toggleAutoTT() {
   // taken from aarex, but...
   if (
-    player.achievements.includes("r155") &&
+    player.achievements.includes("r158") &&
     player.timestudy.autobuyer != undefined
   ) {
     player.timestudy.autobuyer = !player.timestudy.autobuyer;
@@ -205,7 +205,7 @@ function autoTTCycle() {
   if (player.timestudy.autobuyer == undefined)
     player.timestudy.autobuyer = false;
   if (
-    player.achievements.includes("r155") &&
+    player.achievements.includes("r158") &&
     player.timestudy.autobuyer &&
     !player.dilation.upgrades.includes(17)
   )
@@ -285,7 +285,7 @@ function buyDilationStudy(name, cost) {
     if (name === 1) {
       showEternityTab("dilation");
       document.getElementById("dilstudy1").innerHTML =
-        "Unlock time dilation<span>Cost: 5000 Time Theorems";
+        "Unlock Time Dilation<span>Cost: 5000 Time Theorems";
     }
     if (name === 6) {
       // take player to meta dimensions and give achievement
@@ -499,7 +499,7 @@ function canBuyDilationStudy(name) {
     player.timestudy.amcost.log10() / 20000 +
       player.timestudy.ipcost.log10() / 100 +
       player.timestudy.epcost.log2() >=
-      13000
+      12900
   )
     return true;
   if (
@@ -1288,10 +1288,10 @@ function getECStudyDescription() {
 
   if (player.dilation.studies.includes(1))
     document.getElementById("dilstudy1").innerHTML =
-      "Unlock time dilation<span>Cost: 5000 Time Theorems";
+      "Unlock Time Dilation<span>Cost: 5000 Time Theorems";
   else
     document.getElementById("dilstudy1").innerHTML =
-      "Unlock time dilation<span>Requirement: 5 EC11 and EC12 completions, and 13000 total theorems<span>Cost: 5000 Time Theorems";
+      "Unlock Time Dilation<span>Requirement: 5 EC11 and EC12 completions, and 12,900 total theorems<span>Cost: 5000 Time Theorems";
 }
 
 //////////////////////////////////// ETERNITY CHALLENGES \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
